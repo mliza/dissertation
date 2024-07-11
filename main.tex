@@ -1,0 +1,42 @@
+\input{configuration/ThesisTemplate}
+\input{configuration/ThesisMacros}
+\input{configuration/ThesisShortcuts}
+\addbibresource{bibliography.bib} 
+\usepackage{pstricks} 
+
+
+%\usepackage[text=Draft1, colorspec=0.92, fontsize=7cm]{draftwatermark} 	%Draft mark package 
+
+\begin{document}
+
+%%Documents prior Contents 
+\input{support/TittlePage}
+\input{support/Quote}
+\input{support/Abstract}
+\input{support/Copyrights}
+\input{support/Acknowledgements}
+\input{support/Symbols}
+   
+\tableofcontents
+\listoftables
+\printunsrtglossary[type=symbols,style=long] 
+\listoffigures
+
+%%Input all the chapters 
+\input{chapters/chapter_1}
+\input{chapters/chapter_2}
+\input{chapters/chapter_3}
+
+
+
+%%Documents after chapters
+\newpage 
+    \printbibliography 
+\appendix 
+\begin{appendices}
+%\input{Appendices/RaptorConfig}
+\end{appendices}
+
+
+\end{document}
+%https://www.youtube.com/watch?v=mZcV1wIPCBo

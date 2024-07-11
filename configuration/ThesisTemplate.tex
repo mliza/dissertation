@@ -1,0 +1,43 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}  %Lets you insert graphs 
+\usepackage[backend=biber, style=ieee, sorting=none]{biblatex} %bibliography
+\usepackage[a4paper, left=25.4mm, right=25.4mm, top=25.4mm, bottom=25.4mm, bindingoffset=6mm]{geometry}
+\usepackage[toc,page]{appendix} %Appendix Package
+\usepackage{indentfirst} %Lets you indent 1st paragraph 
+\setlength{\parindent}{1.5cm} %indentation for first paragraph  
+\usepackage{fancyhdr} %Fancy headers 
+\usepackage{float}%Hold figures in place using h
+\usepackage{comment} % Lets you comment out
+\usepackage{amsmath, amssymb} %more math 
+\usepackage{siunitx} %lets you use \percent for % sign mathmode
+\usepackage{standalone}%lets you import a file alone
+\usepackage{pdfpages}%Lets you insert a pdf file
+\usepackage{listings} %Lets you input code
+\usepackage{color}   % Colors 
+\usepackage{enumitem} % Allows different enumerate
+\usepackage[colorlinks]{hyperref} %hyper reference, table of content (letters)
+\usepackage[symbols,nogroupskip,sort=none]{glossaries-extra} %Reference equations  
+\hypersetup{linktocpage}  %hyper reference page numbers 
+\usepackage{pgfplots} %tiktz package 
+
+
+%Spacing  
+\usepackage{setspace}
+\doublespacing
+
+%Paths 
+\graphicspath{{figures/}}
+
+% Modify clickable links 
+\hypersetup{ colorlinks={blue}, 
+             urlcolor={blue},
+             linkcolor={black}, 
+             citecolor={blue}
+            }
+
+
+%Headers and Footers
+\pagestyle{fancyplain}
+\rhead{\fancyplain{}{\thepage}}
+\cfoot{}
