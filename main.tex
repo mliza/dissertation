@@ -2,34 +2,25 @@
 \input{configuration/ThesisMacros}
 \input{configuration/ThesisShortcuts}
 \addbibresource{bibliography.bib} 
-\usepackage{pstricks} 
 
 
 %\usepackage[text=Draft1, colorspec=0.92, fontsize=7cm]{draftwatermark} 	%Draft mark package 
 
 \begin{document}
 
-%%Documents prior Contents 
-\iffalse
-    \input{support/TittlePage}
-    \input{support/Quote}
-    \input{support/Abstract}
-    \input{support/Copyrights}
-    \input{support/Acknowledgements}
-    \input{support/Symbols}
-\fi
    
+\listoftodos
 \tableofcontents
+
 \listoftables
 \printunsrtglossary[type=symbols,style=long] 
 \listoffigures
-\listoftodos
 
 %%Input all the chapters 
-\input{chapters/chapter_1}
-\input{chapters/chapter_2}
-\input{chapters/chapter_3}
-\input{chapters/chapter_4}
+\subimport{src/ch1}{chapter_1.tex}
+\subimport{src/ch2}{chapter_2.tex}
+\subimport{src/ch3}{chapter_3.tex}
+\subimport{src/ch4}{chapter_4.tex}
 
 
 %%Documents after chapters
