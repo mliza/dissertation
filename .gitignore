@@ -12,6 +12,12 @@
 *.cb2
 .*.lb
 
+## Glossary stuff ##
+*.gls-abr
+*.glo-abr
+*.glg-abr
+*.ist
+
 ## Intermediate documents:
 *.dvi
 *.xdv
