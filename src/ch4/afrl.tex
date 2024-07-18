@@ -1,0 +1,65 @@
+\section{Ionization Study\label{ch4:ionizationStudy}}
+    This investigation compares the index of refraction between a $5$ and $11$
+    species gas. The solver used for this investigation is
+    \gls{LeMANS}, which is a reactive hypersonic flow
+    code \cite{Scalabrin2007}. \TabRef{tab:ionizationTableStudy} shows
+    the cases that were tested; the simulations described below use a
+    isothermal BC, with the famous Park's $2T$ \cite{Park1989} model.
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            Case \# & Geometry & \# of Species & AoA $\Units{{\circ}}$ & M
+            $\Units{\,}$ & Alt $\Units{km}$ \\
+            \hline \hline
+            1 & flat plate & 5 & 10 & 15 & 30  \\
+            \hline
+            2 & flat plate & 11 & 10 & 15 & 30  \\
+            \hline
+        \end{tabular}
+        \caption{Ionization table study\label{tab:ionizationTableStudy}}
+    \end{table}
+
+    The Polarizability constants used for the following study are provided in
+    %\TabRef{tab:ionizationStudyPolarizability}.
+           \begin{table}[H]
+               \begin{minipage}[b]{0.49\textwidth}
+        	    \centering
+                    \begin{tabular}{| c | c | c |}
+                        \hline 
+                        Species  & $\alpha \times 10^{30}\Units{m}$ & Ref.             \\
+                        \hline \hline 
+                        $\Sub{N}{2}$      & $1.740$                               &\cite{Haynes2004}\\
+                        $N$               & $1.100$                               &\cite{Haynes2004}\\
+                        $\Sub{O}{2}$      & $1.581$                               &\cite{Haynes2004}\\
+                        $O$               & $0.802$                               &\cite{Haynes2004}\\
+                        $NO$              & $1.700$                               &\cite{Haynes2004}\\
+                        \hline 
+                    \end{tabular} 
+                \caption{Equilibrium polarizability constants for ions and neutral
+               species\label{tab:ionizationStudyEquilibriumPolarizability}}
+                \end{minipage}\qquad
+
+               \begin{minipage}[b]{0.49\textwidth}
+                   \centering
+                    \begin{tabular}{| c | c | c |}
+                        \hline
+                        Species  & $\alpha \times 10^{30}\Units{m}$ & Ref.             \\
+                        \hline\hline
+                        $\UpSub{N}{2}{+}$ & $2.386$                               &\cite{McCormack1991}\\
+                        $\Up{N}{+}$       & $0.559$                               &\cite{Jacobson1996}\\
+                        $\UpSub{O}{2}{+}$ & $0.238$                               &\cite{Stewart1975}\\
+                        $\Up{O}{+}$       & $0.345$                               &\cite{Stewart1975}\\
+                        $\Up{NO}{+}$      & $1.021$                               &\cite{Feher1993}\\
+                        \hline 
+                    \end{tabular}
+                    \caption{Nonequilibrium polarizability constants for ions and neutral
+                       species\label{tab:ionizationStudyNonequilibriumPolarizability}}
+               \end{minipage}
+        \end{table}
+
+
+\todo{Missing comparison between equilibrium and nonequilibrium}
+
+
