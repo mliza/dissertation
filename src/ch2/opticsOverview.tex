@@ -1,2 +1,24 @@
 \section{Optics Overview \label{ch2:opticsOverview}}
 \todo{Missing optics overview}
+Optical wave propagation through an inhomogeneous medium produces
+wavefront deformation. 
+
+\todo{Read this paper and cite it \cite{Jumper2001}}
+
+The \gls{OPL} is given by \EqRef{eq:OPL}. The \gls{OPL} is the length that
+light needs to travel through a vacuum to create the same phase difference as
+it would have when traveling through a medium.
+
+
+\begin{equation}\label{eq:OPL}
+    OPL(t,x) = \int_{y_1}^{y_2} n(t,x,y)dt
+\end{equation}
+
+The \gls{OPD} is given by \EqRef{eq:OPD}. 
+\begin{equation}\label{eq:OPD}
+    OPD(t,x) = OPL(t,x) - \overline{OPL}(t)
+\end{equation}
+Note: $\overline{\;}$ denotes the spatial average. The data has to be a
+function of time, x-position and y-position.
+
+
