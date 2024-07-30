@@ -10,16 +10,33 @@
         \centering
         \begin{tabular}{|c|c|c|c|c|c|}
             \hline
-            Case \# & Geometry & \# of Species & AoA $\Units{{\circ}}$ & M
-            $\Units{\,}$ & Alt $\Units{km}$ \\
+            Case & Species & $T_{tr}\Units{K}$ & $T_{rot}\Units{K}$ &
+            $T_{vib}\Units{K}$ & $P\Units{kPa}$ \\
             \hline \hline
-            1 & flat plate & 5 & 10 & 15 & 30  \\
-            \hline
-            2 & flat plate & 11 & 10 & 15 & 30  \\
-            \hline
+            $1I$ & $5$ & $8000$ & $8000$ & $300$ & $1000$ \\ \hline
+            $2I$ & $11$ & $8000$ & $8000$ & $300$ & $1000$ \\ \hline
+            $3H$\cite{Gimelshein2022} & $5$ & $15000$ & $15000$ & $300$ & $2067$
+            \\ \hline
+            $4I$ & $11$ & $15000$ & $15000$ & $300$ & $2067$ \\ \hline
         \end{tabular}
-        \caption{Ionization table study\label{tab:ionizationTableStudy}}
+        \caption{Ionization table study}\label{tab:ionizationTableStudy}
     \end{table}
+
+    Cases in \TabRef{tab:ionizationTableStudy} used the mass fraction
+    composition for standard Air provided in
+    \TabRef{tab:massFractionCompositionIonizationStudy}.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            $N\Units{\,}$ & $O\Units{\,}$ & $NO\Units{\,}$ & $N_2\Units{\,}$ &
+            $O_2\Units{\,}$ \\ \hline\hline
+            $0.0$ & $0.0$ & $0.0$ & $0.79$ & $0.21$ \\ \hline
+        \end{tabular}
+        \caption{Mass fraction composition for cases in
+        \TabRef{tab:ionizationTableStudy}\label{tab:massFractionCompositionIonizationStudy}}
+    \end{table}
+
 
     The equilibrium polarizability constants (neutral) and the nonequilibrium
     polarizability constants (ions) used for this study are provided on
@@ -61,6 +78,6 @@
         \end{table}
 
 
-\todo{Missing comparison between equilibrium and nonequilibrium}
+\todo{Add 5 vs 11 species results} 
 
 

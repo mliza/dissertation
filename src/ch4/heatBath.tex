@@ -6,24 +6,40 @@ The solver used for this investigation is \gls{SU2} \cite{Palacios2013},
 this analysis.
 \begin{table}[H]
     \begin{center}
-        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \begin{tabular}{|c|c|c|c|c|}
         \hline
          Case & $T_{tr}\left[K\right]$ & $T_{rot}\left[K\right]$ &
-            $T_{vib}\left[K\right]$ &  $P\left[kPa\right]$ & $N\left[\,\right]$
-            & $O\left[\,\right]$ & $NO\left[\,\right]$ & $N_2\left[\,\right]$ &
-            $O_2\left[\,\right]$ \\
-         \hline\hline
-         Eyi & 8000 & 8000 & 300 & 1000 &0.0 & 0.0 & 0.0 & 0.79 & 0.21\\ 
-         \hline
-            TC1\cite{Gimelshein2022}&7230&7230&300&4.266&0.0&0.0&0.0&0.79&0.21\\
-         \hline
-            TC2\cite{Gimelshein2022}&15000&15000&300&2067&0.0&0.0&0.0&0.79&0.21\\
-         \hline 
-            TC3\cite{Gimelshein2022}&15000&15000&300&2067&6.5E-7&0.2283&0.01026&0.7543&0.713E-2\\
-         \hline
+            $T_{vib}\left[K\right]$ &  $P\left[kPa\right]$ \\ \hline\hline
+            $1H$\cite{Gimelshein2022} & $20000$ & $20000$ & $300$ &  $2760$ \\ \hline 
+            $2H$\cite{Gimelshein2022} & $10000$ & $10000$ & $300$ & $1380$ \\ \hline 
+            $3H$\cite{Gimelshein2022} & $15000$ & $15000$ & $300$ & $2067$ \\
+            \hline
+            $4H$\cite{Gimelshein2022} & $15000$ & $15000$ & $300$ & $2067$\\
+            \hline
+            $5H$  & $8000$ & $8000$ & $300$ & $1000$ \\ \hline
         \end{tabular}
         \caption{Heath bath conditions\label{tab:heatBathStudy}}
     \end{center}
 \end{table}
 
+    \TabRef{tab:heatBathStudy} shows the mass fraction composition used for
+    cases in \TabRef{tab:heatBathStudy}. 
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+           Case  & $N\Units{\,}$ & $O\Units{\,}$ & $NO\Units{\,}$ & $N_2\Units{\,}$ &
+            $O_2\Units{\,}$ \\ \hline\hline
+            $1H$ & $0.0$ & $0.0$ & $0.0$ & $1.0$ & $0.0$ \\ \hline
+            $2H$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $1.0$ \\ \hline
+            $3H$ & $0.0$ & $0.0$ & $0.0$ & $0.79$ & $0.21$ \\ \hline
+            $4H$ & $6.5E-7$ & $0.2283$ & $0.01026$ & $0.75$ & $0.713E-3$ \\ \hline
+            $5H$ & $0.0$ & $0.0$ & $0.0$ & $0.79$ & $0.21$ \\ \hline
+        \end{tabular}
+        \caption{Mass fraction composition for cases in
+        \TabRef{tab:heatBathStudy}}
+    \end{table}
+
+    \todo{Add heat bath results}
 
