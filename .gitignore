@@ -13,7 +13,7 @@
 .*.lb
 
 ## Ignore data folder
-data/
+CFD/
 
 ## Glossary stuff ##
 *.gls-abr
