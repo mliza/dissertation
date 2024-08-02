@@ -12,6 +12,9 @@
 *.cb2
 .*.lb
 
+## Ignore data folder
+data/
+
 ## Glossary stuff ##
 *.gls-abr
 *.glo-abr
