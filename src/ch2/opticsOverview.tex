@@ -1,4 +1,21 @@
 \section{Optics Overview \label{ch2:opticsOverview}}
+    As electromagnetic waves travel through a medium, these waves induce a
+    polarization and magnetization on the medium's molecules; leading to the
+    formation of dipoles. These dipoles generate their own electric and
+    magnetic waves, representing bound charges and bound currents,
+    respectively. Consequently, the newly formed wave arising from the combined
+    effects of polarization and magnetization, interacts with the incident wave
+    of identical frequency but varying propagation velocities
+    \cite{Griffiths2017}. This varying in propagation velocity can be quantify
+    by the index of refraction given in \EqRef{eq:generalIndexOfRefraction}
+    \begin{equation}\label{eq:generalIndexOfRefraction}
+        n = \frac{c_0}{c_m} = \sqrt{\frac{\mu_m\epsilon_m}{\mu_0\epsilon_0}}
+        \approx \sqrt{\frac{\epsilon_m}{\epsilon_0}}
+    \end{equation}
+
+    
+
+
 \todo{Missing optics overview}
 Optical wave propagation through an inhomogeneous medium produces
 wavefront deformation. 
@@ -8,7 +25,6 @@ wavefront deformation.
 The \gls{OPL} is given by \EqRef{eq:OPL}. The \gls{OPL} is the length that
 light needs to travel through a vacuum to create the same phase difference as
 it would have when traveling through a medium.
-
 
 \begin{equation}\label{eq:OPL}
     OPL(t,x) = \int_{y_1}^{y_2} n(t,x,y)dt
