@@ -7,18 +7,49 @@
     effects of polarization and magnetization, interacts with the incident wave
     of identical frequency but varying propagation velocities
     \cite{Griffiths2017}. This varying in propagation velocity can be quantify
-    by the index of refraction given in \EqRef{eq:generalIndexOfRefraction}
+    by the index of refraction given in \EqRef{eq:generalIndexOfRefraction}.
+
     \begin{equation}\label{eq:generalIndexOfRefraction}
-        n = \frac{c_0}{c_m} = \sqrt{\frac{\mu_m\epsilon_m}{\mu_0\epsilon_0}}
+        n = \frac{c_0}{c_m} \equiv \sqrt{\frac{\mu_m\epsilon_m}{\mu_0\epsilon_0}}
         \approx \sqrt{\frac{\epsilon_m}{\epsilon_0}}
     \end{equation}
+
+    \FigRef{fig:ch2LightRefraction} shows a picture of a material bending a
+    beam of light. Inside the material the speed of light is lower than outside
+    the material. The same effect takes place when a beam of light travels
+    across a denser medium such as a boundary layer.
+
+    \pic{0.6}{chapter2/refractionOfLight}{A ray of light refracted in a
+        plastic block}{fig:ch2LightRefraction}
+
+    The speed light in a thinner medium is larger than in a denser medium \cite{Feynman2011b}. Thus
+    the speed of light in a medium is inversely proportional to the medium's
+    density \EqRef{eq:densitySpeedOfLightProportionaly}.
+
+    \begin{equation}\label{eq:densitySpeedOfLightProportionaly}
+        \rho_{m} \propto \frac{1}{c_m}
+    \end{equation}
+
+    As a vehicle moves through a medium, it generates pressure waves. When the
+    vehicle travels at speeds faster than the speed of sound in that medium,
+    these pressure waves cannot move ahead of the vehicle and start to compress
+    and bunch together near the leading edge. This compression creates a sudden
+    change in pressure and density known as a shock wave. Shock waves are
+    characterized by an abrupt and nearly discontinuous change in the
+    properties of the medium, such as pressure, temperature, and density, which
+    travel through the medium at supersonic speeds. \\
+
+    \FigRef{fig:ch2ShockWaves} shows how the pressure wave changes as the
+    object moves closer to the speed of sound, generating shock waves.
+
+    \pic{1.1}{chapter2/shockWaves}{Shock waves formation}{fig:ch2ShockWaves}
 
     
 
 
 \todo{Missing optics overview}
 Optical wave propagation through an inhomogeneous medium produces
-wavefront deformation. 
+wavefront deformation.
 
 \todo{Read this paper and cite it \cite{Jumper2001}}
 
@@ -30,7 +61,7 @@ it would have when traveling through a medium.
     OPL(t,x) = \int_{y_1}^{y_2} n(t,x,y)dt
 \end{equation}
 
-The \gls{OPD} is given by \EqRef{eq:OPD}. 
+The \gls{OPD} is given by \EqRef{eq:OPD}.
 \begin{equation}\label{eq:OPD}
     OPD(t,x) = OPL(t,x) - \overline{OPL}(t)
 \end{equation}
