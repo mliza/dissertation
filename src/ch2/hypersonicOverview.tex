@@ -20,13 +20,6 @@
         \pic{0.9}{chapter2/aditionalDoFs}{Additional Degrees of
         Freedom}{fig:ch2AdditionalDoFs}
 
-        When these additional energy modes are accessible the partition
-        function, which describes the statistical
-        properties of a system in thermal equilibrium needs to be modified.
-        \FigRef{fig:ch2HeatCapacity} shows the change in heat capacity when
-        additional \glspl{dof} are accessible.
-        \pic{1.0}{chapter2/heatCapacity}{Heat Capacity}{fig:ch2HeatCapacity}
-
         In addition, each new accessible energy mode acts at different time scales, \EqRef{timeScales} show these time scales.
         \begin{equation}\label{timeScales}
             \tau_{flow} \approx \tau_{tr} < \tau_{rot} < \tau_{vib} < \tau_{chem}
@@ -47,10 +40,24 @@
         vibrational, electronic). Due to this, the partition function (which
         indicates how particles in an assembly are partitioned among various
         energy levels of an atom or molecule \cite{Laurendeau2005}) has to be
-        modified to consider these additional \glspl{dof}. In statistical mechanics, the partition function is used to calculate the heat capacities of the system, which are then used to calculate macro properties such as heat transfer and temperature, which are employed in fluid dynamics.  \\
+        modified to consider these additional \glspl{dof}. In statistical
+        mechanics, the partition function is used to calculate the heat
+        capacities of the system, which are then used to calculate macro
+        properties such as heat transfer and temperature, which are employed in
+        fluid dynamics. \FigRef{fig:ch2HeatCapacity} shows the change in heat capacity when
+        additional \glspl{dof} are accessible.
 
-      At these conditions, the calorically perfect gas approximation is no
-      longer suitable because this assumption does not consider thermochemical
-      effects. The calorically perfect gas assumption will lead to errors such
-      as over-predicting temperature, under-predicting density, and
-      underestimating pressure. Therefore, at these speeds, thermochemical effects need to be considered and accurate models that consider these effects need to be included. \\
+        \pic{1.0}{chapter2/heatCapacity}{Heat Capacity}{fig:ch2HeatCapacity}
+
+        At these conditions, the calorically perfect gas approximation is no
+        longer suitable because this assumption does not consider thermochemical
+        effects. \FigRef{fig:caloricallyPerfectGas} shows the temperature pre
+        and post shock for different altitudes. As expected at high speeds, the
+        calorically perfect gas under-predicts temperature across the shock.
+
+        \pic{0.85}{chapter2/temperatureRatio}{Temperature ratio across a shock
+        wave\cite{Anderson2006}}{fig:caloricallyPerfectGas}
+
+
+
+      Therefore, at these speeds, thermochemical effects need to be considered and accurate models that consider these effects need to be included. \\
