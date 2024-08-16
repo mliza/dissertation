@@ -1,11 +1,43 @@
 \section{Hypersonic Overview\label{ch2:hypersonicOverview}}
-        The first hypersonic flight took place during the early stages of the Cold War, in $1949$ when the German V2 rocket developed during the Second World War in Nazi Germany and brought to the USA (possible during operation Paperclip) reached hypersonic speeds as it entered the atmosphere \cite{Anderson2022}. In $1961$, the Soviet Union cosmonaut Yuri Garin became the fist person to safely reach space and orbit Earth. During his journey he became the first human in history to travel at hypersonic speeds \cite{Anderson2022}.\\
+        The first hypersonic flight took place during the early stages of the
+        Cold War, in $1949$ when the German V2 rocket developed during the
+        Second World War in Nazi Germany and brought to the USA (possible
+        during operation Paperclip) reached hypersonic speeds as it entered the
+        atmosphere \cite{Anderson2022}. In $1961$, the Soviet Union cosmonaut
+        Yuri Garin became the fist person to safely reach space and orbit
+        Earth. During his journey he became the first human in history to
+        travel at hypersonic speeds \cite{Anderson2022}.\\
 
-        In a subsonic regime, compressibility effects can be ignored, 
-        \FigRef{fig:ch2ShockMachRegions} shows how a flow changes as the Mach
-        number increases. When the Mach number reaches the transonic regime,
-        shock waves starts to form, across the shock the flow properties
-        change. \todo{Update, the shock Mach regions} 
+        As the velocity of the flow increases, the compressibility effects can
+        not be ignored. The flow field can be characterized in four regimes (subsonic,
+        transonic, supersonic and hypersonic).
+        \begin{itemize}
+            \item \textbf{Subsonic:} A flow characterized by a Mach number less
+                than $1$ at every point. In this regime, compressibility effects can generally be neglected. The flow patterns in a subsonic flow are typically smooth and continuous, with no shock wave formation. Due to the absence of shock waves, these flows are often considered isentropic.
+            \item \textbf{Transonic:} A flow characterized by a Mach number
+                ranging between $0.8$ to $1.2$. In this regime, regions of subsonic and
+                supersonic coexist; creating complex flow patterns and leading
+                to the formation of localized shock waves. Compressibility
+                effects cannot be ignored, leading to variations in fluid
+                density.
+            \item \textbf{Supersonic:} A flow characterized by a Mach number
+                greater than $1$. In this regime compressibility effects
+                cannot be ignored, leading to substantial variations in fluid
+                density. Shock waves are present in this regime which produces
+                discontinuous changes in pressure, temperature and density. 
+            \item \textbf{Hypersonic:} A flow characterized by a Mach number
+                greater than $5$. In this regime strong shock waves are
+                present, leading to abrupt and significant changes in pressure,
+                temperature, and density. Due to the high velocities, the
+                kinetic energy in the flow is converted to thermal energy
+                resulting in high temperatures. These high temperatures lead to
+                real gas effects and a thicker boundary layer.
+        \end{itemize}
+
+        \FigRef{fig:ch2ShockMachRegions} show these regions, as the Mach number
+        increases, shock waves start to form and compressibility effects become
+        more important.
+
         \pic{0.85}{chapter2/shockMachRegions}{Mach number
         regions}{fig:ch2ShockMachRegions}
 
@@ -66,6 +98,5 @@
         \pic{0.85}{chapter2/temperatureRatio}{Temperature ratio across a shock
         wave\cite{Anderson2006}}{fig:caloricallyPerfectGas}
 
-
-
       Therefore, at these speeds, thermochemical effects need to be considered and accurate models that consider these effects need to be included. \\
+      \todo{Add more about chemical effects affecting fluid properties}
