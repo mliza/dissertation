@@ -24,6 +24,20 @@
 \presetkeys{todonotes}{inline}{}
 \usepackage{import} % Allows to use subimport and relative path
 \usepackage{bm}     % bold in math
+\usepackage{subfigure} %allow to use subfigure
+\usepackage{subcaption}     % Allow subpcaption
+\usepackage{pdflscape} % Allows landscape
+
+
+%Landscape
+\fancypagestyle{lscapedplain}
+{%
+  \fancyhf{}
+  \fancyfoot{%
+    \tikz[remember picture,overlay]
+      \node[outer sep=1cm,above,rotate=90] at (current page.east) {\thepage};}
+}
+
 
 
 %Spacing  
