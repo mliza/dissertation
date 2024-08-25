@@ -1,4 +1,4 @@
-\section{Heat Bath Study\label{ch4:heatBathStudy}}
+\section{Chemistry Composition\label{ch5:chemistryCompositionStudy}}
 The purpose of this investigation is to study the nonequilibrium effects of
 aero-optics using a heat bath simulation. A heat bath simulation is an
 excellent tool for examining the time it takes for a gas to reach equilibrium
@@ -9,7 +9,7 @@ setup, facilitating a more direct comparison between computational and
 experimental results. \\
 
 The solver used for this investigation is \gls{SU2} \cite{Palacios2013},
-\cite{Palacios2013a}. \TabRef{tab:heatBathStudy}, shows the flow conditions for
+\cite{Palacios2013a}. \TabRef{tab:chemistryCompositionStudy}, shows the flow conditions for
 cases studied during this analysis. Most of these conditions were took from
 \gls{hynecc} \cite{Gimelshein2022}. 
 
@@ -19,20 +19,16 @@ cases studied during this analysis. Most of these conditions were took from
         \hline
          Case & $T_{tr}\left[K\right]$ & $T_{rot}\left[K\right]$ &
             $T_{vib}\left[K\right]$ &  $P\left[kPa\right]$ \\ \hline\hline
-            $1H$\cite{Gimelshein2022} & $20000$ & $20000$ & $300$ &  $2760$ \\ \hline 
-            $2H$\cite{Gimelshein2022} & $10000$ & $10000$ & $300$ & $1380$ \\ \hline 
-            $3H$\cite{Gimelshein2022} & $15000$ & $15000$ & $300$ & $2067$ \\
-            \hline
-            $4H$\cite{Gimelshein2022} & $15000$ & $15000$ & $300$ & $2067$\\
-            \hline
-            $5H$  & $8000$ & $8000$ & $300$ & $1000$ \\ \hline
+            $1C$\cite{Gimelshein2022} & $20000$ & $20000$ & $300$ & $2760$ \\ \hline 
+            $2C$\cite{Gimelshein2022} & $10000$ & $10000$ & $300$ & $1380$ \\ \hline 
+            $3C$\cite{Gimelshein2022} & $15000$ & $15000$ & $300$ & $2067$ \\ \hline
         \end{tabular}
-        \caption{Heath bath conditions\label{tab:heatBathStudy}}
+        \caption{Chemistry composition flow conditions}\label{tab:chemistryCompositionStudy}
     \end{center}
 \end{table}
 
-    \TabRef{tab:heatBathStudy} shows the mass fraction composition used for
-    cases in \TabRef{tab:heatBathStudy}. 
+    \TabRef{tab:chemistryCompositionMassFractionConditions} shows the mass
+    fraction composition for the cases in \TabRef{tab:chemistryCompositionStudy}. 
 
     \begin{table}[H]
         \centering
@@ -40,93 +36,93 @@ cases studied during this analysis. Most of these conditions were took from
             \hline
            Case  & $N\Units{\,}$ & $O\Units{\,}$ & $NO\Units{\,}$ & $N_2\Units{\,}$ &
             $O_2\Units{\,}$ \\ \hline\hline
-            $1H$ & $0.0$ & $0.0$ & $0.0$ & $1.0$ & $0.0$ \\ \hline
-            $2H$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $1.0$ \\ \hline
-            $3H$ & $0.0$ & $0.0$ & $0.0$ & $0.79$ & $0.21$ \\ \hline
-            $4H$ & $6.5E-7$ & $0.2283$ & $0.01026$ & $0.75$ & $0.713E-3$ \\ \hline
-            $5H$ & $0.0$ & $0.0$ & $0.0$ & $0.79$ & $0.21$ \\ \hline
+            $1C$ & $0.0$ & $0.0$ & $0.0$ & $1.0$ & $0.0$ \\ \hline
+            $2C$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $1.0$ \\ \hline
+            $3C$ & $6.5E-7$ & $0.2283$ & $0.01026$ & $0.75$ & $0.713E-3$ \\ \hline
         \end{tabular}
         \caption{Mass fraction composition for cases in
-        \TabRef{tab:heatBathStudy}}
+        \TabRef{tab:chemistryCompositionStudy}}\label{tab:chemistryCompositionMassFractionConditions}
     \end{table}
 
+\iffalse
     \subsection{Results Case $1H$ \label{sub:case1H}}
         \FigRef{fig:1HMassFractionNeutral} shows the change in mass fraction and
     \FigRef{fig:1HTemperatures} shows the temperature evolution for case $1H$
-    in \TabRef{tab:heatBathStudy}.
-        \Dpic{chapter5/heatBath/1H_massFractionNeutralTime}
+    in \TabRef{tab:chemistryCompositionStudy}.
+        \Dpic{chapter5/chemistryComposition/1H_massFractionNeutralTime}
         {Mass fraction for case $1H$\label{fig:1HMassFractionNeutral}} 
-        {chapter5/heatBath/1H_temperatureTime}{Temperatures for case $1H$\label{fig:1HTemperatures}}
+        {chapter5/chemistryComposition/1H_temperatureTime}{Temperatures for case $1H$\label{fig:1HTemperatures}}
 
-        \Dpic{chapter5/heatBath/1H_gladstoneSpecificNeutralTime}{Specific
+        \Dpic{chapter5/chemistryComposition/1H_gladstoneSpecificNeutralTime}{Specific
     \gls{GD} constant for case $1H$\label{fig:1HSpecificGladstoneDale}}
-    {chapter5/heatBath/1H_gladstonedaleConstTime}{\gls{GD}
+    {chapter5/chemistryComposition/1H_gladstonedaleConstTime}{\gls{GD}
     constant for case $1H$\label{fig:1HGladstoneDaleConst}}
 
-        \pic{0.5}{chapter5/heatBath/1H_indexOfRefractionTime}{Index of Refraction for case
+        \pic{0.5}{chapter5/chemistryComposition/1H_indexOfRefractionTime}{Index of Refraction for case
     $1H$}{fig:1HIndexOfRefraction}
         
 
     \subsection{Results Case $2H$ \label{sub:case2H}}
         \FigRef{fig:2HMassFractionNeutral} shows the change in mass fraction and
     \FigRef{fig:2HTemperatures} shows the temperature evolution for case $2H$
-    in \TabRef{tab:heatBathStudy}.
-        \Dpic{chapter5/heatBath/2H_massFractionNeutralTime}
+    in \TabRef{tab:chemistryCompositionStudy}.
+        \Dpic{chapter5/chemistryComposition/2H_massFractionNeutralTime}
         {Mass fraction for case $2H$\label{fig:2HMassFractionNeutral}} 
-        {chapter5/heatBath/2H_temperatureTime}{Temperatures for case $2H$\label{fig:2HTemperatures}}
+        {chapter5/chemistryComposition/2H_temperatureTime}{Temperatures for case $2H$\label{fig:2HTemperatures}}
 
-        \Dpic{chapter5/heatBath/2H_gladstoneSpecificNeutralTime}{Specific
+        \Dpic{chapter5/chemistryComposition/2H_gladstoneSpecificNeutralTime}{Specific
     \gls{GD} constant for case $2H$\label{fig:2HSpecificGladstoneDale}}
-    {chapter5/heatBath/2H_gladstonedaleConstTime}{\gls{GD}
+    {chapter5/chemistryComposition/2H_gladstonedaleConstTime}{\gls{GD}
     constant for case $2H$\label{fig:2HGladstoneDaleConst}}
 
-        \pic{0.5}{chapter5/heatBath/2H_indexOfRefractionTime}{Index of Refraction for case
+        \pic{0.5}{chapter5/chemistryComposition/2H_indexOfRefractionTime}{Index of Refraction for case
     $2H$}{fig:2HIndexOfRefraction}
 
     \subsection{Results Case $3H$ \label{sub:case3H}}
         \FigRef{fig:3HMassFractionNeutral} shows the change in mass fraction and
     \FigRef{fig:3HTemperatures} shows the temperature evolution for case $3H$
-    in \TabRef{tab:heatBathStudy}.
-        \Dpic{chapter5/heatBath/3H_massFractionNeutralTime}
+    in \TabRef{tab:chemistryCompositionStudy}.
+        \Dpic{chapter5/chemistryComposition/3H_massFractionNeutralTime}
         {Mass fraction for case $3H$\label{fig:3HMassFractionNeutral}} 
-        {chapter5/heatBath/3H_temperatureTime}{Temperatures for case $3H$\label{fig:3HTemperatures}}
+        {chapter5/chemistryComposition/3H_temperatureTime}{Temperatures for case $3H$\label{fig:3HTemperatures}}
 
-        \Dpic{chapter5/heatBath/3H_gladstoneSpecificNeutralTime}{Specific
+        \Dpic{chapter5/chemistryComposition/3H_gladstoneSpecificNeutralTime}{Specific
     \gls{GD} constant for case $3H$\label{fig:3HSpecificGladstoneDale}}
-    {chapter5/heatBath/3H_gladstonedaleConstTime}{\gls{GD}
+    {chapter5/chemistryComposition/3H_gladstonedaleConstTime}{\gls{GD}
     constant for case $3H$\label{fig:3HGladstoneDaleConst}}
 
-        \pic{0.5}{chapter5/heatBath/3H_indexOfRefractionTime}{Index of Refraction for case
+        \pic{0.5}{chapter5/chemistryComposition/3H_indexOfRefractionTime}{Index of Refraction for case
     $3H$}{fig:3HIndexOfRefraction}
 
     \subsection{Results Case $4H$ \label{sub:case4H}}
         \FigRef{fig:4HMassFractionNeutral} shows the change in mass fraction and
     \FigRef{fig:4HTemperatures} shows the temperature evolution for case $4H$
-    in \TabRef{tab:heatBathStudy}.
-        \Dpic{chapter5/heatBath/4H_massFractionNeutralTime}
+    in \TabRef{tab:chemistryCompositionStudy}.
+        \Dpic{chapter5/chemistryComposition/4H_massFractionNeutralTime}
         {Mass fraction for case $4H$\label{fig:4HMassFractionNeutral}} 
-        {chapter5/heatBath/4H_temperatureTime}{Temperatures for case $4H$\label{fig:4HTemperatures}}
+        {chapter5/chemistryComposition/4H_temperatureTime}{Temperatures for case $4H$\label{fig:4HTemperatures}}
 
-        \Dpic{chapter5/heatBath/4H_gladstoneSpecificNeutralTime}{Specific
+        \Dpic{chapter5/chemistryComposition/4H_gladstoneSpecificNeutralTime}{Specific
     \gls{GD} constant for case $4H$\label{fig:4HSpecificGladstoneDale}}
-    {chapter5/heatBath/4H_gladstonedaleConstTime}{\gls{GD}
+    {chapter5/chemistryComposition/4H_gladstonedaleConstTime}{\gls{GD}
     constant for case $4H$\label{fig:4HGladstoneDaleConst}}
 
-        \pic{0.5}{chapter5/heatBath/4H_indexOfRefractionTime}{Index of Refraction for case
+        \pic{0.5}{chapter5/chemistryComposition/4H_indexOfRefractionTime}{Index of Refraction for case
     $4H$}{fig:4HIndexOfRefraction}
 
     \subsection{Results Case $5H$ \label{sub:case5H}}
         \FigRef{fig:5HMassFractionNeutral} shows the change in mass fraction and
     \FigRef{fig:5HTemperatures} shows the temperature evolution for case $5H$
-    in \TabRef{tab:heatBathStudy}.
-        \Dpic{chapter5/heatBath/5H_massFractionNeutralTime}
+    in \TabRef{tab:chemistryCompositionStudy}.
+        \Dpic{chapter5/chemistryComposition/5H_massFractionNeutralTime}
         {Mass fraction for case $5H$\label{fig:5HMassFractionNeutral}} 
-        {chapter5/heatBath/5H_temperatureTime}{Temperatures for case $5H$\label{fig:5HTemperatures}}
+        {chapter5/chemistryComposition/5H_temperatureTime}{Temperatures for case $5H$\label{fig:5HTemperatures}}
 
-        \Dpic{chapter5/heatBath/5H_gladstoneSpecificNeutralTime}{Specific
+        \Dpic{chapter5/chemistryComposition/5H_gladstoneSpecificNeutralTime}{Specific
     \gls{GD} constant for case $5H$\label{fig:5HSpecificGladstoneDale}}
-    {chapter5/heatBath/5H_gladstonedaleConstTime}{\gls{GD}
+    {chapter5/chemistryComposition/5H_gladstonedaleConstTime}{\gls{GD}
     constant for case $5H$\label{fig:5HGladstoneDaleConst}}
 
-        \pic{0.5}{chapter5/heatBath/5H_indexOfRefractionTime}{Index of Refraction for case
+        \pic{0.5}{chapter5/chemistryComposition/5H_indexOfRefractionTime}{Index of Refraction for case
     $5H$}{fig:5HIndexOfRefraction}
+\fi 
