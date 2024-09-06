@@ -44,85 +44,122 @@ cases studied during this analysis. Most of these conditions were took from
         \TabRef{tab:chemistryCompositionStudy}}\label{tab:chemistryCompositionMassFractionConditions}
     \end{table}
 
-\iffalse
-    \subsection{Results Case $1H$ \label{sub:case1H}}
-        \FigRef{fig:1HMassFractionNeutral} shows the change in mass fraction and
-    \FigRef{fig:1HTemperatures} shows the temperature evolution for case $1H$
-    in \TabRef{tab:chemistryCompositionStudy}.
-        \Dpic{chapter5/chemistryComposition/1H_massFractionNeutralTime}
-        {Mass fraction for case $1H$\label{fig:1HMassFractionNeutral}} 
-        {chapter5/chemistryComposition/1H_temperatureTime}{Temperatures for case $1H$\label{fig:1HTemperatures}}
+    % Mass Fraction %%
+    \begin{figure}[H]
+        \centering
+        \subfigure[Case $1C$] 
+        {
+            \label{fig:massFraction1C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/1C_massFraction}
+        }
+        \subfigure[Case $2C$] 
+        {
+            \label{fig:massFraction2C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/2C_massFraction}
+        }
+        \subfigure[Case $3C$] 
+        {
+            \label{fig:massFraction3C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_massFraction}
+        }
+     \label{fig:massFractionChemistryComposition}
+        \caption{Mass fraction results for cases in
+        \TabRef{tab:chemistryCompositionStudy}}
+    \end{figure}
+    % Mass Fraction %%
 
-        \Dpic{chapter5/chemistryComposition/1H_gladstoneSpecificNeutralTime}{Specific
-    \gls{GD} constant for case $1H$\label{fig:1HSpecificGladstoneDale}}
-    {chapter5/chemistryComposition/1H_gladstonedaleConstTime}{\gls{GD}
-    constant for case $1H$\label{fig:1HGladstoneDaleConst}}
+    % Temperatures %
+    \begin{figure}[H]
+        \centering
+        \subfigure[Case $1C$] 
+        {
+            \label{fig:temperatures1C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/1C_temperatures}
+        }
+        \subfigure[Case $2C$] 
+        {
+            \label{fig:temperatures2C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/2C_temperatures}
+        }
+        \subfigure[Case $3C$] 
+        {
+            \label{fig:temperatures3C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_temperatures}
+        }
+     \label{fig:temperaturesChemistryComposition}
+        \caption{Temperature results for cases in
+        \TabRef{tab:chemistryCompositionStudy}}
+    \end{figure}
+    % Temperatures %
 
-        \pic{0.5}{chapter5/chemistryComposition/1H_indexOfRefractionTime}{Index of Refraction for case
-    $1H$}{fig:1HIndexOfRefraction}
-        
+    % Gladstone Species %
+    \begin{figure}[H]
+        \centering
+        \subfigure[Case $1C$] 
+        {
+            \label{fig:speciesGladstoneDale1C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/1C_speciesGladstoneDale}
+        }
+        \subfigure[Case $2C$] 
+        {
+            \label{fig:speciesGladstoneDale2C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/2C_speciesGladstoneDale}
+        }
+        \subfigure[Case $3C$] 
+        {
+            \label{fig:speciesGladstoneDale3C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_speciesGladstoneDale}
+        }
+     \label{fig:speciesGladstoneDaleChemistryComposition}
+        \caption{Species Gladstone-Dale results for cases in
+        \TabRef{tab:chemistryCompositionStudy}}
+    \end{figure}
+    % Gladstone Species %
 
-    \subsection{Results Case $2H$ \label{sub:case2H}}
-        \FigRef{fig:2HMassFractionNeutral} shows the change in mass fraction and
-    \FigRef{fig:2HTemperatures} shows the temperature evolution for case $2H$
-    in \TabRef{tab:chemistryCompositionStudy}.
-        \Dpic{chapter5/chemistryComposition/2H_massFractionNeutralTime}
-        {Mass fraction for case $2H$\label{fig:2HMassFractionNeutral}} 
-        {chapter5/chemistryComposition/2H_temperatureTime}{Temperatures for case $2H$\label{fig:2HTemperatures}}
+    % Gladstone Total %
+    \begin{figure}[H]
+        \centering
+        \subfigure[Case $1C$] 
+        {
+            \label{fig:totalGladstoneDale1C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/1C_totalGladstoneDale}
+        }
+        \subfigure[Case $2C$] 
+        {
+            \label{fig:totalGladstoneDale2C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/2C_totalGladstoneDale}
+        }
+        \subfigure[Case $3C$] 
+        {
+            \label{fig:totalGladstoneDale3C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_totalGladstoneDale}
+        }
+     \label{fig:totalGladstoneDaleChemistryComposition}
+        \caption{Total Gladstone-Dale results for cases in
+        \TabRef{tab:chemistryCompositionStudy}}
+    \end{figure}
+    % Gladstone Total %
 
-        \Dpic{chapter5/chemistryComposition/2H_gladstoneSpecificNeutralTime}{Specific
-    \gls{GD} constant for case $2H$\label{fig:2HSpecificGladstoneDale}}
-    {chapter5/chemistryComposition/2H_gladstonedaleConstTime}{\gls{GD}
-    constant for case $2H$\label{fig:2HGladstoneDaleConst}}
-
-        \pic{0.5}{chapter5/chemistryComposition/2H_indexOfRefractionTime}{Index of Refraction for case
-    $2H$}{fig:2HIndexOfRefraction}
-
-    \subsection{Results Case $3H$ \label{sub:case3H}}
-        \FigRef{fig:3HMassFractionNeutral} shows the change in mass fraction and
-    \FigRef{fig:3HTemperatures} shows the temperature evolution for case $3H$
-    in \TabRef{tab:chemistryCompositionStudy}.
-        \Dpic{chapter5/chemistryComposition/3H_massFractionNeutralTime}
-        {Mass fraction for case $3H$\label{fig:3HMassFractionNeutral}} 
-        {chapter5/chemistryComposition/3H_temperatureTime}{Temperatures for case $3H$\label{fig:3HTemperatures}}
-
-        \Dpic{chapter5/chemistryComposition/3H_gladstoneSpecificNeutralTime}{Specific
-    \gls{GD} constant for case $3H$\label{fig:3HSpecificGladstoneDale}}
-    {chapter5/chemistryComposition/3H_gladstonedaleConstTime}{\gls{GD}
-    constant for case $3H$\label{fig:3HGladstoneDaleConst}}
-
-        \pic{0.5}{chapter5/chemistryComposition/3H_indexOfRefractionTime}{Index of Refraction for case
-    $3H$}{fig:3HIndexOfRefraction}
-
-    \subsection{Results Case $4H$ \label{sub:case4H}}
-        \FigRef{fig:4HMassFractionNeutral} shows the change in mass fraction and
-    \FigRef{fig:4HTemperatures} shows the temperature evolution for case $4H$
-    in \TabRef{tab:chemistryCompositionStudy}.
-        \Dpic{chapter5/chemistryComposition/4H_massFractionNeutralTime}
-        {Mass fraction for case $4H$\label{fig:4HMassFractionNeutral}} 
-        {chapter5/chemistryComposition/4H_temperatureTime}{Temperatures for case $4H$\label{fig:4HTemperatures}}
-
-        \Dpic{chapter5/chemistryComposition/4H_gladstoneSpecificNeutralTime}{Specific
-    \gls{GD} constant for case $4H$\label{fig:4HSpecificGladstoneDale}}
-    {chapter5/chemistryComposition/4H_gladstonedaleConstTime}{\gls{GD}
-    constant for case $4H$\label{fig:4HGladstoneDaleConst}}
-
-        \pic{0.5}{chapter5/chemistryComposition/4H_indexOfRefractionTime}{Index of Refraction for case
-    $4H$}{fig:4HIndexOfRefraction}
-
-    \subsection{Results Case $5H$ \label{sub:case5H}}
-        \FigRef{fig:5HMassFractionNeutral} shows the change in mass fraction and
-    \FigRef{fig:5HTemperatures} shows the temperature evolution for case $5H$
-    in \TabRef{tab:chemistryCompositionStudy}.
-        \Dpic{chapter5/chemistryComposition/5H_massFractionNeutralTime}
-        {Mass fraction for case $5H$\label{fig:5HMassFractionNeutral}} 
-        {chapter5/chemistryComposition/5H_temperatureTime}{Temperatures for case $5H$\label{fig:5HTemperatures}}
-
-        \Dpic{chapter5/chemistryComposition/5H_gladstoneSpecificNeutralTime}{Specific
-    \gls{GD} constant for case $5H$\label{fig:5HSpecificGladstoneDale}}
-    {chapter5/chemistryComposition/5H_gladstonedaleConstTime}{\gls{GD}
-    constant for case $5H$\label{fig:5HGladstoneDaleConst}}
-
-        \pic{0.5}{chapter5/chemistryComposition/5H_indexOfRefractionTime}{Index of Refraction for case
-    $5H$}{fig:5HIndexOfRefraction}
-\fi 
+    % Refraction Index % 
+    \begin{figure}[H]
+        \centering
+        \subfigure[Case $1C$] 
+        {
+            \label{fig:totalGladstoneDale1C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/1C_refractionIndex}
+        }
+        \subfigure[Case $2C$] 
+        {
+            \label{fig:refractionIndex2C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/2C_refractionIndex}
+        }
+        \subfigure[Case $3C$]
+        {
+            \label{fig:refractionIndex3C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_refractionIndex}
+        }
+     \label{fig:refractionIndexChemistryComposition}
+        \caption{Index of Refraction results for cases in
+        \TabRef{tab:chemistryCompositionStudy}}
+    \end{figure}
+    % Refraction Index % 
