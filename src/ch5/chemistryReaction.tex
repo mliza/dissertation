@@ -17,9 +17,9 @@ investigation.
             $T_{\infty}\Units{K}$ & $P_{\infty}\Units{Pa}$ &
             $h_0\Units{MJ}$ & $q\Units{kPa}$ \\
             \hline\hline
-            $1C$\cite{Mackey2019} & $11.2$ & $1000$ & $293$ & $1200$ & $7.38$  & $105$ \\\hline
-            $2C$\cite{Mackey2019} & $13.2$ & $1000$ & $293$ & $1200$ & $10.25$ & $146$ \\\hline
-            $3C$\cite{Mackey2019} & $15.2$ & $1000$ & $293$ & $1200$ & $13.60$ & $193$ \\\hline
+            $1R$\cite{Mackey2019} & $11.2$ & $1000$ & $293$ & $1200$ & $7.38$  & $105$ \\\hline
+            $2R$\cite{Mackey2019} & $13.2$ & $1000$ & $293$ & $1200$ & $10.25$ & $146$ \\\hline
+            $3R$\cite{Mackey2019} & $15.2$ & $1000$ & $293$ & $1200$ & $13.60$ & $193$ \\\hline
         \end{tabular}
     \caption{Chemistry Study \label{tab:chemistryReactionStudy}}
     \end{center}
@@ -33,6 +33,7 @@ investigation.
     IRV-2 nosetip are performed. \FigRef{fig:IRV2Mesh} shows
     the mesh used in this work. 
 
+\iffalse
     \begin{figure}[H]
         \centering
         \begin{minipage}{0.49\textwidth}
@@ -43,33 +44,48 @@ investigation.
         \hfill
         \begin{minipage}{0.49\textwidth}
             \centering
-            \includegraphics[scale=0.3]{chapter5/chemistryReaction/1C_frozenMesh}
+            \includegraphics[scale=0.3]{chapter5/chemistryReaction/1R_frozenMesh}
             \caption{IRV-2 mesh}\label{fig:IRV2Mesh}
         \end{minipage}
+    \end{figure}
+\fi
+    \begin{figure}[H]
+        \centering
+        \subfigure[IRV-2 vehicle]
+        {
+            \label{fig:IRV2}
+            \includegraphics[height=0.5\textwidth]{chapter5/chemistryReaction/irv2}
+        }
+        \subfigure[IRV-2 mesh]
+        {
+            \label{fig:IRV2Mesh}
+            \includegraphics[height=0.5\textwidth]{chapter5/chemistryReaction/1R_frozenMesh}
+        }
+        \caption{\label{fig:IRV2Images}IRV-2}
     \end{figure}
 
     \newpage % Translational Temperatures
         \begin{landscape}
             \begin{figure}[H]
                 \centering
-                \begin{subfigure}[Case $1C$]
+                \begin{subfigure}[Case $1R$]
                 {
-                    \label{fig:frozenTr1C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1C_frozenContourTtr.png}
+                    \label{fig:frozenTr1R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1R_frozenContourTtr.png}
                 }
                 \end{subfigure}
                 \hfill
-                \begin{subfigure}[Case $2C$]
+                \begin{subfigure}[Case $2R$]
                 {
-                    \label{fig:frozenTr2C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2C_frozenContourTtr.png}
+                    \label{fig:frozenTr2R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2R_frozenContourTtr.png}
                 }
                 \end{subfigure}
                 \hfill
-                \begin{subfigure}[Case $3C$]
+                \begin{subfigure}[Case $3R$]
                 {
-                    \label{fig:frozenTr3C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3C_frozenContourTtr.png}
+                    \label{fig:frozenTr3R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3R_frozenContourTtr.png}
                 }
                 \end{subfigure}
                 \caption{Contour translational temperature for
@@ -78,24 +94,24 @@ investigation.
 
             \begin{figure}[H]
                 \centering
-                \begin{subfigure}[Case $1C$]
+                \begin{subfigure}[Case $1R$]
                 {
-                    \label{fig:nonequilibriumTtr1C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1C_nonequilibriumContourTtr.png}
+                    \label{fig:nonequilibriumTtr1R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1R_nonequilibriumContourTtr.png}
                 }
                 \end{subfigure}
                 \hfill
-                \begin{subfigure}[Case $2C$]
+                \begin{subfigure}[Case $2R$]
                 {
-                    \label{fig:nonequilibriumTtr2C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2C_nonequilibriumContourTtr.png}
+                    \label{fig:nonequilibriumTtr2R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2R_nonequilibriumContourTtr.png}
                 }
                 \end{subfigure}
                 \hfill
-                \begin{subfigure}[Case $3C$]
+                \begin{subfigure}[Case $3R$]
                 {
                     \label{fig:nonequilibriumTtr3C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3C_nonequilibriumContourTtr.png}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3R_nonequilibriumContourTtr.png}
                 }
                 \end{subfigure}
                 \caption{Contour translational temperature for
@@ -107,24 +123,24 @@ investigation.
         \begin{landscape}
             \begin{figure}[H]
                 \centering
-                \begin{subfigure}[Case $1C$]
+                \begin{subfigure}[Case $1R$]
                 {
-                    \label{fig:frozenTvr1C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1C_frozenContourTvr.png}
+                    \label{fig:frozenTvr1R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1R_frozenContourTvr.png}
                 }
                 \end{subfigure}
                 \hfill
-                \begin{subfigure}[Case $2C$]
+                \begin{subfigure}[Case $2R$]
                 {
                     \label{fig:frozenTvr2C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2C_frozenContourTvr.png}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2R_frozenContourTvr.png}
                 }
                 \end{subfigure}
                 \hfill
-                \begin{subfigure}[Case $3C$]
+                \begin{subfigure}[Case $3R$]
                 {
-                    \label{fig:frozenTvr3C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3C_frozenContourTvr.png}
+                    \label{fig:frozenTvr3R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3R_frozenContourTvr.png}
                 }
                 \end{subfigure}
                 \caption{Contour vibrational temperature for
@@ -133,24 +149,24 @@ investigation.
 
             \begin{figure}[H]
                 \centering
-                \begin{subfigure}[Case $1C$]
+                \begin{subfigure}[Case $1R$]
                 {
-                    \label{fig:nonequilibriumTvr1C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1C_nonequilibriumContourTvr.png}
+                    \label{fig:nonequilibriumTvr1R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1R_nonequilibriumContourTvr.png}
                 }
                 \end{subfigure}
                 \hfill
-                \begin{subfigure}[Case $2C$]
+                \begin{subfigure}[Case $2R$]
                 {
-                    \label{fig:nonequilibriumTvr2C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2C_nonequilibriumContourTvr.png}
+                    \label{fig:nonequilibriumTvr2R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2R_nonequilibriumContourTvr.png}
                 }
                 \end{subfigure}
                 \hfill
-                \begin{subfigure}[Case $3C$]
+                \begin{subfigure}[Case $3R$]
                 {
-                    \label{fig:nonequilibriumTvr3C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3C_nonequilibriumContourTvr.png}
+                    \label{fig:nonequilibriumTvr3R}
+                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3R_nonequilibriumContourTvr.png}
                 }
                 \end{subfigure}
                 \caption{Contour vibrational temperature for
@@ -158,8 +174,5 @@ investigation.
             \end{figure}
         \end{landscape}
         
-    \subsection{Results Case $1C$}
-    \subsection{Results Case $2C$}
-    \subsection{Results Case $3C$}
 
 
