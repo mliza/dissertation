@@ -19,12 +19,12 @@
             $1S2$ & $11$ & $15000$ & $15000$ & $300$ & $2067$  \\ \hline
             $2S2$ & $11$ & $8000$ & $8000$ & $300$ & $1000$    \\ \hline
         \end{tabular}
-        \caption{Species studied cases}\label{tab:ionizationTableStudy}
+        \caption{Species studied cases}\label{tab:speciesStudyCases}
     \end{table}
 
-    Cases in \TabRef{tab:ionizationTableStudy} used the mass fraction
+    Cases in \TabRef{tab:speciesStudyCases} used the mass fraction
     composition for standard Air provided in
-    \TabRef{tab:massFractionCompositionIonizationStudy}.
+    \TabRef{tab:speciesStudyMassFraction}.
     \begin{table}[H]
         \centering
         \begin{tabular}{|c|c|c|c|c|}
@@ -34,74 +34,36 @@
             $0.0$ & $0.0$ & $0.0$ & $0.79$ & $0.21$ \\ \hline
         \end{tabular}
         \caption{Mass fraction composition for cases in
-        \TabRef{tab:ionizationTableStudy}\label{tab:massFractionCompositionIonizationStudy}}
+        \TabRef{tab:speciesStudyCases}\label{tab:speciesStudyMassFraction}}
     \end{table}
 
-\iffalse 
-    \subsection{Results Case $3I$ \label{sub:case3I}}
+    % Temperatures %
+    \FigRef{fig:temperaturesSpeciesStudy} shows the translational and
+    vibrational temperatures for cases described in
+    \TabRef{tab:speciesStudyCases} and \TabRef{tab:speciesStudyMassFraction}.
+    \begin{figure}[H]
+        \centering
+        \subfigure[Case $1S1$]
+        {
+            \label{fig:temperature1S1}
+            \includegraphics[height=0.35\textwidth]{chapter5/species/1S1_temperatures}
+        }
+        \subfigure[Case $1S2$]
+        {
+            \label{fig:temperature1S2}
+            \includegraphics[height=0.35\textwidth]{chapter5/species/1S2_temperatures}
+        }
+        \subfigure[Case $2S1$]
+        {
+            \label{fig:temperature2S1}
+            \includegraphics[height=0.35\textwidth]{chapter5/species/2S1_temperatures}
+        }
+        \subfigure[Case $2S2$]
+        {
+            \label{fig:temperature2S2}
+            \includegraphics[height=0.35\textwidth]{chapter5/species/2S2_temperatures}
+        }
+        \caption{\label{fig:temperaturesSpeciesStudy}Temperature results for
+        cases in \TabRef{tab:speciesStudyCases}}
+    \end{figure}
 
-        \FigRef{fig:3ITemperatures} shows the vibration and translational
-        temperatures for case $3I$ in \TabRef{tab:ionizationTableStudy}.
-
-        \pic{0.5}{chapter5/ionization/3I_temperatureTime}{Temperatures for case
-    $3I$}{fig:3ITemperatures}
-
-        \FigRef{fig:3IMassFractionNeutral} shows the change in mass fraction for the
-        neutral species and \FigRef{fig:3IMassFractionIon} shows the density for ion
-        species for case $3I$ in \TabRef{tab:ionizationTableStudy}.
-
-        \Dpic{chapter5/ionization/3I_massFractionNeutralTime}
-        {Mass fractions for neutral species of case $3I$\label{fig:3IMassFractionNeutral}} 
-        {chapter5/ionization/3I_massFractionIonTime}
-        {Mass fractions for ion species of case $3I$\label{fig:3IMassFractionIon}} 
-
-        \FigRef{fig:3IGladstoneDaleNeutral} shows the \gls{GD} for the neutral
-        species and \FigRef{fig:3IGladstoneDaleIon} shows the \gls{GD} for the
-        ion species for case $3I$ in \TabRef{tab:ionizationTableStudy}.
-
-        \Dpic{chapter5/ionization/3I_gladstoneSpecificNeutralTime}
-        {\gls{GD} for specific neutral species for case
-        $3I$\label{fig:3IGladstoneDaleNeutral}} 
-        {chapter5/ionization/3I_gladstoneSpecificIonTime}
-        {\gls{GD} for ion species for case $3I$\label{fig:3IGladstoneDaleIon}} 
-
-        \Dpic{chapter5/ionization/3I_gladstonedaleConstTime}{\gls{GD} constant
-        for case
-        $3I$\label{fig:3IGladstoneDaleConstant}}{chapter5/ionization/3I_indexOfRefractionTime}{Index of refraction for case $3I$\label{fig:3IIndexOfRefraction}}
-
-    \subsection{Results Case $5I$ \label{sub:case5I}}
-
-        \FigRef{fig:5ITemperatures} shows the vibration and translational
-        temperatures for case $5I$ in \TabRef{tab:ionizationTableStudy}.
-
-        \pic{0.5}{chapter5/ionization/5I_temperatureTime}{Temperatures for case
-    $5I$}{fig:5ITemperatures}
-        
-        \FigRef{fig:5IMassFractionNeutral} shows the change in mass fraction for the
-        neutral species and \FigRef{fig:5IMassFractionIon} shows the density for ion
-        species for case $5I$ in \TabRef{tab:ionizationTableStudy}.
-
-        \Dpic{chapter5/ionization/5I_massFractionNeutralTime}
-        {Mass fractions for neutral species of case $5I$\label{fig:5IMassFractionNeutral}} 
-        {chapter5/ionization/5I_massFractionIonTime}
-        {Mass fractions for ion species of case $5I$\label{fig:5IMassFractionIon}} 
-
-        \FigRef{fig:5IGladstoneDaleNeutral} shows the \gls{GD} for the neutral
-        species and \FigRef{fig:5IGladstoneDaleIon} shows the \gls{GD} for the
-        ion species for case $5I$ in \TabRef{tab:ionizationTableStudy}.
-
-        \Dpic{chapter5/ionization/5I_gladstoneSpecificNeutralTime}
-        {\gls{GD} for specific neutral species for case
-        $5I$\label{fig:5IGladstoneDaleNeutral}} 
-        {chapter5/ionization/5I_gladstoneSpecificIonTime}
-        {\gls{GD} for ion species for case $5I$\label{fig:5IGladstoneDaleIon}} 
-
-        \FigRef{fig:5IGladstoneDaleConstant} shows the \gls{GD} and
-        \FigRef{fig:5IIndexOfRefraction} shows the index of refraction for case
-        $5I$ in \TabRef{tab:ionizationTableStudy}.
-
-        \Dpic{chapter5/ionization/5I_gladstonedaleConstTime}{\gls{GD} constant
-        for case
-        $5I$\label{fig:5IGladstoneDaleConstant}}{chapter5/ionization/5I_indexOfRefractionTime}{Index
-        of refraction for case $5I$\label{fig:5IIndexOfRefraction}}
-\fi

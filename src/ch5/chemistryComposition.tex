@@ -1,4 +1,4 @@
-\section{Chemistry Composition\label{ch5:chemistryCompositionStudy}}
+\section{Chemistry Composition\label{ch5:chemistryCompositionStudyMassFraction}}
 The purpose of this investigation is to study the nonequilibrium effects of
 aero-optics using a heat bath simulation. A heat bath simulation is an
 excellent tool for examining the time it takes for a gas to reach equilibrium
@@ -9,7 +9,7 @@ setup, facilitating a more direct comparison between computational and
 experimental results. \\
 
 The solver used for this investigation is \gls{SU2} \cite{Palacios2013},
-\cite{Palacios2013a}. \TabRef{tab:chemistryCompositionStudy}, shows the flow conditions for
+\cite{Palacios2013a}. \TabRef{tab:chemistryCompositionStudyMassFraction}, shows the flow conditions for
 cases studied during this analysis. Most of these conditions were took from
 \gls{hynecc} \cite{Gimelshein2022}. 
 
@@ -23,12 +23,12 @@ cases studied during this analysis. Most of these conditions were took from
             $2C$\cite{Gimelshein2022} & $10000$ & $10000$ & $300$ & $1380$ \\ \hline 
             $3C$\cite{Gimelshein2022} & $15000$ & $15000$ & $300$ & $2067$ \\ \hline
         \end{tabular}
-        \caption{Chemistry composition flow conditions}\label{tab:chemistryCompositionStudy}
+        \caption{Chemistry composition flow conditions}\label{tab:chemistryCompositionStudyMassFraction}
     \end{center}
 \end{table}
 
     \TabRef{tab:chemistryCompositionMassFractionConditions} shows the mass
-    fraction composition for the cases in \TabRef{tab:chemistryCompositionStudy}. 
+    fraction composition for the cases in \TabRef{tab:chemistryCompositionStudyMassFraction}. 
 
     \begin{table}[H]
         \centering
@@ -41,52 +41,14 @@ cases studied during this analysis. Most of these conditions were took from
             $3C$ & $6.5E-7$ & $0.2283$ & $0.01026$ & $0.75$ & $0.713E-3$ \\ \hline
         \end{tabular}
         \caption{Mass fraction composition for cases in
-        \TabRef{tab:chemistryCompositionStudy}}\label{tab:chemistryCompositionMassFractionConditions}
+        \TabRef{tab:chemistryCompositionStudyMassFraction}}\label{tab:chemistryCompositionMassFractionConditions}
     \end{table}
 
-\FigRef{fig:massFractionChemistryComposition} shows the mass fraction
-composition for the cases described in \TabRef{tab:chemistryCompositionStudy}
-and \TabRef{tab:chemistryCompositionMassFractionConditions}.
-\FigRef{fig:massFraction1C} shows the mass fraction for Case $1C$, which is for
-a diatomic nitrogen gas. The diatomic nitrogen decomposes into nitrogen, and by
-the time $(\approx 10\Units{\mu s})$ the simulation reaches chemical equilibrium, approximately $20\%$ of the diatomic nitrogen has decomposed into nitrogen. 
-\FigRef{fig:massFraction2C} shows the mass fraction for Case $2C$, which is for
-a diatomic oxygen gas. The diatomic oxygen decomposes into oxygen, and by
-the time $(\approx 10\Units{\mu s})$ the simulation reaches chemical
-equilibrium, approximately $20\%$ of the diatomic oxygen has decomposed into
-oxygen.
-\FigRef{fig:massFraction3C} shows the mass fraction for Case $3C$,
-which is for a $5$ species air. Some of the diatomic nitrogen and oxygen
-decomposed to a nitric oxide, with a peak value of approximately $10\%$ at
-$5\Units{n s}$.
 
-    % Mass Fraction %%
-    \begin{figure}[H]
-        \centering
-        \subfigure[Case $1C$] 
-        {
-            \label{fig:massFraction1C}
-            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/1C_massFraction}
-        }
-        \subfigure[Case $2C$] 
-        {
-            \label{fig:massFraction2C}
-            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/2C_massFraction}
-        }
-        \subfigure[Case $3C$] 
-        {
-            \label{fig:massFraction3C}
-            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_massFraction}
-        }
-        \caption{\label{fig:massFractionChemistryComposition}Mass fraction results for cases in
-        \TabRef{tab:chemistryCompositionStudy}}
-    \end{figure}
-    % Mass Fraction %%
-
-    \FigRef{fig:temperaturesChemistryComposition} shows the translational and
-    vibrational temperatures for cases described in \TabRef{tab:chemistryCompositionStudy}
-    and \TabRef{tab:chemistryCompositionMassFractionConditions}. 
     % Temperatures %
+    \FigRef{fig:temperaturesChemistryComposition} shows the translational and
+    vibrational temperatures for cases described in \TabRef{tab:chemistryCompositionStudyMassFraction}
+    and \TabRef{tab:chemistryCompositionMassFractionConditions}. 
     \begin{figure}[H]
         \centering
         \subfigure[Case $1C$] 
@@ -105,14 +67,52 @@ $5\Units{n s}$.
             \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_temperatures}
         }
         \caption{\label{fig:temperaturesChemistryComposition}Temperature results for cases in
-        \TabRef{tab:chemistryCompositionStudy}}
+        \TabRef{tab:chemistryCompositionStudyMassFraction}}
     \end{figure}
     % Temperatures %
 
-    \FigRef{fig:speciesGladstoneDaleChemistryComposition} shows the species
-    Gladstone-Dale constant for cases described in \TabRef{tab:chemistryCompositionStudy}
-    and \TabRef{tab:chemistryCompositionMassFractionConditions}. 
+    % Mass Fraction %%
+    \FigRef{fig:massFractionChemistryComposition} shows the mass fraction
+    composition for the cases described in \TabRef{tab:chemistryCompositionStudyMassFraction}
+    and \TabRef{tab:chemistryCompositionMassFractionConditions}.
+    \FigRef{fig:massFraction1C} shows the mass fraction for Case $1C$, which is for
+    a diatomic nitrogen gas. The diatomic nitrogen decomposes into nitrogen, and by
+    the time $(\approx 10\Units{\mu s})$ the simulation reaches chemical equilibrium, approximately $20\%$ of the diatomic nitrogen has decomposed into nitrogen. 
+    \FigRef{fig:massFraction2C} shows the mass fraction for Case $2C$, which is for
+    a diatomic oxygen gas. The diatomic oxygen decomposes into oxygen, and by
+    the time $(\approx 10\Units{\mu s})$ the simulation reaches chemical
+    equilibrium, approximately $20\%$ of the diatomic oxygen has decomposed into
+    oxygen.
+    \FigRef{fig:massFraction3C} shows the mass fraction for Case $3C$,
+    which is for a $5$ species air. Some of the diatomic nitrogen and oxygen
+    decomposed to a nitric oxide, with a peak value of approximately $10\%$ at
+    $5\Units{n s}$.
+    \begin{figure}[H]
+        \centering
+        \subfigure[Case $1C$] 
+        {
+            \label{fig:massFraction1C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/1C_massFraction}
+        }
+        \subfigure[Case $2C$] 
+        {
+            \label{fig:massFraction2C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/2C_massFraction}
+        }
+        \subfigure[Case $3C$] 
+        {
+            \label{fig:massFraction3C}
+            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_massFraction}
+        }
+        \caption{\label{fig:massFractionChemistryComposition}Mass fraction results for cases in
+        \TabRef{tab:chemistryCompositionStudyMassFraction}}
+    \end{figure}
+    % Mass Fraction %%
+
     % Gladstone Species %
+    \FigRef{fig:speciesGladstoneDaleChemistryComposition} shows the species
+    Gladstone-Dale constant for cases described in \TabRef{tab:chemistryCompositionStudyMassFraction}
+    and \TabRef{tab:chemistryCompositionMassFractionConditions}. 
     \begin{figure}[H]
         \centering
         \subfigure[Case $1C$] 
@@ -131,14 +131,14 @@ $5\Units{n s}$.
             \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_speciesGladstoneDale}
         }
         \caption{\label{fig:speciesGladstoneDaleChemistryComposition}Species Gladstone-Dale results for cases in
-        \TabRef{tab:chemistryCompositionStudy}}
+        \TabRef{tab:chemistryCompositionStudyMassFraction}}
     \end{figure}
     % Gladstone Species %
 
-    \FigRef{fig:totalGladstoneDaleChemistryComposition} shows the total
-    Gladstone-Dale constant for cases described in \TabRef{tab:chemistryCompositionStudy}
-    and \TabRef{tab:chemistryCompositionMassFractionConditions}. 
     % Gladstone Total %
+    \FigRef{fig:totalGladstoneDaleChemistryComposition} shows the total
+    Gladstone-Dale constant for cases described in \TabRef{tab:chemistryCompositionStudyMassFraction}
+    and \TabRef{tab:chemistryCompositionMassFractionConditions}. 
     \begin{figure}[H]
         \centering
         \subfigure[Case $1C$] 
@@ -157,13 +157,13 @@ $5\Units{n s}$.
             \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_totalGladstoneDale}
         }
         \caption{\label{fig:totalGladstoneDaleChemistryComposition}Total Gladstone-Dale results for cases in
-        \TabRef{tab:chemistryCompositionStudy}}
+        \TabRef{tab:chemistryCompositionStudyMassFraction}}
     \end{figure}
     % Gladstone Total %
 
-    \FigRef{fig:refractionIndexChemistryComposition} shows the index of refraction for cases described in \TabRef{tab:chemistryCompositionStudy}
-    and \TabRef{tab:chemistryCompositionMassFractionConditions}. 
     % Refraction Index % 
+    \FigRef{fig:refractionIndexChemistryComposition} shows the index of refraction for cases described in \TabRef{tab:chemistryCompositionStudyMassFraction}
+    and \TabRef{tab:chemistryCompositionMassFractionConditions}. 
     \begin{figure}[H]
         \centering
         \subfigure[Case $1C$] 
@@ -182,6 +182,6 @@ $5\Units{n s}$.
             \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_refractionIndex}
         }
         \caption{\label{fig:refractionIndexChemistryComposition}Index of Refraction results for cases in
-        \TabRef{tab:chemistryCompositionStudy}}
+        \TabRef{tab:chemistryCompositionStudyMassFraction}}
     \end{figure}
     % Refraction Index % 
