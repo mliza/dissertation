@@ -8,9 +8,9 @@
         Earth. During his journey he became the first human in history to
         travel at hypersonic speeds \cite{Anderson2022}.\\
 
-        As the velocity of the flow increases, the compressibility effects can
-        not be ignored. The flow field can be characterized in four regimes (subsonic,
-        transonic, supersonic and hypersonic).
+        As the velocity of the flow increases, compressibility effects can
+        not be ignored. The flow field is typically characterized in four
+        distinct regimes: subsonic, transonic, supersonic and hypersonic).
         \begin{itemize}
             \item \textbf{Subsonic:} A flow characterized by a Mach number less
                 than $1$ at every point. In this regime, compressibility effects can generally be neglected. The flow patterns in a subsonic flow are typically smooth and continuous, with no shock wave formation. Due to the absence of shock waves, these flows are often considered isentropic.
@@ -34,34 +34,67 @@
                 real gas effects and a thicker boundary layer.
         \end{itemize}
 
-        \FigRef{fig:ch2ShockMachRegions} show these regions, as the Mach number
+        At higher velocities, particularly in the supersonic and hypersonic regimes, compressibility effects are crucial to understanding the flow dynamics, and the simple models used at lower speeds are no longer adequate. \FigRef{fig:ch2ShockMachRegions} show these regions, as the Mach number
         increases, shock waves start to form and compressibility effects become
         more important.
 
-        \pic{0.85}{chapter2/shockMachRegions}{Mach number
-        regions}{fig:ch2ShockMachRegions}
+        \begin{figure}[H]
+            \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter2/shockMachRegions}}%
+            \caption{Mach number regions}
+            \label{fig:ch2ShockMachRegions}
+        \end{figure}
 
-        Speeds in a hypersonic flow are greater than Mach five, at these speeds
-        the kinetic energy of the gas molecules is converted into thermal
-        energy, leading to very high temperatures. At these speeds the chemical
-        composition of the gas becomes important. The high temperature can
-        cause dissociation (breaking apart of molecules), and ionization
-        (formation of charged particles) of the air molecules. At temperatures above $2000\Units{K}$ $O_2$ starts to dissociate, and
-        it is completely dissociated above $4000\Units{K}$. $N_2$ begins to
-        dissociate above $4000\Units{K}$ and it is completely
-        dissociated above $9000\Units{K}$ \cite{Anderson2006}. \\
+        In hypersonic flow, where speeds exceed Mach $5$, the kinetic energy of
+        the gas molecules is largely converted into thermal energy, resulting
+        in extremely high temperatures. At these velocities, the chemical
+        composition of the gas plays a critical role in the behavior of the
+        flow. The high temperatures can cause significant molecular
+        dissociation (the breaking apart of molecules) and ionization (the
+        formation of charged particles) of air molecules. For example, at
+        temperatures above $2000\Units{K}$, molecular oxygen begins to
+        dissociate, and it is fully dissociated at around $4000\Units{K}$.
+        Similarly, molecular nitrogen starts to dissociate above
+        $4000\Units{K}$, and complete dissociation occurs at temperatures
+        exceeding $9000\Units{K}$ \cite{Anderson2006}.\\
 
-        At these temperatures, the Hamiltonian (kinetic and potential energy)
-        of the system has to be modified because more energy modes are
-        accessible (rotational, vibrational, and electronic energy).
-        \FigRef{fig:ch2AdditionalDoFs} shows the additional degrees of freedom that
-        emerge during a hypersonic flow.
+        At these elevated temperatures, the internal energy modes of gas
+        molecules are significantly altered. The Hamiltonian of the system,
+        which represents the total kinetic and potential energy, must be
+        modified to account for additional \glspl{dof}. These additional energy
+        modes include rotational, vibrational and electronic energies, which
+        become accessible due to the high energy levels present in hypersonic
+        flows. \EqRef{eq:hamiltonian} shows how the additional energy modes in
+        a hypersonic flow.
+        \begin{equation}\label{eq:hamiltonian}
+            \mathcal{H} = \mathcal{E}_{kinetic} + \mathcal{E}_{potential} =
+            \mathcal{E}_{kinetic} + \mathcal{E}_{rotational} +
+            \mathcal{E}_{vibrational} + \mathcal{E}_{electronic}
+        \end{equation}
 
-        \pic{0.9}{chapter2/aditionalDoFs}{Additional Degrees of
+        This modification in the Hamiltonian is critical because the
+        traditional energy models, which assume only translational motion, are
+        insufficient to describe the thermodynamic behavior at such extreme
+        conditions. \\
+
+        \FigRef{fig:ch2AdditionalDoFs} illustrates the additional degrees of freedom that emerge in a hypersonic flow. As molecules absorb increasing amounts of energy, rotational and vibrational modes are excited, followed by electronic excitations and, at sufficiently high temperatures, ionization. These phenomena significantly affect the thermodynamic properties of the gas, including heat capacity, thermal conductivity, and viscosity, all of which must be accurately modeled to predict the behavior of hypersonic flows. 
+
+        \pic{1.0}{chapter2/aditionalDoFs}{Additional Degrees of
         Freedom}{fig:ch2AdditionalDoFs}
 
-        In addition, each new accessible energy mode acts at different time scales, \EqRef{timeScales} show these time scales.
-        \begin{equation}\label{timeScales}
+        In addition, each newly accessible energy mode operates on different
+        time scales, which significantly influences the thermodynamic response
+        of the gas in hypersonic flows. These time scales are associated with
+        the energy required for the excitation of rotational, vibrational, and
+        electronic modes, as well as ionization. For instance, rotational modes
+        tend to equilibrate quickly, while vibrational and electronic
+        excitations, along with dissociation and ionization, occur over longer
+        time scales due to the higher energy thresholds involved. \\
+
+        \EqRef{eq:timeScales} shows the specific time scales associated with each
+        energy mode. Understanding these time scales is crucial for accurately
+        modeling the non-equilibrium thermodynamic processes in hypersonic
+        regimes.
+        \begin{equation}\label{eq:timeScales}
             \tau_{flow} \approx \tau_{tr} < \tau_{rot} < \tau_{vib} < \tau_{chem}
         \end{equation}
 
@@ -89,24 +122,51 @@
 
         \pic{1.0}{chapter2/heatCapacity}{Heat Capacity}{fig:ch2HeatCapacity}
 
-        At these conditions, the calorically perfect gas approximation is no
-        longer suitable because this assumption does not consider thermochemical
-        effects. \FigRef{fig:caloricallyPerfectGas} shows the temperature pre
-        and post shock for different altitudes. As expected at high speeds, the
-        calorically perfect gas under-predicts temperature across the shock.
+        Under these conditions, the calorically perfect gas approximation becomes unsuitable, as it neglects key thermochemical effects that arise at high velocities \FigRef{fig:caloricallyPerfectGas} illustrates the pre- and post-shock temperatures across various altitudes. As expected, at high speeds, the calorically perfect gas model underestimates the temperature increase across the shock.
 
-        \pic{0.85}{chapter2/temperatureRatio}{Temperature ratio across a shock
+        \pic{0.8}{chapter2/temperatureRatio}{Temperature ratio across a shock
         wave\cite{Anderson2006}}{fig:caloricallyPerfectGas}
 
-        Therefore, at these speeds, thermochemical effects need to be
-        considered and accurate models that consider these effects need to be
-        included. \FigRef{fig:ch2flightSpeedAltitude} shows the
-        velocity-altitude trajectories for different hypersonic
-        systems.\todo{Write about figure} 
+        At elevated velocities, particularly in the hypersonic regime, the
+        assumptions of constant specific heats and the absence of chemical
+        reactions no longer hold. The gas molecules experience significant
+        excitation, dissociation, and ionization, which are critical
+        thermochemical effects that must be accounted for. These processes lead
+        to non-linear increases in temperature and energy exchange across the
+        shock, rendering the calorically perfect gas model insufficient. \\
+
+        \FigRef{fig:ch2flightSpeedAltitude} illustrates the flight paths of the
+        Apollo Command Module and the Shuttle Orbiter during reentry. The
+        reentry trajectory spans a broad range of velocities and altitudes,
+        making accurate trajectory prediction extremely challenging. As
+        expected, the atmospheric density changes dramatically with altitude,
+        significantly influencing the aerodynamic forces acting on the vehicle.
+        These forces, in turn, affect the vehicle's overall trajectory.\\
+
+        Atmospheric density is inversely related to temperature, and
+        temperature variations directly impact the chemical composition of the
+        surrounding air. As the vehicle descends, encountering higher
+        velocities, the steep density and temperature gradients across shock
+        waves become more pronounced. The faster the reentry vehicle, the
+        sharper these gradients, which leads to complex shock-layer phenomena,
+        including chemical reactions and ionization. \\
+
+        During reentry, the vehicle passes through various regions of the
+        atmosphere where different chemical reactions occur, significantly
+        altering the surrounding air's composition. For instance, at high
+        velocities and temperatures, air molecules such as molecular oxygen and
+        nitrogen dissociate, and ionization occurs, creating a plasma sheath
+        around the vehicle. This plasma sheath influences the vehicle’s
+        electromagnetic properties, such as radio signal attenuation
+        (blackout), which is critical for communication during reentry. \\
+
+        These chemical effects must be considered carefully, as they impact not
+        only the vehicle’s aerodynamics but also thermal protection systems and
+        onboard systems reliant on communication and navigation. \\
+
+        \FigRef{fig:ch2flightSpeedAltitude} demonstrates that as the reentry vehicle traverses different atmospheric chemistry regions, the resulting plasma and thermochemical effects become crucial factors in mission planning and vehicle design.
+
         \pic{0.9}{chapter2/flightSpeedAltitude}{Velocity-altitude trajectories
         for different hypersonic flight systems\cite{Urzay2020}}{fig:ch2flightSpeedAltitude}
 
       \todo{Add more about chemical effects affecting fluid properties}
-
-
-
