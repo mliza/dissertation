@@ -1,8 +1,9 @@
 # Auxiliary function to handle submodules
 gitSubmodule() {
-    if [ git submodule status | grep --quiet '^-' ]; then
+    if [ ! -d "configuration/myResources/Latex" ]; then
         git submodule update --init --recursive
     else
+        echo "Initialized"
         git submodule update --remote configuration/myResources
     fi
 }
