@@ -3,7 +3,7 @@ gitSubmodule() {
     if [ git submodule status | grep --quiet '^-' ]; then
         git submodule update --init --recursive
     else
-        git submodule update --remote configureation/myResources
+        git submodule update --remote configuration/myResources
     fi
 }
 
