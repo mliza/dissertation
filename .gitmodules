@@ -1,0 +1,3 @@
+[submodule "configuration/myResources"]
+	path = configuration/myResources
+	url = https://github.com/mliza/myResources.git
