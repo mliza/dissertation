@@ -1,6 +1,13 @@
 \input{configuration/ThesisTemplate}
-\input{configuration/ThesisMacros}
 \input{configuration/ThesisShortcuts}
+% My macros
+\input{configuration/myResources/Latex/macros/fluidMacros}
+\input{configuration/myResources/Latex/macros/vectorCalcMacros}
+\input{configuration/myResources/Latex/macros/emMacros}
+\input{configuration/myResources/Latex/macros/genMathMacros}
+\input{configuration/myResources/Latex/macros/mathMacros}
+\input{configuration/myResources/Latex/macros/pictureMacros}
+\input{configuration/myResources/Latex/macros/codeMacros}
 \addbibresource{bibliography.bib} 
 
 
@@ -12,22 +19,22 @@
 \listoftodos
 
 % Place holder for Symbols and Acronyms
-\subimport{src/append}{append.tex}
+\subimport{src/append}{append}
 
 %% Initial boiler plate
-%\subimport{src/ch0}{chapter_0.tex}
+%\subimport{src/ch0}{chapter_0}
 \tableofcontents
 
 \listoftables
 \listoffigures
 
 %%Input all the chapters 
-\subimport{src/ch1}{chapter_1.tex}
-\subimport{src/ch2}{chapter_2.tex}
-\subimport{src/ch3}{chapter_3.tex}
-\subimport{src/ch4}{chapter_4.tex}
-\subimport{src/ch5}{chapter_5.tex}
-\subimport{src/ch6}{chapter_6.tex}
+\subimport{src/ch1}{chapter_1}
+\subimport{src/ch2}{chapter_2}
+\subimport{src/ch3}{chapter_3}
+\subimport{src/ch4}{chapter_4}
+\subimport{src/ch5}{chapter_5}
+\subimport{src/ch6}{chapter_6}
 
 
 %%Documents after chapters
