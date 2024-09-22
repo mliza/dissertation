@@ -6,7 +6,7 @@
     respectively. Consequently, the newly formed wave arising from the combined
     effects of polarization and magnetization, interacts with the incident wave
     of identical frequency but varying propagation velocities
-    \cite{Griffiths2017}. \todo{Make a figure explaining EM waves and dipoles}
+    \cite{Griffiths2017, Jackson1998}. \todo{Make a figure explaining EM waves and dipoles}
 
     This varying in propagation velocity can be quantify
     by the index of refraction given in \EqRef{eq:generalIndexOfRefraction}.
@@ -39,33 +39,51 @@
     properties of the medium, such as pressure, temperature, and density, which
     travel through the medium at supersonic speeds. \\ 
 
-    \FigRef{fig:ch2ShockWaves} shows how the pressure wave changes as the
-    object moves closer to the speed of sound, generating shock waves.
-
+    \FigRef{fig:ch2ShockWaves} illustrates how the pressure wave expansion changes with varying Mach numbers. Shock waves begin to form when the Mach number exceeds unity, resulting in different fluid properties, such as density, before and after the shock. This density gradient affects the index of refraction.
     \pic{1.1}{chapter2/shockWaves}{Shock waves formation}{fig:ch2ShockWaves}
 
-\todo{Missing optics overview}
-Optical wave propagation through an inhomogeneous medium (with a varying index
-of refraction) produces wavefront deformation as shown in
-\FigRef{fig:wavefrontDistortion}.
-\pic{0.9}{chapter2/wavefrontDistortion}{Planar optical wavefront distorted by a
-variant index of refraction
-flowfield\cite{Jumper2001}}{fig:wavefrontDistortion}
+    Optical wave propagation through an inhomogeneous medium where the index of
+    refraction varies, results in wavefront deformation, as illustrated in
+    \FigRef{fig:wavefrontDistortion}. This deformation can significantly degrade the performance of optical systems. However, it can also be leveraged as a visualization technique, such as the Schlieren method, used by experimental fluid researchers. This method exploits variations in the refractive index to visualize fluid flow, density gradients, and other phenomena in transparent media.\\
 
-\todo{Read this paper and cite it \cite{Jumper2001}, add figure }
+    It is important to distinguish between the
+    term "near field" as used in this context and its use in physical optics. In
+    the current context, "near field" refers to aberrating fluid structures that
+    are located very close to the exit aperture of the optical system. In contrast,
+    in physical optics, the "near field" refers to a region where the Fresnel
+    approximations are applicable, but the Fraunhofer approximations are
+    not\cite{Jumper2001}.
+    \pic{0.9}{chapter2/wavefrontDistortion}{Planar optical wavefront distorted by a
+    variant index of refraction
+    flowfield\cite{Jumper2001}}{fig:wavefrontDistortion}
 
-The \gls{OPL} is given by \EqRef{eq:OPL}. The \gls{OPL} is the length that
-light needs to travel through a vacuum to create the same phase difference as
-it would have when traveling through a medium.
-\begin{equation}\label{eq:OPL}
-    OPL(t,x) = \int_{y_1}^{y_2} n(t,x,y)dt
-\end{equation}
+    In this context, short-path (near-field) aberration is commonly referred to as
+    "aero-optics," which deals with the optical distortions caused by turbulent
+    airflows near the optical system, such as those experienced by airborne or
+    ground-based sensors. On the other hand, long-path aberrations, which occur
+    over extended distances through the atmosphere, are generally referred to as
+    "atmospheric propagation" effects. These long-path distortions are typically
+    due to atmospheric turbulence, temperature gradients, and other environmental
+    factors that cause fluctuations in the index of refraction over the optical
+    path\cite{Jumper2001}. \\
 
-The \gls{OPD} is given by \EqRef{eq:OPD}.
-\begin{equation}\label{eq:OPD}
-    OPD(t,x) = OPL(t,x) - \overline{OPL}(t)
-\end{equation}
-Note: $\overline{\Parenthesis{\;}}$ denotes the spatial average. The data has to be a
-function of time, x-position and y-position.
+    Optical aberrations can be measured in terms of the \gls{OPL}, given in
+    \EqRef{eq:OPL}. The \gls{OPL} is a measure of the effective distance that light
+    travels in a medium, taking into account both the physical distance and the
+    refractive index of the medium. The \gls{OPL} determines the phase change that light      
+    undergoes as it propagates through a medium\cite{Jenkins1976}. In other words, it is the "effective" distance light travels when considering how different materials slow down the speed of light relative to its speed in a vacuum.
+    \begin{equation}\label{eq:OPL}
+        OPL(t,x) = \int_{y_1}^{y_2} n(t,x,y)dy
+    \end{equation}
+
+    Instead of measuring the absolute \gls{OPL}, only the relative difference in
+    \gls{OPL} across the aperture is important. The \gls{OPD} is given by
+    \EqRef{eq:OPD}. The \gls{OPD} directly reflects the variations of the
+    wave-front phase errors \cite{Wang2007}.
+    \begin{equation}\label{eq:OPD}
+        OPD(t,x) = OPL(t,x) - \overline{OPL}(t)
+    \end{equation}
+    Note: $\overline{\Parenthesis{\;}}$ denotes the spatial average over the
+    aperture. 
 
 
