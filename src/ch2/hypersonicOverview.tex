@@ -35,7 +35,7 @@
                 temperature, and density. Due to the high velocities, the
                 kinetic energy in the flow is converted to thermal energy
                 resulting in high temperatures. These high temperatures lead to
-                real gas effects and a thicker boundary layer.
+                \textit{real gas} effects and a thicker boundary layer.
         \end{itemize}
 
         At higher velocities, particularly in the supersonic and hypersonic regimes, compressibility effects are crucial to understanding the flow dynamics, and the simple models used at lower speeds are no longer adequate. \FigRef{fig:ch2ShockMachRegions} show these regions, as the Mach number
@@ -47,6 +47,24 @@
             \caption{Mach number regions}
             \label{fig:ch2ShockMachRegions}
         \end{figure}
+
+        In a hypersonic flow, the gas effects are typically called \textit{real
+        gas} effects, which can be misleading. Definitions below provide some
+        clarification \cite{Fletcher2004, Anderson2004, Anderson2006}.
+        \todo{Use \cite{Anderson2006} pg 474 to update this}
+        \begin{itemize}
+
+            \item \textbf{Thermally Perfect Gas:} A gas that obeys the ideal equation of state \EqRef{eq:equationOfState}. This implies that internal energy and enthalpy depend only on temperature.
+                \begin{equation}\label{eq:equationOfState}
+                                P = \rho R T
+                \end{equation}
+            \item \textbf{Calorically Perfect Gas:} A gas with constant
+                specific heats $\Parenthesis{c_p, c_v}$, in which the enthalpy
+                and internal energy are functions of temperature. 
+            \item \textbf{Perfect or Ideal Gas:} A gas that is both thermally and calorically perfect.
+            \item \textbf{Thermal Equilibrium:} A gas in which the molecular internal energy modes can be described by a single temperature.
+            \item \textbf{Chemical Equilibrium:} A gas in which all chemical reactions are in balance and the system does not undergo any change in chemical composition. For this gas, the partition function is described by two thermodynamic variables, such as density and temperature.
+        \end{itemize}
 
         In hypersonic flow, where speeds exceed Mach $5$, the kinetic energy of
         the gas molecules is largely converted into thermal energy, resulting
@@ -71,8 +89,9 @@
         a hypersonic flow.
         \begin{equation}\label{eq:hamiltonian}
             \mathcal{H} = \mathcal{E}_{kinetic} + \mathcal{E}_{potential} =
-            \mathcal{E}_{kinetic} + \mathcal{E}_{rotational} +
-            \mathcal{E}_{vibrational} + \mathcal{E}_{electronic}
+            \underbrace{\mathcal{E}_{trans} + \mathcal{E}_{rot} +
+            \mathcal{E}_{vib} + \mathcal{E}_{elect}}_{\text{molecule}} =
+            \underbrace{\mathcal{E}_{trans} +\mathcal{E}_{elect}}_{atom} 
         \end{equation}
 
         This modification in the Hamiltonian is critical because the
@@ -99,8 +118,8 @@
         modeling the non-equilibrium thermodynamic processes in hypersonic
         regimes.
         \begin{equation}\label{eq:timeScales}
-            \tau_{flow} \approx \tau_{translational} < \tau_{rotational} <
-            \tau_{vibriational} < \tau_{chemical}
+            \tau_{flow} \approx \tau_{trans} < \tau_{rot} <
+            \tau_{vib} < \tau_{chem}
         \end{equation}
 
         The different time scales is the reason why flows at hypersonic
