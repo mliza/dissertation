@@ -41,7 +41,6 @@
         At higher velocities, particularly in the supersonic and hypersonic regimes, compressibility effects are crucial to understanding the flow dynamics, and the simple models used at lower speeds are no longer adequate. \FigRef{fig:ch2ShockMachRegions} show these regions, as the Mach number
         increases, shock waves start to form and compressibility effects become
         more important.
-
         \begin{figure}[H]
             \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter2/shockMachRegions}}%
             \caption{Mach number regions}
@@ -49,21 +48,80 @@
         \end{figure}
 
         In a hypersonic flow, the gas effects are typically called \textit{real
-        gas} effects, which can be misleading. Definitions below provide some
-        clarification \cite{Fletcher2004, Anderson2004, Anderson2006}.
-        \todo{Use \cite{Anderson2006} pg 474 to update this}
+        gas} effects, which can be misleading. Four categories of gases can be
+        identified \cite{Fletcher2004, Anderson2006}.
         \begin{itemize}
-
-            \item \textbf{Thermally Perfect Gas:} A gas that obeys the ideal equation of state \EqRef{eq:equationOfState}. This implies that internal energy and enthalpy depend only on temperature.
-                \begin{equation}\label{eq:equationOfState}
-                                P = \rho R T
-                \end{equation}
             \item \textbf{Calorically Perfect Gas:} A gas with constant
-                specific heats $\Parenthesis{c_p, c_v}$, in which the enthalpy
-                and internal energy are functions of temperature. 
-            \item \textbf{Perfect or Ideal Gas:} A gas that is both thermally and calorically perfect.
-            \item \textbf{Thermal Equilibrium:} A gas in which the molecular internal energy modes can be described by a single temperature.
-            \item \textbf{Chemical Equilibrium:} A gas in which all chemical reactions are in balance and the system does not undergo any change in chemical composition. For this gas, the partition function is described by two thermodynamic variables, such as density and temperature.
+                specific heats (\cref{eq:caloricallyPerfectHeatCapP,eq:caloricallyPerfectHeatCapV}) in which the enthalpy
+                and internal energy
+                (\cref{eq:caloricallyPerfectGasEnthalpy,eq:caloricallyPerfectGasEnergy}) are functions of temperature. 
+            \begin{subequations}\label{eq:caloricallyPerfectGasAssumptions}
+                \begin{align}
+                    c_p &= \text{constant} \label{eq:caloricallyPerfectHeatCapP} \\
+                    c_v &= \text{constant} \label{eq:caloricallyPerfectHeatCapV} \\
+                    h & = c_p T \label{eq:caloricallyPerfectGasEnthalpy} \\
+                    e & = c_v T \label{eq:caloricallyPerfectGasEnergy} 
+                \end{align}
+            \end{subequations}
+            The \textit{perfect gas} equation of state (\cref{eq:equationOfState}) holds.
+            \begin{equation}\label{eq:equationOfState}
+                pv = R T 
+            \end{equation}
+            \item \textbf{Thermally Perfect Gas:} A gas where specific heats (\cref{eq:thermallyPerfectHeatCapP,eq:thermallyPerfectHeatCapV})
+                are functions of temperature only, in which the enthalpy and
+                internal energy
+                (\cref{eq:thermallyPerfectGasEnthalpy,eq:thermallyPerfectGasEnergy})
+                are functions of temperature. The \textit{perfect gas} equation of state
+                (\cref{eq:equationOfState}) holds.
+            \begin{subequations}\label{eq:caloricallyPerfectGasAssumptions}
+                \begin{align}
+                    c_p &= c_p(T) \label{eq:thermallyPerfectHeatCapP} \\
+                    c_v &= c_v(T) \label{eq:thermallyPerfectHeatCapV} \\
+                    h & = h(T) \label{eq:thermallyPerfectGasEnthalpy} \\
+                    e & = e(T) \label{eq:thermallyPerfectGasEnergy} 
+                \end{align}
+            \end{subequations}
+            \item \textbf{Chemically Reacting Mixture of Perfect Gases:} A
+                multispecies, chemically reacting gas in which intermolecular
+                forces are neglected and each individual species obeys the
+                \textit{perfect gas} law \cref{eq:equationOfState}. The heat
+                capacities
+                (\cref{eq:chemicallyReactingHeatCapP,eq:chemicallyReactingHeatCapV})
+                not only depend on temperature but also in the number of
+                particles per chemical specie. The enthalpy and internal energy
+                (\cref{eq:chemicallyReactingGasEnthalpy,eq:chemicallyReactingGasEnergy}
+                are functions of temperature and number of particles per
+                chemical specie.
+            \begin{subequations}\label{eq:chemicallyReactingGasAssumptions}
+                \begin{align}
+                    c_p &= c_p(T,N_1,N_2,...,N_n) \label{eq:chemicallyReactingHeatCapP} \\
+                    c_v &= c_v(T,N_1,N_2,...,N_n) \label{eq:chemicallyReactingHeatCapV} \\
+                    h & = h(T,N_1,N_2,...,N_n) \label{eq:chemicallyReactingGasEnthalpy} \\
+                    e & = e(T,N_1,N_2,...,N_n) \label{eq:chemicallyReactingGasEnergy} 
+                \end{align}
+            \end{subequations}
+            \item \textbf{Real Gas:} A gas in which the effect of
+                intermolecular forces is considered. Specific heats
+                (\cref{eq:realHeatCapP,eq:realHeatCapV}) are functions of
+                temperature and pressure or volume). Due to intermolecular
+                forces, the enthalpy and internal energy
+                (\cref{eq:realGasEnthalpy,eq:realGasEnergy} are functions of
+                temperature and pressure or volume. 
+            \begin{subequations}\label{eq:realGasAssumptions}
+                \begin{align}
+                    c_p &= c_p(T,p) \label{eq:realHeatCapP} \\
+                    c_v &= c_v(T,v) \label{eq:realHeatCapV} \\
+                    h & = h(T,p) \label{eq:realGasEnthalpy} \\
+                    e & = e(T,v) \label{eq:realGasEnergy} 
+                \end{align}
+            \end{subequations}
+            For this gas, the \textit{perfect gas} equation \cref{eq:equationOfState} is
+            no longer valid and a real gas equation such as the \textit{Van
+            der Waals} \cref{eq:vanDerWallsEquation} can be used. $a$ and
+            $b$ are constants that depends on the type of gas.
+            \begin{equation}\label{eq:vanDerWallsEquation}
+                \Parenthesis{p + \frac{a}{v^2}}\Parenthesis{v-b} = RT 
+            \end{equation}
         \end{itemize}
 
         In hypersonic flow, where speeds exceed Mach $5$, the kinetic energy of
@@ -149,7 +207,7 @@
         Under these conditions, the calorically perfect gas approximation becomes unsuitable, as it neglects key thermochemical effects that arise at high velocities \FigRef{fig:caloricallyPerfectGas} illustrates the pre- and post-shock temperatures across various altitudes. As expected, at high speeds, the calorically perfect gas model underestimates the temperature increase across the shock.
 
         \pic{0.8}{chapter2/temperatureRatio}{Temperature ratio across a shock
-        wave\cite{Anderson2006}}{fig:caloricallyPerfectGas}
+        wave}{fig:caloricallyPerfectGas}
 
         At elevated velocities, particularly in the hypersonic regime, the
         assumptions of constant specific heats and the absence of chemical
@@ -158,7 +216,7 @@
         thermochemical effects that must be accounted for. These processes lead
         to non-linear increases in temperature and energy exchange across the
         shock, rendering the calorically perfect gas model
-        insufficient \cite{Anderson2006}.\\
+        insufficient \cite{Anderson2004}.\\
 
         \FigRef{fig:ch2flightSpeedAltitude} illustrates the flight paths of the
         Apollo Command Module and the Shuttle Orbiter during reentry. The
