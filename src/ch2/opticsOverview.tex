@@ -118,7 +118,7 @@
                 Molecule & $\omega_e\Units{cm^{-1}}$ & $\omega_e
                 x_e\Units{cm^{-1}}$ &  $\omega_e y_e\Units{cm^{-1}}$ &
                 $B_e\Units{cm^{-1}}$ & $\alpha_e\Units{cm^{-1}}$ & ZPE
-                $\Units{cm^{-1}}$ \\
+                $\Units{cm^{-1}}$ \\ 
                 \hline\hline
                 $NO+$ & $2376.72$ & $16.255$ & $-0.01562$ & $1.997195$ &
                 $0.018790$ & $1184.33$ \\ \hline
@@ -145,13 +145,28 @@
     \end{equation}
 
     The \gls{ZPE} is given on units of wave number. The ZPE can be converted to
-    the angular frequency by using the following equation
-    \cref{eq:zpeToRotationalFrequency}
+    the ground-state angular frequency by using the following equation
+    \cref{eq:zpeToRotationalFrequency}, results from this equation are giving
+    on \cref{tab:groundStateAngularFrequency}
     \begin{equation}\label{eq:zpeToRotationalFrequency}
-        \omega_0 = 2\pi  \times ZPE \times c \UnitsFrac{rads}{s}
+        \omega_0 = 2\pi  \times ZPE \times c 
     \end{equation}
-
-
+    \begin{table}[H]
+        \makebox[\linewidth][c]{
+            \begin{tabular}{|c|c|}
+                \hline
+                Molecule & $\omega_0 \times 10^{14}\UnitsFrac{rads}{sec}$ \\
+                \hline\hline
+                $NO+$ & $2.231$ \\ \hline
+                $N2+$ & $2.071$ \\ \hline 
+                $O2+$ & $1.787$ \\ \hline
+                $NO$ & $1.787$ \\ \hline
+                $N2$ & $2.215$ \\ \hline
+                $O2$ & $1.483$ \\ \hline 
+            \end{tabular}
+        }
+            \caption{Ground-state angular frequencies \label{tab:groundStateAngularFrequency}}
+    \end{table}
 
 
 
