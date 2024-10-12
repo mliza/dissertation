@@ -110,6 +110,49 @@
     not the case. Kerl \cite{Hohm1986} and Buldakov \cite{Buldakov2000a} have
     demonstrated a temperature dependency in the polarizability. Tropina \cite{Tropina2018, Tropina2020} and Anaya \cite{Anaya2023} have
     demonstrated an influence of vibrational energy modes on polarizability.
-    
+
+    \begin{table}[H]
+        \makebox[\linewidth][c]{
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                Molecule & $\omega_e\Units{cm^{-1}}$ & $\omega_e
+                x_e\Units{cm^{-1}}$ &  $\omega_e y_e\Units{cm^{-1}}$ &
+                $B_e\Units{cm^{-1}}$ & $\alpha_e\Units{cm^{-1}}$ & ZPE
+                $\Units{cm^{-1}}$ \\
+                \hline\hline
+                $NO+$ & $2376.72$ & $16.255$ & $-0.01562$ & $1.997195$ &
+                $0.018790$ & $1184.33$ \\ \hline
+                $N2+$ & $2207.0115$ & $16.0616$ & $-0.04289$ & $1.93176$ &
+                $0.0181$ & $1099.40$ \\ \hline 
+                $O2+$ & $1905.892$ & $16.489$ & $0.02057$ & $1.689824$ &
+                $0.019363$ & $948.91$ \\ \hline
+                $NO$ & $1904.1346$ & $14.08836$ & $0.01005$ & $1.704885$ &
+                $0.0175416$ & $948.647$ \\ \hline
+                $N2$ & $2358.57$ & $14.324$ & $-0.00226$ & $1.99824$ &
+                $0.017318$ & $1175.78$ \\ \hline
+                $O2$ & $1580.161$ & $11.95127$ & $0.0458489$ & $1.44562$ &
+                $0.0159305$ & $787.380$ \\ \hline 
+            \end{tabular}
+        }
+            \caption{Spectroscopy constants \cite{Irikura2007}\label{tab:spectroscopyConstant}}
+    \end{table}
+
+    The \gls{ZPE} was calculated using \cref{eq:zpe} provided in \cite{Irikura2007}. 
+    \begin{equation}\label{eq:zpe}
+        ZPE = \frac{\omega_e}{2} - \frac{\omega_ex_e}{2} + \frac{\omega_ey_e}{8} +
+        \frac{B_e}{4} + \frac{\alpha_e\omega_e}{12B_e} +
+        \frac{\alpha_e^2\omega_e^2}{144B_e^3}
+    \end{equation}
+
+    The \gls{ZPE} is given on units of wave number. The ZPE can be converted to
+    the angular frequency by using the following equation
+    \cref{eq:zpeToRotationalFrequency}
+    \begin{equation}\label{eq:zpeToRotationalFrequency}
+        \omega_0 = 2\pi  \times ZPE \times c \UnitsFrac{rads}{s}
+    \end{equation}
+
+
+
+
 
 
