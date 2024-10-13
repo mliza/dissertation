@@ -137,20 +137,33 @@
             \caption{Spectroscopy constants \cite{Irikura2007}\label{tab:spectroscopyConstant}}
     \end{table}
 
-    The \gls{ZPE} was calculated using \cref{eq:zpe} provided in \cite{Irikura2007}. 
+    The \gls{ZPE} was calculated using \cref{eq:zpe} provided in
+    \cite{Irikura2007}. The \gls{ZPE} is the lowest possible energy that a
+    quantum mechanical system may have, it has to be noted that this is only
+    possible to be optained for diatomic molecules, because monoatomic
+    molecules only have translational energy modes. \todo{Add more and clarify
+    this, maybe fix eq 2.7}
     \begin{equation}\label{eq:zpe}
         ZPE = \frac{\omega_e}{2} - \frac{\omega_ex_e}{2} + \frac{\omega_ey_e}{8} +
         \frac{B_e}{4} + \frac{\alpha_e\omega_e}{12B_e} +
         \frac{\alpha_e^2\omega_e^2}{144B_e^3}
     \end{equation}
 
-    The \gls{ZPE} is given on units of wave number. The ZPE can be converted to
-    the ground-state angular frequency by using the following equation
-    \cref{eq:zpeToRotationalFrequency}, results from this equation are giving
+    The \gls{ZPE} is given on units of wavenumber sometimes called
+    \textit{kayser}. This unit represents the number of wavelenghts per
+    centimeter and it is often used in spectroscopy. The ZPE can be converted to
+    the ground-state angular frequency by using
+    \cref{eq:zpeToRotationalFrequency}, and the ground state energy on units of
+    joules is found using \cref{eq:groundStateEnergy}; results from these
+    equations are giving
     on \cref{tab:groundStateAngularFrequency}
-    \begin{equation}\label{eq:zpeToRotationalFrequency}
-        \omega_0 = 2\pi  \times ZPE \times c 
-    \end{equation}
+    \begin{subequations}\label{eq:waveNumberCOnversions}
+        \begin{align}
+            \omega_0 &= 2\pi \times ZPE \times c_0
+            \label{eq:zpeToRotationalFrequency}\\
+            E_0 &= \hbar \omega_0 \label{eq:groundStateEnergy}
+        \end{align}
+    \end{subequations}
     \begin{table}[H]
         \makebox[\linewidth][c]{
             \begin{tabular}{|c|c|}
