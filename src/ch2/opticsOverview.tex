@@ -119,9 +119,48 @@
 
     Traditionally the polarizability of air it is thought to be only a function of
     the frequencies. However, for the cases of hypersonic flows this is
-    not the case. Kerl \cite{Hohm1986} and Buldakov \cite{Buldakov2000a} have
-    demonstrated a temperature dependency in the polarizability. Tropina \cite{Tropina2018, Tropina2020} and Anaya \cite{Anaya2023} have
+    not the case. Hohm \cite{Hohm1986} showed a temperature dependency on
+    polarizabilty using interfreometric measuremnt. Kerl \cite{Kerl1992} used
+    the results of Hohm used a fitting \cref{eq:kerlFitting} to show a
+    polarizabilty dependence in polarizability. \Cref{fig:kerlPolarizabilityT}
+    shows these results using constants in \cref{tab:kerlConstants}.
+    
+    \begin{equation}\label{eq:kerlFitting}
+        \alpha(\omega,T) = \frac{\alpha(0,0)}{1 -
+        \Parenthesis{\frac{\omega}{\omega_0}}^2} \Parenthesis{1 + bT + cT^2}
+    \end{equation}
+    
+    \begin{table}[H]
+        \makebox[\linewidth][c]{
+            \begin{tabular}{|c|c|c|c|c|} 
+                \hline
+                molecule & $\alpha_0\times10^{30}\Units{m^3}$ &
+                $\omega_0\times10^{16}\UnitsFrac{rads}{sec}$ &
+                $b\times10^{-6}\UnitsFrac{1}{K}$ &
+                $c\times10^{-9}\UnitsFrac{1}{K}$ \\
+                \hline\hline
+                $N2$ & $1.7406$ & $2.6049$ & $1.8$ & -- \\ \hline
+                $O2$ & $1.5658$ & $2.1801$ & $-2.369$ & $8.687$ \\ \hline
+                $Air$ & $1.6970$ & $2.47044$ & $10.6$ & $7.909$ \\ \hline
+            \end{tabular}
+        }
+            \caption{Constant used in
+            \cref{eq:kerlFitting}}\label{tab:kerlConstants}
+    \end{table}
+
+
+    \pic{0.8}{chapter2/633nm_polarizability}{Polarizability for a wavelength of
+    $633\Units{nm}$}{fig:kerlPolarizabilityT}
+
+
+
+    Tropina \cite{Tropina2018, Tropina2020} and Anaya \cite{Anaya2023} have
     demonstrated an influence of vibrational energy modes on polarizability.
+    Kerl \cite{Hohm1986} and Buldakov \cite{Buldakov2000a} have
+
+    demonstrated a temperature dependency in the polarizability. 
+
+
 
     \begin{table}[H]
         \makebox[\linewidth][c]{
