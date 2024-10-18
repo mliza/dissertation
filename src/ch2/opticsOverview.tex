@@ -134,7 +134,7 @@
         \makebox[\linewidth][c]{
             \begin{tabular}{|c|c|c|c|c|} 
                 \hline
-                molecule & $\alpha_0\times10^{30}\Units{m^3}$ &
+                molecule & $\alpha_0\times10^{-30}\Units{m^3}$ &
                 $\omega_0\times10^{16}\UnitsFrac{rads}{sec}$ &
                 $b\times10^{-6}\UnitsFrac{1}{K}$ &
                 $c\times10^{-9}\UnitsFrac{1}{K}$ \\
@@ -187,6 +187,16 @@
         }
             \caption{Spectroscopy constants \cite{Irikura2007}\label{tab:spectroscopyConstant}}
     \end{table}
+
+    Some authors reference constants found in \cref{tab:spectroscopyConstant}
+    as the \textit{Dunham} coefficients $\Parenthesis{Y_{ij} = Y_{vJ}}$ \cite{Chandra2005}. 
+    \Cref{eq:dunhamCoefficients} provides a relationship between the
+    \textit{Dunham} coefficients and the spectroscopy constants found in
+    \cref{tab:spectroscopyConstant}.
+    \begin{equation}\label{eq:dunhamCoefficients}
+        Y_{10} = \omega_e,\; Y_{20} = -\omega_ex_e,\; Y_{30} = \omega_ey_e, \;
+        Y_{01} = B_e,\; Y_{11} = -\alpha_e
+    \end{equation}
 
     The \gls{ZPE} was calculated using \cref{eq:zpe} provided in
     \cite{Irikura2007}. The \gls{ZPE} is the lowest possible energy that a
