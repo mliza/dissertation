@@ -251,15 +251,19 @@
 
         \Cref{fig:ch2flightSpeedAltitude} demonstrates that as the reentry vehicle traverses different atmospheric chemistry regions, the resulting plasma and thermochemical effects become crucial factors in mission planning and vehicle design.
 
-        \pic{0.9}{chapter2/flightSpeedAltitude}{Velocity-altitude trajectories
-        for different hypersonic flight systems\cite{Urzay2020}}{fig:ch2flightSpeedAltitude}
+        \begin{figure}[H]
+            \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter2/flightSpeedAltitude}}%
+            \caption{Velocity-altitude trajectories for different hypersonic
+            flight systems}\label{fig:ch2flightSpeedAltitude}
+        \end{figure}
+
 
       \todo{Add more about chemical effects affecting fluid properties}
 
 
     The partion function is given by \cref{eq:partitionFunction}
     \begin{equation}\label{eq:partitionFunction} 
-        Z = \sum_{i}g_ie^{-\frac{\varepsilon_i}{k_B T}} 
+        Z = \sum_{i}g_ie^{\beta \varepsilon_i}
     \end{equation}
 
     The vibrational energy and rotational energy are calculated using
@@ -279,7 +283,16 @@
     \end{subequations}
 
 
-
+    The Boltzmann distribution, which describes the particle distribution over different energy states at thermal equilibrium, is applied to calculate the energy levels as a function of the vibrational quantum number. This distribution is given in \cref{eq:boltzmanDistribution}.
+ 
+    \begin{equation}\label{eq:boltzmanDistribution}
+        P(\varepsilon) = \frac{g_i e^{-\beta \mathcal{H}}}{Z}
+    \end{equation}
+ 
+    It should be noted that in a system of harmonic oscillators, the
+    vibrational energy relaxes through a series of Boltzmann distributions.
+    However, this is not the case for anharmonic oscillators
+    \cite{Anketell1974}. Therefore, for this approach, it is assumed that the system contains only harmonic oscillators and the anharmonic $\Parenthesis{\omega_ex_e}$ term in vibrational energy equation REFEQ and the anharmonic $\Parenthesis{\alpha_e}$ in the rotational energy equation are set to zero.
 
 
       

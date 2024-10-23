@@ -1,8 +1,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %           Symbols         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%https://tex.stackexchange.com/questions/537607/how-to-make-a-custom-list-of-symbols-with-separated-greek-and-roman-symbols
 %\glsxtrnewsymbol[description={Reynolds Number}]{Re}{\ensuremath{Re}}
 %\glsxtrnewsymbol[description={ }]{ }{\ensuremath{ }}
+
+
+
+% Roman
+\newglossaryentry{rommanletter}{
+    name={\Large{\textbf{Roman letters}}},
+    description={\nopostdesc},
+    sort={1},
+    type=symbols,
+}
+\glsxtrnewsymbol[description={Rotational constant in equilibrium position$\Units{cm^{-1}}$}]{Be}{\ensuremath{B_e}}
 \glsxtrnewsymbol[description={Speed of light in a
 vacuum}]{c0}{\ensuremath{c_0}}
 \glsxtrnewsymbol[description={Speed of light in a
@@ -11,37 +23,53 @@ medium}]{cM}{\ensuremath{c_m}}
 pressure}]{heatCapacityP}{\ensuremath{c_p}}
 \glsxtrnewsymbol[description={Heat capacity at constant
 volume}]{heatCapacityV}{\ensuremath{c_v}}
-\glsxtrnewsymbol[description={Specific heat
-ratio}]{specificHeatRatio}{\ensuremath{\gamma}}
 \glsxtrnewsymbol[description={Internal energy}]{internalEnergy}{\ensuremath{e}}
 \glsxtrnewsymbol[description={Electronic energy}]{electronicEnergy}{\ensuremath{\mathcal{E}_{elect}}}
-\glsxtrnewsymbol[description={enthalpy}]{enthalpy}{\ensuremath{h}}
 \glsxtrnewsymbol[description={Kinetic energy}]{kineticEnergy}{\ensuremath{\mathcal{E}_{kinetic}}}
 \glsxtrnewsymbol[description={Potential energy}]{potentialEnergy}{\ensuremath{\mathcal{E}_{potential}}}
 \glsxtrnewsymbol[description={Rotational energy}]{rotationalEnergy}{\ensuremath{\mathcal{E}_{rot}}}
 \glsxtrnewsymbol[description={Translational
 energy}]{translationalEnergy}{\ensuremath{\mathcal{E}_{trans}}}
 \glsxtrnewsymbol[description={Vibrational energy}]{vibrationalEnergy}{\ensuremath{\mathcal{E}_{vib}}}
+\glsxtrnewsymbol[description={Convective fluxes}]{Fc}{\ensuremath{\mathcal{F}^c}} \glsxtrnewsymbol[description={Viscous fluxes}]{Fv}{\ensuremath{\mathcal{F}^v}}
+\glsxtrnewsymbol[description={Degeneracy}]{g}{\ensuremath{g_i}}
+\glsxtrnewsymbol[description={enthalpy}]{enthalpy}{\ensuremath{h}}
+\glsxtrnewsymbol[description={Hamiltonian}]{mathcalH}{\ensuremath{\mathcal{H}}}
+\glsxtrnewsymbol[description={Rotational quantum number}]{J}{\ensuremath{J}}
+\glsxtrnewsymbol[description={Pressure}]{p}{\ensuremath{p}}
+\glsxtrnewsymbol[description={Index of refraction}]{n}{\ensuremath{n}}
+\glsxtrnewsymbol[description={Source terms}]{Q}{\ensuremath{\mathcal{Q}}}
+\glsxtrnewsymbol[description={Gas
+Constant$\Parenthesis{8.3145\UnitsFrac{J}{mol\,K}}$}]{R}{\ensuremath{R}}
+\glsxtrnewsymbol[description={Temperature}]{T}{\ensuremath{T}}
+\glsxtrnewsymbol[description={Conservative
+variables}]{U}{\ensuremath{\mathcal{U}}}
+\glsxtrnewsymbol[description={Vibrational quantum number}]{vQ}{\ensuremath{v}}
+\glsxtrnewsymbol[description={Volume}]{v}{\ensuremath{V}}
+\glsxtrnewsymbol[description={Partition Function}]{partitionFunction}{\ensuremath{Z}}
+
+
+\newglossaryentry{greekletter}{
+    name={\Large{\textbf{Greek letters}}},
+    description={\nopostdesc},
+    sort={2},
+    type=symbols,
+}
+\glsxtrnewsymbol[description={Polarizability$\Units{m^3}$}]{polarizability}{\ensuremath{\alpha}}
+\glsxtrnewsymbol[description={Rotational constant, first term$\Units{cm^{-1}}$}]{Ae}{\ensuremath{\alpha_e}}
+\glsxtrnewsymbol[description={Thermodynamic
+beta $\Parenthesis{\frac{1}{k_BT}}$}]{thermodynamicBeta}{\ensuremath{\beta}}
+\glsxtrnewsymbol[description={Specific heat
+ratio}]{specificHeatRatio}{\ensuremath{\gamma}}
 \glsxtrnewsymbol[description={Dielectric constant in a
 vacuum}]{epsilon0}{\ensuremath{\epsilon_0}}
 \glsxtrnewsymbol[description={Dielectric constant in a
 medium}]{epsilonM}{\ensuremath{\epsilon_m}}
-\glsxtrnewsymbol[description={Convective fluxes}]{Fc}{\ensuremath{\mathcal{F}^c}}
-\glsxtrnewsymbol[description={Viscous fluxes}]{Fv}{\ensuremath{\mathcal{F}^v}}
-\glsxtrnewsymbol[description={Hamiltonian}]{mathcalH}{\ensuremath{\mathcal{H}}}
-\glsxtrnewsymbol[description={Index of refraction}]{n}{\ensuremath{n}}
 \glsxtrnewsymbol[description={Magnetic constant in a
 vacuum}]{mu0}{\ensuremath{\mu_0}}
 \glsxtrnewsymbol[description={Magnetic constant in a
 medium}]{muM}{\ensuremath{\mu_m}}
-\glsxtrnewsymbol[description={Pressure}]{p}{\ensuremath{p}}
-\glsxtrnewsymbol[description={Source terms}]{Q}{\ensuremath{\mathcal{Q}}}
-\glsxtrnewsymbol[description={Gas
-Constant$\Parenthesis{8.3145\UnitsFrac{J}{mol\,K}}$}]{R}{\ensuremath{R}}
-\glsxtrnewsymbol[description={Conservative
-variables}]{U}{\ensuremath{\mathcal{U}}}
-\glsxtrnewsymbol[description={Volume}]{v}{\ensuremath{v}}
-\glsxtrnewsymbol[description={Temperature}]{T}{\ensuremath{T}}
+\glsxtrnewsymbol[description={Density of the medium}]{rhoM}{\ensuremath{\rho_m}}
 \glsxtrnewsymbol[description={Chemical reaction characteristic
 time}]{tauChem}{\ensuremath{\tau_{chemical}}}
 \glsxtrnewsymbol[description={Flow characteristic time}]{tauFlow}{\ensuremath{\tau_{flow}}}
@@ -51,19 +79,35 @@ time}]{tauTr}{\ensuremath{\tau_{trans}}}
 time}]{tauRot}{\ensuremath{\tau_{rot}}}
 \glsxtrnewsymbol[description={Vibrational mode characteristic
 time}]{tauVib}{\ensuremath{\tau_{vib}}}
-\glsxtrnewsymbol[description={Density of the medium}]{rhoM}{\ensuremath{\rho_m}}
-
-% Spectroscopy constants
+\glsxtrnewsymbol[description={Signal
+frequency$\UnitsFrac{rads}{sec}$}]{omegaF}{\ensuremath{\omega}}
 \glsxtrnewsymbol[description={Vibrational constant, first term$\Units{cm^{-1}}$}]{We}{\ensuremath{\omega_e}}
 \glsxtrnewsymbol[description={Vibrational constant, second term$\Units{cm^{-1}}$}]{WeXe}{\ensuremath{\omega_ex_e}}
 \glsxtrnewsymbol[description={Vibrational constant, third term$\Units{cm^{-1}}$}]{WeYe}{\ensuremath{\omega_ey_e}}
-\glsxtrnewsymbol[description={Rotational constant in equilibrium position$\Units{cm^{-1}}$}]{Be}{\ensuremath{B_e}}
-\glsxtrnewsymbol[description={Rotational constant, first term$\Units{cm^{-1}}$}]{Ae}{\ensuremath{\alpha_e}}
 \glsxtrnewsymbol[description={Ground-level angular
 frequency}]{omega0}{\ensuremath{\omega_0}}
 
+\newglossaryentry{Constants}{
+    name={\Large{\textbf{Constants}}},
+    description={\nopostdesc},
+    sort={3},
+    type=symbols,
+}
+
+\newglossaryentry{Subscripts}{
+    name={\Large{\textbf{Subscripts}}},
+    description={\nopostdesc},
+    sort={4},
+    type=symbols,
+}
 
 
+\newglossaryentry{Superscripts}{
+    name={\Large{\textbf{Superscripts}}},
+    description={\nopostdesc},
+    sort={5},
+    type=symbols,
+}
 
 % This is a place holder we might not need it 
 %https://webbook.nist.gov/cgi/cbook.cgi?ID=C7727379&Units=SI&Mask=1000#Diatomic
@@ -73,7 +117,5 @@ frequency}]{omega0}{\ensuremath{\omega_0}}
 \glsxtrnewsymbol[description={Equilibrium internuclear
 distance$\Units{\r{A}}$}]{Re}{\ensuremath{r_e}}
 \glsxtrnewsymbol[description={Ionization potential$\Units{eV}$}]{IP}{\ensuremath{IP}}
-
-
 %\glsxtrnewsymbol[description={ }]{ }{\ensuremath{ }}
 %\glsxtrnewsymbol[description={ }]{ }{\ensuremath{ }}
