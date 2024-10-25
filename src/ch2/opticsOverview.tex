@@ -134,7 +134,7 @@
         \makebox[\linewidth][c]{
             \begin{tabular}{|c|c|c|c|c|} 
                 \hline
-                molecule & $\alpha_0\times10^{-30}\Units{m^3}$ &
+                molecule & $\alpha_0\times10^{30}\Units{m^3}$ &
                 $\omega_0\times10^{16}\UnitsFrac{rads}{sec}$ &
                 $b\times10^{-6}\UnitsFrac{1}{K}$ &
                 $c\times10^{-9}\UnitsFrac{1}{K}$ \\
@@ -188,15 +188,35 @@
             \caption{Spectroscopy constants \cite{Irikura2007}\label{tab:spectroscopyConstant}}
     \end{table}
 
-    Some authors reference constants found in \cref{tab:spectroscopyConstant}
-    as the \textit{Dunham} coefficients \cite{Dunham1932} $\Parenthesis{Y_{ij} = Y_{vJ}}$ \cite{Chandra2005}. 
+    Some authors refer the constants in \cref{tab:spectroscopyConstant}
+    as the \textit{Dunham} coefficients \cite{Dunham1932} $\Parenthesis{Y_{ij}
+    = Y_{vJ}}$ \cite{Chandra2005}. However, in the literature these
+    coefficients can be called the \textit{Duhham} potential
+    coefficients which are not the same. Ogilvie \cite{Ogilvie1976} called the
+    $Y_{vJ}$ \textit{energy-coefficients} and $a_m$ the \textit{Dunham} potential
+    coefficients, these will be the convention that we will use for the rest of
+    this work.
     \Cref{eq:dunhamCoefficients} provides a relationship between the
-    \textit{Dunham} coefficients and the spectroscopy constants found in
+    energy coefficients and the spectroscopy constants found in
     \cref{tab:spectroscopyConstant}.
     \begin{equation}\label{eq:dunhamCoefficients}
         Y_{10} = \omega_e,\; Y_{20} = -\omega_ex_e,\; Y_{30} = \omega_ey_e, \;
         Y_{01} = B_e,\; Y_{11} = -\alpha_e
     \end{equation}
+
+    The \textit{Dunham} potential coefficients are found using
+    \cref{eq:dunhamA0} \cite{Ogilvie1976}, \cref{eq:dunhamA1,eq:dunhamA2}
+    \cite{Herschbach1961} and \cref{eq:dunhamA3}.
+    \cite{Noorizadeh2004}.
+    \begin{subequations}\label{eq:dunhamCoefficients}
+        \begin{align}
+            a_0 &= \frac{\omega_e^2}{4B_e} \label{eq:dunhamA0} \\
+            a_1 &= -1 - \frac{\alpha_e\omega_e}{6B_e^2}\label{eq:dunhamA1} \\
+            a_2 &= \frac{5}{4}a_1^2 -
+            \frac{2}{3}\Parenthesis{\frac{\omega_ex_e}{B_e}}\label{eq:dunhamA2} \\
+            a_m &= \Parenthesis{\frac{12}{a_1}}^{m-2} \Parenthesis{2^{m+1}-1 }\Parenthesis{ \frac{a_2}{7}}^{m-1}\prod_{k=0}^{m-3}\frac{1}{m+2 – k} \label{eq:dunhamA3}
+        \end{align}
+    \end{subequations}
 
     The \gls{ZPE} was calculated using \cref{eq:zpe} provided in
     \cite{Irikura2007}. The \gls{ZPE} is the lowest possible energy that a
