@@ -201,13 +201,17 @@
         mechanics, the partition function is used to calculate the heat
         capacities of the system, which are then used to calculate macro
         properties such as heat transfer and temperature, which are employed in
-        fluid dynamics. \cref{fig:ch2HeatCapacity} shows the change in heat capacity when
-        additional \glspl{dof} are accessible.
-
+        fluid dynamics. 
         \begin{equation}\label{eq:partitionFunction} 
             Z = \sum_{i}g_ie^{\beta \varepsilon_i}
         \end{equation}
+        The thermodynamic beta is given by \cref{eq:thermodynamicBeta}
+        \begin{equation}\label{eq:thermodynamicBeta}
+            \beta = \frac{1}{k_B T}
+        \end{equation}
 
+        \noindent \cref{fig:ch2HeatCapacity} shows the change in heat capacity when
+        additional \glspl{dof} are accessible.
         \pic{1.0}{chapter2/heatCapacity}{Heat Capacity}{fig:ch2HeatCapacity}
 
         Under these conditions, the calorically perfect gas approximation becomes unsuitable, as it neglects key thermochemical effects that arise at high velocities \cref{fig:caloricallyPerfectGas} illustrates the pre- and post-shock temperatures across various altitudes. As expected, at high speeds, the calorically perfect gas model underestimates the temperature increase across the shock.
@@ -261,55 +265,6 @@
             \caption{Velocity-altitude trajectories for different hypersonic
             flight systems}\label{fig:ch2flightSpeedAltitude}
         \end{figure}
-
-% MAYBE MAKE A QM CHAPTER %
-    The frequencies of transitions between electronic levels lie in the
-    visible and ultraviolet, the vibrational transition in the infrared, and
-    the rotation transition in the far infrared \cite{Schwabl2007}.
-    \cref{fig:energySpectrum} shows the energy spectrum, this work will stay in
-    the low visible light, so the electron transitions can be ignored. 
-
-    \begin{figure}[H]
-            \makebox[\textwidth][c]{
-                \includegraphics[width=1.0\textwidth]{chapter2/energySpectrum}
-            }
-            \caption{Energy spectrum}\label{fig:energySpectrum}
-    \end{figure}
-
-    The \textit{Hamiltonian} of the system can be approximated using the
-    \textit{Born}-\textit{Oppenheimer} approximation, which separates the
-    motion of the nuclei and the motion of the electrons based on the fact that
-    nuclei are much heavier and thus move much more slowly than electrons
-    \cite{McNab2017}. The vibrational energy and rotational energy are calculated using
-    \cref{eq:vibrationalEnergy} and \cref{eq:rotationalEnergy}. Many textbooks
-    \todo{Cite textbooks} do not add the second term to these equations. These
-    terms come from perturbation theory and are called the \textit{anharmonic}
-    terms \todo{Find Reference}.
-    
-    \begin{subequations}\label{eq:vibrationalRotationalEnergies}
-        \begin{align}
-            \varepsilon_{trans} &= \label{eq:tranlationalEnergy} \\
-            \varepsilon_{vib} &=
-            \Parenthesis{\omega_e\Parenthesis{v + \frac{1}{2}}
-                -\omega_ex_e\Parenthesis{v + \frac{1}{2}}^2} \UnitsFrac{1}{cm} \label{eq:vibrationalEnergy} \\
-            \varepsilon_{rot} &= \Parenthesis{B_e -
-            \alpha_e\Parenthesis{v +
-            \frac{1}{2}}}J\Parenthesis{J+1}\UnitsFrac{1}{cm}\label{eq:rotationalEnergy}
-        \end{align}
-    \end{subequations}
-
-    \todo{Figure where to add this \cite{Gupta2016}}
-
-    The Boltzmann distribution, which describes the particle distribution over different energy states at thermal equilibrium, is applied to calculate the energy levels as a function of the vibrational quantum number. This distribution is given in \cref{eq:boltzmanDistribution}.
- 
-    \begin{equation}\label{eq:boltzmanDistribution}
-        P(\varepsilon) = \frac{g_i e^{-\beta \mathcal{H}}}{Z}
-    \end{equation}
- 
-    It should be noted that in a system of harmonic oscillators, the
-    vibrational energy relaxes through a series of Boltzmann distributions.
-    However, this is not the case for anharmonic oscillators
-    \cite{Anketell1974}. Therefore, for this approach, it is assumed that the system contains only harmonic oscillators and the anharmonic $\Parenthesis{\omega_ex_e}$ term in vibrational energy equation REFEQ and the anharmonic $\Parenthesis{\alpha_e}$ in the rotational energy equation are set to zero.
 
 
 

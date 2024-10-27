@@ -1,0 +1,123 @@
+\section{Quantum Mechanics Overview \label{ch2:quantumMechanicsOverview}}
+    \begin{table}[H]
+        \makebox[\linewidth][c]{
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                Molecule & $\omega_e\Units{cm^{-1}}$ & $\omega_e
+                x_e\Units{cm^{-1}}$ &  $\omega_e y_e\Units{cm^{-1}}$ &
+                $B_e\Units{cm^{-1}}$ & $\alpha_e\Units{cm^{-1}}$ & ZPE
+                $\Units{cm^{-1}}$ \\ 
+                \hline\hline
+                $NO+$ & $2376.72$ & $16.255$ & $-0.01562$ & $1.997195$ &
+                $0.018790$ & $1184.33$ \\ \hline
+                $N2+$ & $2207.0115$ & $16.0616$ & $-0.04289$ & $1.93176$ &
+                $0.0181$ & $1099.40$ \\ \hline 
+                $O2+$ & $1905.892$ & $16.489$ & $0.02057$ & $1.689824$ &
+                $0.019363$ & $948.91$ \\ \hline
+                $NO$ & $1904.1346$ & $14.08836$ & $0.01005$ & $1.704885$ &
+                $0.0175416$ & $948.647$ \\ \hline
+                $N2$ & $2358.57$ & $14.324$ & $-0.00226$ & $1.99824$ &
+                $0.017318$ & $1175.78$ \\ \hline
+                $O2$ & $1580.161$ & $11.95127$ & $0.0458489$ & $1.44562$ &
+                $0.0159305$ & $787.380$ \\ \hline 
+            \end{tabular}
+        }
+            \caption{Spectroscopy constants \cite{Irikura2007}\label{tab:spectroscopyConstant}}
+    \end{table}
+
+    Some authors refer the constants in \cref{tab:spectroscopyConstant}
+    as the \textit{Dunham} coefficients \cite{Dunham1932} $\Parenthesis{Y_{ij}
+    = Y_{vJ}}$ \cite{Chandra2005}. However, in the literature these
+    coefficients can be called the \textit{Duhham} potential
+    coefficients which are not the same. Ogilvie \cite{Ogilvie1976} called the
+    $Y_{vJ}$ \textit{energy-coefficients} and $a_m$ the \textit{Dunham} potential
+    coefficients, these will be the convention that we will use for the rest of
+    this work.
+    \Cref{eq:dunhamCoefficients} provides a relationship between the
+    energy coefficients and the spectroscopy constants found in
+    \cref{tab:spectroscopyConstant}.
+    \begin{equation}\label{eq:dunhamCoefficients}
+        Y_{10} = \omega_e,\; Y_{20} = -\omega_ex_e,\; Y_{30} = \omega_ey_e, \;
+        Y_{01} = B_e,\; Y_{11} = -\alpha_e
+    \end{equation}
+
+    The \textit{Dunham} potential coefficients are found using
+    \cref{eq:dunhamA0} \cite{Ogilvie1976}, \cref{eq:dunhamA1,eq:dunhamA2}
+    \cite{Herschbach1961} and \cref{eq:dunhamA3}.
+    \cite{Noorizadeh2004}.
+    \begin{subequations}\label{eq:dunhamCoefficients}
+        \begin{align}
+            a_0 &= \frac{\omega_e^2}{4B_e} \label{eq:dunhamA0} \\
+            a_1 &= -\Parenthesis{1 + \frac{\alpha_e\omega_e}{6B_e^2}}\label{eq:dunhamA1} \\
+            a_2 &= \frac{5}{4}a_1^2 -
+            \frac{2}{3}\Parenthesis{\frac{\omega_ex_e}{B_e}}\label{eq:dunhamA2} \\
+            a_m &= \Parenthesis{\frac{12}{a_1}}^{m-2} \Parenthesis{2^{m+1}-1 }\Parenthesis{ \frac{a_2}{7}}^{m-1}\prod_{k=0}^{m-3}\frac{1}{m+2 – k} \label{eq:dunhamA3}
+        \end{align}
+    \end{subequations}
+
+
+    \begin{table}[H]
+        \makebox[\linewidth][c]{
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                Molecule & $a_0\times 10^{5}$ & $a_1$ & $a_2$ & $a_3$ \\ 
+                \hline\hline
+                $NO+$ & $7.071$ & $-2.866$ & $4.842$ & $-6.009$ \\ \hline
+                $N2+$ & $6.304$ & $-2.784$ & $4.146$ & $-4.536$ \\ \hline 
+                $O2+$ & $5.374$ & $-3.154$ & $5.929$ & $-8.189$ \\ \hline 
+                $NO$ & $5.317$ & $-2.915$ & $5.114$ & $-6.592$ \\ \hline 
+                $N2$ & $6.960$ & $-2.705$ & $4.367$ & $-5.179$ \\ \hline
+                $O2$ & $4.318$ & $-3.008$ & $5.795$ & $-8.205$ \\ \hline
+            \end{tabular}
+        }
+            \caption{Potential \textit{Dunham} coefficients, \cref{eq:dunhamCoefficients}}\label{tab:potentialDunhamCoefficients}
+    \end{table}
+
+    
+    The frequencies of transitions between electronic levels lie in the
+    visible and ultraviolet, the vibrational transition in the infrared, and
+    the rotation transition in the far infrared \cite{Schwabl2007}.
+    \cref{fig:energySpectrum} shows the energy spectrum, this work will stay in
+    the low visible light, so the electron transitions can be ignored. 
+
+    \begin{figure}[H]
+            \makebox[\textwidth][c]{
+                \includegraphics[width=1.0\textwidth]{chapter2/energySpectrum}
+            }
+            \caption{Energy spectrum}\label{fig:energySpectrum}
+    \end{figure}
+
+    The \textit{Hamiltonian} of the system can be approximated using the
+    \textit{Born}-\textit{Oppenheimer} approximation, which separates the
+    motion of the nuclei and the motion of the electrons based on the fact that
+    nuclei are much heavier and thus move much more slowly than electrons
+    \cite{McNab2017}. The vibrational energy and rotational energy are calculated using
+    \cref{eq:vibrationalEnergy} and \cref{eq:rotationalEnergy}. Many textbooks
+    \todo{Cite textbooks} do not add the second term to these equations. These
+    terms come from perturbation theory and are called the \textit{anharmonic}
+    terms \todo{Find Reference}.
+    
+    \begin{subequations}\label{eq:vibrationalRotationalEnergies}
+        \begin{align}
+            \varepsilon_{trans} &= \label{eq:tranlationalEnergy} \\
+            \varepsilon_{vib} &=
+            \Parenthesis{\omega_e\Parenthesis{v + \frac{1}{2}}
+                -\omega_ex_e\Parenthesis{v + \frac{1}{2}}^2} \UnitsFrac{1}{cm} \label{eq:vibrationalEnergy} \\
+            \varepsilon_{rot} &= \Parenthesis{B_e -
+            \alpha_e\Parenthesis{v +
+            \frac{1}{2}}}J\Parenthesis{J+1}\UnitsFrac{1}{cm}\label{eq:rotationalEnergy}
+        \end{align}
+    \end{subequations}
+
+    \todo{Figure where to add this \cite{Gupta2016}}
+
+    The Boltzmann distribution, which describes the particle distribution over different energy states at thermal equilibrium, is applied to calculate the energy levels as a function of the vibrational quantum number. This distribution is given in \cref{eq:boltzmanDistribution}.
+ 
+    \begin{equation}\label{eq:boltzmanDistribution}
+        P(\varepsilon) = \frac{g_i e^{-\beta \mathcal{H}}}{Z}
+    \end{equation}
+ 
+    It should be noted that in a system of harmonic oscillators, the
+    vibrational energy relaxes through a series of Boltzmann distributions.
+    However, this is not the case for anharmonic oscillators
+    \cite{Anketell1974}. Therefore, for this approach, it is assumed that the system contains only harmonic oscillators and the anharmonic $\Parenthesis{\omega_ex_e}$ term in vibrational energy equation REFEQ and the anharmonic $\Parenthesis{\alpha_e}$ in the rotational energy equation are set to zero.

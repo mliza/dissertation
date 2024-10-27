@@ -152,72 +152,12 @@
     \pic{0.8}{chapter2/polKerl_633nm}{Polarizability for a wavelength of
     $633\Units{nm}$}{fig:kerlPolarizabilityT}
 
-
-
     Tropina \cite{Tropina2018, Tropina2020} and Anaya \cite{Anaya2023} have
     demonstrated an influence of vibrational energy modes on polarizability.
-    Kerl \cite{Hohm1986} and Buldakov \cite{Buldakov2000a} have
-
-    demonstrated a temperature dependency in the polarizability. 
+    Kerl \cite{Hohm1986} and Buldakov \cite{Buldakov2000a} have demonstrated a temperature dependency in the polarizability. 
 
 
-
-    \begin{table}[H]
-        \makebox[\linewidth][c]{
-            \begin{tabular}{|c|c|c|c|c|c|c|}
-                \hline
-                Molecule & $\omega_e\Units{cm^{-1}}$ & $\omega_e
-                x_e\Units{cm^{-1}}$ &  $\omega_e y_e\Units{cm^{-1}}$ &
-                $B_e\Units{cm^{-1}}$ & $\alpha_e\Units{cm^{-1}}$ & ZPE
-                $\Units{cm^{-1}}$ \\ 
-                \hline\hline
-                $NO+$ & $2376.72$ & $16.255$ & $-0.01562$ & $1.997195$ &
-                $0.018790$ & $1184.33$ \\ \hline
-                $N2+$ & $2207.0115$ & $16.0616$ & $-0.04289$ & $1.93176$ &
-                $0.0181$ & $1099.40$ \\ \hline 
-                $O2+$ & $1905.892$ & $16.489$ & $0.02057$ & $1.689824$ &
-                $0.019363$ & $948.91$ \\ \hline
-                $NO$ & $1904.1346$ & $14.08836$ & $0.01005$ & $1.704885$ &
-                $0.0175416$ & $948.647$ \\ \hline
-                $N2$ & $2358.57$ & $14.324$ & $-0.00226$ & $1.99824$ &
-                $0.017318$ & $1175.78$ \\ \hline
-                $O2$ & $1580.161$ & $11.95127$ & $0.0458489$ & $1.44562$ &
-                $0.0159305$ & $787.380$ \\ \hline 
-            \end{tabular}
-        }
-            \caption{Spectroscopy constants \cite{Irikura2007}\label{tab:spectroscopyConstant}}
-    \end{table}
-
-    Some authors refer the constants in \cref{tab:spectroscopyConstant}
-    as the \textit{Dunham} coefficients \cite{Dunham1932} $\Parenthesis{Y_{ij}
-    = Y_{vJ}}$ \cite{Chandra2005}. However, in the literature these
-    coefficients can be called the \textit{Duhham} potential
-    coefficients which are not the same. Ogilvie \cite{Ogilvie1976} called the
-    $Y_{vJ}$ \textit{energy-coefficients} and $a_m$ the \textit{Dunham} potential
-    coefficients, these will be the convention that we will use for the rest of
-    this work.
-    \Cref{eq:dunhamCoefficients} provides a relationship between the
-    energy coefficients and the spectroscopy constants found in
-    \cref{tab:spectroscopyConstant}.
-    \begin{equation}\label{eq:dunhamCoefficients}
-        Y_{10} = \omega_e,\; Y_{20} = -\omega_ex_e,\; Y_{30} = \omega_ey_e, \;
-        Y_{01} = B_e,\; Y_{11} = -\alpha_e
-    \end{equation}
-
-    The \textit{Dunham} potential coefficients are found using
-    \cref{eq:dunhamA0} \cite{Ogilvie1976}, \cref{eq:dunhamA1,eq:dunhamA2}
-    \cite{Herschbach1961} and \cref{eq:dunhamA3}.
-    \cite{Noorizadeh2004}.
-    \begin{subequations}\label{eq:dunhamCoefficients}
-        \begin{align}
-            a_0 &= \frac{\omega_e^2}{4B_e} \label{eq:dunhamA0} \\
-            a_1 &= -1 - \frac{\alpha_e\omega_e}{6B_e^2}\label{eq:dunhamA1} \\
-            a_2 &= \frac{5}{4}a_1^2 -
-            \frac{2}{3}\Parenthesis{\frac{\omega_ex_e}{B_e}}\label{eq:dunhamA2} \\
-            a_m &= \Parenthesis{\frac{12}{a_1}}^{m-2} \Parenthesis{2^{m+1}-1 }\Parenthesis{ \frac{a_2}{7}}^{m-1}\prod_{k=0}^{m-3}\frac{1}{m+2 – k} \label{eq:dunhamA3}
-        \end{align}
-    \end{subequations}
-
+\iffalse
     The \gls{ZPE} was calculated using \cref{eq:zpe} provided in
     \cite{Irikura2007}. The \gls{ZPE} is the lowest possible energy that a
     quantum mechanical system may have. It has to be noted that this is only
@@ -263,7 +203,7 @@
         }
             \caption{Ground-state properties for diatomic molecule\label{tab:groundStateAngularFrequency}}
     \end{table}
-
+\fi
 
 
 
