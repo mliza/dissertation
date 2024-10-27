@@ -95,7 +95,7 @@
     The culprit for this discrepancy is the polarizability, which refers to a molecule's tendency to develop a
     temporary dipole moment when exposed to an electric field. In other words,
     polarizability measures how easily a molecule's electron cloud can be
-    distorted or shifted in response to an electric field. The greater the
+    distorted or shifted in response to an electric field \cite{Kittel2004}. The greater the
     polarizability, the more easily the electron cloud can be distorted.
     \cref{fig:ch2Polarizability} shows the polarizability of a molecule when
     an electric field is applied to it.
@@ -111,11 +111,22 @@
     to the nucleus. The ionic polarizability arises from the displacement of
     charged ions with respect to other ions. The dipolar polarizability arises
     from molecules with a permanent electric dipole moment that can change
-    orientation in an applied field \cite{Kittel2004}.
+    orientation in an applied field \cite{Kittel2004}. 
 
     \pic{1.7}{chapter2/frequencyDependencePolarizability}{Frequency of the
     several contributions to
     polarizability}{fig:ch2FrequencyDependencePolarizability}
+
+    It has to be noted that polarizability it is a tensor but for cases of weak
+    electric fields the rotational invariant polrizability
+    \cref{eq:rotationalInvariantPolarizability}, which is one-third of the
+    second-rank polarizability tensor is a good approximation. For
+    high electric fields (non-linear optics), as well as electric multipole moments, the higher-order polarizabilities
+    (hyper-polarizabilities), become important \cite{Hohm1986}.
+
+    \begin{equation}\label{eq:rotationalInvariantPolarizability}
+        \alpha = \frac{\alpha_{xx} + \alpha_{yy} + \alpha_{zz}}{3}
+    \end{equation}
 
     Traditionally the polarizability of air it is thought to be only a function of
     the frequencies. However, for the cases of hypersonic flows this is
