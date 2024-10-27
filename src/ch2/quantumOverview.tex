@@ -1,4 +1,16 @@
 \section{Quantum Mechanics Overview \label{ch2:quantumMechanicsOverview}}
+    
+    Buldakov \cite{Buldakov2000a} postulated a formulation for polarizability
+    for diatomic molecules based on a assuming that the near the equilibrium
+    and it is given in \cref{eq:polarizabilityDistance}. \Cref{app:buldakovExpansion} has the full expansion
+    \todo{Add full equation to appendicies}
+
+    \begin{equation}\label{eq:polarizabilityDistance}
+        \alpha(\omega, T) = \sum_{vJ} \Parenthesis{\frac{N_{vJ}(T)}{N_0}}
+        \bra{v,J}\alpha^{(i)}(r,\omega)\ket{v,J}
+    \end{equation}
+ 
+    
     \begin{table}[H]
         \makebox[\linewidth][c]{
             \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -114,7 +126,7 @@
     The Boltzmann distribution, which describes the particle distribution over different energy states at thermal equilibrium, is applied to calculate the energy levels as a function of the vibrational quantum number. This distribution is given in \cref{eq:boltzmanDistribution}.
  
     \begin{equation}\label{eq:boltzmanDistribution}
-        \frac{N_i}{N_0} = \frac{g_i e^{-\beta \mathcal{H_i}}}{Z}
+        \frac{N_{vJ}}{N_0} = \frac{g_{vJ} e^{-\beta \mathcal{H}_{vJ}}}{Z}
     \end{equation}
  
     It should be noted that in a system of harmonic oscillators, the
