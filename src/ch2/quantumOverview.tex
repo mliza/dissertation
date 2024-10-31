@@ -2,13 +2,32 @@
     
     Buldakov \cite{Buldakov2000a} postulated a formulation for polarizability
     for diatomic molecules based on a assuming that the near the equilibrium
-    and it is given in \cref{eq:polarizabilityDistance}. \Cref{app:buldakovExpansion} has the full expansion
-    \todo{Add full equation to appendicies}
-
+    and it is given in \cref{eq:polarizabilityDistance}.
+    \Cref{app:buldakovExpansion} has the full expansion,
+    \cref{tab:polarizabilityDerivatives} shows the polarizability derivative
+    constants used in the Buldakov method.
     \begin{equation}\label{eq:polarizabilityDistance}
-        \alpha(\omega, T) = \sum_{vJ} \Parenthesis{\frac{N_{vJ}(T)}{N_0}}
+        \alpha(\omega, T) = \sum_{vJ} p_{v,J}(T)
         \bra{v,J}\alpha^{(i)}(r,\omega)\ket{v,J}
     \end{equation}
+
+    \begin{table}[H]
+        \makebox[\linewidth][c]{
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                Molecule & $\alpha_e \times 10^{-30}\Units{m^3}$ &
+                $\alpha_e^{\prime}
+                \times 10^{-30}\Units{m^3}$ &  $\alpha_e^{\prime\prime} \times
+                10^{-30}\Units{m^3}$ & $\alpha_e^{\prime\prime\prime} \times 10^{-30}\Units{m^3}$\\
+                \hline\hline
+                $N2$ & $1.7801$ & $1.860$ & $1.20$ & $-4.60$ \\ \hline
+                $O2$ & $1.6180$ & $1.760$ & $3.40$ & $23.70$ \\ \hline
+            \end{tabular}
+            }
+            \caption{Polarizability derivatives
+            \cite{Buldakov2000a}}\label{tab:polarizabilityDerivatives}
+    \end{table}
+
  
     
     \begin{table}[H]
@@ -46,10 +65,10 @@
     $Y_{vJ}$ \textit{energy-coefficients} and $a_m$ the \textit{Dunham} potential
     coefficients, these will be the convention that we will use for the rest of
     this work.
-    \Cref{eq:dunhamCoefficients} provides a relationship between the
+    \Cref{eq:dunhamEnergyCoefficients} provides a relationship between the
     energy coefficients and the spectroscopy constants found in
     \cref{tab:spectroscopyConstant}.
-    \begin{equation}\label{eq:dunhamCoefficients}
+    \begin{equation}\label{eq:dunhamEnergyCoefficients}
         Y_{10} = \omega_e,\; Y_{20} = -\omega_ex_e,\; Y_{30} = \omega_ey_e, \;
         Y_{01} = B_e,\; Y_{11} = -\alpha_e
     \end{equation}
@@ -58,7 +77,7 @@
     \cref{eq:dunhamA0} \cite{Ogilvie1976}, \cref{eq:dunhamA1,eq:dunhamA2}
     \cite{Herschbach1961} and \cref{eq:dunhamA3}.
     \cite{Noorizadeh2004}.
-    \begin{subequations}\label{eq:dunhamCoefficients}
+    \begin{subequations}\label{eq:dunhamPotentialCoefficients}
         \begin{align}
             a_0 &= \frac{\omega_e^2}{4B_e} \label{eq:dunhamA0} \\
             a_1 &= -\Parenthesis{1 + \frac{\alpha_e\omega_e}{6B_e^2}}\label{eq:dunhamA1} \\
@@ -89,7 +108,8 @@
                 $O2$ & $4.318$ & $-3.008$ & $5.795$ & $-8.205$ \\ \hline
             \end{tabular}
         }
-            \caption{Potential \textit{Dunham} coefficients, \cref{eq:dunhamCoefficients}}\label{tab:potentialDunhamCoefficients}
+            \caption{Potential \textit{Dunham} coefficients,
+            \cref{eq:dunhamPotentialCoefficients}}\label{tab:potentialDunhamCoefficients}
     \end{table}
 
     
@@ -107,7 +127,7 @@
     \end{figure}
 
     The \textit{Hamiltonian} of the system can be approximated using the
-    \textit{Born}-\textit{Oppenheimer} approximation, which separates the
+    \textit{Born}-\textit{Oppenheimer} approximation \cref{eq:bornOppenheimer}, which separates the
     motion of the nuclei and the motion of the electrons based on the fact that
     nuclei are much heavier and thus move much more slowly than electrons
     \cite{McNab2017}. The vibrational energy and rotational energy are calculated using
@@ -115,6 +135,13 @@
     \todo{Cite textbooks} do not add the second term to these equations. These
     terms come from perturbation theory and are called the \textit{anharmonic}
     terms \todo{Find Reference}.
+    \begin{equation}\label{eq:bornOppenheimer}
+        \resizebox{.9\hsize}{!}{$E_{v,J} = \underbrace{\omega_e \Parenthesis{v + \frac{1}{2}} + B_eJ\Parenthesis{J +
+        1}}_{\text{Harmonic}}  - \overbrace{\omega_e x_e\Parenthesis{v +
+        \frac{1}{2}}^2 + D_e J^2\Parenthesis{J + 1}^2 }^{\text{Anharmonic}} -
+        \underbrace{\alpha_e\Parenthesis{v + \frac{1}{2}} J\Parenthesis{ J +
+        1}}_{\text{Vibration-rotation interaction}}$}
+    \end{equation}
     
     \begin{subequations}\label{eq:vibrationalRotationalEnergies}
         \begin{align}
@@ -139,7 +166,7 @@
         numbers, there are more possible "energy buckets" available for energy
         distribution, leading to increased entropy. \\
  
-Temperature, which is defined as the average kinetic energy of the molecules,
+    Temperature, which is defined as the average kinetic energy of the molecules,
 correlates directly with the entropy of a system. At higher temperatures,
 molecules possess more kinetic energy that can be distributed among various
 degrees of freedom, including translational, rotational, and vibrational modes.
@@ -154,15 +181,12 @@ The energy distribution of a system in thermal equilibrium can be mathematically
     energy levels as a function of the vibrational quantum number. This
     probability distribution is given in \cref{eq:boltzmanDistribution}.
  
-    \todo{FIX ME TYPO}
-\iffalse
     \begin{equation}\label{eq:boltzmanDistribution}
-        p_{i,j} = \frac{g_je^{-E_{v,J}}}{Z} = \frac{\Parenthesis{2J +
-        1}e^{-\beta\Parethesis{\varepsilon_i +
+        p_{i,j} = \frac{g_je^{-\beta E_{v,J}}}{Z} = \frac{\Parenthesis{2J +
+        1}e^{-\beta\Parenthesis{\varepsilon_i +
         \varepsilon_j}}}{\sum_{v,J}\Parenthesis{2J +
-        1}e^{-\beta\Parenthesis{\varepsilon_v -\varepsilon_J}}}
+        1}e^{-\beta\Parenthesis{\varepsilon_v +\varepsilon_J}}}
     \end{equation}
-\fi
  
     It should be noted that in a system of harmonic oscillators, the
     vibrational energy relaxes through a series of Boltzmann distributions.
