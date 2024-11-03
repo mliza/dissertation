@@ -69,8 +69,11 @@
     energy coefficients and the spectroscopy constants found in
     \cref{tab:spectroscopyConstant}.
     \begin{equation}\label{eq:dunhamEnergyCoefficients}
-        Y_{10} = \omega_e,\; Y_{20} = -\omega_ex_e,\; Y_{30} = \omega_ey_e, \;
-        Y_{01} = B_e,\; Y_{11} = -\alpha_e
+        \begin{aligned}
+            Y_{10} &= \omega_e      & Y_{01} &= B_e \\
+            Y_{20} &= -\omega_ex_e  & Y_{11} &= -\alpha_e \\
+            Y_{30} &= \omega_ey_e   & Y_{02} &= D_e
+        \end{aligned}
     \end{equation}
 
     The \textit{Dunham} potential coefficients are found using
