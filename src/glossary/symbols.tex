@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %           Symbols         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %https://tex.stackexchange.com/questions/537607/how-to-make-a-custom-list-of-symbols-with-separated-greek-and-roman-symbols
@@ -6,10 +6,9 @@
 %\glsxtrnewsymbol[description={ }]{ }{\ensuremath{ }}
 
 
-
 % Roman
 \newglossaryentry{rommanletter}{
-    name={\Large{\textbf{Roman letters}}},
+    name={\Large{\textbf{Roman Letters}}},
     description={\nopostdesc},
     sort={1},
     type=symbols,
@@ -23,6 +22,7 @@ medium}]{cM}{\ensuremath{c_m}}
 pressure}]{heatCapacityP}{\ensuremath{c_p}}
 \glsxtrnewsymbol[description={Heat capacity at constant
 volume}]{heatCapacityV}{\ensuremath{c_v}}
+\glsxtrnewsymbol[description={Centrifugal distortion constant$\Units{cm^{-1}}$}]{De}{\ensuremath{D_e}}
 \glsxtrnewsymbol[description={Internal energy}]{internalEnergy}{\ensuremath{e}}
 \glsxtrnewsymbol[description={Electronic energy}]{electronicEnergy}{\ensuremath{\mathcal{E}_{elect}}}
 \glsxtrnewsymbol[description={Kinetic energy}]{kineticEnergy}{\ensuremath{\mathcal{E}_{kinetic}}}
@@ -38,6 +38,8 @@ energy}]{translationalEnergy}{\ensuremath{\mathcal{E}_{trans}}}
 \glsxtrnewsymbol[description={Rotational quantum number}]{J}{\ensuremath{J}}
 \glsxtrnewsymbol[description={Pressure}]{p}{\ensuremath{p}}
 \glsxtrnewsymbol[description={Index of refraction}]{n}{\ensuremath{n}}
+\glsxtrnewsymbol[description={Equilibrium internuclear
+distance$\Units{\r{A}}$}]{Re}{\ensuremath{r_e}}
 \glsxtrnewsymbol[description={Source terms}]{Q}{\ensuremath{\mathcal{Q}}}
 \glsxtrnewsymbol[description={Gas
 Constant$\Parenthesis{8.3145\UnitsFrac{J}{mol\,K}}$}]{R}{\ensuremath{R}}
@@ -50,7 +52,7 @@ variables}]{U}{\ensuremath{\mathcal{U}}}
 
 
 \newglossaryentry{greekletter}{
-    name={\Large{\textbf{Greek letters}}},
+    name={\Large{\textbf{Greek Letters}}},
     description={\nopostdesc},
     sort={2},
     type=symbols,
@@ -93,6 +95,13 @@ frequency}]{omega0}{\ensuremath{\omega_0}}
     sort={3},
     type=symbols,
 }
+\newglossaryentry{kB}{
+    name={\ensuremath{k_B}},
+    description={Boltzmann constant $1.38\times10^{-23}\UnitsFrac{J}{K}$},
+    parent=Constants,
+    type=symbols,
+    sort={kB}
+}
 
 \newglossaryentry{Subscripts}{
     name={\Large{\textbf{Subscripts}}},
@@ -112,10 +121,7 @@ frequency}]{omega0}{\ensuremath{\omega_0}}
 % This is a place holder we might not need it 
 %https://webbook.nist.gov/cgi/cbook.cgi?ID=C7727379&Units=SI&Mask=1000#Diatomic
 \glsxtrnewsymbol[description={Minimum electronic energy$\Units{cm^{-1}}$}]{Te}{\ensuremath{T_e}}
-\glsxtrnewsymbol[description={Centrifugal distortion constant$\Units{cm^{-1}}$}]{De}{\ensuremath{D_e}}
 \glsxtrnewsymbol[description={Binding energy$\Units{eV}$}]{D0}{\ensuremath{D_0}}
-\glsxtrnewsymbol[description={Equilibrium internuclear
-distance$\Units{\r{A}}$}]{Re}{\ensuremath{r_e}}
 \glsxtrnewsymbol[description={Ionization potential$\Units{eV}$}]{IP}{\ensuremath{IP}}
 %\glsxtrnewsymbol[description={ }]{ }{\ensuremath{ }}
 %\glsxtrnewsymbol[description={ }]{ }{\ensuremath{ }}
