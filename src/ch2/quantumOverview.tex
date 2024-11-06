@@ -1,4 +1,98 @@
 \section{Quantum Mechanics Overview \label{ch2:quantumMechanicsOverview}}
+   Unlike Newtonian mechanics, Maxwell's electrodynamics, or Einstein's
+   relativity, \gls{QM} was not developed by a single individual \cite{Griffiths2018} but by multiple physicists,
+   including Planck, Bohr, Heisenberg, Schr\"{o}dinger, Dirac, and others.
+   To better understand the connection between hypersonic flows and optics,
+   an overview of \Gls{QM} is necessary. \\
+
+    As previously explained in \cref{ch2:hypersonicOverview}, in a hypersonic
+   flow, the \textit{Hamiltonian} \cref{eq:hamiltonianEnergyExpansion} of a
+   system must be modified. In molecular spectroscopy, the \Gls{BO}
+   approximation is used to represent the total energy of the system, as shown
+   in \cref{eq:bornOppenheimerApproximation}.
+    \begin{equation}\label{eq:bornOppenheimerApproximation}
+        \resizebox{.9\hsize}{!}{$E_{v,J} = \underbrace{\omega_e \Parenthesis{v + \frac{1}{2}} + B_eJ\Parenthesis{J +
+        1}}_{\text{Harmonic}}  - \overbrace{\omega_e x_e\Parenthesis{v +
+        \frac{1}{2}}^2 + D_e J^2\Parenthesis{J + 1}^2 }^{\text{Anharmonic}} -
+        \underbrace{\alpha_e\Parenthesis{v + \frac{1}{2}} J\Parenthesis{ J +
+        1}}_{\text{Vibration-rotation interaction}}$}
+    \end{equation}
+
+        This approximation separates the
+    motion of the nuclei and the motion of the electrons, based on the fact that
+    nuclei are much heavier and therefore move much more slowly than electrons
+    \cite{McNab2017}. Some textbooks \cite{Harris2008} use only the
+    \textit{Harmonic} terms from \cref{eq:bornOppenheimerApproximation} to
+    define the \textit{Hamiltonian}, which
+    is a good approximation near the ground state. The vibrational energy for
+    the \textit{harmonic} energy equation is given in
+    \cref{eq:vibrationalEnergy} for the vibrational term and in
+    \cref{eq:rotationalEnergy} for the rotational term. The additional terms come from perturbation theory and are called the \textit{anharmonic}
+    terms \cite{Griffiths2018}.
+    \begin{subequations}\label{eq:vibrationalRotationalEnergies}
+        \begin{align}
+            %\varepsilon_{trans} &= \label{eq:tranlationalEnergy} \\
+            \varepsilon_{vib} &=
+            \Parenthesis{\omega_e\Parenthesis{v + \frac{1}{2}}
+                -\omega_ex_e\Parenthesis{v + \frac{1}{2}}^2} \UnitsFrac{1}{cm} \label{eq:vibrationalEnergy} \\
+            \varepsilon_{rot} &= \Parenthesis{B_e -
+            \alpha_e\Parenthesis{v +
+            \frac{1}{2}}}J\Parenthesis{J+1}\UnitsFrac{1}{cm}\label{eq:rotationalEnergy}
+        \end{align}
+    \end{subequations}
+
+        \Cref{tab:spectroscopyConstant} provides the spectroscopy constants used to
+    calculate \cref{eq:bornOppenheimerApproximation}. These constants are given
+    in wavenumber units, which are sometimes called \textit{Kayser} units. These
+    units represent the number of wavelengths per centimeter
+    \cite{Townes2012}. 
+    \begin{table}[H]
+        \makebox[\linewidth][c]{
+            \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+                \hline
+                Molecule & $\omega_e\Units{cm^{-1}}$ & $\omega_e
+                x_e\Units{cm^{-1}}$ &  $\omega_e y_e\Units{cm^{-1}}$ &
+                $B_e\Units{cm^{-1}}$ & $\alpha_e\Units{cm^{-1}}$ & 
+                $D_e\Units{cm^{-1}}$ &
+                $r_e\Units{\r{A}}$ \\ 
+                \hline\hline
+                $NO+$ & $2376.72$ & $16.255$ & $-0.01562$ & $1.997195$ &
+                $0.018790$ & $5.64\mathrm{E}{-6}$ & $1.06322$ \\ \hline
+                $N2+$ & $2207.0115$ & $16.0616$ & $-0.04289$ & $1.93176$ &
+                $0.0181$ & $6.10\mathrm{E}{-6}$ & $1.11642$ \\ \hline 
+                $O2+$ & $1905.892$ & $16.489$ & $0.02057$ & $1.689824$ &
+                $0.019363$ & $5.32\mathrm{E}{-6}$ & $1.1164$ \\ \hline
+                $NO$ & $1904.1346$ & $14.08836$ & $0.01005$ & $1.704885$ &
+                $0.0175416$ & $0.54\mathrm{E}{-6}$ & $1.15077$ \\ \hline
+                $N2$ & $2358.57$ & $14.324$ & $-0.00226$ & $1.99824$ &
+                $0.017318$ & $5.76\mathrm{E}{-6}$ & $1.09768$ \\ \hline
+                $O2$ & $1580.161$ & $11.95127$ & $0.0458489$ & $1.44562$ &
+                $0.0159305$ & $4.839\mathrm{E}{-6}$ & $1.20752$ \\ \hline 
+            \end{tabular}
+        }
+            \caption{Spectroscopy constants \cite{Irikura2007, USDC2023}\label{tab:spectroscopyConstant}}
+    \end{table}
+    \textit{Kayser} units can be easily converted to energy
+    units of \textit{Joules} using \cref{eq:wavenumberToJoules} and to
+    \textit{electronvolts} using \cref{eq:wavenumberToElectronvolts}.
+    \begin{subequations}\label{eq:wavenumberToEnergy}
+        \begin{align}
+            \Units{J} &= \UnitsFrac{1}{cm} \times c_0 \UnitsFrac{m}{s} \times
+            2\pi\hbar\Units{J\,s} \times 100 \label{eq:wavenumberToJoules} \\
+            \Units{eV} &= \UnitsFrac{1}{cm} \times c_0 \UnitsFrac{m}{s} \times
+            2\pi\hbar\Units{J\,s} \times 100 \times \frac{1}{q_e} \Units{eV}
+            \label{eq:wavenumberToElectronvolts}
+        \end{align}
+    \end{subequations}
+    
+    \todo{Stopped Here}
+
+
+  
+    
+    
+
+    
     
     Buldakov \cite{Buldakov2000a} postulated a formulation for polarizability
     for diatomic molecules based on a assuming that the near the equilibrium
@@ -30,32 +124,6 @@
 
  
     
-    \begin{table}[H]
-        \makebox[\linewidth][c]{
-            \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-                \hline
-                Molecule & $\omega_e\Units{cm^{-1}}$ & $\omega_e
-                x_e\Units{cm^{-1}}$ &  $\omega_e y_e\Units{cm^{-1}}$ &
-                $B_e\Units{cm^{-1}}$ & $\alpha_e\Units{cm^{-1}}$ & 
-                $D_e\Units{cm^{-1}}$ &
-                $r_e\Units{\r{A}}$ \\ 
-                \hline\hline
-                $NO+$ & $2376.72$ & $16.255$ & $-0.01562$ & $1.997195$ &
-                $0.018790$ & $5.64\mathrm{E}{-6}$ & $1.06322$ \\ \hline
-                $N2+$ & $2207.0115$ & $16.0616$ & $-0.04289$ & $1.93176$ &
-                $0.0181$ & $6.10\mathrm{E}{-6}$ & $1.11642$ \\ \hline 
-                $O2+$ & $1905.892$ & $16.489$ & $0.02057$ & $1.689824$ &
-                $0.019363$ & $5.32\mathrm{E}{-6}$ & $1.1164$ \\ \hline
-                $NO$ & $1904.1346$ & $14.08836$ & $0.01005$ & $1.704885$ &
-                $0.0175416$ & $0.54\mathrm{E}{-6}$ & $1.15077$ \\ \hline
-                $N2$ & $2358.57$ & $14.324$ & $-0.00226$ & $1.99824$ &
-                $0.017318$ & $5.76\mathrm{E}{-6}$ & $1.09768$ \\ \hline
-                $O2$ & $1580.161$ & $11.95127$ & $0.0458489$ & $1.44562$ &
-                $0.0159305$ & $4.839\mathrm{E}{-6}$ & $1.20752$ \\ \hline 
-            \end{tabular}
-        }
-            \caption{Spectroscopy constants \cite{Irikura2007, USDC2023}\label{tab:spectroscopyConstant}}
-    \end{table}
 
     Some authors refer the constants in \cref{tab:spectroscopyConstant}
     as the \textit{Dunham} coefficients \cite{Dunham1932} $\Parenthesis{Y_{ij}
@@ -129,34 +197,6 @@
             \caption{Energy spectrum}\label{fig:energySpectrum}
     \end{figure}
 
-    The \textit{Hamiltonian} of the system can be approximated using the
-    \textit{Born}-\textit{Oppenheimer} approximation \cref{eq:bornOppenheimer}, which separates the
-    motion of the nuclei and the motion of the electrons based on the fact that
-    nuclei are much heavier and thus move much more slowly than electrons
-    \cite{McNab2017}. The vibrational energy and rotational energy are calculated using
-    \cref{eq:vibrationalEnergy} and \cref{eq:rotationalEnergy}. Many textbooks
-    \todo{Cite textbooks} do not add the second term to these equations. These
-    terms come from perturbation theory and are called the \textit{anharmonic}
-    terms \todo{Find Reference}.
-    \begin{equation}\label{eq:bornOppenheimer}
-        \resizebox{.9\hsize}{!}{$E_{v,J} = \underbrace{\omega_e \Parenthesis{v + \frac{1}{2}} + B_eJ\Parenthesis{J +
-        1}}_{\text{Harmonic}}  - \overbrace{\omega_e x_e\Parenthesis{v +
-        \frac{1}{2}}^2 + D_e J^2\Parenthesis{J + 1}^2 }^{\text{Anharmonic}} -
-        \underbrace{\alpha_e\Parenthesis{v + \frac{1}{2}} J\Parenthesis{ J +
-        1}}_{\text{Vibration-rotation interaction}}$}
-    \end{equation}
-    
-    \begin{subequations}\label{eq:vibrationalRotationalEnergies}
-        \begin{align}
-            \varepsilon_{trans} &= \label{eq:tranlationalEnergy} \\
-            \varepsilon_{vib} &=
-            \Parenthesis{\omega_e\Parenthesis{v + \frac{1}{2}}
-                -\omega_ex_e\Parenthesis{v + \frac{1}{2}}^2} \UnitsFrac{1}{cm} \label{eq:vibrationalEnergy} \\
-            \varepsilon_{rot} &= \Parenthesis{B_e -
-            \alpha_e\Parenthesis{v +
-            \frac{1}{2}}}J\Parenthesis{J+1}\UnitsFrac{1}{cm}\label{eq:rotationalEnergy}
-        \end{align}
-    \end{subequations}
 
     \todo{Figure where to add this \cite{Gupta2016}}
 
