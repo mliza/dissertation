@@ -85,22 +85,75 @@
         \end{align}
     \end{subequations}
     
-    \todo{Stopped Here}
+    Some authors refer to the constants in \cref{tab:spectroscopyConstant}
+    as the \textit{Dunham} coefficients \cite{Dunham1932} $\Parenthesis{Y_{ij}
+    = Y_{vJ}}$ \cite{Chandra2005}. However, in the literature, these
+    coefficients may also be referred to as the \textit{Dunham} potential
+    coefficients, which are not the same. Ogilvie \cite{Ogilvie1976} called the
+    $Y_{vJ}$ energy-coefficients and $a_m$ the \textit{Dunham} potential-coefficients. These conventions will be used for the remainder of
+    this work.\Cref{eq:dunhamEnergyCoefficients} provides a relationship between the
+    energy coefficients and the spectroscopy constants found in
+    \cref{tab:spectroscopyConstant}.
+    \begin{equation}\label{eq:dunhamEnergyCoefficients}
+        \begin{aligned}
+            Y_{10} &= \omega_e      & Y_{01} &= B_e \\
+            Y_{20} &= -\omega_ex_e  & Y_{11} &= -\alpha_e \\
+            Y_{30} &= \omega_ey_e   & Y_{02} &= D_e
+        \end{aligned}
+    \end{equation}
 
+    The \textit{Dunham} potential coefficients are found using
+    \cref{eq:dunhamA0} \cite{Ogilvie1976}, \cref{eq:dunhamA1,eq:dunhamA2}
+    \cite{Herschbach1961}, and \cref{eq:dunhamA3}
+    \cite{Noorizadeh2004}.
+    \begin{subequations}\label{eq:dunhamPotentialCoefficients}
+        \begin{align}
+            a_0 &= \frac{\omega_e^2}{4B_e} \label{eq:dunhamA0} \\
+            a_1 &= -\Parenthesis{1 + \frac{\alpha_e\omega_e}{6B_e^2}} \label{eq:dunhamA1} \\
+            a_2 &= \frac{5}{4}a_1^2 -
+            \frac{2}{3}\Parenthesis{\frac{\omega_ex_e}{B_e}} \label{eq:dunhamA2} \\
+            a_m &= \Parenthesis{\frac{12}{a_1}}^{m-2} \Parenthesis{2^{m+1}-1 }\Parenthesis{ \frac{a_2}{7}}^{m-1}\prod_{k=0}^{m-3}\frac{1}{m+2 - k} \label{eq:dunhamA3}
+        \end{align}
+    \end{subequations}
 
-  
-    
-    
+    \Cref{tab:potentialDunhamCoefficients} shows the \textit{Dunham} potential
+    coefficients for multiple diatomic constants using
+    \cref{eq:dunhamPotentialCoefficients}.
+    \begin{table}[H]
+        \makebox[\linewidth][c]{
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                Molecule & $a_0\times 10^{5}$ & $a_1$ & $a_2$ & $a_3$ \\ 
+                \hline\hline
+                $NO+$ & $7.071$ & $-2.866$ & $4.842$ & $-6.009$ \\ \hline
+                $N2+$ & $6.304$ & $-2.784$ & $4.146$ & $-4.536$ \\ \hline 
+                $O2+$ & $5.374$ & $-3.154$ & $5.929$ & $-8.189$ \\ \hline 
+                $NO$ & $5.317$ & $-2.915$ & $5.114$ & $-6.592$ \\ \hline 
+                $N2$ & $6.960$ & $-2.705$ & $4.367$ & $-5.179$ \\ \hline
+                $O2$ & $4.318$ & $-3.008$ & $5.795$ & $-8.205$ \\ \hline
+            \end{tabular}
+        }
+            \caption{Potential \textit{Dunham} coefficients,
+            \cref{eq:dunhamPotentialCoefficients}}\label{tab:potentialDunhamCoefficients}
+    \end{table}
 
-    
-    
-    Buldakov \cite{Buldakov2000a} postulated a formulation for polarizability
-    for diatomic molecules based on a assuming that the near the equilibrium
-    and it is given in \cref{eq:polarizabilityDistance}.
-    \Cref{app:buldakovExpansion} has the full expansion,
-    \cref{tab:polarizabilityDerivatives} shows the polarizability derivative
-    constants used in the Buldakov method.
-    \begin{equation}\label{eq:polarizabilityDistance}
+    Buldakov \cite{Buldakov2000a} postulated a formulation for
+    the polarizability of diatomic molecules, assuming that near the
+    equilibrium internuclear distance, the polarizability can be expressed as a
+    power series \cref{eq:buldakovPowerSeriesPolarizability}.
+    \begin{equation}\label{eq:buldakovPowerSeriesPolarizability}
+        \alpha(r,\omega) = \alpha_e + \alpha_e^{\prime}x +
+            \frac{1}{2}\alpha_e^{\prime\prime}x^2 +
+            \frac{1}{6}\alpha_e^{\prime\prime\prime}x^3
+    \end{equation}
+
+    Buldakov then expressed the polarizability of diatomic molecules using
+    \cref{eq:buldakovPolarizabilityDistance}. The full expansion of this
+    equation can be found in \cref{app:buldakovExpansion}.
+    \Cref{tab:polarizabilityDerivatives} shows the polarizability derivatives
+    used in this method, and it requires the \textit{Dunham}
+    potential-coefficients.
+    \begin{equation}\label{eq:buldakovPolarizabilityDistance}
         \alpha(\omega, T) = \sum_{vJ} p_{v,J}(T)
         \bra{v,J}\alpha^{(i)}(r,\omega)\ket{v,J}
     \end{equation}
@@ -122,83 +175,22 @@
             \cite{Buldakov2000a}}\label{tab:polarizabilityDerivatives}
     \end{table}
 
+   \todo{Stopped here} 
  
     
 
-    Some authors refer the constants in \cref{tab:spectroscopyConstant}
-    as the \textit{Dunham} coefficients \cite{Dunham1932} $\Parenthesis{Y_{ij}
-    = Y_{vJ}}$ \cite{Chandra2005}. However, in the literature these
-    coefficients can be called the \textit{Duhham} potential
-    coefficients which are not the same. Ogilvie \cite{Ogilvie1976} called the
-    $Y_{vJ}$ \textit{energy-coefficients} and $a_m$ the \textit{Dunham} potential
-    coefficients, these will be the convention that we will use for the rest of
-    this work.
-    \Cref{eq:dunhamEnergyCoefficients} provides a relationship between the
-    energy coefficients and the spectroscopy constants found in
-    \cref{tab:spectroscopyConstant}.
-    \begin{equation}\label{eq:dunhamEnergyCoefficients}
-        \begin{aligned}
-            Y_{10} &= \omega_e      & Y_{01} &= B_e \\
-            Y_{20} &= -\omega_ex_e  & Y_{11} &= -\alpha_e \\
-            Y_{30} &= \omega_ey_e   & Y_{02} &= D_e
-        \end{aligned}
-    \end{equation}
 
-    The \textit{Dunham} potential coefficients are found using
-    \cref{eq:dunhamA0} \cite{Ogilvie1976}, \cref{eq:dunhamA1,eq:dunhamA2}
-    \cite{Herschbach1961} and \cref{eq:dunhamA3}.
-    \cite{Noorizadeh2004}.
-    \begin{subequations}\label{eq:dunhamPotentialCoefficients}
-        \begin{align}
-            a_0 &= \frac{\omega_e^2}{4B_e} \label{eq:dunhamA0} \\
-            a_1 &= -\Parenthesis{1 + \frac{\alpha_e\omega_e}{6B_e^2}}\label{eq:dunhamA1} \\
-            a_2 &= \frac{5}{4}a_1^2 -
-            \frac{2}{3}\Parenthesis{\frac{\omega_ex_e}{B_e}}\label{eq:dunhamA2} \\
-            a_m &= \Parenthesis{\frac{12}{a_1}}^{m-2} \Parenthesis{2^{m+1}-1 }\Parenthesis{ \frac{a_2}{7}}^{m-1}\prod_{k=0}^{m-3}\frac{1}{m+2 – k} \label{eq:dunhamA3}
-        \end{align}
-    \end{subequations}
-
+\iffalse
     The gamma coefficient is given by \cref{eq:gammaRotational} and it is
     calculated using paper \cite{Bouanich1978}
     \begin{equation}\label{eq:gammaRotational}
         \gamma = \frac{2B_e}{\omega_e}
     \end{equation}
+\fi
 
 
-    \begin{table}[H]
-        \makebox[\linewidth][c]{
-            \begin{tabular}{|c|c|c|c|c|}
-                \hline
-                Molecule & $a_0\times 10^{5}$ & $a_1$ & $a_2$ & $a_3$ \\ 
-                \hline\hline
-                $NO+$ & $7.071$ & $-2.866$ & $4.842$ & $-6.009$ \\ \hline
-                $N2+$ & $6.304$ & $-2.784$ & $4.146$ & $-4.536$ \\ \hline 
-                $O2+$ & $5.374$ & $-3.154$ & $5.929$ & $-8.189$ \\ \hline 
-                $NO$ & $5.317$ & $-2.915$ & $5.114$ & $-6.592$ \\ \hline 
-                $N2$ & $6.960$ & $-2.705$ & $4.367$ & $-5.179$ \\ \hline
-                $O2$ & $4.318$ & $-3.008$ & $5.795$ & $-8.205$ \\ \hline
-            \end{tabular}
-        }
-            \caption{Potential \textit{Dunham} coefficients,
-            \cref{eq:dunhamPotentialCoefficients}}\label{tab:potentialDunhamCoefficients}
-    \end{table}
 
-    
-    The frequencies of transitions between electronic levels lie in the
-    visible and ultraviolet, the vibrational transition in the infrared, and
-    the rotation transition in the far infrared \cite{Schwabl2007}.
-    \cref{fig:energySpectrum} shows the energy spectrum, this work will stay in
-    the low visible light, so the electron transitions can be ignored. 
-
-    \begin{figure}[H]
-            \makebox[\textwidth][c]{
-                \includegraphics[width=1.0\textwidth]{chapter2/energySpectrum}
-            }
-            \caption{Energy spectrum}\label{fig:energySpectrum}
-    \end{figure}
-
-
-    \todo{Figure where to add this \cite{Gupta2016}}
+    \todo{Figure out where to add this \cite{Gupta2016}}
 
         A system is in thermodynamic equilibrium when the entropy of the system
         has reached its maximum possible value. Entropy is a measure of the
