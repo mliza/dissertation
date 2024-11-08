@@ -5,23 +5,40 @@
    To better understand the connection between hypersonic flows and optics,
    an overview of \Gls{QM} is necessary. \\
 
-    As previously explained in \cref{ch2:hypersonicOverview}, in a hypersonic
+   As previously explained in \cref{ch2:hypersonicOverview}, in a hypersonic
    flow, the \textit{Hamiltonian} \cref{eq:hamiltonianEnergyExpansion} of a
    system must be modified. In molecular spectroscopy, the \Gls{BO}
-   approximation is used to represent the total energy of the system, as shown
-   in \cref{eq:bornOppenheimerApproximation} \cite{Gupta2016}.
+   approximation is used to represent the total energy of the
+   system \cite{Gupta2016}. The \Gls{BO} assumes that the wave function of an
+   atomic nuclei and electrons in a molecule can be treated separately, base on
+   the fact that the nuclei are much heavier than the electrons
+   \cite{Lindon2016, McNab2017} and it is
+   shown in \cref{eq:bornOppWaveApprox}.
+   \begin{subequations}\label{eq:bornOppWaveApprox}
+       \begin{align}
+           \psi_{total} &= \psi_{elec}\,\psi_{vib}\,\psi_{rot}  \\
+            \mathcal{H} &= \varepsilon_{elec} + \varepsilon_{vib} + \varepsilon_{rot}
+       \end{align}
+    \end{subequations}
+
+   The vibration-rotation energy for a diatomic molecules approximated up to
+   the 2nd order is shown in \cref{eq:bornOppenheimerApproximation}, and the
+   general form using using the \textit{Dunham} energy coefficients is shown in
+   \cref{eq:rotVibrationalDunhamEnergy}.
     \begin{equation}\label{eq:bornOppenheimerApproximation}
         \resizebox{.9\hsize}{!}{$E_{v,J} = \underbrace{\omega_e \Parenthesis{v + \frac{1}{2}} + B_eJ\Parenthesis{J +
         1}}_{\text{Harmonic}}  - \overbrace{\omega_e x_e\Parenthesis{v +
-        \frac{1}{2}}^2 + D_e J^2\Parenthesis{J + 1}^2 }^{\text{Anharmonic}} -
+        \frac{1}{2}}^2 - D_e J^2\Parenthesis{J + 1}^2 }^{\text{Anharmonic}} -
         \underbrace{\alpha_e\Parenthesis{v + \frac{1}{2}} J\Parenthesis{ J +
         1}}_{\text{Vibration-rotation interaction}}$}
     \end{equation}
 
-        This approximation separates the
-    motion of the nuclei and the motion of the electrons, based on the fact that
-    nuclei are much heavier and therefore move much more slowly than electrons
-    \cite{McNab2017}. Some textbooks \cite{Harris2008} use only the
+    \begin{equation}\label{eq:rotVibrationalDunhamEnergy}
+        E_{vJ} = \sum_{i,j} Y_{ij}\Parenthesis{v + \frac{1}{2}}^i
+        J^j\Parenthesis{J + 1}^j
+    \end{equation}
+
+    Some textbooks \cite{Harris2008} use only the
     \textit{Harmonic} terms from \cref{eq:bornOppenheimerApproximation} to
     define the \textit{Hamiltonian}, which
     is a good approximation near the ground state. The vibrational energy for
@@ -33,11 +50,8 @@
         \begin{align}
             %\varepsilon_{trans} &= \label{eq:tranlationalEnergy} \\
             \varepsilon_{vib} &=
-            \Parenthesis{\omega_e\Parenthesis{v + \frac{1}{2}}
-                -\omega_ex_e\Parenthesis{v + \frac{1}{2}}^2} \UnitsFrac{1}{cm} \label{eq:vibrationalEnergy} \\
-            \varepsilon_{rot} &= \Parenthesis{B_e -
-            \alpha_e\Parenthesis{v +
-            \frac{1}{2}}}J\Parenthesis{J+1}\UnitsFrac{1}{cm}\label{eq:rotationalEnergy}
+            \omega_e\Parenthesis{v + \frac{1}{2}} \UnitsFrac{1}{cm} \label{eq:vibrationalEnergy} \\
+            \varepsilon_{rot} &= B_e J\Parenthesis{J+1} \UnitsFrac{1}{cm}\label{eq:rotationalEnergy}
         \end{align}
     \end{subequations}
 

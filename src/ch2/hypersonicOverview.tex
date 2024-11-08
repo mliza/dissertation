@@ -118,7 +118,17 @@
             For this gas, the \textit{perfect gas} equation \cref{eq:equationOfState} is
             no longer valid and a real gas equation such as the \textit{Van
             der Waals} \cref{eq:vanDerWallsEquation} can be used. $a$ and
-            $b$ are constants that depends on the type of gas.
+            $b$ are constants that depends on the type of gas.\\ 
+
+            The \textit{Van der Waals} model, makes two modifications to the ideal gas equation
+            \cref{eq:equationOfState}, adding a term to the pressure and
+            subtracting a term to the volume. The term modifying the pressure,
+            accounts for the short-range attractive forces between molecules
+            that are not touching (potential energy
+            repulsion). The term modifying the volume
+            ensures that the volume does not go down to infinity. The constant
+            $b$ represents the minimum volume occupied by a molecule when it is
+            "touching" all its neighbors \cite{Schroeder2021}.
             \begin{equation}\label{eq:vanDerWallsEquation}
                 \Parenthesis{p + \frac{a}{v^2}}\Parenthesis{v-b} = RT 
             \end{equation}
