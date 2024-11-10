@@ -1,11 +1,29 @@
 \section{Optics Overview \label{ch2:opticsOverview}}
-    \todo{Add historical background as an introduction}
-    The frequencies of transitions between electronic levels lie in the
-    visible and ultraviolet, the vibrational transition in the infrared, and
-    the rotation transition in the far infrared \cite{Schwabl2007}.
-    \Cref{fig:energySpectrum} shows the energy spectrum, this work will stay in
-    the low visible light, so the electron transitions can be ignored. 
+    The origins of optics trace back to the earliest foundations of science, as
+    ancient Greek philosophers like Pythagoras, Democritus, Empedocles, Plato,
+    Aristotle, and others formulated early theories on the nature of light
+    \cite{Hecht2017}. These early thinkers debated whether vision was the
+    result of "rays" emitted from the eye or light entering it from external
+    sources. In the $17^{th}$ century, Isaac Newton advanced the study of
+    optics with his proposal that "rays of light are very small bodies emitted
+    from shining substances." Around the same time, Christian Huygens proposed
+    an alternative description, suggesting that light is a "wave motion"
+    spreading out from its source in all directions \cite{Fowles1989}. Huygens
+    also correctly concluded that light slows down upon entering a denser
+    medium, a key insight distinguishing his wave theory from Newton's particle
+    theory. \\
 
+    The field of optics took a major step forward in the $19^{th}$ century with
+James Clerk Maxwell’s development of electromagnetic theory, which provided a
+comprehensive description of light as a form of electromagnetic waves. Maxwell’s
+equations unified electricity, magnetism, and optics, offering a new
+perspective on visible light as part of a broader spectrum of electromagnetic
+waves. In the $20^{th}$ century, advancements in \gls{QM} introduced the
+concept of \textit{quantized} electromagnetic energy, revealing that electromagnetic
+energy can only be exchanged in discrete packets known as \textit{photons}. \\
+
+    Today, the theories of Newton and Huygens are understood to complement one another, with Maxwell's theory describing the propagation of light as an electromagnetic wave and quantum theory addressing the interaction of light and matter, including the processes of absorption and emission \cite{Fowles1989}. Together, these theories form the dual wave-particle understanding of light, a cornerstone of modern optics. \Cref{fig:energySpectrum} shows the energy spectrum, this work will stay in
+    the low visible light, ignoring the electron transitions.
     \begin{figure}[H]
             \makebox[\textwidth][c]{
                 \includegraphics[width=1.0\textwidth]{chapter2/energySpectrum}
@@ -13,16 +31,18 @@
             \caption{Energy spectrum}\label{fig:energySpectrum}
     \end{figure}
 
-    \todo{Connect}
+    The frequencies of transitions between electronic levels lie in the
+    visible and ultraviolet, the vibrational transition in the infrared, and
+    the rotation transition in the far infrared \cite{Schwabl2007}. \\
+
     As electromagnetic waves travel through a medium, these waves induce a
     polarization and magnetization on the medium's molecules; leading to the
     formation of dipoles. These dipoles generate their own electric and
     magnetic waves, representing bound charges and bound currents,
     respectively. Consequently, the newly formed wave arising from the combined
     effects of polarization and magnetization, interacts with the incident wave
-    of identical frequency but varying propagation velocities \cite{Griffiths2017, Jackson1998}. \todo{Make a figure explaining EM waves and dipoles}
-
-    This varying in propagation velocity can be quantify
+    of identical frequency but varying propagation velocities
+    \cite{Griffiths2017, Jackson1998}. This varying in propagation velocity can be quantify
     by the index of refraction given in \cref{eq:generalIndexOfRefraction}.
     \begin{equation}\label{eq:generalIndexOfRefraction}
         n = \frac{c_0}{c_m} \equiv \sqrt{\frac{\mu_m\epsilon_m}{\mu_0\epsilon_0}}
@@ -33,7 +53,6 @@
     beam of light. Inside the material the speed of light is lower than outside
     the material. The same effect takes place when a beam of light travels
     across a denser medium such as a boundary layer.
-
     \pic{0.6}{chapter2/refractionOfLight}{A ray of light refracted in a
         plastic block}{fig:ch2LightRefraction}
 
@@ -51,9 +70,7 @@
     change in pressure and density known as a shock wave. Shock waves are
     characterized by an abrupt and nearly discontinuous change in the
     properties of the medium, such as pressure, temperature, and density, which
-    travel through the medium at supersonic speeds.\\
-
-    \cref{fig:ch2ShockWaves} illustrates how the pressure wave expansion changes with varying Mach numbers. Shock waves begin to form when the Mach number exceeds unity, resulting in different fluid properties, such as density, before and after the shock. This density gradient affects the index of refraction.
+    travel through the medium at supersonic speeds. \cref{fig:ch2ShockWaves} illustrates how the pressure wave expansion changes with varying Mach numbers. Shock waves begin to form when the Mach number exceeds unity, resulting in different fluid properties, such as density, before and after the shock. This density gradient affects the index of refraction.
     \pic{1.1}{chapter2/shockWaves}{Shock waves formation}{fig:ch2ShockWaves}
 
     Optical wave propagation through an inhomogeneous medium where the index of
