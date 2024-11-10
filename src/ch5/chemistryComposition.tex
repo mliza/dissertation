@@ -8,8 +8,7 @@ conditions are relatively straightforward to calculate in an experimental
 setup, facilitating a more direct comparison between computational and
 experimental results. \\
 
-The solver used for this investigation is \gls{SU2} \cite{Palacios2013a},
-\cite{Palacios2013a}. \cref{tab:chemistryCompositionStudyMassFraction}, shows the flow conditions for
+The solver used for this investigation is \gls{SU2} \cite{Palacios2013a}. \Cref{tab:chemistryCompositionStudyMassFraction}, shows the flow conditions for
 cases studied during this analysis. Most of these conditions were took from
 \gls{hynecc} \cite{Gimelshein2022}. 
 
@@ -27,7 +26,7 @@ cases studied during this analysis. Most of these conditions were took from
     \end{center}
 \end{table}
 
-    \cref{tab:chemistryCompositionMassFractionConditions} shows the mass
+    \Cref{tab:chemistryCompositionMassFractionConditions} shows the mass
     fraction composition for the cases in \cref{tab:chemistryCompositionStudyMassFraction}. 
 
     \begin{table}[H]
@@ -46,9 +45,13 @@ cases studied during this analysis. Most of these conditions were took from
 
 
     % Temperatures %
-    \cref{fig:temperaturesChemistryComposition} shows the translational and
+    \Cref{fig:temperaturesChemistryComposition} shows the translational and
     vibrational temperatures for cases described in \cref{tab:chemistryCompositionStudyMassFraction}
-    and \cref{tab:chemistryCompositionMassFractionConditions}. 
+    and \cref{tab:chemistryCompositionMassFractionConditions}. As expected, the
+    relaxation process takes longer for case $1C$ because is the case with the
+    highest initial translational temperature. In
+    \cref{fig:temperaturesChemistryComposition} all cases reach equilibrium at
+    approx $1\Units{\mu s}$. \todo{add about the vibrational temperature} 
     \begin{figure}[H]
         \centering
         \subfigure[Case $1C$] 
