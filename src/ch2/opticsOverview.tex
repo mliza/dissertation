@@ -142,6 +142,15 @@
         \alpha = \frac{\alpha_{xx} + \alpha_{yy} + \alpha_{zz}}{3}
     \end{equation}
 
+    Some papers provide the polarizability in \gls{CGS} and call it
+    \textit{volumetric} polarizability, some other used \gls{SI} and call it
+    \textit{atomic} polarizability. \cref{eq:cgsToSiPolarizability} can be used
+    to convert units between \gls{CGS} and \gls{SI}.
+    \begin{equation}\label{eq:cgsToSiPolarizability}
+        \alpha^{SI}_{[Fm^2]} =
+        \frac{4\pi\varepsilon_0}{10^6}\alpha^{CGS}_{[cm^3]}
+    \end{equation}
+
     Traditionally polarizability is thought to be a function of
     the frequency of the \gls{EM} wave traveling across the medium. However,
     this is not the case; Hohm \cite{Hohm1986,Hohm1990} showed a temperature dependency on
@@ -173,10 +182,9 @@
                 $Air$ & $1.6970$ & $2.47044$ & $10.6$ & $7.909$ \\ \hline
             \end{tabular}
         }
-            \caption{Constant used in
+            \caption{Kerl fitting constants \cite{Kerl1992}
             \cref{eq:kerlFitting}}\label{tab:kerlConstants}
     \end{table}
-
 
     \pic{0.8}{chapter2/kerlPolarizability_633nm}{Polarizability for a wavelength of
     $633\Units{nm}$}{fig:kerlPolarizabilityT}
@@ -184,9 +192,56 @@
     Tropina \cite{Tropina2018, Tropina2020} and Anaya \cite{Anaya2023} have
     demonstrated an influence of vibrational energy modes on polarizability.
     Kerl \cite{Hohm1986} and Buldakov \cite{Buldakov2000a,Buldakov2003a,
-    Buldakov2003b} have demonstrated a temperature dependency in the polarizability. 
+    Buldakov2003b} have demonstrated a temperature dependency in the
+    polarizability. As expected in hypersonic flows, these phenomena are very
+    important. \\
+
+    The polarizability is then use to calculate the index of refraction,
+    \cref{eq:diluteRefractiveIndex} is valid for a dilute medium. For a dense medium the
+    \textit{Clausius}-\textit{Mossotti} \cref{eq:denseRefractiveIndex} can be used
+    \cite{Feynman2011, Feynman2011a, Feynman2011b}.
+    \begin{subequations}\label{eq:refractiveIndex}
+        \begin{align}
+            n - 1 &= \frac{1}{2\epsilon_0}\sum_{i=1}^N\alpha_iN_i
+            \label{eq:diluteRefractiveIndex} \\ 
+            \frac{n^2 - 1}{n^2 + 2} &=
+            \frac{1}{3\epsilon_0}\sum_{i=1}^N\alpha_iN_i
+            \label{eq:denseRefractiveIndex}
+        \end{align}
+    \end{subequations}
+
+    Some authors \cite{Mandarino1976, Mandarino1981, Wang2023, Miller2022,
+    Gupta2023} use the \gls{GD} \cref{eq:gladstoneDaleConst} constant to calculate the
+        index of refraction \cref{eq:gladstoneDaleRelationship}. 
+        This constant was first formulated by \textit{Gladstone} \&
+        \textit{Dale} in $1864$ and it is heavily used in the field of mineralogist
+        \cite{Mandarino1976}. 
+    \begin{subequations}
+        \begin{align}
+            &K_s =
+            \frac{\alpha^{SI}_s}{2\epsilon_0}\Parenthesis{\frac{N_A}{M_s}} \UnitsFrac{m^3}{kg}
+            \label{eq:speciesGladstoneDaleConst} \\
+            &K_{GD} = \frac{1}{\rho}\sum\limits_{s=1}^N K_s\rho_s \label{eq:gladstoneDaleConst} \\
+            &n = \rho K_{GD} + 1 \label{eq:gladstoneDaleRelationship}
+        \end{align}
+    \end{subequations}
+
+        Some studies on optical propagation with applications to hypersonic
+        reentry were performed by Gupta \cite{Gupta2023}. In this work, Gupta
+        used the \gls{GD} constant to compare two methods (Snell’s law
+        and the optical Lagrange equation) for predicting the propagation of an
+        optical signal from the Apollo 11 capsule during reentry. Gupta
+        demonstrated that both techniques (Snell’s law and optical Lagrange
+        equations) matched well. It was observed in this study that the
+        contribution to the refractive index by diatomic nitrogen and oxygen is
+        greater upstream than downstream. 
+    
+   
 
 
+
+
+% IF used moved this to the Quantum Section
 \iffalse
     The \gls{ZPE} was calculated using \cref{eq:zpe} provided in
     \cite{Irikura2007}. The \gls{ZPE} is the lowest possible energy that a
