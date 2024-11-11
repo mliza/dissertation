@@ -259,53 +259,6 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
 
 
 % IF used moved this to the Quantum Section
-\iffalse
-    The \gls{ZPE} was calculated using \cref{eq:zpe} provided in
-    \cite{Irikura2007}. The \gls{ZPE} is the lowest possible energy that a
-    quantum mechanical system may have. It has to be noted that this is only
-    possible to be obtained for diatomic molecules, because monatomic
-    molecules only have translational energy modes \cite{Eisberg1985}. 
-    \begin{equation}\label{eq:zpe}
-        ZPE = \frac{\omega_e}{2} - \frac{\omega_ex_e}{2} + \frac{\omega_ey_e}{8} +
-        \frac{B_e}{4} + \frac{\alpha_e\omega_e}{12B_e} +
-        \frac{\alpha_e^2\omega_e^2}{144B_e^3}
-    \end{equation}
-
-    The \gls{ZPE} is given on units of wavenumber sometimes called
-    \textit{kayser}. This unit represents the number of wavelengths per
-    centimeter and it is often used in spectroscopy \cite{Gauglitz2003}. The
-    \gls{ZPE} can be converted to
-    the ground-state angular frequency by using
-    \cref{eq:zpeToRotationalFrequency}, and the ground state energy on units of
-    joules is found using \cref{eq:groundStateEnergy}; results from these
-    equations are giving
-    on \cref{tab:groundStateAngularFrequency}.
-    \begin{subequations}\label{eq:waveNumberConversions}
-        \begin{align}
-            \omega_0 &= 2\pi \times ZPE \times c_0 \times
-            10^{-2}\UnitsFrac{rads}{s}
-            \label{eq:zpeToRotationalFrequency}\\
-            E_0 &= \hbar \omega_0 \label{eq:groundStateEnergy}
-        \end{align}
-    \end{subequations}
-    \begin{table}[H]
-        \makebox[\linewidth][c]{
-            \begin{tabular}{|c|c|c|}
-                \hline
-                Molecule & $\omega_0 \times 10^{14}\UnitsFrac{rad}{s}$
-                & $E_0 \times 10^{-20}\Units{J}$ \\
-                \hline\hline
-                $NO+$ & $2.231$ & $2.353$ \\ \hline
-                $N2+$ & $2.071$ & $2.184$ \\ \hline 
-                $O2+$ & $1.787$ & $1.885$ \\ \hline
-                $NO$ & $1.787$ & $1.885$ \\ \hline
-                $N2$ & $2.215$ & $2.336$ \\ \hline
-                $O2$ & $1.483$ & $1.564$ \\ \hline 
-            \end{tabular}
-        }
-            \caption{Ground-state properties for diatomic molecule\label{tab:groundStateAngularFrequency}}
-    \end{table}
-\fi
 
 
 
