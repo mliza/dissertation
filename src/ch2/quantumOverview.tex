@@ -55,7 +55,7 @@
         \end{align}
     \end{subequations}
 
-        \Cref{tab:spectroscopyConstant} provides the spectroscopy constants used to
+        \Cref{tab:spectroscopyConstant} and \cref{tag:spectroscopyConstant2} provide the spectroscopy constants used to
     calculate \cref{eq:bornOppenheimerApproximation}. These constants are given
     in wavenumber units, which are sometimes called \textit{Kayser} units and
     are often used in spectroscopy \cite{Gauglitz2003}. These
@@ -91,20 +91,30 @@
             \caption{Spectroscopy energy constants \cite{Irikura2007, USDC2023}\label{tab:spectroscopyConstant}}
     \end{table}
 
+    The reduced mass was calculated using \cref{eq:reducedMass} and the force
+    constants are calculated using \cref{eq:forceConstant}.
+    \begin{subequations}\label{eq:additionalDiatomicCalculations}
+        \begin{align}
+            \mu &= \frac{m_1 m_2}{m_1 + m_2} \label{eq:reducedMass} \\
+            k &= \mu\omega^2_{\UnitsFrac{rads}{sec}} = \mu\Parenthesis{2\pi c_0
+            \nu_{\Units{cm^{-1}}}}^2 \UnitsFrac{N}{m}
+            \label{eq:forceConstant} 
+        \end{align}
+    \end{subequations}
+
     \begin{table}[H]
         \centering
         \makebox[\linewidth][c]{
-            \begin{tabular}{|c|c|}
+            \begin{tabular}{|c|c|c|}
                 \hline
-                Molecule & $r_e\Units{\r{A}}$ \\ 
+                Molecule & $r_e\Units{\r{A}}$ & $\mu \times 10^{-26}\Units{kg}$ \\ 
                 \hline \hline
-                $NO+$ & $1.06322$ \\
-                $N2+$ & $1.11642$ \\
-                $O2+$ & $1.1164$ \\
-                $NO$ & $1.15077$ \\
-                $N2$ & $1.09768$ \\
-                $O2$ & $1.20752$ \\
-                \hline
+                $NO+$ & $1.06322$ & $1.240$ \\ \hline
+                $N2+$ & $1.11642$ & $1.628$ \\ \hline
+                $O2+$ & $1.1164$ & $1.328$ \\ \hline
+                $NO$ & $1.15077$ & $1.240$ \\ \hline
+                $N2$ & $1.09768$ & $1.162$ \\ \hline
+                $O2$ & $1.20752$ & $1.328$ \\ \hline
             \end{tabular}
         }
             \caption{Spectroscopy constants 
@@ -134,7 +144,7 @@
         \frac{\alpha_e^2\omega_e^2}{144B_e^3}
     \end{equation}
 
-    Some authors refer to the constants in \cref{tab:spectroscopyConstant, tab:spectroscopyConstant2}
+    Some authors refer to the constants in \cref{tab:spectroscopyConstant} 
     as the \textit{Dunham} coefficients \cite{Dunham1932} $\Parenthesis{Y_{ij}
     = Y_{vJ}}$ \cite{Chandra2005}. However, in the literature, these
     coefficients may also be referred to as the \textit{Dunham} potential
