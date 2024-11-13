@@ -44,6 +44,9 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     of identical frequency but varying propagation velocities
     \cite{Griffiths2017, Jackson1998}. This varying in propagation velocity can be quantify
     by the index of refraction given in \cref{eq:generalIndexOfRefraction}.
+    Essentially, the index of refraction is an essential property in optics
+    that determines the speed by which light travels through a medium other
+    than vacuum.
     \begin{equation}\label{eq:generalIndexOfRefraction}
         n = \frac{c_0}{c_m} \equiv \sqrt{\frac{\mu_m\epsilon_m}{\mu_0\epsilon_0}}
         \approx \sqrt{\frac{\epsilon_m}{\epsilon_0}}
@@ -124,17 +127,26 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     is a discrepancy in the \gls{AO} such as the index of refraction between a
     real and a perfect gas. \\
 
-    The culprit for this discrepancy is the polarizability, which refers to a molecule's tendency to develop a
-    temporary dipole moment when exposed to an electric field. In other words,
-    polarizability measures how easily a molecule's electron cloud can be
-    distorted or shifted in response to an electric field \cite{Kittel2004}. The greater the
-    polarizability, the more easily the electron cloud can be distorted.
-    \cref{fig:ch2Polarizability} shows the polarizability of a molecule when
-    an electric field is applied to it.
-    
+    The discrepancy is due to polarizability, which refers to a molecule's
+    tendency to develop a temporary dipole moment when exposed to an electric
+    field. When an electric field is applied, the positively charged nucleus
+    and negatively charged electron cloud experience opposing forces, causing a
+    slight shift in their positions relative to each other. This shift creates
+    an induced dipole moment. \\
+
+In other words, polarizability measures how easily a molecule's electron cloud
+can be distorted or shifted in response to an electric field \cite{Kittel2004}.
+Larger, more spread-out electron clouds are generally more polarizable because
+they are less tightly bound to the nucleus, making them easier to distort.
+\Cref{fig:ch2Polarizability} illustrates the polarizability of a molecule when an electric field is applied to it.
     \pic{1}{chapter2/polarizability}{Polarizability, the tendency of a
     molecule to form a dipole moment when an electric field is
     applied}{fig:ch2Polarizability}
+
+    Polarizability influences the index of refraction by affecting how the
+    material interacts with \gls{EM}
+    waves (light).\\ 
+    \todo{Add how polarizability affects the index of refraction}
 
     The polarizability may be usually separated into three distinct parts:
     electronic, ionic and dipolar as shown in
