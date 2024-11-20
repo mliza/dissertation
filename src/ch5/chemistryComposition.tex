@@ -43,15 +43,16 @@ cases studied during this analysis. Most of these conditions were took from
         \cref{tab:chemistryCompositionStudyMassFraction}}\label{tab:chemistryCompositionMassFractionConditions}
     \end{table}
 
-
     % Temperatures %
-    \Cref{fig:temperaturesChemistryComposition} shows the translational and
+    \Cref{fig:temperaturesChemistryComposition} illustrates the translational and
     vibrational temperatures for cases described in \cref{tab:chemistryCompositionStudyMassFraction}
     and \cref{tab:chemistryCompositionMassFractionConditions}. As expected, the
-    relaxation process takes longer for case $1C$ because is the case with the
+    relaxation process takes longer for case $1C$, as it has the case with the
     highest initial translational temperature. In
-    \cref{fig:temperaturesChemistryComposition} all cases reach equilibrium at
-    approx $1\Units{\mu s}$. \todo{add about the vibrational temperature} 
+    \cref{fig:temperaturesChemistryComposition}, all cases reach thermal equilibrium at
+    approximately $1\Units{\mu s}$. The diatomic nitrogen case illustrated in
+    \Cref{fig:temperatures1C} displays a higher
+    energy transfer between the translational and vibrational modes. 
     \begin{figure}[H]
         \centering
         \subfigure[Case $1C$] 
@@ -75,19 +76,19 @@ cases studied during this analysis. Most of these conditions were took from
     % Temperatures %
 
     % Mass Fraction %%
-    \cref{fig:massFractionChemistryComposition} shows the mass fraction
+    \Cref{fig:massFractionChemistryComposition} shows the mass fraction
     composition for the cases described in \cref{tab:chemistryCompositionStudyMassFraction}
     and \cref{tab:chemistryCompositionMassFractionConditions}.
-    \cref{fig:massFraction1C} shows the mass fraction for Case $1C$, which is for
-    a diatomic nitrogen gas. The diatomic nitrogen decomposes into nitrogen, and by
+    \Cref{fig:massFraction1C} shows the mass fraction for Case $1C$, which
+    corresponds to a diatomic nitrogen gas. The diatomic nitrogen decomposes into nitrogen, and by
     the time $(\approx 10\Units{\mu s})$ the simulation reaches chemical equilibrium, approximately $20\%$ of the diatomic nitrogen has decomposed into nitrogen. 
-    \cref{fig:massFraction2C} shows the mass fraction for Case $2C$, which is for
-    a diatomic oxygen gas. The diatomic oxygen decomposes into oxygen, and by
+    \Cref{fig:massFraction2C} shows the mass fraction for Case $2C$, which
+    corresponds to diatomic oxygen gas.The diatomic oxygen decomposes into oxygen, and by
     the time $(\approx 10\Units{\mu s})$ the simulation reaches chemical
     equilibrium, approximately $20\%$ of the diatomic oxygen has decomposed into
     oxygen.
     \cref{fig:massFraction3C} shows the mass fraction for Case $3C$,
-    which is for a $5$ species air. Some of the diatomic nitrogen and oxygen
+    which corresponds to a $5$ species air mixture. Some of the diatomic nitrogen and oxygen
     decomposed to a nitric oxide, with a peak value of approximately $10\%$ at
     $5\Units{n s}$.
     \begin{figure}[H]
@@ -113,9 +114,33 @@ cases studied during this analysis. Most of these conditions were took from
     % Mass Fraction %%
 
     % Gladstone Species %
-    \cref{fig:speciesGladstoneDaleChemistryComposition} shows the species
-    Gladstone-Dale constant for cases described in \cref{tab:chemistryCompositionStudyMassFraction}
-    and \cref{tab:chemistryCompositionMassFractionConditions}. 
+    \Cref{fig:speciesGladstoneDaleChemistryComposition} shows the species
+    \gls{GD} constants for the cases described in
+    \cref{tab:chemistryCompositionStudyMassFraction} and
+    \cref{tab:chemistryCompositionMassFractionConditions}. These constants were
+    calculated using \cref{eq:speciesGladstoneDaleConst}. \Cref{fig:speciesGladstoneDale1C} shows the evolution of the diatomic
+    nitrogen case. As expected, at the beginning of the simulation, the
+    \gls{GD} constant for nitrogen is
+    zero because the simulation contains only diatomic nitrogen.
+    However, as the simulation evolves, some of the diatomic nitrogen gas
+    dissociates
+    into nitrogen causing the \gls{GD} constant for nitrogen to no longer be
+    zero. \Cref{fig:speciesGladstoneDale2C} shows the evolution of the diatomic
+    oxygen case. As expected, at the beginning of the simulation, the
+    \gls{GD} constant for oxygen is
+    zero because the simulation contains only diatomic oxygen.
+    However, as the simulation evolves, some of the diatomic oxygen gas
+    dissociates
+    into oxygen causing the \gls{GD} constant for oxygen to no longer be
+    zero. \Cref{fig:speciesGladstoneDale3C} illustrates the evolution of five
+    gas species. Some of the diatomic nitrogen and oxygen recombine into nitric
+    oxide, resulting in a peak in the \gls{GD} for nitric oxide at
+    approximately $5\Units{ns}$. However, this peak is short-lived as the
+    nitric oxide quickly dissociates back into nitrogen and oxygen. This figure
+    highlights the direct impact of density changes on the \gls{GD}. As is well
+    known, in a nonequilibrium flow, the high temperatures cause molecular
+    dissociation. 
+     
     \begin{figure}[H]
         \centering
         \subfigure[Case $1C$] 
@@ -133,14 +158,19 @@ cases studied during this analysis. Most of these conditions were took from
             \label{fig:speciesGladstoneDale3C}
             \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_speciesGladstoneDale}
         }
-        \caption{\label{fig:speciesGladstoneDaleChemistryComposition}Species Gladstone-Dale results for cases in
+        \caption{\label{fig:speciesGladstoneDaleChemistryComposition}Species
+        \gls{GD} results for cases in
         \cref{tab:chemistryCompositionStudyMassFraction}}
     \end{figure}
     % Gladstone Species %
 
     % Gladstone Total %
-    \cref{fig:totalGladstoneDaleChemistryComposition} shows the total
-    Gladstone-Dale constant for cases described in \cref{tab:chemistryCompositionStudyMassFraction}
+    \Cref{fig:totalGladstoneDaleChemistryComposition} compares the total
+    \gls{GD} between a nonequilibrium case and a frozen flow case. Note there
+    is a distinction between a frozen and a equilibrium flow. As expected there
+    is a discrepancy in the \gls{GD}. \todo{Check I dont think I ever run a
+    frozen simulation for this} 
+
     and \cref{tab:chemistryCompositionMassFractionConditions}. 
     \begin{figure}[H]
         \centering
