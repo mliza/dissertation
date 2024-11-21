@@ -239,14 +239,16 @@
         thermochemical effects that must be accounted for. These processes lead
         to non-linear increases in temperature and energy exchange across the
         shock, rendering the calorically perfect gas model
-        insufficient \cite{Anderson2004}.\\
+        insufficient \cite{Anderson2004}.  \\
 
-        \todo{Add a differente between equilibrium and frozen flow, see 14.5
-        \cite{Anderson2006}}
-        A equilibrium
-        flow implies infinity chemical and vibrational rates, a frozen flow implies
-        that the chemical and reaction rates are zero reaching
-        \textit{instantaneous} equilibrium. \\
+        The thermochemical effects encountered in hypersonic flows are directly influenced by the interplay between the gas’s internal energy modes and the time scales of the flow. Whether the gas behaves in an equilibrium or frozen state depends on the relative rates of these energy exchanges and the flow dynamics. When the energy exchange rates are faster than the flow time scales, equilibrium can be achieved, allowing for uniform distribution of energy across all modes. However, when the flow dynamics outpace these energy exchanges, the gas is unable to equilibrate, leading to frozen behavior. This dynamic directly links the state of the gas to the complex thermochemical changes observed in hypersonic conditions, such as those caused by excitation, dissociation, and ionization.
+        
+        \begin{itemize}
+                \item \textbf{Equilibrium Flow:} A gas is said to be in equilibrium when it has sufficient time to allow all its internal energy modes—translational, rotational, vibrational, and possibly electronic—to exchange energy and reach a uniform state of equilibrium. In this condition, the distribution of energy within these modes aligns with the thermodynamic properties predicted by statistical mechanics, such as the Boltzmann distribution. Equilibrium assumes that the rate of energy exchange between modes is much faster than the flow dynamics, ensuring the gas behaves in a thermodynamically balanced state.
+                item \textbf{Frozen Flow:} Frozen flow occurs when a gas moves so rapidly that its internal energy modes (translational, rotational, vibrational, or chemical) do not have sufficient time to equilibrate during the flow. This happens because the flow time scale is much shorter than the time required for internal energy exchanges or chemical reactions to occur. In this state, the internal energy distribution remains effectively "frozen" in its initial condition, as reaction or relaxation rates are negligible compared to the flow rate. Frozen flow is particularly relevant in high-speed or hypersonic flows, where non-equilibrium effects become significant.
+        \end{itemize}
+
+        \todo{Add images explaining avobe (see anderson)}
 
         \Cref{fig:ch2flightSpeedAltitude} illustrates the flight paths of the
         Apollo Command Module and the Shuttle Orbiter during reentry. The
