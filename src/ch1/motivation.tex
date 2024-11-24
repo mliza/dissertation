@@ -18,8 +18,19 @@
         hypersonic boost-glide missiles, ballistic missiles, and cruise
         missiles. (\gls{CSBA} graphic)}{fig:ch1strategicWeapon}
 
+        A crude approximation for the index of refraction in the atmosphere at
+        radio frequencies was proposed by Smith and Weintraub \cite{Smith1953} and it is
+        given on \cref{eq:crudeIndexApproximation}. Where $K_1 =
+        79\UnitsFrac{K}{mB}$, $K_2=4800\Units{K}$, $e$ is the partial pressure
+        of water vapor in millibars. 
+        \begin{equation}\label{eq:crudeIndexApproximation}
+            n(h) \approx 1 + \frac{K_1}{T(h)} \Parenthesis{ p(h) +
+            K_2\frac{e(h)}{T(h)}} 
+        \end{equation}
         \Cref{fig:ch1AtmosphericOptics} illustrates the index of refraction
-        as a function of altitude for a \textit{blue sky} scenario. The most drastic change in the index of refraction occurs at approximately $15\Units{km}$ above sea level, which is near the boundary where the troposphere ends and the stratosphere begins. This is also the altitude at which commercial planes and jets typically fly. It is a critical region where sensor accuracy is especially important.
+        as a function of altitude for a \textit{blue-sky} scenario. The most
+        drastic change in the index of refraction occurs at approximately
+        $15\Units{km}$ above sea level, which is in the tropopause, near the boundary where the troposphere ends and the stratosphere begins. This is also the altitude at which commercial planes and jets typically fly. It is a critical region where sensor accuracy is especially important.
         \pic{0.85}{chapter1/atmosphericOptics}{Atmospheric index of
         refraction}{fig:ch1AtmosphericOptics}
 
