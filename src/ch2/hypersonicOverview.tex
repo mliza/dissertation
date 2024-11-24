@@ -17,7 +17,11 @@
                 density in which the density doesn't change significantly even
                 when subjected to pressure variations.
             \item \textbf{Subsonic:} A flow characterized by a Mach number less
-                than $1$ at every point. In this regime, compressibility effects can generally be neglected. The flow patterns in a subsonic flow are typically smooth and continuous, with no shock wave formation. Due to the absence of shock waves, these flows are often considered isentropic.
+                than $1$ at every point. In this regime, compressibility
+                effects can generally be neglected. The flow patterns in a
+                subsonic flow are typically smooth and continuous, with no
+                shock wave formation. Due to the absence of shock waves, these
+                flows are often considered isentropic.
             \item \textbf{Transonic:} A flow characterized by a Mach number
                 ranging between $0.8$ to $1.2$. In this regime, regions of subsonic and
                 supersonic coexist; creating complex flow patterns and leading
@@ -38,9 +42,12 @@
                 \textit{real gas} effects and a thicker boundary layer.
         \end{itemize}
 
-        At higher velocities, particularly in the supersonic and hypersonic regimes, compressibility effects are crucial to understanding the flow dynamics, and the simple models used at lower speeds are no longer adequate. \cref{fig:ch2ShockMachRegions} show these regions, as the Mach number
-        increases, shock waves start to form and compressibility effects become
-        more important.
+        At higher velocities, particularly in the supersonic and hypersonic
+        regimes, compressibility effects are crucial to understanding the flow
+        dynamics, and the simple models used at lower speeds are no longer
+        adequate. \cref{fig:ch2ShockMachRegions} show these regions, as the
+        Mach number increases, shock waves start to form and compressibility
+        effects become more important.
         \begin{figure}[H]
             \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter2/shockMachRegions}}%
             \caption{Mach number regions}
@@ -53,8 +60,8 @@
         \begin{itemize}
             \item \textbf{Calorically Perfect Gas:} A gas with constant
                 specific heats (\cref{eq:caloricallyPerfectHeatCapP,eq:caloricallyPerfectHeatCapV}) in which the enthalpy
-                and internal energy
-                (\cref{eq:caloricallyPerfectGasEnthalpy,eq:caloricallyPerfectGasEnergy}) are functions of temperature. 
+                and internal energy (\cref{eq:caloricallyPerfectGasEnthalpy,eq:caloricallyPerfectGasEnergy})
+                are functions of temperature. 
             \begin{subequations}\label{eq:caloricallyPerfectGasAssumptions}
                 \begin{align}
                     c_p &= \text{constant} \label{eq:caloricallyPerfectHeatCapP} \\
@@ -69,8 +76,7 @@
             \end{equation}
             \item \textbf{Thermally Perfect Gas:} A gas where specific heats (\cref{eq:thermallyPerfectHeatCapP,eq:thermallyPerfectHeatCapV})
                 are functions of temperature only, in which the enthalpy and
-                internal energy
-                (\cref{eq:thermallyPerfectGasEnthalpy,eq:thermallyPerfectGasEnergy})
+                internal energy (\cref{eq:thermallyPerfectGasEnthalpy,eq:thermallyPerfectGasEnergy})
                 are functions of temperature. The \textit{perfect gas} equation of state
                 (\cref{eq:equationOfState}) holds.
             \begin{subequations}\label{eq:caloricallyPerfectGasAssumptions}
@@ -168,7 +174,14 @@
         insufficient to describe the thermodynamic behavior at such extreme
         conditions. \\
 
-        \Cref{fig:ch2AdditionalDoFs} illustrates the additional degrees of freedom that emerge in a hypersonic flow. As molecules absorb increasing amounts of energy, rotational and vibrational modes are excited, followed by electronic excitations and, at sufficiently high temperatures, ionization. These phenomena significantly affect the thermodynamic properties of the gas, including heat capacity, thermal conductivity, and viscosity, all of which must be accurately modeled to predict the behavior of hypersonic flows. 
+        \Cref{fig:ch2AdditionalDoFs} illustrates the additional degrees of
+        freedom that emerge in a hypersonic flow. As molecules absorb
+        increasing amounts of energy, rotational and vibrational modes are
+        excited, followed by electronic excitations and, at sufficiently high
+        temperatures, ionization. These phenomena significantly affect the
+        thermodynamic properties of the gas, including heat capacity, thermal
+        conductivity, and viscosity, all of which must be accurately modeled to
+        predict the behavior of hypersonic flows. 
 
         \pic{1.0}{chapter2/aditionalDoFs}{Additional Degrees of
         Freedom}{fig:ch2AdditionalDoFs}
@@ -227,8 +240,9 @@
         Under these conditions, the calorically perfect gas approximation
         becomes unsuitable, as it neglects key thermochemical effects that
         arise at high velocities \cref{fig:caloricallyPerfectGas} illustrates
-        the pre-shock and post-shock temperatures across various altitudes. As expected, at high speeds, the calorically perfect gas model underestimates the temperature increase across the shock.
-
+        the pre-shock and post-shock temperatures across various altitudes. As
+        expected, at high speeds, the calorically perfect gas model
+        underestimates the temperature increase across the shock.
         \pic{0.8}{chapter2/temperatureRatio}{Temperature ratio across a shock
         wave}{fig:caloricallyPerfectGas}
 
@@ -262,8 +276,29 @@
         \end{figure}
         
         \begin{itemize}
-                \item \textbf{Equilibrium Flow:} A gas is said to be in equilibrium when it has sufficient time to allow all its internal energy modes—translational, rotational, vibrational, and possibly electronic—to exchange energy and reach a uniform state of equilibrium. In this condition, the distribution of energy within these modes aligns with the thermodynamic properties predicted by statistical mechanics, such as the Boltzmann distribution. Equilibrium assumes that the rate of energy exchange between modes is much faster than the flow dynamics, ensuring the gas behaves in a thermodynamically balanced state.
-                \item \textbf{Frozen Flow:} Frozen flow occurs when a gas moves so rapidly that its internal energy modes (translational, rotational, vibrational, or chemical) do not have sufficient time to equilibrate during the flow. This happens because the flow time scale is much shorter than the time required for internal energy exchanges or chemical reactions to occur. In this state, the internal energy distribution remains effectively "frozen" in its initial condition, as reaction or relaxation rates are negligible compared to the flow rate. Frozen flow is particularly relevant in high-speed or hypersonic flows, where non-equilibrium effects become significant.
+                \item \textbf{Equilibrium Flow:} A gas is said to be in
+                    equilibrium when it has sufficient time to allow all its
+                    internal energy modes—translational, rotational,
+                    vibrational, and possibly electronic—to exchange energy and
+                    reach a uniform state of equilibrium. In this condition,
+                    the distribution of energy within these modes aligns with
+                    the thermodynamic properties predicted by statistical
+                    mechanics, such as the Boltzmann distribution. Equilibrium
+                    assumes that the rate of energy exchange between modes is
+                    much faster than the flow dynamics, ensuring the gas
+                    behaves in a thermodynamically balanced state.
+                \item \textbf{Frozen Flow:} Frozen flow occurs when a gas moves
+                    so rapidly that its internal energy modes (translational,
+                    rotational, vibrational, or chemical) do not have
+                    sufficient time to equilibrate during the flow. This
+                    happens because the flow time scale is much shorter than
+                    the time required for internal energy exchanges or chemical
+                    reactions to occur. In this state, the internal energy
+                    distribution remains effectively "frozen" in its initial
+                    condition, as reaction or relaxation rates are negligible
+                    compared to the flow rate. Frozen flow is particularly
+                    relevant in high-speed or hypersonic flows, where
+                    non-equilibrium effects become significant.
         \end{itemize}
 
         \Cref{fig:ch2flightSpeedAltitude} illustrates the flight paths of the
@@ -296,15 +331,12 @@
         only the vehicle’s aerodynamics but also thermal protection systems and
         onboard systems reliant on communication and navigation. \\
 
-        \Cref{fig:ch2flightSpeedAltitude} demonstrates that as the reentry vehicle traverses different atmospheric chemistry regions, the resulting plasma and thermochemical effects become crucial factors in mission planning and vehicle design.
-
+        \Cref{fig:ch2flightSpeedAltitude} demonstrates that as the reentry
+        vehicle traverses different atmospheric chemistry regions, the
+        resulting plasma and thermochemical effects become crucial factors in
+        mission planning and vehicle design.
         \begin{figure}[H]
             \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter2/flightSpeedAltitude}}%
             \caption{Velocity-altitude trajectories for different hypersonic
             flight systems}\label{fig:ch2flightSpeedAltitude}
         \end{figure}
-
-
-
-
-      
