@@ -1,5 +1,6 @@
 \input{configuration/ThesisTemplate}
 \input{configuration/ThesisShortcuts}
+
 % My macros
 \input{configuration/myResources/Latex/macros/fluidMacros}
 \input{configuration/myResources/Latex/macros/vectorCalcMacros}
@@ -8,13 +9,11 @@
 \input{configuration/myResources/Latex/macros/mathMacros}
 \input{configuration/myResources/Latex/macros/pictureMacros}
 \input{configuration/myResources/Latex/macros/codeMacros}
-\addbibresource{bibliography.bib} 
+\addbibresource{bibliography.bib}
 
-
-%\usepackage[text=Draft1, colorspec=0.92, fontsize=7cm]{draftwatermark} 	%Draft mark package 
+%\usepackage[text=Draft1, colorspec=0.92, fontsize=7cm]{draftwatermark} %Draft mark package
 
 \begin{document}
-   
 \listoftodos
 
 % Place holder for Symbols and Acronyms
@@ -24,10 +23,12 @@
 %\subimport{src/ch0}{chapter_0}
 \tableofcontents
 
+\addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
+\addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
 
-%%Input all the chapters 
+%% Input all the chapters
 \subimport{src/ch1}{chapter_1}
 \subimport{src/ch2}{chapter_2}
 \subimport{src/ch3}{chapter_3}
@@ -35,18 +36,15 @@
 \subimport{src/ch5}{chapter_5}
 \subimport{src/ch6}{chapter_6}
 
-
-%%Documents after chapters
+%% Documents after chapters
 \newpage 
     \printbibliography 
     \printunsrtglossary[type=abbreviations]
-    \printunsrtglossary[type=symbols,style=long, title={Nomenclature}] 
+    \printunsrtglossary[type=symbols,style=long, title={Nomenclature}]
      
-\appendix 
+\appendix
 \begin{appendices}
 \subimport{src/appendices}{appendices}
 \end{appendices}
 
-
 \end{document}
-%https://www.youtube.com/watch?v=mZcV1wIPCBo

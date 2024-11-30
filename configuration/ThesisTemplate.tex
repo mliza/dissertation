@@ -4,9 +4,9 @@
 \usepackage[backend=biber, style=ieee, sorting=none]{biblatex} %bibliography
 \usepackage[a4paper, left=25.4mm, right=25.4mm, top=25.4mm, bottom=25.4mm, bindingoffset=6mm]{geometry}
 \usepackage[toc,page]{appendix} %Appendix Package
-\usepackage{indentfirst} %Lets you indent 1st paragraph 
-\setlength{\parindent}{1.5cm} %indentation for first paragraph  
-\usepackage{fancyhdr} %Fancy headers 
+\usepackage{indentfirst} %Lets you indent 1st paragraph
+\setlength{\parindent}{1.5cm} %indentation for first paragraph
+\usepackage{fancyhdr} %Fancy headers
 \usepackage{float}%Hold figures in place using h
 \usepackage{comment} % Lets you comment out
 \usepackage{amsmath, amssymb} %more math 
@@ -14,12 +14,14 @@
 \usepackage{standalone}%lets you import a file alone
 \usepackage{pdfpages}%Lets you insert a pdf file
 \usepackage{listings} %Lets you input code
-\usepackage{color}   % Colors 
+\usepackage{color}   % Colors
 \usepackage{enumitem} % Allows different enumerate
 \usepackage[colorlinks,linktocpage,linktoc=all]{hyperref} %hyper reference, table of content (letters)
-\usepackage[toc,automake,symbols,abbreviations,nogroupskip,nonumberlist]{glossaries-extra} %Reference equations  
+\usepackage[type=CC,modifier=by-nc-sa,version=4.0]{doclicense}
+\usepackage[toc,automake,symbols,abbreviations,nogroupskip,nonumberlist]{glossaries-extra} %Reference equations
+\usepackage{csquotes} %Fixed an error between biblatex and doclicense
 \usepackage{cleveref} % Multiple refereces use cref
-\usepackage{pgfplots} %tiktz package 
+\usepackage{pgfplots} %tiktz package
 \usepackage{makecell}
 \usepackage[colorinlistoftodos, prependcaption, size=normalsize]{todonotes}
 \presetkeys{todonotes}{inline}{}
@@ -31,7 +33,6 @@
 \usepackage{pdflscape} % Allows landscape
 \usepackage{physics} %Allows to use braket notation
 
-
 % Fix Cref
 \crefname{equation}{eq.}{equations}
 \Crefname{equation}{Eq.}{Equations}
@@ -39,7 +40,6 @@
 \Crefname{figure}{Fig.}{Figures}
 \crefname{table}{tab.}{tables}
 \Crefname{table}{Tab.}{Tables}
-
 
 %Landscape
 \fancypagestyle{lscapedplain}
@@ -50,29 +50,26 @@
       \node[outer sep=1cm,above,rotate=90] at (current page.east) {\thepage};}
 }
 
-
-
 %Spacing  
 \usepackage{setspace}
 \doublespacing
 \renewcommand{\glsgroupskip}{\vspace{1em}}
 \makeglossaries
 
-
-%Paths 
+%Paths
 \graphicspath{{figures/}}
 
-% Modify clickable links 
-\hypersetup{ colorlinks={blue}, 
+% Modify clickable links
+\hypersetup{ colorlinks={true},
              urlcolor={blue},
-             linkcolor={black}, 
+             linkcolor={black},
              citecolor={blue},
              pdfauthor={Martin E. Liza},
-             pdftitle={Dissertation},
+             pdftitle={Aero-Optic Effects in Turbulent-Nonequilibrium Flows},
              breaklinks={true},
-             pdfpagemode=FullScreen,
+             pdfsubject={Licensed under CC BY-NC-SA 4.0},
+             pdfpagemode={FullScreen},
             }
-
 
 %Headers and Footers
 \pagestyle{fancyplain}
