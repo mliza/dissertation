@@ -152,7 +152,7 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         )
         plt.close()
 
-        # Plot Specific GladStone-Dale constant
+        # Plot Species GladStone-Dale constant
         fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
         axes1 = fig.add_subplot(111)
 
@@ -179,21 +179,21 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         axes1.legend(fontsize=fig_config["legend_size"])
         axes1.set_xlabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
         axes1.set_ylabel(
-            "Neutral Species $\\times 10^{-4}\,[m^3/kg]$",
+            "Neutral GD $\\times 10^{-4}\,[m^3/kg]$",
             fontsize=fig_config["axis_label_size"],
         )
         axes1.set_ylabel(
-            "Species Gladstone-Dale $\\times 10^{-4}\,[m^3/kg]$",
+            "Species GD $\\times 10^{-4}\,[m^3/kg]$",
             fontsize=fig_config["axis_label_size"],
         )
         axes1.tick_params(axis="both", labelsize=fig_config["ticks_size"])
         if tmp["ion_sp"]:
             axes2.set_ylabel(
-                "Ion Species $\\times 10^{-7}\,[m^3/kg]$",
+                "Ion GD $\\times 10^{-7}\,[m^3/kg]$",
                 fontsize=fig_config["axis_label_size"],
             )
             axes1.set_ylabel(
-                "Neutral Species $\\times 10^{-4}\,[m^3/kg]$",
+                "Neutral GD $\\times 10^{-4}\,[m^3/kg]$",
                 fontsize=fig_config["axis_label_size"],
             )
             axes2.set_xlabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
@@ -464,7 +464,7 @@ def main(cfd_results_abs_path):
     fig_config["legend_size"] = 14
     fig_config["axis_label_size"] = 16
     fig_config["title_size"] = 18
-    species_flag = True
+    species_flag = False
 
     if not species_flag:
         # Chemistry Composition #
