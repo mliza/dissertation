@@ -179,17 +179,17 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         axes1.legend(fontsize=fig_config["legend_size"])
         axes1.set_xlabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
         axes1.set_ylabel(
-            "Neutral GD $\\times 10^{-4}\,[m^3/kg]$",
+            "Neutral G-D $\\times 10^{-4}\,[m^3/kg]$",
             fontsize=fig_config["axis_label_size"],
         )
         axes1.set_ylabel(
-            "Species GD $\\times 10^{-4}\,[m^3/kg]$",
+            "Species G-D $\\times 10^{-4}\,[m^3/kg]$",
             fontsize=fig_config["axis_label_size"],
         )
         axes1.tick_params(axis="both", labelsize=fig_config["ticks_size"])
         if tmp["ion_sp"]:
             axes2.set_ylabel(
-                "Ion GD $\\times 10^{-7}\,[m^3/kg]$",
+                "Ion G-D $\\times 10^{-7}\,[m^3/kg]$",
                 fontsize=fig_config["axis_label_size"],
             )
             axes1.set_ylabel(
@@ -464,7 +464,7 @@ def main(cfd_results_abs_path):
     fig_config["legend_size"] = 14
     fig_config["axis_label_size"] = 16
     fig_config["title_size"] = 18
-    species_flag = False
+    species_flag = True
 
     if not species_flag:
         # Chemistry Composition #

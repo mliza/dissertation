@@ -120,10 +120,19 @@
     %% Mass Fraction %%
 
     %% Species Gladstone-Dale %%
-    \todo{Stopped here}
-    \Cref{fig:speciesGladstoneDaleStudy} shows the species \gls{GD} for cases
-    described in \cref{tab:speciesStudyCases} and
-    \cref{tab:speciesStudyMassFraction}. 
+    \Cref{fig:speciesGladstoneDaleStudy} shows the species \gls{GD} for the
+    cases described in \cref{tab:speciesStudyCases} and
+    \cref{tab:speciesStudyMassFraction}. The eleven-species cases ($1S2$ and
+    $2S2$) demonstrate that the ionic part of the \gls{GD} constants are
+    primarily influenced by the formation of charged nitric oxide. However,
+    these values still appear to be low compared to those of the neutral
+    species. \\
+
+    Comparing the five-species and eleven-species cases, it is evident that the
+    ion contribution to the \gls{GD} is small—approximately one order of magnitude
+    less for the highest-temperature case and two orders of magnitude less for the
+    lowest-temperature case. Consequently, the ion contribution does not significantly impact the
+    \gls{GD}. 
     \begin{figure}[H]
         \centering
         \subfigure[Case $1S1$]
@@ -152,9 +161,10 @@
     %% Species Gladstone-Dale %%
 
     %% Total Gladstone-Dale %%
-    \cref{fig:totalGladstoneDaleStudy} shows the total \gls{GD} for cases
-    described in \cref{tab:speciesStudyCases} and
-    \cref{tab:speciesStudyMassFraction}.
+    \Cref{fig:totalGladstoneDaleStudy} shows the total \gls{GD} for the cases 
+    described in \cref{tab:speciesStudyCases} and \cref{tab:speciesStudyMassFraction}. 
+    As expected from \cref{fig:speciesGladstoneDaleStudy}, the contribution
+    from the ion species is minimal and not noticeable in the total \gls{GD}.
     \begin{figure}[H]
         \centering
         \subfigure[Case $1S1$]
@@ -183,9 +193,13 @@
     %% Total Gladstone-Dale %%
 
     %% Index of Refraction %% 
-    \cref{fig:refractionIndexStudy} shows the index of refraction for cases
-    described in \cref{tab:speciesStudyCases} and
-    \cref{tab:speciesStudyMassFraction}.
+    \Cref{fig:refractionIndexStudy} shows the total index of refraction for the
+    cases described in \cref{tab:speciesStudyCases} and
+    \cref{tab:speciesStudyMassFraction}. As expected from
+    \cref{fig:refractionIndexStudy}, the contribution from the ion species is
+    minimal and not noticeable in the index of refraction. Hence, it can be
+    concluded that using a five-species gas is sufficient to predict the index
+    of refraction, making the computational cost less expensive.
     \begin{figure}[H]
         \centering
         \subfigure[Case $1S1$]
@@ -212,4 +226,3 @@
         results for cases in \cref{tab:speciesStudyCases}}
     \end{figure}
     %% Index of Refraction %% 
-
