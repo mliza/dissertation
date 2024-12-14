@@ -1,0 +1,30 @@
+\section{Optics\label{ch4:optics}}
+    \Cref{fig:kerlPolarizabilityT} shows the results of curve fitting developed
+    by Kerl \cite{Kerl1992}. This fitting uses constants defined in
+    \cref{tab:kerlConstants}. This constants are accessible in the
+    \textit{constants} module from the \gls{HAOT} package.
+    \begin{equation}\label{eq:kerlFitting}
+        \alpha(\omega,T) = \frac{\alpha(0,0)}{1 -
+        \Parenthesis{\frac{\omega}{\omega_0}}^2} \Parenthesis{1 + bT + cT^2}
+    \end{equation}
+    
+    \begin{table}[H]
+        \makebox[\linewidth][c]{
+            \begin{tabular}{|c|c|c|c|c|} 
+                \hline
+                Molecule & $\alpha_0\times10^{-30}\Units{m^3}$ &
+                $\omega_0\times10^{16}\UnitsFrac{rads}{sec}$ &
+                $b\times10^{-6}\UnitsFrac{1}{K}$ &
+                $c\times10^{-9}\UnitsFrac{1}{K}$ \\
+                \hline\hline
+                $N2$ & $1.7406$ & $2.6049$ & $1.8$ & -- \\ \hline
+                $O2$ & $1.5658$ & $2.1801$ & $-2.369$ & $8.687$ \\ \hline
+                $Air$ & $1.6970$ & $2.47044$ & $10.6$ & $7.909$ \\ \hline
+            \end{tabular}
+        }
+            \caption{Kerl fitting constants \cite{Kerl1992}
+            \cref{eq:kerlFitting}}\label{tab:kerlConstants}
+    \end{table}
+
+    \pic{0.8}{chapter4/kerlPolarizability_633nm}{Polarizability for a wavelength of
+    $633\Units{nm}$}{fig:kerlPolarizabilityT}
