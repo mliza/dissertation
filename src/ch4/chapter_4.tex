@@ -1,7 +1,24 @@
-\chapter{Aero-Optics Tool\label{ch:chapter4}} 
+\chapter{Aero-Optics Tool\label{ch:chapter4}}
+An open-source tool, \gls{HAOT}, has been developed to perform this analysis.
+The tool is published on \href{https://pypi.org/project/haot/}{PyPI}, the
+source code is available on \href{https://github.com/mliza/HAOT}{GitHub}, and
+the documentation can be found on
+\href{https://haot.readthedocs.io/en/latest/}{Read the Docs}. The current
+version of \gls{HAOT} includes five modules:
 
-An open source tool \gls{HAOT} was developed to perform this analysis. The tool
-is published in
-\href{https://pypi.org/project/haot/}{PyPI}, the source
-code is in \href{https://github.com/mliza/HAOT}{GitHub} and the documentation
-is in \href{https://haot.readthedocs.io/en/latest/}{Read the Docs}.
+\begin{itemize}
+    \item \textbf{Aerodynamics:} Implements commonly used aerodynamic functions.
+    \item \textbf{Optics:} Implements optics equations used in hypersonic flow analysis.
+    \item \textbf{Quantum Mechanics:} Implements commonly used quantum mechanical functions for hypersonic flow applications.
+    \item \textbf{Constants:} Includes various constants, primarily spectroscopy constants, used across the different modules.
+    \item \textbf{Conversion:} Provides several conversion functions used within the package. \end{itemize}
+
+\input{aerodynamics}
+    This module contains the following functions:
+
+
+\input{optics}
+\input{quantum_mechanics}
+\input{constants}
+\input{conversions}
+    

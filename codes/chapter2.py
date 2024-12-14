@@ -39,7 +39,8 @@ def temperature_ratio_plot(data_path, plotting_path):
     plt.legend()
     plt.xlabel("$U_1\,[km/s]$")
     plt.ylabel("$T_2/T_1\,[\;]$")
-    plt.savefig("temperatureRatio.png", format="png", bbox_inches="tight", dpi=600)
+    plt.savefig(os.path.join(ploting_path, "temperatureRatio.png"),
+                format="png", bbox_inches="tight", dpi=600)
     plt.close()
 
 
