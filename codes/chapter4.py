@@ -156,7 +156,7 @@ def test_buldakov_method(fig_config=None, output_png=None):
 
             if output_png:
                 plt.savefig(os.path.join(output_png,
-                    f'buldakovPolarizability_{k}.png'), format = 'pdf',
+                    f'buldakovPolarizability_{k}.pdf'), format = 'pdf',
                     bbox_inches='tight', dpi=fig_config['dpi_size'])
                 plt.close()
             else:
@@ -271,7 +271,7 @@ def plot_buldakov_kerl(fig_config, output_png):
 
         if output_png:
             plt.savefig(os.path.join(output_png,
-                f'polarizabilityComparison_{k}.png'), format = 'pdf',
+                f'polarizabilityComparison_{k}.pdf'), format = 'pdf',
                 bbox_inches='tight', dpi=fig_config['dpi_size'])
             plt.close()
         else:
