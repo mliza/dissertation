@@ -89,8 +89,8 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         if cut_dict and i in cut_dict and "temperature" in cut_dict[i]:
             plt.xlim(cut_dict[i]["temperature"])
         plt.savefig(
-            os.path.join(output_png_path, f"{i}_temperatures.png"),
-            format="png",
+            os.path.join(output_png_path, f"{i}_temperatures.pdf"),
+            format="pdf",
             bbox_inches="tight",
             dpi=fig_config["dpi_size"],
         )
@@ -145,8 +145,8 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         if cut_dict and i in cut_dict and "massFraction" in cut_dict[i]:
             plt.xlim(cut_dict[i]["massFraction"])
         plt.savefig(
-            os.path.join(output_png_path, f"{i}_massFraction.png"),
-            format="png",
+            os.path.join(output_png_path, f"{i}_massFraction.pdf"),
+            format="pdf",
             bbox_inches="tight",
             dpi=fig_config["dpi_size"],
         )
@@ -203,8 +203,8 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         if cut_dict and i in cut_dict and "speciesGladstone" in cut_dict[i]:
             plt.xlim(cut_dict[i]["speciesGladstone"])
         plt.savefig(
-            os.path.join(output_png_path, f"{i}_speciesGladstoneDale.png"),
-            format="png",
+            os.path.join(output_png_path, f"{i}_speciesGladstoneDale.pdf"),
+            format="pdf",
             bbox_inches="tight",
             dpi=fig_config["dpi_size"],
         )
@@ -235,8 +235,8 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         if cut_dict and i in cut_dict and "totalGladstone" in cut_dict[i]:
             plt.xlim(cut_dict[i]["totalGladstone"])
         plt.savefig(
-            os.path.join(output_png_path, f"{i}_totalGladstoneDale.png"),
-            format="png",
+            os.path.join(output_png_path, f"{i}_totalGladstoneDale.pdf"),
+            format="pdf",
             bbox_inches="tight",
             dpi=fig_config["dpi_size"],
         )
@@ -266,8 +266,8 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         if cut_dict and i in cut_dict and "refractiveIndex" in cut_dict[i]:
             plt.xlim(cut_dict[i]["refractiveIndex"])
         plt.savefig(
-            os.path.join(output_png_path, f"{i}_refractionIndex.png"),
-            format="png",
+            os.path.join(output_png_path, f"{i}_refractionIndex.pdf"),
+            format="pdf",
             bbox_inches="tight",
             dpi=fig_config["dpi_size"],
         )
@@ -328,8 +328,8 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         plt.title(correlations, fontsize=fig_config["title_size"])
 
         plt.savefig(
-            os.path.join(output_png_path, f"{i}_scatterPlots.png"),
-            format="png",
+            os.path.join(output_png_path, f"{i}_scatterPlots.pdf"),
+            format="pdf",
             bbox_inches="tight",
         )
         plt.close()
@@ -464,7 +464,7 @@ def main(cfd_results_abs_path):
     fig_config["legend_size"] = 14
     fig_config["axis_label_size"] = 16
     fig_config["title_size"] = 18
-    species_flag = True
+    species_flag = False 
 
     if not species_flag:
         # Chemistry Composition #

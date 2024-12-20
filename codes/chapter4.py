@@ -51,7 +51,8 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
         
         if output_png is not None: 
             plt.tight_layout()
-            plt.savefig(os.path.join(output_png,'aerodynamics.png'), format='png',
+            plt.savefig(os.path.join(output_png,'aerodynamics.pdf'),
+                        format='pdf',
                 bbox_inches='tight', dpi=fig_config["dpi_size"])
             plt.close()
 
@@ -91,8 +92,8 @@ def test_optics_module(fig_config=None, output_png=None):
 
             if output_png is not None:
                 plt.savefig(os.path.join(output_png,
-                f'kerlPolarizability_{k}_{wavelength_nm}nm.png'),
-                        format = 'png',
+                f'kerlPolarizability_{k}_{wavelength_nm}nm.pdf'),
+                        format = 'pdf',
                         bbox_inches='tight', dpi=fig_config['dpi_size'])
                 plt.close()
             if output_png is None:
@@ -155,7 +156,7 @@ def test_buldakov_method(fig_config=None, output_png=None):
 
             if output_png:
                 plt.savefig(os.path.join(output_png,
-                    f'buldakovPolarizability_{k}.png'), format = 'png',
+                    f'buldakovPolarizability_{k}.png'), format = 'pdf',
                     bbox_inches='tight', dpi=fig_config['dpi_size'])
                 plt.close()
             else:
@@ -232,8 +233,8 @@ def test_quantum_mechanics_module(fig_config=None, output_png=None):
 
             if output_png:
                 plt.savefig(os.path.join(output_png,
-                            f'boltzmannDistribution_{k}.png'), 
-                            format = 'png',
+                            f'boltzmannDistribution_{k}.pdf'), 
+                            format = 'pdf',
                         bbox_inches='tight', 
                         pad_inches=0.3,
                         dpi=fig_config['dpi_size'])
@@ -270,7 +271,7 @@ def plot_buldakov_kerl(fig_config, output_png):
 
         if output_png:
             plt.savefig(os.path.join(output_png,
-                f'polarizabilityComparison_{k}.png'), format = 'png',
+                f'polarizabilityComparison_{k}.png'), format = 'pdf',
                 bbox_inches='tight', dpi=fig_config['dpi_size'])
             plt.close()
         else:

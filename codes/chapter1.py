@@ -65,8 +65,8 @@ def plot_index(blue_sky, altitude, output_png_path, fig_config):
     # plt.legend(fontsize=fig_config['legend_size'])
 
     plt.savefig(
-        os.path.join(output_png_path, "atmosphericOptics.png"),
-        format="png",
+        os.path.join(output_png_path, "atmosphericOptics.pdf"),
+        format="pdf",
         bbox_inches="tight",
         dpi=fig_config["dpi_size"],
     )
