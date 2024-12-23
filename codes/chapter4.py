@@ -4,6 +4,7 @@ from haot import quantum_mechanics
 from haot import constants
 from haot import conversions
 from ambiance import Atmosphere
+import pandas as pd
 import numpy as np
 import os
 import matplotlib.pyplot as plt
@@ -59,10 +60,10 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
         if output_png is None:
             plt.show()
 
-def test_optics_module(fig_config=None, output_png=None):
+def test_optics_module(fig_config=None, output_png=None, paper_data=None):
     keys = ['N2', 'O2', 'H2', 'Air']
     wavelength_nm = 633
-    temperature_K = np.arange(100, 1500 + 50, 50)
+    temperature_K = np.arange(100, 1950 + 50, 50)
     dict_kerl = { }
     dict_kerl['temperature_K'] = temperature_K
 
@@ -79,7 +80,15 @@ def test_optics_module(fig_config=None, output_png=None):
                                       fig_config['fig_height']))
         for k in keys:
             plt.plot(temperature_K, dict_kerl[k],
-                    linewidth=fig_config['line_width'])
+                    linewidth=fig_config['line_width'], 
+                     label='HAOT')
+
+            if paper_data and (k != 'Air'):
+                plt.plot(paper_data[f'kerl_{k}']['temperature_K'],
+                         paper_data[f'kerl_{k}']['polarizability_m3'],
+                         '-.', linewidth=fig_config['line_width'],
+                         label='Paper')
+                plt.legend()
 
             plt.xlabel('Temperature $[K]$',
                         fontsize=fig_config['axis_label_size'])
@@ -241,8 +250,9 @@ def test_quantum_mechanics_module(fig_config=None, output_png=None):
                 plt.close()
             else:
                 plt.show()
+
             
-def plot_buldakov_kerl(fig_config, output_png):
+def plot_buldakov_kerl(fig_config, output_png, paper_data=None):
     buldakov = test_buldakov_method()
     kerl = test_optics_module()
     keys = ['N2', 'O2', 'H2']
@@ -252,11 +262,21 @@ def plot_buldakov_kerl(fig_config, output_png):
                                   fig_config['fig_height']))
         plt.plot(kerl['temperature_K'], kerl[k],
                 linewidth=fig_config['line_width'], 
-                label='Kerl')
+                label='Kerl, HAOT')
 
         plt.plot(buldakov['temperature_K'], buldakov[k],
                 linewidth=fig_config['line_width'], 
-                label='Buldakov')
+                label='Buldakov, HAOT')
+
+        if paper_data:
+            plt.plot(paper_data[f'kerl_{k}']['temperature_K'],
+                     paper_data[f'kerl_{k}']['polarizability_m3'],
+                     '-.', linewidth=fig_config['line_width'],
+                     label='Kerl, Paper')
+            plt.plot(paper_data[f'buldakov_{k}']['temperature_K'],
+                     paper_data[f'buldakov_{k}']['polarizability_m3'],
+                     '-.', linewidth=fig_config['line_width'],
+                     label='Buldakov, Paper')
 
         plt.xlabel('Temperature $[K]$',
                     fontsize=fig_config['axis_label_size'])
@@ -268,7 +288,6 @@ def plot_buldakov_kerl(fig_config, output_png):
         plt.yticks(fontsize=fig_config['ticks_size'])
         plt.legend(fontsize=fig_config['legend_size'])
 
-
         if output_png:
             plt.savefig(os.path.join(output_png,
                 f'polarizabilityComparison_{k}.pdf'), format = 'pdf',
@@ -276,6 +295,16 @@ def plot_buldakov_kerl(fig_config, output_png):
             plt.close()
         else:
             plt.show()
+
+def load_paper_data(paper_data):
+    files_in = os.listdir(paper_data)
+    dict_out = { }
+    for i in files_in:
+        key = i.split('.')[0]
+        df_in = pd.read_csv(os.path.join(paper_data, i))
+        dict_out[key] = df_in.to_dict(orient='list')
+    return dict_out
+
 
 
 if __name__ == "__main__":
@@ -290,9 +319,11 @@ if __name__ == "__main__":
     fig_config["title_size"] = 18
     output_png = "figures"
     output_png = "../figures/chapter4"
+    paper_data = "buldakovPaper"
 
+    paper_data = load_paper_data(paper_data) 
     test_aerodynamics_module(fig_config, output_png)
-    test_optics_module(fig_config, output_png)
+    test_optics_module(fig_config, output_png, paper_data)
     test_quantum_mechanics_module(fig_config, output_png) 
     test_buldakov_method(fig_config, output_png)
     plot_buldakov_kerl(fig_config, output_png)
