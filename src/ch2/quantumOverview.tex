@@ -96,15 +96,18 @@
                 $0.0471$ & $2179.2051$ \\ \hline
             \end{tabular}
         }
-            \caption{Spectroscopy energy constants \cite{Irikura2007, USDC2023}\label{tab:spectroscopyConstant}}
+            \caption{Spectroscopy energy constants for ground level \cite{Irikura2007, USDC2023}\label{tab:spectroscopyConstant}}
     \end{table}
 
-    The reduced mass was calculated using \cref{eq:reducedMass} and the force
-    constants are calculated using \cref{eq:forceConstant}.
+    The reduced mass ($\mu$) was calculated using \cref{eq:reducedMass} and the
+    molecular force $(k)$
+    constants are calculated using \cref{eq:forceConstant}. The molecular force
+    constant measures the stiffness of a chemical bond.
     \begin{subequations}\label{eq:additionalDiatomicCalculations}
         \begin{align}
             \mu &= \frac{m_1 m_2}{m_1 + m_2} \label{eq:reducedMass} \\
-            k &= \mu\omega^2_{\UnitsFrac{rads}{sec}} = \mu\Parenthesis{2\pi c_0
+            k &= \mu\omega^2_{\UnitsFrac{rads}{sec}} = \mu\Parenthesis{ 100
+            \times 2\pi c_0
             \nu_{\Units{cm^{-1}}}}^2 \UnitsFrac{N}{m}
             \label{eq:forceConstant} 
         \end{align}
@@ -113,20 +116,21 @@
     \begin{table}[H]
         \centering
         \makebox[\linewidth][c]{
-            \begin{tabular}{|c|c|c|}
+            \begin{tabular}{|c|c|c|c|}
                 \hline
-                Molecule & $r_e\Units{\r{A}}$ & $\mu \times 10^{-26}\Units{kg}$ \\ 
+                Molecule & $r_e\Units{\r{A}}$ & $\mu \times 10^{-26}\Units{kg}$
+                & $k\Units{N/m}$\\ 
                 \hline \hline
-                $NO+$ & $1.06322$ & $1.240$ \\ \hline
-                $N2+$ & $1.11642$ & $1.628$ \\ \hline
-                $O2+$ & $1.1164$ & $1.328$ \\ \hline
-                $NO$ & $1.15077$ & $1.240$ \\ \hline
-                $N2$ & $1.09768$ & $1.162$ \\ \hline
-                $O2$ & $1.20752$ & $1.328$ \\ \hline
-                $H2$ & $0.74144$ & $0.0836$ \\ \hline
+                $NO+$ & $1.06322$ & $1.240$ & $2485.629$ \\ \hline
+                $N2+$ & $1.11642$ & $1.628$ & $2009.857$ \\ \hline
+                $O2+$ & $1.1164$ & $1.328$  & $1712.066$ \\ \hline
+                $NO$ & $1.15077$ & $1.240$  & $1595.422$ \\ \hline
+                $N2$ & $1.09768$ & $1.162$  & $2295.375$ \\ \hline
+                $O2$ & $1.20752$ & $1.328$  & $1176.865$ \\ \hline
+                $H2$ & $0.74144$ & $0.0836$ & $575.174$ \\ \hline
             \end{tabular}
         }
-            \caption{Spectroscopy constants 
+            \caption{Spectroscopy constants for ground level
             \cite{USDC2023}\label{tab:spectroscopyConstant2}}
     \end{table}
     \textit{Kayser} units can be easily converted to energy
@@ -237,6 +241,7 @@
                 \times 10^{-30}\Units{m^3}$ &  $\alpha_e^{\prime\prime} \times
                 10^{-30}\Units{m^3}$ & $\alpha_e^{\prime\prime\prime} \times 10^{-30}\Units{m^3}$\\
                 \hline\hline
+                $H2$ & $0.7849$ & $0.90$  & $0.49$ & $-4.6$ \\ \hline
                 $N2$ & $1.7801$ & $1.860$ & $1.20$ & $-4.60$ \\ \hline
                 $O2$ & $1.6180$ & $1.760$ & $3.40$ & $23.70$ \\ \hline
             \end{tabular}
@@ -245,29 +250,9 @@
             \cite{Buldakov2000}}\label{tab:polarizabilityDerivatives}
     \end{table}
 
-    \todo{Figure out where to add this}
-    The total orbital angular momentum quantum number for molecular gas is
-    called $\Lambda$: 
-    \begin{subequations}\label{eq:spectroscopyNotation}
-        \begin{align*}
-            \Lambda = 0\,\rightarrow \Sigma \\
-            \Lambda = 1\,\rightarrow \Pi \\
-            \Lambda = 2\,\rightarrow \Delta \\
-            \Lambda = 3\,\rightarrow \Phi \\
-        \end{align*}
-    \end{subequations}
-
-   \todo{Stopped here} 
-
-\iffalse
-    The gamma coefficient is given by \cref{eq:gammaRotational} and it is
-    calculated using paper \cite{Bouanich1978}
-    \begin{equation}\label{eq:gammaRotational}
-        \gamma = \frac{2B_e}{\omega_e}
-    \end{equation}
-\fi 
-
-    \todo{Connect this with statistical mech}
+    \Cref{eq:buldakovPolarizabilityDistance} requires calculating the Boltzmann
+    distribution (\cref{eq:boltzmannDistribution}). However, the Boltzmann
+    distribution assumes that the system is in thermal equilibrium. \\
     
     A system is in thermodynamic equilibrium when the entropy of the system
     has reached its maximum possible value. Entropy is a measure of the
@@ -299,11 +284,32 @@
         1}e^{-\beta\Parenthesis{\varepsilon_v +\varepsilon_J}}}
     \end{equation}
  
-    It should be noted that in a system of harmonic oscillators, the
-    vibrational energy relaxes through a series of Boltzmann distributions.
-    However, this is not the case for anharmonic oscillators
-    \cite{Anketell1974}. Therefore, for this approach, it is assumed that the
-    system contains only harmonic oscillators and the anharmonic
-    $\Parenthesis{\omega_ex_e}$ term in vibrational energy equation REFEQ and
-    the anharmonic $\Parenthesis{\alpha_e}$ in the rotational energy equation
-    are set to zero.
+    It should be noted that, in a system of harmonic oscillators, vibrational
+    energy relaxes through a series of Boltzmann distributions. However, this
+    behavior does not hold for anharmonic oscillators \cite{Anketell1974}. The
+    assumption of harmonic behavior can be applied to the rigid rotor model
+    \cite{Ott2000}. Therefore, for the purposes of this approach, it is assumed
+    that the system consists solely of harmonic oscillators. As a result, the
+    anharmonic terms in the vibrational-rotational energy described by
+    \cref{eq:bornOppenheimerApproximation} will be neglected.
+
+%% TODO: DO I NEED THIS? %%
+\iffalse
+    The total orbital angular momentum quantum number for molecular gas is
+    called $\Lambda$: 
+    \begin{subequations}\label{eq:spectroscopyNotation}
+        \begin{align*}
+            \Lambda = 0\,\rightarrow \Sigma \\
+            \Lambda = 1\,\rightarrow \Pi \\
+            \Lambda = 2\,\rightarrow \Delta \\
+            \Lambda = 3\,\rightarrow \Phi \\
+        \end{align*}
+    \end{subequations}
+
+    The gamma coefficient is given by \cref{eq:gammaRotational} and it is
+    calculated using paper \cite{Bouanich1978}
+    \begin{equation}\label{eq:gammaRotational}
+        \gamma = \frac{2B_e}{\omega_e}
+    \end{equation}
+\fi 
+%% TODO: DO I NEED THIS? %%
