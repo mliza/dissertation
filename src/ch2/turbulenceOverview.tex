@@ -1,10 +1,104 @@
 \section{Turbulence Overview\label{ch2:turbulenceOverview}}
 
-Miller \cite{CastilloGomez2022} and others investigated the behavior of turbulence-induced aero-optical distortions in hypersonic
+Feynman once stated, \textit{"Turbulence is the most important unsolved problem of
+classical physics."} This statement remains true to this day. The problem of
+turbulence has attracted countless mathematicians, physicists, and engineers,
+yet it remains unsolved. Davidson et al. \cite{Davidson2011} provide an
+excellent historical overview of the field, tracing its development and the
+scientist who have contributed to the field of turbulence.  \\
+
+Defining turbulent flow is considerably more complex than defining compressible
+or hypersonic flow. Unlike the latter, which are based on measurable parameters
+such as Mach number or density variations, turbulent flow encompasses a broad
+spectrum of characteristics that resist simple classification. Tennekes
+\cite{Tennekes1972} characterizes turbulent flow by identifying the following
+defining features:
+\begin{itemize}
+    \item \textbf{Irregularity:} Turbulent flows are inherently chaotic and
+        unpredictable in their detailed behavior.
+    \item \textbf{Diffusivity:} Enhanced mixing and transport of momentum,
+        heat, and species occur due to turbulence.
+    \item \textbf{Large Reynolds numbers:} Turbulence typically arises in flows
+        with high Reynolds numbers, where inertial forces dominate over viscous
+        forces.
+    \item \textbf{Three-dimensional vorticity fluctuations:} Turbulence
+        involves complex, unsteady, and three-dimensional vortex structures.
+    \item \textbf{Dissipation:} Energy injected at larger scales cascades to
+        smaller scales and is ultimately dissipated as heat due to viscosity.
+    \item \textbf{Continuum:} Despite chaotic fluctuations, turbulent flows are
+        governed by the principles of continuum mechanics.
+\end{itemize}
+
+Pope \cite{Pope2000} and Wilcox \cite{Wilcox1998} similarly refrained from
+providing a strict definition of turbulence. Instead, they opted to describe
+its characteristics, aligning with Tennekes’ approach \cite{Tennekes1972}. This
+reflects the inherent complexity and multifaceted nature of turbulence, which
+defies a singular definition. \\
+
+Davidson \cite{Davidson2001, Davidson2015} offers a conceptual perspective, defining an eddy
+as a "blob of vorticity" and describing turbulence as a "sea of eddies." In
+this view, vortices within the turbulent flow are stretched and deformed by the
+velocity field, which, in turn, is governed by the instantaneous distribution
+of vorticity. This interplay highlights the dynamic and self-sustaining nature
+of turbulence, where vorticity and velocity fields are intricately linked. \\
+
+Indeed, turbulence remains one of the most challenging and elusive topics in
+fluid mechanics. Despite decades of research, its complexity continues to
+captivate and challenge mathematicians, physicists, and engineers alike.\\
+
+\Cref{fig:ch2TurbulenceJuno} captures the atmospheric turbulence of Jupiter as
+observed by \gls{NASA}'s Juno spacecraft. This stunning image reveals the
+dynamic and chaotic patterns within Jupiter's upper atmosphere, showcasing a
+complex interplay of swirling clouds, vortices, and turbulent flows. The
+visible turbulence is driven by the planet's rapid rotation, strong convection
+currents, and immense atmospheric pressure, which collectively give rise to the
+characteristic banded appearance and intricate flow structures. \\
+
+These turbulent flows exemplify the multi-scale nature of turbulence, where
+energy cascades from large, organized structures—such as Jupiter’s iconic bands
+and cyclones—to smaller, chaotic eddies and vortices. The intricate patterns
+demonstrate the non-linear behavior of fluids under turbulent regimes,
+providing a planetary-scale example of phenomena also observed in laboratory
+and terrestrial fluid systems.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter2/turbulenceJuno}}%
+    \caption{Jupiter's view captured by Juno spacecraft}
+    \label{fig:ch2TurbulenceJuno}
+\end{figure}
+
+\Cref{fig:ch2TurbulenceCoffee} illustrates turbulence generated in coffee
+during the mixing process, showcasing the chaotic and intricate flow structures
+that arise. The turbulence in coffee is not only visually striking but also
+plays a significant role in enhancing the extraction of soluble compounds and
+influencing the flavor profile. The mixing ensures a uniform distribution of
+dissolved substances such as oils, acids, and sugars, which contribute to the
+overall taste and aroma of the coffee \cite{Ludwig2012,Zwicker2024}. \\
+
+This image captures the transition from laminar to turbulent flow as the milk
+is introduced, with large-scale swirling motions breaking down into smaller,
+more chaotic structures. These turbulent interactions promote rapid mixing and
+facilitate efficient mass transfer, ensuring that the milk and coffee achieve a
+homogeneous blend. Such flow dynamics demonstrate the multi-scale nature of
+turbulence, where energy is transferred from larger eddies to smaller ones in a
+cascading process.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter2/turbulenceCoffee}}%
+    \caption{Turbulence in coffee}
+    \label{fig:ch2TurbulenceCoffee}
+\end{figure}
+
+\todo{Talk about energy Cascade}
+
+
+Miller \cite{CastilloGomez2022} and others investigated the behavior of
+turbulence-induced aero-optical distortions in hypersonic
 boundary layers using \gls{DNS}. Miller utilized the \gls{GD} to calculate the
 index of refraction and employed Gordeyev et al. \cite{Gordeyev2012} model to
 study the \gls{OPD} at Mach numbers of $14$. However; in this work, Miller did
 not consider nonequilibrium effects. This study fits into Quadrat II. \\
 
+
+
+\cite{Sagaut2018}
 
 
