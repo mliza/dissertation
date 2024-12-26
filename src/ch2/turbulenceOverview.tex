@@ -87,45 +87,67 @@ cascading process.
     \label{fig:ch2TurbulenceCoffee}
 \end{figure}
 
-\todo{Talk about energy Cascade}
-One of the most important characteristics of turbulence is the different scales
-on the flow. The larges eddies extract kinetic energy from the mean flow
-(energy production, region). The characteristic length scales in the production
-region are comparable to the flow dimensions; this process is highly
-anisotropic and it is mainly influeced by transport and mixing instead of
-viscosity.\\
-
-The intermediate eddies are called Taylor length scale eddies, the length
-scales in the inertial range. The turbulence in this region is isotropic but
-eddies in this region are independent of both the largest eddies and the
-smallest eddies in the dissipation range. It is assumed that the eddies in this
-region can be characterized by the turbulent dissipation $\varepsilon$ and the
-wave number $\kappa$. \\
-
-The smallest eddies have universal characters independent of the flow geometry
-and conditions. Those eddies in this range usually receive energy from the
-larger eddies and dissipate their energy into heat through the fluid’s
-molecular viscosity. These eddies are isotropic with length scales as described
-by Kolmogorov scales. It is assumed that the small scale eddies are determined
-by viscosity and dissipation.
-
-% https://help.altair.com/hwcfdsolvers/acusolve/topics/acusolve/training_manual/turb_scales_energy_cascasde_r.htm
-
+One of the most important characteristics of turbulence is the presence of
+different scales within the flow. In $1922$ Richardson introduced the energy
+cascade concept "Big whorls have little whorls that feed on their velocity; and
+little whorls have lesser and so on to viscosity." \Cref{fig:ch2EnergyCascade} shows the
+transfer of energy from the largest scales to the smaller scales, this process
+is achieved by the "vortex-stretching" \cite{Davidson2005}.
 \begin{figure}[H]
     \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter2/energyCascade}}%
     \caption{Energy cascade}
     \label{fig:ch2EnergyCascade}
 \end{figure}
 
-In $1922$ Richardson introduced the energy cascade concept "Big whorls have
-little whorls that feed on their velocity; and little whorls have lesser and so
-on to viscosity."
+These scales represent the hierarchical
+organization of turbulent eddies, which vary in size and energy transfer
+mechanisms. The largest eddies extract kinetic energy from the mean flow in the
+region known as the production region. The characteristic length scales in this
+region, known as the integral length scales, are comparable to the flow
+dimensions. This process is highly anisotropic, meaning the flow properties
+depend on direction, and it is primarily influenced by transport and mixing
+rather than viscosity.\\
+
+In the inertial range, the intermediate eddies are characterized by the Taylor
+length scale. Turbulence in this region is isotropic, indicating uniformity in
+all directions, but these eddies are dynamically independent of both the
+largest eddies in the production region and the smallest eddies in the
+dissipation range. Eddies in the inertial range transfer energy from larger
+scales to smaller scales through a cascade process. Their behavior is commonly
+described using the turbulent dissipation rate $(\varepsilon)$ and the wave
+number $(\kappa)$, which inversely relates to the eddy size. In this range, the
+influence of viscosity is negligible, and the turbulence is governed by
+inertial forces.\\
+
+The smallest eddies exist in the dissipation range, where they exhibit
+universal characteristics independent of the flow geometry or boundary
+conditions. These eddies receive energy transferred from larger eddies and
+dissipate it as heat through the fluid's molecular viscosity. The length scales
+of these eddies are described by the Kolmogorov scales, which depend on the
+kinematic viscosity $(\mu)$ and the turbulent dissipation rate $(\varepsilon)$.
+These eddies are isotropic due to the dominance of viscosity at these scales,
+which smoothens out directional variations. The smallest-scale motions are
+entirely governed by dissipation, making them crucial for understanding energy
+conversion in turbulent flows.\\
+
+\Cref{fig:ch2EnergySpectrum} illustrates the energy spectrum of turbulence,
+which organizes the energy distribution across different scales within a
+turbulent flow. This spectrum is crucial for understanding the underlying
+mechanisms and characteristics of turbulence.
 \begin{figure}[H]
     \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter2/energySpectrum}}%
     \caption{Energy spectrum}
     \label{fig:ch2EnergySpectrum}
 \end{figure}
 
+The energy spectrum is divided into three primary regions: the production range,
+the inertial range, and the dissipation range. It is important to note that the
+presence of vortices and a high Reynolds number are necessary but not
+sufficient conditions for turbulence. Turbulence can only be confirmed through
+a detailed analysis of flow data, where the characteristic energy spectrum with
+the $-\frac{5}{3}$ slope in the inertial range must emerge.\\
+
+\todo{Stopped here}
 
 \begin{figure}[H]
     \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter2/turbulentBL}}%
@@ -141,8 +163,6 @@ boundary layers using \gls{DNS}. Miller utilized the \gls{GD} to calculate the
 index of refraction and employed Gordeyev et al. \cite{Gordeyev2012} model to
 study the \gls{OPD} at Mach numbers of $14$. However; in this work, Miller did
 not consider nonequilibrium effects. This study fits into Quadrat II. \\
-
-
 
 \cite{Sagaut2018}
 
