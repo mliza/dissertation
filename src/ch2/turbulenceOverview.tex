@@ -92,7 +92,7 @@ different scales within the flow. In $1922$ Richardson introduced the energy
 cascade concept "Big whorls have little whorls that feed on their velocity; and
 little whorls have lesser and so on to viscosity." \Cref{fig:ch2EnergyCascade} shows the
 transfer of energy from the largest scales to the smaller scales, this process
-is achieved by the "vortex-stretching" \cite{Davidson2005}.
+is achieved by the "vortex-stretching" \cite{Davidson2015}.
 \begin{figure}[H]
     \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter2/energyCascade}}%
     \caption{Energy cascade}
@@ -124,7 +124,7 @@ universal characteristics independent of the flow geometry or boundary
 conditions. These eddies receive energy transferred from larger eddies and
 dissipate it as heat through the fluid's molecular viscosity. The length scales
 of these eddies are described by the Kolmogorov scales, which depend on the
-kinematic viscosity $(\mu)$ and the turbulent dissipation rate $(\varepsilon)$.
+kinematic viscosity $(\nu)$ and the turbulent dissipation rate $(\varepsilon)$.
 These eddies are isotropic due to the dominance of viscosity at these scales,
 which smoothens out directional variations. The smallest-scale motions are
 entirely governed by dissipation, making them crucial for understanding energy
@@ -140,20 +140,59 @@ mechanisms and characteristics of turbulence.
     \label{fig:ch2EnergySpectrum}
 \end{figure}
 
-The energy spectrum is divided into three primary regions: the production range,
-the inertial range, and the dissipation range. It is important to note that the
-presence of vortices and a high Reynolds number are necessary but not
-sufficient conditions for turbulence. Turbulence can only be confirmed through
-a detailed analysis of flow data, where the characteristic energy spectrum with
-the $-\frac{5}{3}$ slope in the inertial range must emerge.\\
+The energy spectrum is divided into three primary regions: the production
+range, the inertial range, and the dissipation range. It is important to note
+that the presence of vortices is a necessary but not sufficient condition for
+turbulence. At high Reynolds numbers, an energy spectrum with a characteristic
+slope of $-\frac{5}{3}$ emerges in the inertial range \cite{Monin1977},
+providing a more accurate definition of turbulence.\\
+
+Most turbulent flows found in nature are bounded \cite{Pope2000}. Examples of
+internal flows include flow through a pipe, while examples of external flows
+include flow around an aircraft. The study of these flows is highly challenging
+because the presence of a solid wall imposes additional constraints that are
+not present in free-shear flows (such as jets and wakes) \cite{Tennekes1972}.\\
 
 \todo{Stopped here}
-
+\Cref{fig:ch2TurbulentBL} shows a turbulent \gls{BL}. 
 \begin{figure}[H]
     \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter2/turbulentBL}}%
     \caption{Turbulent boundary layer}
     \label{fig:ch2TurbulentBL}
 \end{figure}
+
+A common tool to understand and characterize a turbulent \gls{BL} is to use the Van-Driest
+transformation \cref{eq:VanDriestTransformation}.
+\begin{subequations}\label{eq:VanDriestTransformation}
+    \begin{align}
+        u^+ = \frac{\overline{u}}{u_{\tau}} \label{eq:uPlus} \\
+        y^+ = \Parenthesis{\frac{\rho_w u_{\tau}}{\mu_w}}\label{eq:yPlus} \\
+        u_{\tau} = \sqrt{\frac{\tau_w}{\rho_w}} \label{eq:frictionVelocity} 
+    \end{align}
+\end{subequations}
+
+A turbulent can be divided in regions based on the fluid properties
+
+
+
+
+
+Wyckham \cite{Wyckham2009} performed and experimental study in transonic and
+hypersonic \glspl{BL} and showed that the largest scales in the boundary
+layer tend to dominated the \gls{AO} distortions.
+
+To accurately compute the \gls{AO} of refraction having acces to all scales in a
+turbulent flow is important, optical effects are negligible at small scale in
+turbulence but not a large scales \cite{Wang2012}.
+
+Vogiatzis \cite{Vogiatzis2016}
+
+
+Density has an impact in the \gls{AO} properties, many studies in the
+experimental and computational side have been done to show that to accurate c \cite{Wang2012} 
+Wall bounded flows are very importnat and investigation on the existence and
+phyasical behaviout and the energy cascade have been performed \cite{MARATI2004}
+
 
 
 
