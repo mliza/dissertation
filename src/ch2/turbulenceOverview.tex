@@ -153,16 +153,8 @@ include flow around an aircraft. The study of these flows is highly challenging
 because the presence of a solid wall imposes additional constraints that are
 not present in free-shear flows (such as jets and wakes) \cite{Tennekes1972}.\\
 
-\todo{Stopped here}
-\Cref{fig:ch2TurbulentBL} shows a turbulent \gls{BL}. 
-\begin{figure}[H]
-    \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter2/turbulentBL}}%
-    \caption{Turbulent boundary layer}
-    \label{fig:ch2TurbulentBL}
-\end{figure}
-
 A common tool to understand and characterize a turbulent \gls{BL} is to use the Van-Driest
-transformation \cref{eq:VanDriestTransformation}.
+transformation, as shown in \cref{eq:VanDriestTransformation}.
 \begin{subequations}\label{eq:VanDriestTransformation}
     \begin{align}
         u^+ = \frac{\overline{u}}{u_{\tau}} \label{eq:uPlus} \\
@@ -171,30 +163,62 @@ transformation \cref{eq:VanDriestTransformation}.
     \end{align}
 \end{subequations}
 
-A turbulent can be divided in regions based on the fluid properties
+A turbulent \gls{BL} can be divided into regions based on the fluid properties.
+Depending on the value of the $y^+$, different regions within the \gls{BL} are
+defined. \Cref{tab:wallRegions} shows the characteristics of these regions.
+\begin{table}[h!]
+\centering
+    \begin{tabular}{|c|c|c|}
+         \hline 
+         Regions & Location & Description \\ [0.5ex]
+         \hline \hline
+         Viscous sublayer & \makecell{$ y^+ < 5 $ \\ $ u^+ = y^+$} & \makecell{Layer dominated by viscous \\ stress and not the Reynolds stress.} \\ 
+         \hline 
+         Buffer layer & $5<y^+<30$ & \makecell{Region between the viscous sublayer \\ and log-law region.} \\
+         \hline 
+         Log-law layer & \makecell{$30<y^+<50$ \\ $u^+ = \frac{1}{\kappa} \ln\Parenthesis{y^+} + B$} & The log-law holds. \\
+         \hline
+         Outer layer & $y^+ > 50$ & \makecell{Direct effects of viscosity \\ on the velocity are negligible.} \\
+         \hline 
+    \end{tabular}
+    \caption{Wall regions and layers, table from
+    \cite{Pope2000}}\label{tab:wallRegions}
+\end{table}
 
+Characterizing these regions in a flow is essential to understand the effects
+of the wall on the flow. As the flow moves away from the wall, the impact of
+the wall shear stress decrease, and the Reynolds stress takes over. The
+majority of turbulence generation occurs in the buffer layer; this is the
+region in which ejection and sweeps also take place \cite{Robinson1991} and
+where the bursting process is most active. Hairpins in the \gls{BL} can
+be oriented at $45^{\circ}$ and are primary candidates for transferring energy
+from small scales to large scales (inverse energy cascade) \cite{Davidson2015}.
+Robinson \cite{Robinson1991} explains the bursting process, which is
+responsible for the inverse energy cascade, in detail. 
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter2/turbulentBL}}%
+    \caption{Turbulent boundary layer}
+    \label{fig:ch2TurbulentBL}
+\end{figure}
 
+When a beam of light travels across a \gls{BL}, it interacts with the different
+regions within the boundary layer. The viscous sublayer is typically considered
+laminar; however, as the beam propagates across the boundary layer, turbulence
+becomes dominant. To accurately compute the \gls{AO} properties, it is
+essential to account for all relevant scales in the turbulent flow. While
+optical effects are negligible at small scales in turbulence, they are
+significant at larger scales \cite{Wang2012}. \\
 
+Both computational and experimental studies in \glspl{BL} have demonstrated the
+presence of the energy cascade in wall-bounded flows. Marati et al. used
+results from a low-Reynolds-number \gls{DNS} to describe the characteristics of
+turbulence in different regions of the boundary layer \cite{Marati2004}. \\
 
-
-Wyckham \cite{Wyckham2009} performed and experimental study in transonic and
-hypersonic \glspl{BL} and showed that the largest scales in the boundary
-layer tend to dominated the \gls{AO} distortions.
-
-To accurately compute the \gls{AO} of refraction having acces to all scales in a
-turbulent flow is important, optical effects are negligible at small scale in
-turbulence but not a large scales \cite{Wang2012}.
-
-Vogiatzis \cite{Vogiatzis2016}
-
-
-Density has an impact in the \gls{AO} properties, many studies in the
-experimental and computational side have been done to show that to accurate c \cite{Wang2012} 
-Wall bounded flows are very importnat and investigation on the existence and
-phyasical behaviout and the energy cascade have been performed \cite{MARATI2004}
-
-
-
+Wyckham \cite{Wyckham2009} conducted an experimental study on transonic and
+hypersonic \glspl{BL}, showing that the largest scales in the boundary layer
+tend to dominate \gls{AO} distortions. These large scales often begin to emerge
+in the log-law layer \cite{Jimenez2001}. Additionally, most turbulence
+production occurs in the buffer layer \cite{Robinson1991}. \\
 
 Miller \cite{CastilloGomez2022} and others investigated the behavior of
 turbulence-induced aero-optical distortions in hypersonic
@@ -203,6 +227,17 @@ index of refraction and employed Gordeyev et al. \cite{Gordeyev2012} model to
 study the \gls{OPD} at Mach numbers of $14$. However; in this work, Miller did
 not consider nonequilibrium effects. This study fits into Quadrat II. \\
 
-\cite{Sagaut2018}
+Passiatore et al. \cite{Passiatore2022} conducted a study at $M = 12.48$ using
+\gls{DNS} and demonstrated that most nonequilibrium effects occur within the
+buffer layer. Consequently, if an optical beam traverses the boundary layer,
+nonequilibrium effects will be predominant closer to the wall, peaking within
+the buffer layer, while becoming less significant in the log-law and outer
+layers.\\
 
+In contrast, turbulent effects are negligible in the viscous sublayer but
+become increasingly important as the beam moves away from the wall. This is due
+to the larger eddies present in the log-law layer, where turbulence dominates.
+As a result, turbulent effects are more significant in this region compared to
+the viscous sublayer or buffer layer.
 
+\todo{Add this reference \cite{Sagaut2018}}
