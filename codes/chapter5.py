@@ -415,7 +415,7 @@ def optical_properties(
     name_in = [x.split(".")[0] for x in files_in]
     dict_data = {}
 
-    gd = optics.gladstone_dale()
+    gd = optics.gladstone_dale_constant()
     for f_in in name_in:
         dict_data[f_in] = {}
         density_dict = {}
@@ -427,7 +427,7 @@ def optical_properties(
             del density_dict["e+"]
 
         # Calculate Gladstone-Dale Constant and Index of Refraction
-        gd_const = optics.gladstone_dale(density_dict)
+        gd_const = optics.gladstone_dale_constant(density_dict)
         refraction_index = optics.index_of_refraction(density_dict)
 
         # Gladstone-Dale constant frozen
@@ -464,7 +464,7 @@ def main(cfd_results_abs_path):
     fig_config["legend_size"] = 14
     fig_config["axis_label_size"] = 16
     fig_config["title_size"] = 18
-    species_flag = True 
+    species_flag = False 
 
     if not species_flag:
         # Chemistry Composition #
