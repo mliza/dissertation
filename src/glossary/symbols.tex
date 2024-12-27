@@ -1,22 +1,12 @@
-
-% Roman
-\newglossaryentry{rommanletter}{
-    name={\Large{\textbf{Roman Letters}}},
+% Upper Case Roman %
+\newglossaryentry{upperCaseRoman}{
+    name={\Large{\textbf{Upper-case Roman}}},
     description={\nopostdesc},
     sort={1},
     type=symbols,
 }
 \glsxtrnewsymbol[description={Rotational constant in equilibrium position$\Units{cm^{-1}}$}]{Be}{\ensuremath{B_e}}
-\glsxtrnewsymbol[description={Speed of light in a
-vacuum}]{c0}{\ensuremath{c_0}}
-\glsxtrnewsymbol[description={Speed of light in a
-medium}]{cM}{\ensuremath{c_m}}
-\glsxtrnewsymbol[description={Heat capacity at constant
-pressure}]{heatCapacityP}{\ensuremath{c_p}}
-\glsxtrnewsymbol[description={Heat capacity at constant
-volume}]{heatCapacityV}{\ensuremath{c_v}}
 \glsxtrnewsymbol[description={Centrifugal distortion constant$\Units{cm^{-1}}$}]{De}{\ensuremath{D_e}}
-\glsxtrnewsymbol[description={Internal energy}]{internalEnergy}{\ensuremath{e}}
 \glsxtrnewsymbol[description={Electronic energy}]{electronicEnergy}{\ensuremath{\mathcal{E}_{elect}}}
 \glsxtrnewsymbol[description={Kinetic energy}]{kineticEnergy}{\ensuremath{\mathcal{E}_{kinetic}}}
 \glsxtrnewsymbol[description={Potential energy}]{potentialEnergy}{\ensuremath{\mathcal{E}_{potential}}}
@@ -25,34 +15,48 @@ volume}]{heatCapacityV}{\ensuremath{c_v}}
 energy}]{translationalEnergy}{\ensuremath{\mathcal{E}_{trans}}}
 \glsxtrnewsymbol[description={Vibrational energy}]{vibrationalEnergy}{\ensuremath{\mathcal{E}_{vib}}}
 \glsxtrnewsymbol[description={Convective fluxes}]{Fc}{\ensuremath{\mathcal{F}^c}} \glsxtrnewsymbol[description={Viscous fluxes}]{Fv}{\ensuremath{\mathcal{F}^v}}
-\glsxtrnewsymbol[description={Degeneracy}]{g}{\ensuremath{g_i}}
-\glsxtrnewsymbol[description={Enthalpy}]{enthalpy}{\ensuremath{h}}
-\glsxtrnewsymbol[description={Plancks constant}]{hbar}{\ensuremath{\hbar}}
 \glsxtrnewsymbol[description={Hamiltonian}]{mathcalH}{\ensuremath{\mathcal{H}}}
 \glsxtrnewsymbol[description={Rotational quantum number}]{J}{\ensuremath{J}}
-\glsxtrnewsymbol[description={Pressure}]{p}{\ensuremath{p}}
-\glsxtrnewsymbol[description={Electron volt constant}]{evConstant}{\ensuremath{q_e}}
-\glsxtrnewsymbol[description={Index of refraction}]{n}{\ensuremath{n}}
 \glsxtrnewsymbol[description={Species number
 density}]{Ni}{\ensuremath{N_i}}
-\glsxtrnewsymbol[description={Equilibrium internuclear
-distance$\Units{\r{A}}$}]{Re}{\ensuremath{r_e}}
 \glsxtrnewsymbol[description={Source terms}]{Q}{\ensuremath{\mathcal{Q}}}
-\glsxtrnewsymbol[description={Gas
-Constant$\Parenthesis{8.3145\UnitsFrac{J}{mol\,K}}$}]{R}{\ensuremath{R}}
 \glsxtrnewsymbol[description={Temperature}]{T}{\ensuremath{T}}
-\glsxtrnewsymbol[description={Normalized velocity}]{uPlus}{\ensuremath{u^+}}
-\glsxtrnewsymbol[description={Friction velocity}]{frictionVelocity}{\ensuremath{u_{\tau}}}
 \glsxtrnewsymbol[description={Conservative
 variables}]{U}{\ensuremath{\mathcal{U}}}
-\glsxtrnewsymbol[description={Vibrational quantum number}]{vQ}{\ensuremath{v}}
 \glsxtrnewsymbol[description={Volume}]{v}{\ensuremath{V}}
-\glsxtrnewsymbol[description={Normalized wall distance}]{yPlus}{\ensuremath{y^+}}
 \glsxtrnewsymbol[description={Partition Function}]{partitionFunction}{\ensuremath{Z}}
 
 
-\newglossaryentry{greekletter}{
-    name={\Large{\textbf{Greek Letters}}},
+% Lower Case Roman %
+\newglossaryentry{lowerCaseRoman}{
+    name={\Large{\textbf{Lower-case Roman}}},
+    description={\nopostdesc},
+    sort={1},
+    type=symbols,
+}
+\glsxtrnewsymbol[description={Speed of light in a
+medium}]{cM}{\ensuremath{c_m}}
+\glsxtrnewsymbol[description={Heat capacity at constant
+pressure}]{heatCapacityP}{\ensuremath{c_p}}
+\glsxtrnewsymbol[description={Heat capacity at constant
+volume}]{heatCapacityV}{\ensuremath{c_v}}
+\glsxtrnewsymbol[description={Internal energy}]{internalEnergy}{\ensuremath{e}}
+\glsxtrnewsymbol[description={Degeneracy}]{g}{\ensuremath{g_i}}
+\glsxtrnewsymbol[description={Enthalpy}]{enthalpy}{\ensuremath{h}}
+\glsxtrnewsymbol[description={Pressure}]{p}{\ensuremath{p}}
+\glsxtrnewsymbol[description={Electron volt constant}]{evConstant}{\ensuremath{q_e}}
+\glsxtrnewsymbol[description={Index of refraction}]{n}{\ensuremath{n}}
+\glsxtrnewsymbol[description={Equilibrium internuclear
+distance$\Units{\r{A}}$}]{Re}{\ensuremath{r_e}}
+\glsxtrnewsymbol[description={Normalized velocity}]{uPlus}{\ensuremath{u^+}}
+\glsxtrnewsymbol[description={Friction velocity}]{frictionVelocity}{\ensuremath{u_{\tau}}}
+\glsxtrnewsymbol[description={Vibrational quantum number}]{vQ}{\ensuremath{v}}
+\glsxtrnewsymbol[description={Normalized wall distance}]{yPlus}{\ensuremath{y^+}}
+
+
+% Lower Case Greek %
+\newglossaryentry{lowerCaseGreek}{
+    name={\Large{\textbf{Lower-case Greek}}},
     description={\nopostdesc},
     sort={2},
     type=symbols,
@@ -64,11 +68,7 @@ beta $\Parenthesis{\frac{1}{k_BT}}$}]{thermodynamicBeta}{\ensuremath{\beta}}
 \glsxtrnewsymbol[description={Specific heat
 ratio}]{specificHeatRatio}{\ensuremath{\gamma}}
 \glsxtrnewsymbol[description={Dielectric constant in a
-vacuum}]{epsilon0}{\ensuremath{\epsilon_0}}
-\glsxtrnewsymbol[description={Dielectric constant in a
 medium}]{epsilonM}{\ensuremath{\epsilon_m}}
-\glsxtrnewsymbol[description={Magnetic constant in a
-vacuum}]{mu0}{\ensuremath{\mu_0}}
 \glsxtrnewsymbol[description={Magnetic constant in a
 medium}]{muM}{\ensuremath{\mu_m}}
 \glsxtrnewsymbol[description={Dynamic Viscosity at the wall}]{muWall}{\ensuremath{\mu_w}}
@@ -92,32 +92,22 @@ frequency$\UnitsFrac{rads}{sec}$}]{omegaF}{\ensuremath{\omega}}
 \glsxtrnewsymbol[description={Ground-level angular
 frequency}]{omega0}{\ensuremath{\omega_0}}
 
-\newglossaryentry{Constants}{
-    name={\Large{\textbf{Constants}}},
+
+% Physical Constants %
+\newglossaryentry{physicalConstants}{
+    name={\Large{\textbf{Physical Constants}}},
     description={\nopostdesc},
-    sort={3},
+    sort={2},
     type=symbols,
 }
-
-\newglossaryentry{kB}{
-    name={\ensuremath{k_B}},
-    description={Boltzmann constant $1.38\times10^{-23}\UnitsFrac{J}{K}$},
-    parent=Constants,
-    type=symbols,
-    sort={kB}
-}
-
-\newglossaryentry{Subscripts}{
-    name={\Large{\textbf{Subscripts}}},
-    description={\nopostdesc},
-    sort={4},
-    type=symbols,
-}
-
-
-\newglossaryentry{Superscripts}{
-    name={\Large{\textbf{Superscripts}}},
-    description={\nopostdesc},
-    sort={5},
-    type=symbols,
-}
+\glsxtrnewsymbol[description={Gas
+constant, $8.3145\UnitsFrac{J}{mol\,K}$}]{R}{\ensuremath{R}}
+\glsxtrnewsymbol[description={Speed of light in a
+vacuum, $3 e8\UnitsFrac{m}{s}$}]{c0}{\ensuremath{c_0}}
+\glsxtrnewsymbol[description={Reduced Plack constant, $1.054e\!-\!34\Units{J s}$}]{hbar}{\ensuremath{\hbar}}
+\glsxtrnewsymbol[description={Boltzmann constant,
+$1.380e\!-\!23\UnitsFrac{J}{K}$}]{boltzConst}{\ensuremath{k_B}}
+\glsxtrnewsymbol[description={Dielectric constant in
+vacuum, $8.8854e\!-\!12\UnitsFrac{C}{Vm}$}]{e0}{\ensuremath{\epsilon_0}}
+\glsxtrnewsymbol[description={Magnetic constant in a
+vacuum, $4\pi e\!-\!7\UnitsFrac{H}{m}$}]{mu0}{\ensuremath{\mu_0}}

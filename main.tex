@@ -1,3 +1,4 @@
+% Dissertation specific macros
 \input{configuration/ThesisTemplate}
 \input{configuration/ThesisShortcuts}
 
@@ -10,7 +11,6 @@
 \input{configuration/myResources/Latex/macros/pictureMacros}
 \input{configuration/myResources/Latex/macros/codeMacros}
 \addbibresource{bibliography.bib}
-
 %\usepackage[text=Draft1, colorspec=0.92, fontsize=7cm]{draftwatermark} %Draft mark package
 
 \begin{document}
@@ -19,16 +19,37 @@
 % Place holder for Symbols and Acronyms
 \subimport{src/glossary}{glossary}
 
-%% Initial boiler plate
-%\subimport{src/ch0}{chapter_0}
+% Title Page
+\iffalse
+\begin{titlingpage}
+    \subimport{src/ch0}{TitlePage}
+\end{titlingpage}
+\fi
+
+% Print table of contents
+\clearpage\thispagestyle{empty}
 \tableofcontents
 
-\addcontentsline{toc}{chapter}{List of Tables}
-\listoftables
-\addcontentsline{toc}{chapter}{List of Figures}
-\listoffigures
+% Roman numeration
+\pagenumbering{roman}
+\setcounter{page}{1}
 
-%% Input all the chapters
+% Add Quote, Abstract, License, Acknowledgments
+%\subimport{src/ch0}{chapter_0}
+
+% Add list of tables, list of figures, and glosaries
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\printunsrtglossary[type=abbreviations]
+\printunsrtglossary[type=symbols,style=long, title={Nomenclature}]
+
+% Arabic numeration
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% Add all the chapters
 \subimport{src/ch1}{chapter_1}
 \subimport{src/ch2}{chapter_2}
 \subimport{src/ch3}{chapter_3}
@@ -39,8 +60,6 @@
 %% Documents after chapters
 \newpage 
     \printbibliography 
-    \printunsrtglossary[type=abbreviations]
-    \printunsrtglossary[type=symbols,style=long, title={Nomenclature}]
      
 \appendix
 \begin{appendices}
