@@ -472,7 +472,7 @@ def main(cfd_results_abs_path):
             cfd_results_abs_path, "chemistryComposition", "outputs"
         )
         files_in = ["1C.csv", "2C.csv", "3C.csv"]
-        output_png_path = "/Users/martin/Documents/Schools/UoA/Dissertation/figures/chapter5/chemistryComposition"
+        output_png_path = "../figures/chapter5/chemistryComposition"
         # Chemistry Composition #
     else:
         # Species #
