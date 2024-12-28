@@ -460,11 +460,11 @@ def main(cfd_results_abs_path):
     fig_config["fig_width"] = 6
     fig_config["fig_height"] = 5
     fig_config["dpi_size"] = 600
-    fig_config["ticks_size"] = 12
-    fig_config["legend_size"] = 14
-    fig_config["axis_label_size"] = 16
+    fig_config["axis_label_size"] = 14
+    fig_config["legend_size"] = 12
+    fig_config["ticks_size"] = 13
     fig_config["title_size"] = 18
-    species_flag = False 
+    species_flag = False
 
     if not species_flag:
         # Chemistry Composition #

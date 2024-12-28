@@ -26,7 +26,7 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
     haot_speed_of_sound = aerodynamics.speed_of_sound(atmosphere.temperature)
 
     if fig_config: 
-        fix, axs = plt.subplots(1,2, figsize=(fig_config["fig_width"],
+        fix, axs = plt.subplots(1,2, figsize=(fig_config["fig_width"] + 2,
                                               fig_config["fig_height"]),
                                     dpi=fig_config["dpi_size"])
 
@@ -38,7 +38,7 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
                           fontsize=fig_config["axis_label_size"])
         axs[0].set_xlabel('Altitude $[km]$',
                           fontsize=fig_config["axis_label_size"])
-        axs[0].legend()
+        axs[0].legend(fontsize=fig_config['legend_size'])
 
         axs[1].plot(atmosphere.dynamic_viscosity, altitude*1E-3, linewidth=
                       fig_config["line_width"], label='Ambiance')
@@ -48,7 +48,7 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
                           fontsize=fig_config["axis_label_size"])
         axs[1].set_xlabel('Altitude $[km]$',
                           fontsize=fig_config["axis_label_size"])
-        axs[1].legend()
+        axs[1].legend(fontsize=fig_config['legend_size'])
         
         if output_png is not None: 
             plt.tight_layout()
@@ -88,7 +88,7 @@ def test_optics_module(fig_config=None, output_png=None, paper_data=None):
                          paper_data[f'kerl_{k}']['polarizability_m3'],
                          '-.', linewidth=fig_config['line_width'],
                          label='Paper')
-                plt.legend()
+                plt.legend(fontsize=fig_config['legend_size'])
 
             plt.xlabel('Temperature $[K]$',
                         fontsize=fig_config['axis_label_size'])
@@ -310,12 +310,12 @@ def load_paper_data(paper_data):
 if __name__ == "__main__":
     fig_config = {}
     fig_config['line_width'] = 3
-    fig_config['fig_width'] = 8
+    fig_config['fig_width'] = 6
     fig_config['fig_height'] = 5
     fig_config['dpi_size'] = 600
-    fig_config['axis_label_size'] = 15
+    fig_config['axis_label_size'] = 14
     fig_config['legend_size'] = 12
-    fig_config['ticks_size'] = 10
+    fig_config['ticks_size'] = 13
     fig_config["title_size"] = 18
     output_png = "figures"
     output_png = "../figures/chapter4"

@@ -56,6 +56,10 @@ def temperature_ratio_plot(data_path, plotting_path, fig_config):
     plt.legend(fontsize=fig_config["legend_size"])
     plt.xlabel("$U_1\,[km/s]$", fontsize=fig_config["axis_label_size"])
     plt.ylabel("$T_2/T_1\,[\;]$", fontsize=fig_config["axis_label_size"])
+
+    ## Maybe Move this Out ##
+    plt.xticks(fontsize=fig_config['ticks_size'])
+    plt.yticks(fontsize=fig_config['ticks_size'])
     plt.savefig(
         os.path.join(ploting_path, "temperatureRatio.pdf"),
         format="pdf",
@@ -74,9 +78,10 @@ if __name__ == "__main__":
     fig_config["fig_width"] = 6
     fig_config["fig_height"] = 5
     fig_config["dpi_size"] = 600
-    fig_config["ticks_size"] = 12
+    fig_config["ticks_size"] = 14
     fig_config["legend_size"] = 11
-    fig_config["axis_label_size"] = 16
+    fig_config["axis_label_size"] = 14
+    fig_config['ticks_size'] = 13
     fig_config["title_size"] = 18
 
     temperature_ratio_plot("calloricallyPerfectGasData", ploting_path, fig_config)
