@@ -1,14 +1,10 @@
 \section{Chemistry Reaction
 Study\label{ch5:chemistryReactionStudy}}
 
-\todo{Use Results from AIAAA, laminar comparison between frozen and
-nonequilibrium flow}
-This section investigates nonequilibrium effects of aero-optics in a laminar
-flow by comparing a flow with nonequilibrium chemistry and the other one with
-frozen chemistry (chemical composition of the gas remains unchanged because
-the reactions are too slow to occur within the times scale of the flow). \cref{tab:chemistryReactionStudy} shows the cases used for this
-investigation.  
-
+This section investigates \gls{AO} properties at various Mach numbers for a
+hypersonic vehicle and compares the results between frozen flow and
+nonequilibrium flow conditions. \Cref{tab:chemistryReactionStudy} summarizes
+the key characteristics of each case analyzed. 
 \begin{table}[H]
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -30,7 +26,7 @@ The IRV-2 vehicle is a sphere-biconic with a nose radius of $1.95\Units{cm}$ and
 length of $1.386 \Units{m}$. Six drag flaps are located at the aft end of
 the vehicle and can be deployed to a maximum angle of $45$ degrees
 \cite{Kuntz2001}. For this work, only axisymmetric calculations on the
-IRV-2 nosetip are performed. \cref{fig:IRV2Mesh} shows
+IRV-2 nosetip are performed. \Cref{fig:IRV2Mesh} shows
 the mesh used in this work. 
 \begin{figure}[H]
     \centering
@@ -47,10 +43,15 @@ the mesh used in this work.
     \caption{\label{fig:IRV2Images}IRV-2}
 \end{figure}
 
-\Cref{fig:contourTranslationTemperatureFrozen}
-
-
-\newpage 
+\Cref{fig:contourTranslationTemperatureFrozen} presents contour plots of
+translational temperature, while \cref{fig:contourVibrationalTemperatureFrozen}
+displays vibrational temperature contours at different Mach numbers for a
+frozen flow. As expected, the post-shock temperature increases with Mach number
+due to the rapid compression of the flow. In the case of a frozen flow, this
+compression occurs as an adiabatic process, where kinetic energy is converted
+into thermal energy, leading to a sudden temperature rise. Furthermore, higher
+Mach numbers result in proportionally greater increases in both translational
+and vibrational temperatures.
 % Translational Temperatures Contours Frozen %
 \begin{figure}[H]
 \makebox[\textwidth][c]{
@@ -77,11 +78,53 @@ the mesh used in this work.
     }
 }
     \caption{Contour translational temperature for
-    frozen cases from \cref{tab:chemistryReactionStudy}}
+    frozen cases from \Cref{tab:chemistryReactionStudy}}
     \label{fig:contourTranslationTemperatureFrozen}
 \end{figure}
 % Translational Temperatures Contours Frozen %
 
+% Vibrational Temperatures Contours Frozen %
+\begin{figure}[H]
+\makebox[\textwidth][c]{
+    \hspace{-2.3em}
+    \subfigure[Case $1R$]
+    {
+        \label{fig:frozenTvr1R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/1R_frozenContourTvr.png}
+    }
+
+    \hspace{-1em}
+    \subfigure[Case $2R$]
+    {
+        \label{fig:frozenTvr2C}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/2R_frozenContourTvr.png}
+    }
+
+    \hspace{-1em}
+    \subfigure[Case $3R$]
+    {
+        \label{fig:frozenTvr3R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/3R_frozenContourTvr.png}
+    }
+}
+\label{fig:contourVibrationalTemperatureFrozen}
+\caption{Contour vibrational temperature for
+    frozen cases from \cref{tab:chemistryReactionStudy}}
+\end{figure}
+% Vibrational Temperatures Contours Frozen %
+
+
+\Cref{fig:contourTranslationTemperatureNonequilibrium} presents contour plots
+of translational temperature, while
+\cref{fig:contourVibrationalTemperatureNonequilibrium} displays vibrational
+temperature contours at different Mach numbers for a nonequilibrium flow. As
+expected, the translational temperature increases with Mach number, primarily
+at the leading edge of the geometry, where most of the kinetic energy of the
+flow is converted into internal energy. However, the increase in vibrational
+temperature is relatively lower due to nonequilibrium effects, as the process
+is no longer adiabatic. Additionally, as expected, the frozen chemistry case
+exhibits higher translational and vibrational temperatures since chemical
+reactions do not remove energy from the flow.
 % Translational Temperatures Contours Nonequilibrium %
 \begin{figure}[H]
 \makebox[\textwidth][c]{
@@ -112,35 +155,6 @@ the mesh used in this work.
 \end{figure}
 % Translational Temperatures Contours Nonequilibrium %
     
-% Vibrational Temperatures Contours Frozen %
-\begin{figure}[H]
-\makebox[\textwidth][c]{
-    \hspace{-2.3em}
-    \subfigure[Case $1R$]
-    {
-        \label{fig:frozenTvr1R}
-        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/1R_frozenContourTvr.png}
-    }
-
-    \hspace{-1em}
-    \subfigure[Case $2R$]
-    {
-        \label{fig:frozenTvr2C}
-        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/2R_frozenContourTvr.png}
-    }
-
-    \hspace{-1em}
-    \subfigure[Case $3R$]
-    {
-        \label{fig:frozenTvr3R}
-        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/3R_frozenContourTvr.png}
-    }
-}
-\label{fig:contourVibrationalTemperatureFrozen}
-\caption{Contour vibrational temperature for
-    frozen cases from \cref{tab:chemistryReactionStudy}}
-\end{figure}
-% Vibrational Temperatures Contours Frozen %
 
 % Vibrational Temperatures Contours Nonequilibrium %
 \begin{figure}[H]
@@ -172,12 +186,23 @@ the mesh used in this work.
 \end{figure}
 % Vibrational Temperatures Contours Nonequilibrium %
 
-\Cref{fig:nonequilibriumTtr1R,fig:nonequilibriumTtr2R,fig:nonequilibriumTtr3R,fig:nonequilibriumTvr1R,fig:nonequilibriumTvr2R,fig:nonequilibriumTvr3R}
-show temperature contour plots for cases described in table
-\cref{tab:chemistryReactionStudy}. As expected the frozen flow cases over predict
-the translational and vibrational temperatures. \todo{Add a why to what frozen
-flow overpredicts}
+\Cref{fig:stagnationTemperatures} shows the temperatures along the stagnation
+line for different Mach numbers in both frozen and nonequilibrium flow
+conditions. As expected, the shock standoff distance in the frozen case is
+observed to be larger: approximately $2.3\Units{mm}$ for the slowest and medium
+Mach numbers (Cases $1R$ and $2$), and $2\Units{mm}$ for the largest Mach
+number (Case $3R$). On the other hand, the nonequilibrium case shows a shock
+standoff distance of approximately $2\Units{mm}$ for the slow Mach number (Case
+$1R$), $1.7\Units{mm}$ for the medium Mach number (Case $2R$), and
+$1.5\Units{mm}$ for the largest Mach number (Case $3R$).\\
 
+This difference arises because when chemistry effects are not considered, the
+post-shock density is under-predicted (increasing the density ratio), and the
+post-shock temperature is over-predicted (decreasing the temperature ratio).
+The shock standoff scales with the density ratio across the shock times the
+radius of the vehicle. When chemistry effects are neglected, the density ratio
+across the shock is greater, and as a result, the shock standoff distance is
+larger compared to when chemistry effects are taken into account.
 % Stagnation Temperatures % 
 \begin{figure}[H]
     \makebox[\textwidth][c]{
@@ -202,6 +227,9 @@ flow overpredicts}
     cases, while dashed lines represent the frozen cases}
 \end{figure}
 % Stagnation Temperatures % 
+
+\todo{Stopped here}
+\Cref{fig:stagnationPressures} shows the pressure for a frozen and 
 
 % Stagnation pressures % 
 \begin{figure}[H]
