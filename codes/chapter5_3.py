@@ -51,14 +51,14 @@ def plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict=None):
         ## Plot Temperatures ##
 
         ## Plot Pressures ##
-        plt.plot(noneq['x'] * 1E3, noneq['Pressure'], color=colors[0],
+        plt.plot(noneq['x'] * 1E3, noneq['Pressure'] * 1E-3, color=colors[0],
             linewidth=fig_config['line_width'])
 
-        plt.plot(frozen['x'] * 1E3, frozen['Pressure'], '-.', color=colors[0],
+        plt.plot(frozen['x'] * 1E3, frozen['Pressure'] * 1E-3, '-.', color=colors[0],
             linewidth=fig_config['line_width'])
 
         plt.xlabel('X $[mm]$', fontsize=fig_config['axis_label_size'])
-        plt.ylabel('P $[Pa]$', fontsize=fig_config['axis_label_size'])
+        plt.ylabel('P $[kPa]$', fontsize=fig_config['axis_label_size'])
 
         plt.xticks(fontsize=fig_config['ticks_size'])
         plt.yticks(fontsize=fig_config['ticks_size'])
