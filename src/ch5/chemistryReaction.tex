@@ -25,159 +25,262 @@ investigation.
     \end{center}
 \end{table}
 
-    For this investigation the IRV-2 vehicle, shown in \cref{fig:IRV2} is used.
-    The IRV-2 vehicle is a sphere-biconic with a nose radius of $1.95\Units{cm}$ and a total
-    length of $1.386 \Units{m}$. Six drag flaps are located at the aft end of
-    the vehicle and can be deployed to a maximum angle of $45$ degrees
-    \cite{Kuntz2001}. For this work, only axisymmetric calculations on the
-    IRV-2 nosetip are performed. \cref{fig:IRV2Mesh} shows
-    the mesh used in this work. 
+For this investigation the IRV-2 vehicle, shown in \cref{fig:IRV2} is used.
+The IRV-2 vehicle is a sphere-biconic with a nose radius of $1.95\Units{cm}$ and a total
+length of $1.386 \Units{m}$. Six drag flaps are located at the aft end of
+the vehicle and can be deployed to a maximum angle of $45$ degrees
+\cite{Kuntz2001}. For this work, only axisymmetric calculations on the
+IRV-2 nosetip are performed. \cref{fig:IRV2Mesh} shows
+the mesh used in this work. 
+\begin{figure}[H]
+    \centering
+    \subfigure[IRV-2 vehicle]
+    {
+        \label{fig:IRV2}
+        \includegraphics[height=0.5\textwidth]{chapter5/chemistryReaction/irv2}
+    }
+    \subfigure[IRV-2 mesh]
+    {
+        \label{fig:IRV2Mesh}
+        \includegraphics[height=0.5\textwidth]{chapter5/chemistryReaction/1R_frozenMesh}
+    }
+    \caption{\label{fig:IRV2Images}IRV-2}
+\end{figure}
 
-\iffalse
-    \begin{figure}[H]
+\Cref{fig:contourTranslationTemperatureFrozen}
+
+
+\newpage 
+% Translational Temperatures Contours Frozen %
+\begin{figure}[H]
+\makebox[\textwidth][c]{
+    \begin{subfigure}[Case $1R$]
+    {
         \centering
-        \begin{minipage}{0.49\textwidth}
-            \centering
-            \includegraphics[scale=0.5]{chapter5/chemistryReaction/irv2}
-            \caption{IRV-2 vehicle}\label{fig:IRV2}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.49\textwidth}
-            \centering
-            \includegraphics[scale=0.3]{chapter5/chemistryReaction/1R_frozenMesh}
-            \caption{IRV-2 mesh}\label{fig:IRV2Mesh}
-        \end{minipage}
-    \end{figure}
-\fi
-    \begin{figure}[H]
+        \label{fig:frozenTr1R}
+        \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1R_frozenContourTtr.png}
+    }
+    \end{subfigure}
+
+    \begin{subfigure}[Case $2R$]
+    {
         \centering
-        \subfigure[IRV-2 vehicle]
-        {
-            \label{fig:IRV2}
-            \includegraphics[height=0.5\textwidth]{chapter5/chemistryReaction/irv2}
-        }
-        \subfigure[IRV-2 mesh]
-        {
-            \label{fig:IRV2Mesh}
-            \includegraphics[height=0.5\textwidth]{chapter5/chemistryReaction/1R_frozenMesh}
-        }
-        \caption{\label{fig:IRV2Images}IRV-2}
-    \end{figure}
+        \label{fig:frozenTr2R}
+        \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2R_frozenContourTtr.png}
+    }
+    \end{subfigure}
 
-    \newpage % Translational Temperatures
-        \begin{landscape}
-            \begin{figure}[H]
-                \centering
-                \begin{subfigure}[Case $1R$]
-                {
-                    \label{fig:frozenTr1R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1R_frozenContourTtr.png}
-                }
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}[Case $2R$]
-                {
-                    \label{fig:frozenTr2R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2R_frozenContourTtr.png}
-                }
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}[Case $3R$]
-                {
-                    \label{fig:frozenTr3R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3R_frozenContourTtr.png}
-                }
-                \end{subfigure}
-                \caption{Contour translational temperature for
-                frozen cases from \cref{tab:chemistryReactionStudy}}
-            \end{figure}
+    \begin{subfigure}[Case $3R$]
+    {
+        \centering
+        \label{fig:frozenTr3R}
+        \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3R_frozenContourTtr.png}
+    }
+    \end{subfigure}
+}
+    \caption{Contour translational temperature for
+    frozen cases from \cref{tab:chemistryReactionStudy}}
+    \label{fig:contourTranslationTemperatureFrozen}
+\end{figure}
+% Translational Temperatures Contours Frozen %
 
-            \begin{figure}[H]
-                \centering
-                \begin{subfigure}[Case $1R$]
-                {
-                    \label{fig:nonequilibriumTtr1R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1R_nonequilibriumContourTtr.png}
-                }
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}[Case $2R$]
-                {
-                    \label{fig:nonequilibriumTtr2R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2R_nonequilibriumContourTtr.png}
-                }
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}[Case $3R$]
-                {
-                    \label{fig:nonequilibriumTtr3R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3R_nonequilibriumContourTtr.png}
-                }
-                \end{subfigure}
-                \caption{Contour translational temperature for
-                nonequilibrium cases from \cref{tab:chemistryReactionStudy}}
-            \end{figure}
-        \end{landscape}
-        
-    \newpage % Vibrational Temperatures
-        \begin{landscape}
-            \begin{figure}[H]
-                \centering
-                \begin{subfigure}[Case $1R$]
-                {
-                    \label{fig:frozenTvr1R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1R_frozenContourTvr.png}
-                }
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}[Case $2R$]
-                {
-                    \label{fig:frozenTvr2C}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2R_frozenContourTvr.png}
-                }
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}[Case $3R$]
-                {
-                    \label{fig:frozenTvr3R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3R_frozenContourTvr.png}
-                }
-                \end{subfigure}
-                \caption{Contour vibrational temperature for
-                frozen cases from \cref{tab:chemistryReactionStudy}}
-            \end{figure}
+% Translational Temperatures Contours Nonequilibrium %
+\begin{figure}[H]
+\makebox[\textwidth][c]{
+    \hspace{-1em}
+    \begin{subfigure}[Case $1R$]
+    {
+        \centering
+        \label{fig:nonequilibriumTtr1R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/1R_nonequilibriumContourTtr.png}
+    }
+    \end{subfigure}
 
-            \begin{figure}[H]
-                \centering
-                \begin{subfigure}[Case $1R$]
-                {
-                    \label{fig:nonequilibriumTvr1R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/1R_nonequilibriumContourTvr.png}
-                }
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}[Case $2R$]
-                {
-                    \label{fig:nonequilibriumTvr2R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/2R_nonequilibriumContourTvr.png}
-                }
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}[Case $3R$]
-                {
-                    \label{fig:nonequilibriumTvr3R}
-                    \includegraphics[width=0.4\textwidth]{chapter5/chemistryReaction/3R_nonequilibriumContourTvr.png}
-                }
-                \end{subfigure}
-                \caption{Contour vibrational temperature for
-                nonequilibrium cases from \cref{tab:chemistryReactionStudy}}
-            \end{figure}
-        \end{landscape}
+    \begin{subfigure}[Case $2R$]
+    {
+        \centering
+        \label{fig:nonequilibriumTtr2R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/2R_nonequilibriumContourTtr.png}
+    }
+    \end{subfigure}
+
+    \begin{subfigure}[Case $3R$]
+    {
+        \centering
+        \label{fig:nonequilibriumTtr3R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/3R_nonequilibriumContourTtr.png}
+    }
+    \end{subfigure}
+}
+\label{fig:contourTranslationTemperatureNonequilibrium}
+\caption{Contour translational temperature for
+    nonequilibrium cases from \cref{tab:chemistryReactionStudy}}
+\end{figure}
+% Translational Temperatures Contours Nonequilibrium %
+    
+% Vibrational Temperatures Contours Frozen %
+\begin{figure}[H]
+\makebox[\textwidth][c]{
+    \hspace{-1em}
+
+    \begin{subfigure}[Case $1R$]
+    {
+        \centering
+        \label{fig:frozenTvr1R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/1R_frozenContourTvr.png}
+    }
+    \end{subfigure}
+
+    \begin{subfigure}[Case $2R$]
+    {
+        \centering
+        \label{fig:frozenTvr2C}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/2R_frozenContourTvr.png}
+    }
+    \end{subfigure}
+
+    \begin{subfigure}[Case $3R$]
+    {
+        \centering
+        \label{fig:frozenTvr3R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/3R_frozenContourTvr.png}
+    }
+    \end{subfigure}
+    }
+\label{fig:contourVibrationalTemperatureFrozen}
+\caption{Contour vibrational temperature for
+    frozen cases from \cref{tab:chemistryReactionStudy}}
+\end{figure}
+% Vibrational Temperatures Contours Frozen %
+
+% Vibrational Temperatures Contours Nonequilibrium %
+\begin{figure}[H]
+\makebox[\textwidth][c]{
+    \hspace{-1em}
+    \begin{subfigure}[Case $1R$]
+    {
+        \centering
+        \label{fig:nonequilibriumTvr1R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/1R_nonequilibriumContourTvr.png}
+    }
+    \end{subfigure}
+
+    \begin{subfigure}[Case $2R$]
+    {
+        \centering
+        \label{fig:nonequilibriumTvr2R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/2R_nonequilibriumContourTvr.png}
+    }
+    \end{subfigure}
+
+    \begin{subfigure}[Case $3R$]
+    {
+        \centering
+        \label{fig:nonequilibriumTvr3R}
+        \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/3R_nonequilibriumContourTvr.png}
+    }
+    \end{subfigure}
+}
+\label{fig:contourVibrationalTemperatureNonequilibrium}
+\caption{Contour vibrational temperature for
+            nonequilibrium cases from \cref{tab:chemistryReactionStudy}}
+\end{figure}
+% Vibrational Temperatures Contours Nonequilibrium %
+
 \Cref{fig:nonequilibriumTtr1R,fig:nonequilibriumTtr2R,fig:nonequilibriumTtr3R,fig:nonequilibriumTvr1R,fig:nonequilibriumTvr2R,fig:nonequilibriumTvr3R}
 show temperature contour plots for cases described in table
 \cref{tab:chemistryReactionStudy}. As expected the frozen flow cases over predict
 the translational and vibrational temperatures. \todo{Add a why to what frozen
 flow overpredicts}
-        
+
+% Stagnation Temperatures % 
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+    \hspace{-1em}
+        \begin{subfigure}[Case $1R$]{
+            \centering
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_temperatures.pdf}
+        }
+        \end{subfigure}
+
+        \hspace{-2em}
+        \begin{subfigure}[Case $2R$]{
+            \centering
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_temperatures.pdf}
+        }
+        \end{subfigure}
+
+        \hspace{-2em}
+        \begin{subfigure}[Case $3R$]{
+            \centering
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_temperatures.pdf}
+        }
+        \end{subfigure}
+    }
+    \label{fig:stagnationTemperatures}
+    \caption{Stagnation temperatures: solid lines represent the nonequilibrium
+    cases, while dashed lines represent the frozen cases}
+\end{figure}
+% Stagnation Temperatures % 
+
+% Stagnation pressures % 
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+    \hspace{-1em}
+        \begin{subfigure}[Case $1R$]{
+            \centering
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_pressures.pdf}
+        }
+        \end{subfigure}
+
+        \hspace{-2em}
+        \begin{subfigure}[Case $2R$]{
+            \centering
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_pressures.pdf}
+        }
+        \end{subfigure}
+
+        \hspace{-2em}
+        \begin{subfigure}[Case $3R$]{
+            \centering
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_pressures.pdf}
+        }
+        \end{subfigure}
+    }
+    \label{fig:stagnationPressures}
+    \caption{Stagnation pressures: solid lines represent the nonequilibrium
+    cases, while dashed lines represent the frozen cases}
+\end{figure}
+% Stagnation Pressures % 
+
+% Stagnation mass fraction % 
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+    \hspace{-1em}
+        \begin{subfigure}[Case $1R$]{
+            \centering
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_massFraction.pdf}
+        }
+        \end{subfigure}
+
+        \hspace{-2em}
+        \begin{subfigure}[Case $2R$]{
+            \centering
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_massFraction.pdf}
+        }
+        \end{subfigure}
+
+        \hspace{-2em}
+        \begin{subfigure}[Case $3R$]{
+            \centering
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_massFraction.pdf}
+        }
+        \end{subfigure}
+    }
+    \label{fig:stagnationMassFraction}
+    \caption{Stagnation mass fractions: solid lines represent the nonequilibrium
+    cases, while dashed lines represent the frozen cases}
+\end{figure}
+% Stagnation mass fraction % 
 
 

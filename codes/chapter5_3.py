@@ -7,21 +7,32 @@ import os
 
 def plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict=None):
     case_names = ['1R', '2R', '3R']
-    blue = mcolors.TABLEAU_COLORS['tab:blue']
-    orange = mcolors.TABLEAU_COLORS['tab:orange']
+
+    # Fluid species
+    ions = ['N+', 'O+', 'NO+', 'N2+', 'O2+']
+    neutral = ['N', 'O', 'NO', 'N2', 'O2']
+
+    colors = [ mcolors.TABLEAU_COLORS['tab:blue'], 
+               mcolors.TABLEAU_COLORS['tab:orange'], 
+               mcolors.TABLEAU_COLORS['tab:green'], 
+               mcolors.TABLEAU_COLORS['tab:red'], 
+               mcolors.TABLEAU_COLORS['tab:purple'] ]
 
     for n in case_names:
         frozen = data_in[f'{n}_frozen_stagnation']
         noneq = data_in[f'{n}_nonequilibrium_stagnation']
 
-        plt.plot(frozen['x'] * 1E3, frozen['Temperature_tr'], color=blue,
+        ## Plot Temperatures ##
+        plt.plot(noneq['x'] * 1E3, noneq['Temperature_tr'], color=colors[0],
             linewidth=fig_config['line_width'], label='$T_{tr}$')
-        plt.plot(frozen['x'] * 1E3, frozen['Temperature_ve'], color=orange,
+        plt.plot(noneq['x'] * 1E3, noneq['Temperature_ve'], color=colors[1],
             linewidth=fig_config['line_width'], label='$T_{vib}$')
 
-        plt.plot(noneq['x'] * 1E3, noneq['Temperature_tr'], '-.', color=blue,
+        plt.plot(frozen['x'] * 1E3, frozen['Temperature_tr'], '-.',
+                 color=colors[0],
             linewidth=fig_config['line_width'])
-        plt.plot(noneq['x'] * 1E3, noneq['Temperature_ve'], '-.', color=orange,
+        plt.plot(frozen['x'] * 1E3, frozen['Temperature_ve'], '-.',
+                 color=colors[1],
             linewidth=fig_config['line_width'])
         plt.legend(fontsize=fig_config['legend_size'])
 
@@ -37,6 +48,50 @@ def plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict=None):
                     format='pdf', bbox_inches='tight',
                     dpi=fig_config['dpi_size'])
         plt.close() 
+        ## Plot Temperatures ##
+
+        ## Plot Pressures ##
+        plt.plot(noneq['x'] * 1E3, noneq['Pressure'], color=colors[0],
+            linewidth=fig_config['line_width'])
+
+        plt.plot(frozen['x'] * 1E3, frozen['Pressure'], '-.', color=colors[0],
+            linewidth=fig_config['line_width'])
+
+        plt.xlabel('X $[mm]$', fontsize=fig_config['axis_label_size'])
+        plt.ylabel('P $[Pa]$', fontsize=fig_config['axis_label_size'])
+
+        plt.xticks(fontsize=fig_config['ticks_size'])
+        plt.yticks(fontsize=fig_config['ticks_size'])
+
+        if cut_dict and 'temperature' in cut_dict[n]:
+            plt.xlim(cut_dict[n]['temperature'])
+        plt.savefig(os.path.join(out_pdf_fig, f'{n}_pressures.pdf'),
+                    format='pdf', bbox_inches='tight',
+                    dpi=fig_config['dpi_size'])
+        plt.close() 
+        ## Plot Pressures ##
+
+        ## Plot Mass Fraction ##
+        for i, value in enumerate(neutral):
+            plt.plot(noneq['x'] * 1E3, noneq[f'MassFrac_{i}'], color=colors[i],
+            linewidth=fig_config['line_width'], label=value)
+        
+            plt.plot(frozen['x'] * 1E3, frozen[f'MassFrac_{i}'], '-.',
+                    color=colors[i], linewidth=fig_config['line_width'])
+        plt.legend(fontsize=fig_config['legend_size'])
+
+        plt.xlabel('X $[mm]$', fontsize=fig_config['axis_label_size'])
+        plt.ylabel('Mass Fraction $[ ]$', fontsize=fig_config['axis_label_size'])
+
+        if cut_dict and 'temperature' in cut_dict[n]:
+            plt.xlim(cut_dict[n]['temperature'])
+        plt.savefig(os.path.join(out_pdf_fig, f'{n}_massFraction.pdf'),
+                    format='pdf', bbox_inches='tight',
+                    dpi=fig_config['dpi_size'])
+        plt.close() 
+        ## Plot Mass Fraction ##
+
+        #IPython.embed(colors = 'Linux')
 
 def get_cut_dict():
     cut_dict = { }
@@ -74,5 +129,4 @@ if __name__ == "__main__":
     data_in = pickle.load(file)
 
     plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict)
-
 
