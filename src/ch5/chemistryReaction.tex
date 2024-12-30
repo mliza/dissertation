@@ -4,7 +4,8 @@ Study\label{ch5:chemistryReactionStudy}}
 This section investigates \gls{AO} properties at various Mach numbers for a
 hypersonic vehicle and compares the results between frozen flow and
 nonequilibrium flow conditions. \Cref{tab:chemistryReactionStudy} summarizes
-the key characteristics of each case analyzed. 
+the key characteristics of each case analyzed. The gas composition if the same
+composition from \cref{tab:speciesStudyMassFraction}.
 \begin{table}[H]
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -107,9 +108,9 @@ and vibrational temperatures.
         \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/3R_frozenContourTvr.png}
     }
 }
-\label{fig:contourVibrationalTemperatureFrozen}
 \caption{Contour vibrational temperature for
-    frozen cases from \cref{tab:chemistryReactionStudy}}
+    frozen cases from
+    \cref{tab:chemistryReactionStudy}\label{fig:contourVibrationalTemperatureFrozen}}
 \end{figure}
 % Vibrational Temperatures Contours Frozen %
 
@@ -149,9 +150,9 @@ reactions do not remove energy from the flow.
         \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/3R_nonequilibriumContourTtr.png}
     }
 }
-\label{fig:contourTranslationTemperatureNonequilibrium}
 \caption{Contour translational temperature for
-    nonequilibrium cases from \cref{tab:chemistryReactionStudy}}
+    nonequilibrium cases from \cref{tab:chemistryReactionStudy}
+    \label{fig:contourTranslationTemperatureNonequilibrium}}
 \end{figure}
 % Translational Temperatures Contours Nonequilibrium %
     
@@ -180,9 +181,9 @@ reactions do not remove energy from the flow.
         \includegraphics[width=0.41\textwidth]{chapter5/chemistryReaction/3R_nonequilibriumContourTvr.png}
     }
 }
-\label{fig:contourVibrationalTemperatureNonequilibrium}
 \caption{Contour vibrational temperature for
-            nonequilibrium cases from \cref{tab:chemistryReactionStudy}}
+            nonequilibrium cases from
+            \cref{tab:chemistryReactionStudy}\label{fig:contourVibrationalTemperatureNonequilibrium}}
 \end{figure}
 % Vibrational Temperatures Contours Nonequilibrium %
 
@@ -222,15 +223,14 @@ larger compared to when chemistry effects are taken into account.
             \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_temperatures.pdf}
         }
     }
-    \label{fig:stagnationTemperatures}
     \caption{Stagnation temperatures: solid lines represent the nonequilibrium
-    cases, while dashed lines represent the frozen cases}
+    cases, while dashed lines represent the frozen cases
+    \label{fig:stagnationTemperatures}}
 \end{figure}
 % Stagnation Temperatures % 
 
-\todo{Stopped here}
-\Cref{fig:stagnationPressures} shows the pressure for a frozen and 
-
+\Cref{fig:stagnationPressures} shows the pressure along the stagnation line at
+different mach numbers for a frozen and nonequilibrium flow.
 % Stagnation pressures % 
 \begin{figure}[H]
     \makebox[\textwidth][c]{
@@ -249,12 +249,25 @@ larger compared to when chemistry effects are taken into account.
             \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_pressures.pdf}
         }
     }
-    \label{fig:stagnationPressures}
     \caption{Stagnation pressures: solid lines represent the nonequilibrium
-    cases, while dashed lines represent the frozen cases}
+    cases, while dashed lines represent the frozen cases\label{fig:stagnationPressures}}
 \end{figure}
 % Stagnation Pressures % 
 
+\Cref{fig:stagnationMassFraction} illustrates the mass fraction of species
+along the stagnation line. As expected, in the frozen flow case, there is no
+change in mass fraction because there is no energy exchange with the internal
+energy modes. However, in the nonequilibrium flow case, energy is exchanged
+between internal energy modes, resulting in changes in the mass fractions of
+chemical species. \\
+
+For the nonequilibrium case, diatomic nitrogen (\ce{N2}) and diatomic oxygen
+(\ce{O2}) dissociate partially, forming nitric oxide (\ce{NO}), atomic oxygen
+(\ce{O}), and atomic nitrogen (\ce{N}) after the shock wave. The extent of this
+dissociation increases with Mach number due to the higher post-shock
+temperatures at greater Mach numbers. Higher temperatures provide the energy
+required to overcome the dissociation energy of molecular species, leading to
+greater production of \ce{NO}, \ce{O}, and \ce{N}.
 % Stagnation mass fraction % 
 \begin{figure}[H]
     \makebox[\textwidth][c]{
@@ -273,10 +286,11 @@ larger compared to when chemistry effects are taken into account.
             \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_massFraction.pdf}
         }
     }
-    \label{fig:stagnationMassFraction}
     \caption{Stagnation mass fractions: solid lines represent the nonequilibrium
-    cases, while dashed lines represent the frozen cases}
+    cases, while dashed lines represent the frozen
+    cases\label{fig:stagnationMassFraction}}
 \end{figure}
 % Stagnation mass fraction % 
 
+\todo{Add AO results}
 
