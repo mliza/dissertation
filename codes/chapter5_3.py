@@ -7,6 +7,7 @@ import os
 
 def plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict=None):
     case_names = ['1R', '2R', '3R']
+    #case_names = ['1R']
 
     # Fluid species
     ions = ['N+', 'O+', 'NO+', 'N2+', 'O2+']
@@ -52,16 +53,18 @@ def plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict=None):
 
         ## Plot Pressures ##
         plt.plot(noneq['x'] * 1E3, noneq['Pressure'] * 1E-3, color=colors[0],
-            linewidth=fig_config['line_width'])
+            linewidth=fig_config['line_width'], label='Nonequilibrium')
 
-        plt.plot(frozen['x'] * 1E3, frozen['Pressure'] * 1E-3, '-.', color=colors[0],
-            linewidth=fig_config['line_width'])
+        plt.plot(frozen['x'] * 1E3, frozen['Pressure'] * 1E-3,
+                 color=colors[1],
+            linewidth=fig_config['line_width'], label='Frozen')
 
         plt.xlabel('X $[mm]$', fontsize=fig_config['axis_label_size'])
         plt.ylabel('P $[kPa]$', fontsize=fig_config['axis_label_size'])
 
         plt.xticks(fontsize=fig_config['ticks_size'])
         plt.yticks(fontsize=fig_config['ticks_size'])
+        plt.legend(fontsize=fig_config['legend_size'])
 
         if cut_dict and 'temperature' in cut_dict[n]:
             plt.xlim(cut_dict[n]['temperature'])
@@ -91,7 +94,71 @@ def plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict=None):
         plt.close() 
         ## Plot Mass Fraction ##
 
-        #IPython.embed(colors = 'Linux')
+        # Create Density Dictionaries
+        frozen_mass_density_dict = create_mass_density_dict(frozen, neutral)
+        noneq_mass_density_dict = create_mass_density_dict(noneq, neutral)
+
+        # Calculate AO properties
+        frozen_index, frozen_GD, frozen_dielectric = calculate_aero_props(frozen_mass_density_dict)
+        noneq_index, noneq_GD, noneq_dielectric = calculate_aero_props(noneq_mass_density_dict)
+
+        ## Plot Species GD ##
+        for i, value in enumerate(neutral):
+            plt.plot(noneq['x'] * 1E3, noneq_GD[value] * 1E4, color=colors[i],
+            linewidth=fig_config['line_width'], label=value)
+        
+            plt.plot(frozen['x'] * 1E3, frozen_GD[value] * 1E4, '-.',
+                    color=colors[i], linewidth=fig_config['line_width'])
+        plt.legend(fontsize=fig_config['legend_size'])
+
+        plt.xlabel('X $[mm]$', fontsize=fig_config['axis_label_size'])
+        plt.ylabel('Species G-D $\\times 10^{-4}$ $[m^3/kg]$', fontsize=fig_config['axis_label_size'])
+
+        if cut_dict and 'temperature' in cut_dict[n]:
+            plt.xlim(cut_dict[n]['temperature'])
+        plt.savefig(os.path.join(out_pdf_fig, f'{n}_speciesGD.pdf'),
+                    format='pdf', bbox_inches='tight',
+                    dpi=fig_config['dpi_size'])
+        plt.close() 
+        ## Plot Species GD ##
+
+        ## Plot total GD ##
+        plt.plot(noneq['x'] * 1E3, noneq_GD['gladstone_dale'] * 1E4, color=colors[0],
+            linewidth=fig_config['line_width'], label='Nonequilibrium')
+
+        plt.plot(frozen['x'] * 1E3, frozen_GD['gladstone_dale'] * 1E4,
+                 color=colors[1],
+            linewidth=fig_config['line_width'], label='Frozen')
+
+        plt.xlabel('X $[mm]$', fontsize=fig_config['axis_label_size'])
+        plt.ylabel('Total GD $\\times 10^{-4}$ $[m^3/kg]$', fontsize=fig_config['axis_label_size'])
+
+        plt.xticks(fontsize=fig_config['ticks_size'])
+        plt.yticks(fontsize=fig_config['ticks_size'])
+        plt.legend(fontsize=fig_config['legend_size'])
+
+        if cut_dict and 'temperature' in cut_dict[n]:
+            plt.xlim(cut_dict[n]['temperature'])
+        plt.savefig(os.path.join(out_pdf_fig, f'{n}_totalGD.pdf'),
+                    format='pdf', bbox_inches='tight',
+                    dpi=fig_config['dpi_size'])
+        plt.close() 
+        ## Plot total GD ##
+
+def create_mass_density_dict(data_in, species):
+    dict_out = { }
+    for s, val in enumerate(species):
+        dict_out[val] = data_in[f'Density_{s}']
+
+    return dict_out
+
+def calculate_aero_props(mass_density_dict):
+    index_of_refraction = haot.index_of_refraction(mass_density_dict) 
+    gladstone_dale_const = haot.gladstone_dale_constant(mass_density_dict)
+    dielectric_property = haot.dielectric_material_const(index_of_refraction)
+
+    return index_of_refraction, gladstone_dale_const, dielectric_property 
+
 
 def get_cut_dict():
     cut_dict = { }
