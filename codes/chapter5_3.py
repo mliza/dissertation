@@ -194,6 +194,7 @@ if __name__ == "__main__":
 
     file = open(pickle_path, 'rb')
     data_in = pickle.load(file)
+    file.close()
 
     plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict)
 
