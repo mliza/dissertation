@@ -28,7 +28,7 @@ def plot_index(blue_sky, altitude, output_png_path, fig_config):
 
     # Plots altitude vs. Index of refraction
     plt.plot(
-        blue_sky - 1,
+        (blue_sky - 1) * 1e3,
         altitude * 1e-3,
         linewidth=fig_config["line_width"],
         label="blue-sky",
@@ -70,7 +70,7 @@ def plot_index(blue_sky, altitude, output_png_path, fig_config):
             )
 
     # X and Y axis
-    plt.xlabel("(Refractive Index - 1) $[\;]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("$(n - 1)$ $\\times 10^{-3}[\;]$", fontsize=fig_config["axis_label_size"])
     plt.ylabel("Altitude $[km]$", fontsize=fig_config["axis_label_size"])
     # plt.legend(fontsize=fig_config['legend_size'])
 
