@@ -1,11 +1,12 @@
 import pickle
-import os
+
 import haot
 import molmass
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.constants as s_consts
 import IPython
+import os
 
 
 
@@ -143,7 +144,7 @@ def plot_index_of_refraction(n_index, data_in, fig_config, plotting_path):
     plt.close()
 
 if __name__ == "__main__":
-    input_pickle_path = "../resultsCFD/LES/openFoam/LES_01.pickle"
+    input_pickle_path = "../resultsCFD/LES/openFoam/LES_00.pickle"
     plotting_path = "results_test"
     plotting_path = "../figures/chapter5/lesStudy"
 
@@ -175,16 +176,47 @@ if __name__ == "__main__":
     fig_config["data_shape"] = [t_axis, x_axis, y_axis]
 
     # Calculate AO
-    index_refraction = haot.index_of_refraction_density_temperature(data_in['T'],
-                                                   data_in['rho'], 'Air', 633)
-    opl_dict = haot.optical_path_length(index_refraction, data_in['Y'], 2)
+    # -1 is required due to the meshing ignores the last element
+    index_refraction = haot.index_of_refraction_density_temperature(data_in['T'][:-1],
+                                                data_in['rho'][:-1], 'Air', 633)
+    opl_dict = haot.optical_path_length(index_refraction, data_in['Y'][:-1], 2)
     opd_dict_t = haot.optical_path_difference(opl_dict, 0)
+
+    #y_vector = [x,y], it changes based on X 
+    y_vector = data_in['Y'][t_axis,:,:]
+    n_ = index_refraction['dilute'][0,:,:]
+
+    mesh_opl = np.zeros([len(data_in['spacing_dx']), len(y_vector[0,:])- 1])
+
+    for x, val in enumerate(data_in['spacing_dx']):
+        y_= np.linspace(np.min(y_vector[x,:]), np.max(y_vector[x,:]),
+                        len(y_vector[x,:]))
+
+        mesh_opl[x] = n_[x,:][:-1] * np.diff(y_) #[x, y]
+
+
+    tot_opl_x = np.sum(mesh_opl, axis=1) #Sum on Y axis
+
+
+    IPython.embed(colors = 'Linux')
+
+
+
+
+
+
+    plot_index_of_refraction(index_refraction, data_in, fig_config,
+                             plotting_path)
+
+
+
 
 
     # Plots #
+    """
+
     plot_index_of_refraction(index_refraction, data_in, fig_config,
                              plotting_path)
-    """
 
     plot_OPD_3D(opd_dict_t['dilute'], data_in, fig_config, plotting_path)
     plot_OPL_3D(opl_dict['dilute'], data_in, fig_config,
