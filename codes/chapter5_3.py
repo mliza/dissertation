@@ -139,11 +139,34 @@ def plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict=None):
 
         if cut_dict and 'temperature' in cut_dict[n]:
             plt.xlim(cut_dict[n]['temperature'])
-        plt.savefig(os.path.join(out_pdf_fig, f'{n}_totalGD.pdf'),
+        plt.savefig(os.path.join(out_pdf_fig, f'{n}_indexOfRefraction.pdf'),
                     format='pdf', bbox_inches='tight',
                     dpi=fig_config['dpi_size'])
         plt.close() 
         ## Plot total GD ##
+
+        ## Plot Index of Refraction ##
+        plt.plot(noneq['x'] * 1E3, (noneq_index['dilute'] - 1) * 1E3, color=colors[0],
+            linewidth=fig_config['line_width'], label='Nonequilibrium')
+
+        plt.plot(frozen['x'] * 1E3, (frozen_index['dilute'] - 1) * 1E3,
+                 color=colors[1],
+                 linewidth=fig_config['line_width'], label='Frozen')
+
+        plt.xlabel('X $[mm]$', fontsize=fig_config['axis_label_size'])
+        plt.ylabel('$(n - 1) \\times 10^{3}$ $[ ]$', fontsize=fig_config['axis_label_size'])
+
+        plt.xticks(fontsize=fig_config['ticks_size'])
+        plt.yticks(fontsize=fig_config['ticks_size'])
+        plt.legend(fontsize=fig_config['legend_size'])
+
+        if cut_dict and 'temperature' in cut_dict[n]:
+            plt.xlim(cut_dict[n]['temperature'])
+        plt.savefig(os.path.join(out_pdf_fig, f'{n}_totalGD.pdf'),
+                    format='pdf', bbox_inches='tight',
+                    dpi=fig_config['dpi_size'])
+        plt.close() 
+        ## Plot Index of Refraction ##
 
 def create_mass_density_dict(data_in, species):
     dict_out = { }

@@ -70,7 +70,7 @@ def plot_index(blue_sky, altitude, output_png_path, fig_config):
             )
 
     # X and Y axis
-    plt.xlabel("$(n - 1)$ $\\times 10^{-3}[\;]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("$(n - 1)$ $\\times 10^{3}[\;]$", fontsize=fig_config["axis_label_size"])
     plt.ylabel("Altitude $[km]$", fontsize=fig_config["axis_label_size"])
     # plt.legend(fontsize=fig_config['legend_size'])
 

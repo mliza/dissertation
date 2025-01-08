@@ -34,9 +34,9 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
                       fig_config["line_width"], label='Ambiance')
         axs[0].plot(haot_speed_of_sound, altitude*1E-3, '--', linewidth=
                       fig_config["line_width"], label='HAOT')
-        axs[0].set_ylabel('Speed of Sound $[m/s]$',
+        axs[0].set_xlabel('Speed of Sound $[m/s]$',
                           fontsize=fig_config["axis_label_size"])
-        axs[0].set_xlabel('Altitude $[km]$',
+        axs[0].set_ylabel('Altitude $[km]$',
                           fontsize=fig_config["axis_label_size"])
         axs[0].legend(fontsize=fig_config['legend_size'])
 
@@ -44,9 +44,9 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
                       fig_config["line_width"], label='Ambiance')
         axs[1].plot(haot_dynamic_visc, altitude*1E-3, '--', linewidth=
                       fig_config["line_width"], label='HAOT')
-        axs[1].set_ylabel('Dynamic Viscosity $[Pa\,s]$',
+        axs[1].set_xlabel('Dynamic Viscosity $[Pa\,s]$',
                           fontsize=fig_config["axis_label_size"])
-        axs[1].set_xlabel('Altitude $[km]$',
+        axs[1].set_ylabel('Altitude $[km]$',
                           fontsize=fig_config["axis_label_size"])
         axs[1].legend(fontsize=fig_config['legend_size'])
         
