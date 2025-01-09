@@ -291,8 +291,15 @@ greater production of \ce{NO}, \ce{O}, and \ce{N}.
 \end{figure}
 % Stagnation mass fraction % 
 
-\todo{Finish AO writing}
-
+\Cref{fig:stagnationSpeciesGD} illustrates the species \gls{GD} along the
+stagnation line. As expected, in the frozen case, there is no change in the
+species \gls{GD} because the mass fractions remain constant
+(\cref{fig:stagnationMassFraction}) due to the lack of exchange within internal
+energy modes. However, in the nonequilibrium flow case, energy is exchanged
+between internal energy modes, leading to a change in the mass fractions and,
+consequently, a change in the species \gls{GD}. The species \gls{GD} follows a
+trend very similar to that of the mass fractions; hence, the results presented
+here closely resemble those in \cref{fig:stagnationMassFraction}.
 % Stagnation species GD % 
 \begin{figure}[H]
     \makebox[\textwidth][c]{
@@ -317,6 +324,15 @@ greater production of \ce{NO}, \ce{O}, and \ce{N}.
 \end{figure}
 % Stagnation species GD % 
 
+\Cref{fig:stagnationTotalGD} illustrates the total \gls{GD}. As expected, in
+the frozen case, the total \gls{GD} remains constant due to the absence of
+energy exchange between internal energy modes. In contrast, the nonequilibrium
+case exhibits variation in the total \gls{GD}. Specifically, as the Mach number
+increases, the total \gls{GD} also increases. This behavior is attributed to
+the energy exchange between internal energy modes, which causes changes in the
+thermodynamic and chemical state of the flow. The dependence of the total
+\gls{GD} on the Mach number highlights the sensitivity of nonequilibrium flows
+to the dynamic and thermal state of the system.
 % Stagnation total GD % 
 \begin{figure}[H]
     \makebox[\textwidth][c]{
@@ -339,6 +355,17 @@ greater production of \ce{NO}, \ce{O}, and \ce{N}.
 \end{figure}
 % Stagnation total GD % 
 
+\Cref{fig:stagnationIndexOfRefraction} shows the stagnation index of refraction
+for both the frozen and nonequilibrium cases at different Mach numbers. As
+expected, the frozen case underpredicts the index of refraction and
+overpredicts the standoff distance. This overprediction of the standoff
+distance could significantly impact the beam quality of a seeker, as the
+increased standoff distance may introduce additional phase distortions and beam
+defocusing. Such effects could reduce the accuracy and effectiveness of optical
+systems operating in hypersonic flow conditions. The nonequilibrium case, by
+contrast, accounts for energy exchange between internal energy modes, resulting
+in a more accurate representation of the index of refraction and associated
+flow properties.
 % Index of Refraction% 
 \begin{figure}[H]
     \makebox[\textwidth][c]{
@@ -357,10 +384,25 @@ greater production of \ce{NO}, \ce{O}, and \ce{N}.
             \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_indexOfRefraction.pdf}
         }
     }
-    \caption{Stagnation index of refraction \label{fig:indexOfRefractionR}}
+    \caption{Stagnation index of refraction
+    \label{fig:stagnationIndexOfRefraction}}
 \end{figure}
 % Index of Refraction% 
 
+\Cref{fig:stagnationDielectricConstant} compares the nonequilibrium and frozen
+cases for the ratio between the dielectric constant of a medium, $\epsilon_m$,
+and the dielectric constant in a vacuum, $\epsilon_0$. The dielectric constant
+in a medium follows a similar trend to the index of refraction; thus, the frozen 
+case underpredicts the medium’s dielectric constant. A higher dielectric constant
+indicates that the material can store more electrical energy, which slows down
+the signal propagation speed and increases signal attenuation. This behavior
+effectively makes the medium a better insulator, impeding signal transmission
+and reducing its power. In hypersonic flow conditions, such changes in the
+dielectric constant can have significant implications for the performance of
+electromagnetic wave-based systems, such as communication devices and radar
+seekers. Accurate modeling of the dielectric constant in nonequilibrium flows
+is therefore critical for predicting and mitigating signal degradation in
+high-speed aerospace applications.
 % Dielectric medium %
 \begin{figure}[H]
     \makebox[\textwidth][c]{
@@ -379,6 +421,7 @@ greater production of \ce{NO}, \ce{O}, and \ce{N}.
             \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_dielectricMedium.pdf}
         }
     }
-    \caption{Stagnation dielectric constant in medium\label{fig:dielectricMediumR}}
+    \caption{Stagnation dielectric constant in
+    medium\label{fig:stagnationDielectricConstant}}
 \end{figure}
 % Dielectric medium %
