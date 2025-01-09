@@ -1,26 +1,30 @@
 \chapter{Aero-Optics Tool\label{ch:chapter4}}
 An open-source tool, \gls{HAOT}, has been developed to perform this analysis.
-The tool is published on \href{https://pypi.org/project/haot/}{PyPI}, the
-source code is available on \href{https://github.com/mliza/HAOT}{GitHub}, and
-the documentation can be found on
-\href{https://haot.readthedocs.io/en/latest/}{Read the Docs}. The current
-version of \gls{HAOT} includes five modules:
+The tool is published on \href{https://pypi.org/project/haot/}{PyPI}, with its
+source code hosted on \href{https://github.com/mliza/HAOT}{GitHub}, and
+the documentation provided on \href{https://haot.readthedocs.io/en/latest/}{Read the Docs}. 
+The current version of \gls{HAOT} includes five modules:
 
-\begin{itemize}
-    \item \textbf{Aerodynamics:} Implements commonly used aerodynamic functions.
-    \item \textbf{Optics:} Implements optics equations used in hypersonic flow
-        analysis.
-    \item \textbf{Quantum Mechanics:} Implements commonly used quantum
-        mechanical functions for hypersonic flow applications.
-    \item \textbf{Constants:} Includes various constants, primarily
-        spectroscopy constants, used across the different modules.
-    \item \textbf{Conversion:} Provides several conversion functions used
-        within the package.
+\begin{itemize} 
+\item \textbf{Aerodynamics:} Implements commonly used aerodynamic functions.
+\item \textbf{Optics:} Provides equations used in aero-optics and hypersonic
+    flow analysis.
+\item \textbf{Quantum Mechanics:} Offers commonly used quantum mechanical
+    functions relevant to hypersonic flow.
+\item \textbf{Constants:} Contains various constants, primarily
+    spectroscopy-related used in optics.
+\item \textbf{Conversion:} Provides a suite of conversion functions used in
+    this module. 
 \end{itemize}
 
-Some Validations results are proved in sections below, the constants and
-conversions were validated by visual inspection.
+Validation results are provided in subsequent sections. The constants and
+conversion functions were validated through visual inspection. The primary
+objective of \gls{HAOT} is to enable researchers to perform \gls{CFD} analysis
+efficiently. Additionally, the tool is open for contributions, encouraging
+other developers to expand its functionality. The goal is to create a
+\textit{software blueprint} that can serve as a foundational tool for
+researchers, particularly in academic \gls{CFD} settings, where software tools
+are often poorly documented and developed \cite{Robillard1998,Liu2008}. 
 \input{aerodynamics}
 \input{optics}
 \input{quantum_mechanics}
-    
