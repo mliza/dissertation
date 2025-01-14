@@ -1,5 +1,35 @@
 \section{Turbulence Modeling\label{ch3:turbulenceModeling}}
 
+By definition, an n-equation model signifies a model that requires solution of n additional differential transport equations in addition to expressing conservation of mass, momentum and energy for the mean flow.
+
+In $1925$ Prandtl introduced the mixing length model (an analogy to the mean free
+path in a gas). Model's bases in the mixing length hypothesis referred to as an
+algebraic model or a zero-equation model of turbulence. In $1945$ Prandtl
+assumed a model in which the eddy viscosity depends upon the kinetic energy of
+the turbulent fluctuations, and proposed a partial differential equation to
+solve for the kinetic energy (this is a one-equation model).
+
+In $1942$ Kolmogorov introduced a first complete model of turbulence, in
+addition to having a modeled equation for the kinetic energy $\kappa$, he introduced a
+second parameter $\omega$. This is a two-equation model of turbulence.
+
+Chou $(1945)$ and Rotta $(1951)$ laid the foundation of turbulence models that
+avoid the used of the Boussinesq Approximation. Model for the differential
+equation governing evolution of the tensor that represents turbulent stresses,
+such models are most appropriately described as stress transport models. Many
+authors refer to this approach as a second order closure or second moment
+closure. The primary conceptual advantage of a stres transport model is the
+natural manner in which nonlocal and history effects are incorporated.
+
+For a three-dimensional flow, a stress-transport model introduces seven
+equations, one for the turbulence (length or equivalent) scale and six for the
+components of the Reynolds-stress tensor.
+
+
+\todo{Clean up section avobe}
+
+
+
 In $1963$, Smagorinsky \cite{Smagorinsky1963} introduced the \gls{LES} model to
 simulate atmospheric air currents. The \gls{LES} framework is grounded in the
 energy cascade model developed by Kolmogorov in the $1940$s, which itself
