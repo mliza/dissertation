@@ -19,12 +19,21 @@ The current version of \gls{HAOT} includes five modules:
 
 Validation results are provided in subsequent sections. The constants and
 conversion functions were validated through visual inspection. The primary
-objective of \gls{HAOT} is to enable researchers to perform \gls{CFD} analysis
-efficiently. Additionally, the tool is open for contributions, encouraging
-other developers to expand its functionality. The goal is to create a
-\textit{software blueprint} that can serve as a foundational tool for
-researchers, particularly in academic \gls{CFD} settings, where software tools
-are often poorly documented and developed \cite{Robillard1998,Liu2008}. 
+objective of \gls{HAOT} is to enable researchers to perform optical analysis
+using \gls{CFD} results. \gls{HAOT} is an open-source tool designed with the
+intention of allowing other developers to expand its current functionalities.
+The goal of the tool is to serve as a \textit{software blueprint} that provides
+a foundational framework for researchers, particularly in academia, where
+software tools are often poorly written, inadequately tested, insufficiently
+documented, and underdeveloped \cite{Robillard1998,Liu2008}. Comprehensive
+documentation for the tool, including usage instructions with or without
+\gls{CFD} data, can be found on the
+\href{https://haot.readthedocs.io/en/latest/}{documentation page}. The
+\gls{HAOT} tool has a GitHub pipeline that automatically runs unit tests to
+ensure that the functions developed do not break when changes in the code are
+submitted.
+
+
 \input{aerodynamics}
 \input{optics}
 \input{quantum_mechanics}
