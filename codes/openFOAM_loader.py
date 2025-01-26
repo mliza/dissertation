@@ -1,9 +1,9 @@
-import pyvista as pv
-import os
-import IPython
-import numpy as np
 import haot
-import scipy.constants as s_const
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+import pyvista as pv
+import IPython
 
 # Loading foam data
 foam_case = os.path.join('openFoam', 'time_files')
