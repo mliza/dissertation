@@ -116,16 +116,89 @@ def plot_kerl(mesh, kerl_path):
     plotter.close()
     del plotter
 
+# Wave travels on the x
+def plot_wavefront_distortion_y(y_range, x_loc,
+                            wave_front_distortion,
+                            fig_config, wd_path, time):
+    x_loc_vec = x_loc * np.ones(np.shape(y_range))
+    #plt.plot(x_in_vec, y_range, '-', label='In') 
+
+    # Plot WaveFront distortion
+    plt.plot(x_loc_vec, y_range, '-',
+             linewidth=fig_config['line_width'],
+             label='Theoretical') 
+    plt.plot(wave_front_distortion, y_range, '-', 
+             linewidth=fig_config['line_width'],
+             label='Truth')
+    plt.legend(fontsize=fig_config['legend_size'])
+    plt.xticks([round(np.mean(wave_front_distortion), 3), round(x_out, 1)],      
+               fontsize=fig_config['ticks_size'])
+    plt.ylabel("Y $[m]$",
+                fontsize=fig_config['axis_label_size'])
+    plt.xlabel("Aberration $[m]$",
+                fontsize=fig_config['axis_label_size'])
+    plt.savefig(os.path.join(wd_path, f"wavefrontDistortion_{time}.pdf"), 
+                format='pdf', bbox_inches="tight",
+                dpi=fig_config['dpi_size'])
+    plt.close()
+
+# Plot OPL (wave travels on the x)
+def plot_optical_path_length_y(y_range, OPL,
+                               fig_config, opl_path, time):
+    plt.plot(OPL, y_range, '-', 
+             linewidth=fig_config['line_width'])
+    plt.ylabel("y-distance $[m]$",
+                fontsize=fig_config['axis_label_size'])
+    plt.xlabel("OPL $[m]$",
+                fontsize=fig_config['axis_label_size'])
+    plt.savefig(os.path.join(opl_path, f"opl_{time}.pdf"), 
+                format='pdf', bbox_inches="tight",
+                dpi=fig_config['dpi_size'])
+    plt.close()
+
+# Plot OPD (wave travels on the x)
+def plot_optical_path_difference_y(y_range, OPD,
+                               fig_config, opd_path, time):
+    plot_optical_path_difference_y
+    plt.plot(OPD, y_range, '-', 
+             linewidth=fig_config['line_width'],
+             label='Truth')
+    plt.ylabel("y-distance $[m]$",
+                fontsize=fig_config['axis_label_size'])
+    plt.xlabel("OPD $[m]$",
+                fontsize=fig_config['axis_label_size'])
+    plt.locator_params(axis='x', nbins=3)
+    plt.savefig(os.path.join(opd_path, f"opd_{time}.pdf"), 
+                format='pdf', bbox_inches="tight",
+                dpi=fig_config['dpi_size'])
+    plt.close()
+
+
 ## Users inputs ##
 f_in = '/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/LES/LES_SU2/flow'
-index_path = 'index'
-kerl_path = 'kerl'
-plot_flag = False
+index_path = 'figures/index'
+kerl_path = 'figures/kerl'
+opl_path = 'figures/opl'
+opd_path = 'figures/opd'
+wd_path = 'figures/wd'
+plot_flag = True 
 index_figure = True
 kerl_figure = True
-y_range = np.arange(-0.7, -0.2, 0.1)
+y_range = np.arange(-0.7, -0.2, 0.01)
 x_range = np.arange(-6, 3, 0.1)
+# Where beam goes in
+x_in = 4
+x_out = -3
 ## Users inputs ##
+fig_config = {}
+fig_config["line_width"] = 3
+fig_config["fig_width"] = 6
+fig_config["fig_height"] = 5
+fig_config["dpi_size"] = 600
+fig_config["axis_label_size"] = 14
+fig_config["legend_size"] = 12
+fig_config["ticks_size"] = 13
+fig_config["title_size"] = 18
 
 # Testing flag
 test_flag = False
@@ -153,8 +226,8 @@ for i, val in enumerate(flow_files):
 
     for j, value in enumerate(y_range):
         # Get line data [x, y, z]
-        point_1 = [4, value, 0.0]
-        point_2 = [-2, value, 0.0]
+        point_1 = [x_in, value, 0.0]
+        point_2 = [x_out, value, 0.0]
         n_points = 900
 
         # Create a line and OPL[time, y_range]
@@ -180,23 +253,24 @@ for i, val in enumerate(flow_files):
     del reader
     del mesh
 
-# Calculate OPD
+# Calculate OPD and WaveFront distortion
 OPD = haot.optical_path_difference(OPL, sum_ax=0)
-IPython.embed(colors = 'Linux')
+x_in_vec = x_in * np.ones(np.shape(y_range))
+x_out_vec = x_out * np.ones(np.shape(y_range))
+wave_front_distortion = x_out_vec + OPD
 
+for i, val in enumerate(flow_files):
+    time = val.split('.')[0].split('_')[-1]
 
+    # Plot wavefront distortion (wave travels on x)
+    plot_wavefront_distortion_y(y_range, x_out,
+                                wave_front_distortion[i,:],
+                                fig_config, wd_path, time)
 
+    # Plot OPL (wave travels on x)
+    plot_optical_path_length_y(y_range, OPL[i,:],
+                                fig_config, opl_path, time)
 
-"""
-    #plt.plot(line_data['Distance'][:-1], OPL, label=f'{i}')
-plt.plot(OPL_time[i,:] - OPL_mean, y_range, 'o-', label=f'{i}')
-plt.ylabel("Distance $[m]$")
-plt.xlabel("OPL $[ ]$")
-plt.savefig(os.path.join("opl", f"opl_{time}.pdf"), 
-            format='pdf', bbox_inches="tight")
-plt.close()
-"""
-
-
-
-
+    # Plot OPD (wave travels on x)
+    plot_optical_path_difference_y(y_range, OPD[i,:],
+                                fig_config, opd_path, time)
