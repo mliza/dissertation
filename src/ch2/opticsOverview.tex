@@ -141,6 +141,22 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     Note: $\overline{\Parenthesis{\;}}$ denotes the spatial average over the
     aperture.\\ 
 
+    \todo{Figure out where to add these optic equations}
+    The phase difference is calculated using \cref{eq:phaseDifference}
+    \begin{equation}\label{eq:phaseDifference}
+        \phi = 2\pi\Parenthesis{\frac{OPD}{\lambda}}
+    \end{equation}
+
+    The RMS wavefront error is given by \cref{eq:phaseRMS}
+    \begin{equation}\label{eq:phaseRMS}
+        \phi_{RMS}^2 = \overline{ \Parenthesis{\phi - \overline{\phi}}^2  }
+    \end{equation}
+
+    The Strehl ratio is calculated using \cref{eq:strehlRatio} 
+    \begin{equation}\label{eq:strehlRatio}
+        SR = e^{-\phi_{RMS}^2}
+    \end{equation}
+
     Fluctuation in the fluid fields are not the only cause of distortion in
     \gls{AO}. At high speed flows the nonequilibrium effects play an important
     role. Mackey \cite{Mackey2018, Mackey2019, Mackey2019a} demonstrated that there

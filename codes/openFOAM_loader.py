@@ -5,56 +5,79 @@ import os
 import pyvista as pv
 import IPython
 
+# Process optical properties
+def call_optics(mesh):
+    cell_data = mesh.point_data_to_cell_data()
+
+    index_of_refraction = haot.index_of_refraction_density_temperature(
+        cell_data["T"], cell_data["rho"], "Air", 633
+    )
+
+    mesh.cell_data["index_dilute"] = index_of_refraction["dilute"]
+
+    mesh.cell_data["kerl_polarizability"] = haot.kerl_polarizability_temperature(
+        cell_data["T"], "Air", 633
+    )
+
+    mesh.cell_data["dielectric_dilute"] = haot.dielectric_material_const(
+        index_of_refraction["dilute"]
+    )
+
+    mesh.cell_data["critical_angle"] = haot.total_internal_reflection_angle(
+        index_of_refraction["dilute"]
+    )
+
+    mesh.cell_data["reflectance"] = haot.normal_incidence_reflectance(
+        index_of_refraction["dilute"]
+    )
+
+    mesh.cell_data["brewster_angle"] = haot.brewster_angle(
+        index_of_refraction["dilute"]
+    )
+    del index_of_refraction
+
 # Loading foam data
-foam_case = os.path.join('openFoam', 'time_files')
+f_in =(
+"/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/LES/openFoam")
+foam_case = os.path.join(f_in, 'time_files')
 reader = pv.POpenFOAMReader(os.path.join(foam_case, 'results.foam'))
 mesh = reader.read()
 time_data = reader.time_values 
 time_data = np.array(time_data)
+x_range = (1.1, 1.6, 0.01)
 plot_flag = False
+y_in = -0.1 
+y_out = 0.15
+
+OPL = np.zeros([np.shape(time_data)[0], len(x_range)])
 
 # Choose the first time data for i in time_data:
-i = 0
-reader.set_active_time_value(time_data[i])
-internal_mesh = mesh['internalMesh']
-cell_data = internal_mesh.cell_data
-fields_in = internal_mesh.array_names
-point_data = internal_mesh.point_data
+for i, val in enumerate(time_data):
+    reader.set_active_time_value(time_data[i])
+    internal_mesh = mesh['internalMesh']
+    cell_data = internal_mesh.cell_data
+    fields_in = internal_mesh.array_names
+# Post process optics
+    call_optics(internal_mesh)
 
-# Calculate optical properties
-index_of_refraction = haot.index_of_refraction_density_temperature(
-                                            internal_mesh['T'],
-                                            internal_mesh['rho'], 'Air', 633)
-kerl_polarizability = haot.kerl_polarizability_temperature(
-                                            internal_mesh['T'],
-                                            'Air', 633)
-dielectric_constant_dilute = haot.dielectric_material_const(index_of_refraction['dilute'])
-dielectric_constant_dense = haot.dielectric_material_const(index_of_refraction['dense'])
+    for j, value in enumerate(x_range): 
+        point_1 = [value, y_in, 0.0]
+        point_2 = [value, y_out, 0.0]
+        n_points = 900
 
-# Calculate the [x,y,z] coordinate of each cell
-cell_centroids = internal_mesh.cell_centers()
-x_coords = cell_centroids.points[:, 0]
-y_coords = cell_centroids.points[:, 1]
-z_coords = cell_centroids.points[:, 2]
-n = index_of_refraction['dilute']
+        # Create a line and OPL[time, x_range]
+        line_data = internal_mesh.sample_over_line(point_1, point_2, n_points)
+        OPL_vect = haot.optical_path_length(line_data["index_dilute"],
+                                                line_data["Distance"])
 
-internal_mesh.cell_data['n'] = (index_of_refraction['dilute'] - 1) * 1E3
-internal_mesh.cell_data['pol'] = kerl_polarizability * 1E30
-internal_mesh.cell_data['dielectric_dilute'] = dielectric_constant_dilute * 1E12
-internal_mesh.cell_data['dielectric_dense'] = dielectric_constant_dense * 1E12
-internal_mesh.cell_data['index_dilute'] = index_of_refraction['dilute']
+        OPL[i][j] = np.sum(OPL_vect)
 
-point_1 = [-0.2, 0.0, 0.0]
-point_2 = [0.0, 0.0, 0.0]
-n_points = 500
-line_data = internal_mesh.sample_over_line(point_1, point_2, n_points)
-line_coords = line_data.points
-OPL = haot.optical_path_length(line_data['index_dilute'],
-line_data['Distance'])
+OPD = haot.optical_path_difference(OPL, sum_ax=0)
+y_out_vec = y_out * np.ones(np.shape(x_range))
+wave_front_distortion = y_out_vec + OPD
+
+
 IPython.embed(colors = 'Linux')
-plt.plot(line_data['Distance'], line_data['index_dilute'])
-
-
 
 
 

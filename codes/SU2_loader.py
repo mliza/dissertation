@@ -228,16 +228,13 @@ def main(
 
             # Create a line and OPL[time, y_range]
             line_data = mesh.sample_over_line(point_1, point_2, n_points)
-            OPL_vect = haot.optical_path_length(
+            # Create OPL [time, y_range] sum on x_range
+            OPL[i][j] = haot.optical_path_length(
                 line_data["index_dilute"], line_data["Distance"]
             )
 
-            # Create OPL [time, y_range] sum on x_range
-            OPL[i][j] = np.sum(OPL_vect)
-
             # Free resources
             del line_data
-            del OPL_vect
 
         if plot_flag:
             if index_figure:
@@ -252,6 +249,8 @@ def main(
 
     # Calculate OPD and WaveFront distortion
     OPD = haot.optical_path_difference(OPL, sum_ax=0)
+    phase_difference = haot.phase_difference(OPD, 633)
+    strehl_ratio = haot.strehl_ratio(phase_difference)
     #x_in_vec = x_in * np.ones(np.shape(y_range))
     x_out_vec = x_out * np.ones(np.shape(y_range))
     wave_front_distortion = x_out_vec + OPD
