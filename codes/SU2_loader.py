@@ -142,6 +142,7 @@ def plot_wavefront_distortion_y(
         [round(np.mean(wave_front_distortion), 3), round(x_out, 1)],
         fontsize=fig_config["ticks_size"],
     )
+    #plt.locator_params(axis="x", nbins=3)
     plt.ylabel("Y $[m]$", fontsize=fig_config["axis_label_size"])
     plt.xlabel("Aberration $[m]$", fontsize=fig_config["axis_label_size"])
     plt.savefig(
@@ -247,13 +248,15 @@ def main(
         del reader
         del mesh
 
-    # Calculate OPD and WaveFront distortion
-    OPD = haot.optical_path_difference(OPL, sum_ax=0)
-    phase_difference = haot.phase_difference(OPD, 633)
-    strehl_ratio = haot.strehl_ratio(phase_difference)
+    # Calculate OPD and WaveFront distortion (Optics)
+    OPD = haot.optical_path_difference(OPL, avg_ax=0) #Avg along aperture
+    OPD_rms = haot.optical_path_difference_rms(OPD, avg_ax=1) #Avg along time
+    phase_variance = haot.phase_variance(OPD_rms, 633)
+    strehl_ratio = haot.strehl_ratio(phase_variance)
     #x_in_vec = x_in * np.ones(np.shape(y_range))
     x_out_vec = x_out * np.ones(np.shape(y_range))
     wave_front_distortion = x_out_vec + OPD
+    print(f'The Strehl ratio is: {strehl_ratio}')
 
     for i, val in enumerate(flow_files):
         time = val.split(".")[0].split("_")[-1]

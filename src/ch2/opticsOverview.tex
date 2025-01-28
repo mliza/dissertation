@@ -141,20 +141,22 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     Note: $\overline{\Parenthesis{\;}}$ denotes the spatial average over the
     aperture.\\ 
 
-    \todo{Figure out where to add these optic equations}
-    The phase difference is calculated using \cref{eq:phaseDifference}
-    \begin{equation}\label{eq:phaseDifference}
-        \phi = 2\pi\Parenthesis{\frac{OPD}{\lambda}}
-    \end{equation}
-
-    The RMS wavefront error is given by \cref{eq:phaseRMS}
-    \begin{equation}\label{eq:phaseRMS}
-        \phi_{RMS}^2 = \overline{ \Parenthesis{\phi - \overline{\phi}}^2  }
-    \end{equation}
-
-    The Strehl ratio is calculated using \cref{eq:strehlRatio} 
+    The time-averaged Strehl ratio for a given optical phase variance is given
+    by \cref{eq:strehlRatio}.
     \begin{equation}\label{eq:strehlRatio}
-        SR = e^{-\phi_{RMS}^2}
+        \overline{SR}(x) = e^{-\sigma_{\phi}^2}
+    \end{equation}
+
+    The phase variance is essentially the normalized \gls{OPD} variance and it
+    is given by \cref{eq:phaseVariance}.
+    \begin{equation}\label{eq:phaseVariance}
+        \sigma_{\phi}^2 = \Parenthesis{\frac{2\pi OPD_{rms}}{\lambda} }^2
+    \end{equation}
+
+    The $OPD_{rms}$ is given by \cref{eq:opdRMS}
+    \begin{equation}\label{eq:opdRMS}
+        OPD_{rms} = \sqrt{ \frac{1}{N} \sum_{i=1}^N\Parenthesis{OPD_i -
+        \overline{OPD} }^2   }
     \end{equation}
 
     Fluctuation in the fluid fields are not the only cause of distortion in
