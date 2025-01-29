@@ -1,5 +1,6 @@
 import haot
 import matplotlib.pyplot as plt
+from matplotlib.ticker import ScalarFormatter
 import numpy as np
 import os
 import pyvista as pv
@@ -139,9 +140,12 @@ def plot_wavefront_distortion_y(
     )
     plt.legend(fontsize=fig_config["legend_size"])
     plt.xticks(
-        [round(np.mean(wave_front_distortion), 3), round(x_out, 1)],
+        #[round(np.mean(wave_front_distortion), 4), round(x_out, 1)],
+        [np.mean(wave_front_distortion), x_out],
         fontsize=fig_config["ticks_size"],
     )
+    plt.gca().xaxis.set_major_formatter(ScalarFormatter())
+    plt.gca().ticklabel_format(useOffset=False, style='plain', axis='x')
     #plt.locator_params(axis="x", nbins=3)
     plt.ylabel("Y $[m]$", fontsize=fig_config["axis_label_size"])
     plt.xlabel("Aberration $[m]$", fontsize=fig_config["axis_label_size"])

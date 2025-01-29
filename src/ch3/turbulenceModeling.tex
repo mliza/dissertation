@@ -1,6 +1,37 @@
 \section{Turbulence Modeling\label{ch3:turbulenceModeling}}
 
-By definition, an n-equation model signifies a model that requires solution of n additional differential transport equations in addition to expressing conservation of mass, momentum and energy for the mean flow.
+If we take the \gls{NS} \cref{eq:navierStokesEquationsEins} and applied a
+Reynolds decomposition \cref{eq:reynoldsDecomposition}
+\begin{subequations}\label{eq:navierStokesEquationsEins}
+    \begin{align}
+        \continuityEins \label{eq:continuityEins}\\
+        \momentumEins \label{eq:momentumEins} \\
+        \energyEins \label{eq:energyEins}
+    \end{align}
+\end{subequations}
+
+
+
+
+
+\begin{equation}\label{eq:reynoldsDecomposition}
+    u = \overline{u} + u^{\prime}
+\end{equation}
+
+You will end with the \gls{RANS} equations given on 
+\begin{subequations}\label{eq:reynoldsAverageNavierStokesEquations}
+    \begin{align}
+        &\ransContinuityEins \label{eq:ransContinuity}  \\
+        &\ransMomentumEins \label{eq:ransMomentum}   \\
+        &\ransEnergyEins \label{eq:ransEnergy}
+    \end{align}
+\end{subequations}
+
+
+
+
+The history of turbulence modeling is intertwined with the development of fluid
+dynamics and computational power. 
 
 In $1925$ Prandtl introduced the mixing length model (an analogy to the mean free
 path in a gas). Model's bases in the mixing length hypothesis referred to as an
@@ -8,6 +39,10 @@ algebraic model or a zero-equation model of turbulence. In $1945$ Prandtl
 assumed a model in which the eddy viscosity depends upon the kinetic energy of
 the turbulent fluctuations, and proposed a partial differential equation to
 solve for the kinetic energy (this is a one-equation model).
+
+
+By definition, an n-equation model signifies a model that requires solution of n additional differential transport equations in addition to expressing conservation of mass, momentum and energy for the mean flow.
+
 
 In $1942$ Kolmogorov introduced a first complete model of turbulence, in
 addition to having a modeled equation for the kinetic energy $\kappa$, he introduced a
