@@ -1,7 +1,49 @@
 \section{Turbulence Modeling\label{ch3:turbulenceModeling}}
 
-If we take the \gls{NS} \cref{eq:navierStokesEquationsEins} and applied a
-Reynolds decomposition \cref{eq:reynoldsDecomposition}
+The history of turbulence modeling is deeply connected to the development of
+fluid dynamics and the advancements in computational power. Three primary
+turbulence modeling approaches exist: \gls{DNS}, \gls{LES}, and \gls{RANS}.
+\Cref{fig:turbulenceFidelity} illustrates the trade-off between computational
+cost and modeling fidelity for these approaches.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        \includegraphics[width=0.8\textwidth]{chapter3/turbulenceComputationalCost}
+    }
+    \caption{Turbulence models fidelity-cost} \label{fig:turbulenceFidelity}
+\end{figure}
+
+The choice of turbulence model depends on the specific problem and
+computational resources available. At very low Reynolds numbers, where
+resolving all turbulent scales is feasible, \gls{DNS} can be employed. In this approach, the smallest resolved scale corresponds to the Kolmogorov scale, capturing the full range of turbulence
+without the need for modeling.\\
+
+At higher Reynolds numbers, where the computational cost of resolving all
+scales becomes prohibitive, \gls{LES} is used. \gls{LES} explicitly resolves
+the larger, energy-containing turbulent structures while modeling the smaller,
+dissipative scales. This approach strikes a balance between accuracy and
+computational efficiency, making it suitable for a wide range of engineering
+applications. \\
+
+However, in most real-world applications, the Reynolds number is significantly
+higher, making \gls{DNS} and even {LES} computationally expensive. As a result,
+industry and large-scale engineering problems often rely on \gls{RANS} methods.
+\gls{RANS} models the effects of turbulence entirely through statistical
+averaging, significantly reducing computational cost while providing reasonable
+accuracy for many practical applications. \\
+
+Hybrid approaches, such as Hybrid \gls{RANS}/\gls{LES}, attempt to bridge the
+gap between these methods by applying \gls{RANS} modeling in near-wall regions
+while using \gls{LES} in the outer flow. This approach improves fidelity while
+keeping computational costs manageable. \\
+
+The appropriate choice of turbulence model depends on the specific objectives
+of a study, the available computational resources, and the level of fidelity
+required for accurate predictions \cite{Smits2009}. \\
+
+For the \gls{DNS} case, the full \gls{NS} equations
+(\cref{eq:navierStokesEquationsEins}) are resolved in both space and time
+without the need for any turbulence modeling. However, the computational cost
+is extremely high, making it infeasible for most real-world applications.
 \begin{subequations}\label{eq:navierStokesEquationsEins}
     \begin{align}
         \continuityEins \label{eq:continuityEins}\\
@@ -10,13 +52,23 @@ Reynolds decomposition \cref{eq:reynoldsDecomposition}
     \end{align}
 \end{subequations}
 
+\todo{stopped turbulence in here}
 
 
 
 
-\begin{equation}\label{eq:reynoldsDecomposition}
-    u = \overline{u} + u^{\prime}
-\end{equation}
+\cite{DahmNotes} 
+\cite{Spalart1992}
+
+If we take the \gls{NS} \cref{eq:navierStokesEquationsEins} and applied a
+Reynolds decomposition \cref{eq:reynoldsDecomposition}
+
+\begin{subequations}
+    \begin{align}
+        u = \overline{u} + u^{\prime}\label{eq:reynoldsDecomposition} \\
+        \overline{u} = \lim_{T\rightarrow\infty}\frac{1}{T}\int^T_0 u\,dt \label{eq:timeAverage}
+    \end{align}
+\end{subequations}
 
 You will end with the \gls{RANS} equations given on 
 \begin{subequations}\label{eq:reynoldsAverageNavierStokesEquations}
@@ -30,8 +82,6 @@ You will end with the \gls{RANS} equations given on
 
 
 
-The history of turbulence modeling is intertwined with the development of fluid
-dynamics and computational power. 
 
 In $1925$ Prandtl introduced the mixing length model (an analogy to the mean free
 path in a gas). Model's bases in the mixing length hypothesis referred to as an
