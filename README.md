@@ -7,6 +7,14 @@ all temporary files only leaving the `*.tex` and `*.pdf`
 
 The dissertation is structured as follows:
 
+```mermaid
+flowchart TD
+  main --> src
+  main --> figures
+  main --> configuration
+  main --> codes
+```
+
 - **src:** contains appendices, glossaries, and all the chapters
 - **figures:** contains all the figures and it is structured by chapter
 - **configuration:** contains the preamble, shortcuts, and a submodule for additional resources
