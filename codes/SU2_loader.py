@@ -114,7 +114,7 @@ def plot_kerl(mesh, kerl_path, time):
     )
 
     # Save the plot as an image
-    output_file = os.path.join(kerl_path, f"kerl_polarizabilty_{time}.png")
+    output_file = os.path.join(kerl_path, f"kerl_polarizability_{time}.png")
     plotter.screenshot(output_file)
     plotter.close()
     del plotter
@@ -291,10 +291,11 @@ if __name__ == "__main__":
 
     # Locations of individual beams
     y_range = np.arange(-0.7, -0.2, 0.01)
+    y_range = np.arange(-0.25, -0.1, 0.01)
 
-    # Bean in (wave travels on x)
+    # Bean in(wave travels on x)
     x_in = 4
-    x_out = -3
+    x_out = 1
 
     # Users inputs #
     fig_config = {}
