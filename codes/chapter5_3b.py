@@ -4,6 +4,9 @@ import os
 import sys
 import IPython
 import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+
 
 # SU2 [N, O, NO, N2, O2]
 def load_files(files_in_path):
@@ -68,6 +71,70 @@ def call_plotter(mesh):
 
     return plotter
 
+def plot_stagnation_data(line_data, out_path, fig_config):
+    noneq = sorted([x for x in line_data.keys() if x.split("_")[1] ==
+                    "nonequilibrium"])
+    frozen = sorted([x for x in line_data.keys() if x.split("_")[1] ==
+                     "frozen"])
+    cases = ['1R', '2R', '3R']
+
+    colors = [
+        mcolors.TABLEAU_COLORS["tab:blue"],
+        mcolors.TABLEAU_COLORS["tab:orange"],
+        mcolors.TABLEAU_COLORS["tab:green"],
+        mcolors.TABLEAU_COLORS["tab:red"],
+        mcolors.TABLEAU_COLORS["tab:purple"],
+    ]
+
+    for i in cases:
+        # First nonzero index
+        noneq = f"{i}_nonequilibrium"
+        frozen = f"{i}_frozen"
+
+        cut_index = np.argmax(np.diff(line_data[noneq]['Temperature_ve']) != 0) - 2 
+        noneq_mm = line_data[noneq]['Distance'][cut_index:] * 1e3
+        frozen_mm = line_data[frozen]['Distance'][cut_index:] * 1e3
+
+
+        ## Plot Temperatures ##
+        plt.plot(noneq_mm, line_data[noneq]['Temperature_tr'][cut_index:], 
+                 color=colors[0],
+                 linewidth=fig_config["line_width"],
+                 label="$T_{tr}$")
+                 
+        plt.plot(noneq_mm, line_data[noneq]['Temperature_ve'][cut_index:], 
+                 color=colors[1],
+                 linewidth=fig_config["line_width"],
+                 label="$T_{vib}$")
+
+        plt.plot(frozen_mm, line_data[frozen]['Temperature_tr'][cut_index:], 
+                 "-.",
+                 color=colors[0],
+                 linewidth=fig_config["line_width"])
+                 
+        plt.plot(frozen_mm, line_data[frozen]['Temperature_ve'][cut_index:], 
+                 "-.",
+                 color=colors[1],
+                 linewidth=fig_config["line_width"])
+
+        plt.legend(fontsize=fig_config['legend_size'])
+        
+        plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
+        plt.ylabel("T $[K]$", fontsize=fig_config["axis_label_size"])
+
+        plt.xticks(fontsize=fig_config["ticks_size"])
+        plt.yticks(fontsize=fig_config["ticks_size"])
+
+        plt.savefig(
+            os.path.join(out_path, f"{i}_temperatures.pdf"),
+            format="pdf",
+            bbox_inches="tight",
+            dpi=fig_config["dpi_size"],
+        )
+        plt.close()
+        ## Plot Temperatures ##
+
+
 
 def calculate_aero_props(mass_density_dict):
     index = haot.index_of_refraction(mass_density_dict)
@@ -82,6 +149,7 @@ def main(mesh_data, fig_config):
                     "dilute_index", "dense_index", "gladstone_dale",
                     "dielectric"]
     out_path = 'outTest'
+    line_dict = { }
 
     for i in mesh_data:
         mass_density_dict = create_mass_density(mesh_data[i], species)
@@ -91,9 +159,19 @@ def main(mesh_data, fig_config):
         mesh_data[i]['gladstone_dale'] = gladstone['gladstone_dale']
         mesh_data[i]['dielectric'] = dielectric
 
+        # Get Line Data
+        point_1 = [-0.01, 0.0, 0.0]
+        point_2 = [0.0, 0.0, 0.0]
+        n_points = 100
+        line_dict[i] = mesh_data[i].sample_over_line(point_1, point_2, n_points)
+
+        # Generate Plots
         for k in scalar_field:
             plot_countour_scalar(mesh_data[i], k, out_path, i)
 
+
+
+    plot_stagnation_data(line_dict, out_path, fig_config)
 
 
 
