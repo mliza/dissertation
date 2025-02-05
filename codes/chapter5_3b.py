@@ -166,8 +166,8 @@ def plot_stagnation_data(line_data, fig_config):
         ## Plot Mass Fraction ##
         for s, value in enumerate(neutral):
             plt.plot(
-                noneq_mm
-                line_data[noneq]["MassFrac_{s}"][cut_indx:],
+                noneq_mm,
+                line_data[noneq][f"MassFrac_{s}"][cut_indx:],
                 color=colors[s],
                 linewidth=fig_config["line_width"],
                 label=value,
@@ -175,7 +175,7 @@ def plot_stagnation_data(line_data, fig_config):
 
             plt.plot(
                 frozen_mm,
-                line_data[frozen]["MassFrac_{s}"][cut_indx:],
+                line_data[frozen][f"MassFrac_{s}"][cut_indx:],
                 "-.",
                 color=colors[s],
                 linewidth=fig_config["line_width"],
