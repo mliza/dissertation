@@ -16,7 +16,7 @@ def load_files(files_in_path):
         dict_out[i] = reader.read()
     return dict_out
 
-def plot_countour_scalar(mesh_data, scalar_field, out_path, case_name):
+def plot_countour_scalar(mesh_data, case_name, scalar_field, fig_config):
     plotter = call_plotter(mesh_data)
     plotter.add_mesh(mesh_data, scalars=scalar_field,
                  #cmap="coolwarm_r",
@@ -38,7 +38,7 @@ def plot_countour_scalar(mesh_data, scalar_field, out_path, case_name):
         vertical=False,
     )
     # Save the plot as an image
-    output_file = os.path.join(out_path, f"{scalar_field}_{case_name}.png")
+    output_file = os.path.join(fig_config["out_path"], f"{case_name}_{scalar_field}.png")
     plotter.screenshot(output_file)
     plotter.close()
     del plotter
@@ -71,12 +71,13 @@ def call_plotter(mesh):
 
     return plotter
 
-def plot_stagnation_data(line_data, out_path, fig_config):
+def plot_stagnation_data(line_data, fig_config):
     noneq = sorted([x for x in line_data.keys() if x.split("_")[1] ==
                     "nonequilibrium"])
     frozen = sorted([x for x in line_data.keys() if x.split("_")[1] ==
                      "frozen"])
     cases = ['1R', '2R', '3R']
+    neutral = ["N", "O", "NO", "N2", "O2"]
 
     colors = [
         mcolors.TABLEAU_COLORS["tab:blue"],
@@ -98,7 +99,6 @@ def plot_stagnation_data(line_data, out_path, fig_config):
         frozen_mm = (line_data[frozen]['Distance'][cut_indx:] -
                     np.max(line_data[frozen]['Distance'][cut_indx:])) * 1e3
 
-
         ## Plot Temperatures ##
         plt.plot(noneq_mm, line_data[noneq]['Temperature_tr'][cut_indx:], 
                  color=colors[0],
@@ -119,17 +119,16 @@ def plot_stagnation_data(line_data, out_path, fig_config):
                  "-.",
                  color=colors[1],
                  linewidth=fig_config["line_width"])
-
-        plt.legend(fontsize=fig_config['legend_size'])
         
         plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
         plt.ylabel("T $[K]$", fontsize=fig_config["axis_label_size"])
 
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
+        plt.legend(fontsize=fig_config['legend_size'])
 
         plt.savefig(
-            os.path.join(out_path, f"{i}_temperatures.pdf"),
+            os.path.join(fig_config["out_path"], f"{i}_temperatures.pdf"),
             format="pdf",
             bbox_inches="tight",
             dpi=fig_config["dpi_size"],
@@ -137,6 +136,66 @@ def plot_stagnation_data(line_data, out_path, fig_config):
         plt.close()
         ## Plot Temperatures ##
 
+        ## Plot Pressure ##
+        plt.plot(noneq_mm, line_data[noneq]['Pressure'][cut_indx:] * 1e-3, 
+                 color=colors[0],
+                 linewidth=fig_config["line_width"],
+                 label="Nonequilibrium")
+
+        plt.plot(frozen_mm, line_data[frozen]['Pressure'][cut_indx:] * 1e-3, 
+                 color=colors[1],
+                 linewidth=fig_config["line_width"],
+                 label="Frozen")
+        
+        plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
+        plt.ylabel("P $[kPa]$", fontsize=fig_config["axis_label_size"])
+
+        plt.xticks(fontsize=fig_config["ticks_size"])
+        plt.yticks(fontsize=fig_config["ticks_size"])
+        plt.legend(fontsize=fig_config["legend_size"])
+
+        plt.savefig(
+            os.path.join(fig_config["out_path"], f"{i}_pressures.pdf"),
+            format="pdf",
+            bbox_inches="tight",
+            dpi=fig_config["dpi_size"],
+        )
+        plt.close()
+        ## Plot Pressure ##
+
+        ## Plot Mass Fraction ##
+        for s, value in enumerate(neutral):
+            plt.plot(
+                noneq_mm
+                line_data[noneq]["MassFrac_{s}"][cut_indx:],
+                color=colors[s],
+                linewidth=fig_config["line_width"],
+                label=value,
+            )
+
+            plt.plot(
+                frozen_mm,
+                line_data[frozen]["MassFrac_{s}"][cut_indx:],
+                "-.",
+                color=colors[s],
+                linewidth=fig_config["line_width"],
+            )
+    
+        plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
+        plt.ylabel("Mass Fraction $[ ]$", fontsize=fig_config["axis_label_size"])
+
+        plt.xticks(fontsize=fig_config["ticks_size"])
+        plt.yticks(fontsize=fig_config["ticks_size"])
+        plt.legend(fontsize=fig_config["legend_size"])
+
+        plt.savefig(
+            os.path.join(fig_config["out_path"], f"{i}_massFraction.pdf"),
+            format="pdf",
+            bbox_inches="tight",
+            dpi=fig_config["dpi_size"],
+        )
+        plt.close()
+        ## Plot Mass Fraction ##
 
 
 def calculate_aero_props(mass_density_dict):
@@ -151,7 +210,11 @@ def main(mesh_data, fig_config):
     scalar_field = ["Temperature_ve", "Temperature_tr", "Pressure", 
                     "dilute_index", "dense_index", "gladstone_dale",
                     "dielectric"]
-    out_path = 'outTest'
+    
+    point_1 = [-0.01, 0.0, 0.0]
+    point_2 = [0.0, 0.0, 0.0]
+    n_points = 100
+   
     line_dict = { }
 
     for i in mesh_data:
@@ -163,18 +226,13 @@ def main(mesh_data, fig_config):
         mesh_data[i]['dielectric'] = dielectric
 
         # Get Line Data
-        point_1 = [-0.01, 0.0, 0.0]
-        point_2 = [0.0, 0.0, 0.0]
-        n_points = 100
         line_dict[i] = mesh_data[i].sample_over_line(point_1, point_2, n_points)
 
         # Generate Plots
         for k in scalar_field:
-            plot_countour_scalar(mesh_data[i], k, out_path, i)
-
-
-
-    plot_stagnation_data(line_dict, out_path, fig_config)
+            plot_countour_scalar(mesh_data[i], i, k, fig_config)
+            
+    plot_stagnation_data(line_dict, fig_config)
 
 
 
@@ -183,7 +241,7 @@ if __name__ == "__main__":
     "/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/chemistryReaction"
     )
     files_in = os.path.join(abs_path, 'R_files')
-
+    fig_out_path = 'outTest'
 
     # Users inputs #
     fig_config = {}
@@ -195,7 +253,7 @@ if __name__ == "__main__":
     fig_config["legend_size"] = 12
     fig_config["ticks_size"] = 13
     fig_config["title_size"] = 18
-
+    fig_config["out_path"] = fig_out_path
 
     mesh_data = load_files(files_in)
     main(mesh_data, fig_config)
