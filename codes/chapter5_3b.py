@@ -91,28 +91,31 @@ def plot_stagnation_data(line_data, out_path, fig_config):
         noneq = f"{i}_nonequilibrium"
         frozen = f"{i}_frozen"
 
-        cut_index = np.argmax(np.diff(line_data[noneq]['Temperature_ve']) != 0) - 2 
-        noneq_mm = line_data[noneq]['Distance'][cut_index:] * 1e3
-        frozen_mm = line_data[frozen]['Distance'][cut_index:] * 1e3
+        cut_indx = np.argmax(np.diff(line_data[frozen]['Temperature_ve']) != 0) 
+        # Get Distances
+        noneq_mm = (line_data[noneq]['Distance'][cut_indx:] -
+                    np.max(line_data[noneq]['Distance'][cut_indx:])) * 1e3
+        frozen_mm = (line_data[frozen]['Distance'][cut_indx:] -
+                    np.max(line_data[frozen]['Distance'][cut_indx:])) * 1e3
 
 
         ## Plot Temperatures ##
-        plt.plot(noneq_mm, line_data[noneq]['Temperature_tr'][cut_index:], 
+        plt.plot(noneq_mm, line_data[noneq]['Temperature_tr'][cut_indx:], 
                  color=colors[0],
                  linewidth=fig_config["line_width"],
                  label="$T_{tr}$")
                  
-        plt.plot(noneq_mm, line_data[noneq]['Temperature_ve'][cut_index:], 
+        plt.plot(noneq_mm, line_data[noneq]['Temperature_ve'][cut_indx:], 
                  color=colors[1],
                  linewidth=fig_config["line_width"],
                  label="$T_{vib}$")
 
-        plt.plot(frozen_mm, line_data[frozen]['Temperature_tr'][cut_index:], 
+        plt.plot(frozen_mm, line_data[frozen]['Temperature_tr'][cut_indx:], 
                  "-.",
                  color=colors[0],
                  linewidth=fig_config["line_width"])
                  
-        plt.plot(frozen_mm, line_data[frozen]['Temperature_ve'][cut_index:], 
+        plt.plot(frozen_mm, line_data[frozen]['Temperature_ve'][cut_indx:], 
                  "-.",
                  color=colors[1],
                  linewidth=fig_config["line_width"])
