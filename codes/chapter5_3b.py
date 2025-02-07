@@ -380,9 +380,8 @@ if __name__ == "__main__":
     "/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/chemistryReaction"
     )
     files_in = os.path.join(abs_path, 'R_files')
+    fig_out_path = '/Users/martin/Documents/Schools/UoA/Dissertation/figures/chapter5/chemistryReaction'
     fig_out_path = 'outTest'
-    fig_out_path =
-    '/Users/martin/Documents/Schools/UoA/Dissertation/figures/chapter5/chemistryReaction'
 
     # Users inputs #
     fig_config = {}
