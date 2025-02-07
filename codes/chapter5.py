@@ -464,7 +464,7 @@ def main(cfd_results_abs_path):
     fig_config["legend_size"] = 12
     fig_config["ticks_size"] = 13
     fig_config["title_size"] = 18
-    species_flag = False
+    species_flag = True
 
     if not species_flag:
         # Chemistry Composition #
