@@ -197,6 +197,33 @@ def plot_stagnation_data(line_data, fig_config):
         plt.close()
         ## Plot Mass Fraction ##
 
+        ## Plot GD ##
+        plt.plot(noneq_mm, line_data[noneq]['gladstone_dale'][cut_indx:] * 1e4,
+                 color=colors[0],
+                 linewidth=fig_config["line_width"],
+                 label="Nonequilibrium")
+
+        plt.plot(frozen_mm, line_data[frozen]['gladstone_dale'][cut_indx:] * 1e4, 
+                 color=colors[1],
+                 linewidth=fig_config["line_width"],
+                 label="Frozen")
+        
+        plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
+        plt.ylabel("Total GD $\\times 10^{-4}$ $[m^3/kg]$", fontsize=fig_config["axis_label_size"])
+
+        plt.xticks(fontsize=fig_config["ticks_size"])
+        plt.yticks(fontsize=fig_config["ticks_size"])
+        plt.legend(fontsize=fig_config["legend_size"])
+
+        plt.savefig(
+            os.path.join(fig_config["out_path"], f"{i}_totalGD.pdf"),
+            format="pdf",
+            bbox_inches="tight",
+            dpi=fig_config["dpi_size"],
+        )
+        plt.close()
+        ## Plot Pressure ##
+
 
 def calculate_aero_props(mass_density_dict):
     index = haot.index_of_refraction(mass_density_dict)
@@ -229,14 +256,17 @@ def main(mesh_data, fig_config):
         line_dict[i] = mesh_data[i].sample_over_line(point_1, point_2, n_points)
 
         # Generate Plots
+        """
         for k in scalar_field:
             plot_countour_scalar(mesh_data[i], i, k, fig_config)
+        """
             
     plot_stagnation_data(line_dict, fig_config)
 
 
 
 if __name__ == "__main__":
+
     abs_path = (
     "/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/chemistryReaction"
     )
