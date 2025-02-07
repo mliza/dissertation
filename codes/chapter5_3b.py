@@ -6,6 +6,7 @@ import IPython
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import scipy.constants as s_const
 
 
 # SU2 [N, O, NO, N2, O2]
@@ -93,6 +94,8 @@ def plot_stagnation_data(line_data, fig_config):
         frozen = f"{i}_frozen"
 
         cut_indx = np.argmax(np.diff(line_data[frozen]['Temperature_ve']) != 0) 
+        cut_indy = np.argmax(np.diff(line_data[frozen]['dilute_index']) == 0) 
+
         # Get Distances
         noneq_mm = (line_data[noneq]['Distance'][cut_indx:] -
                     np.max(line_data[noneq]['Distance'][cut_indx:])) * 1e3
@@ -123,6 +126,7 @@ def plot_stagnation_data(line_data, fig_config):
         plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
         plt.ylabel("T $[K]$", fontsize=fig_config["axis_label_size"])
 
+        plt.xlim(noneq_mm[0], noneq_mm[-1]) 
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config['legend_size'])
@@ -150,6 +154,7 @@ def plot_stagnation_data(line_data, fig_config):
         plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
         plt.ylabel("P $[kPa]$", fontsize=fig_config["axis_label_size"])
 
+        plt.xlim(noneq_mm[0], noneq_mm[-1]) 
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config["legend_size"])
@@ -184,6 +189,7 @@ def plot_stagnation_data(line_data, fig_config):
         plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
         plt.ylabel("Mass Fraction $[ ]$", fontsize=fig_config["axis_label_size"])
 
+        plt.xlim(noneq_mm[0], noneq_mm[-1]) 
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config["legend_size"])
@@ -196,6 +202,43 @@ def plot_stagnation_data(line_data, fig_config):
         )
         plt.close()
         ## Plot Mass Fraction ##
+
+        ## Plot species GD ##
+        for n, value in enumerate(neutral):
+            plt.plot(noneq_mm,
+                     line_data[noneq][f'gd_{value}'][cut_indx:] * 1e4,
+                     color=colors[n],
+                    linewidth=fig_config["line_width"],
+                    label=value)
+
+            plt.plot(frozen_mm,
+                     line_data[frozen][f'gd_{value}'][cut_indx:] * 1e4,
+                     "-.",
+                     color=colors[n],
+                    linewidth=fig_config["line_width"])
+
+
+        plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
+        plt.ylabel(
+            "Species G-D $\\times 10^{-4}$ $[m^3/kg]$",
+            fontsize=fig_config["axis_label_size"],
+        )
+
+        plt.xlim(noneq_mm[0], noneq_mm[-1]) 
+        plt.xticks(fontsize=fig_config["ticks_size"])
+        plt.yticks(fontsize=fig_config["ticks_size"])
+        plt.legend(fontsize=fig_config["legend_size"])
+
+        plt.savefig(
+            os.path.join(fig_config["out_path"], f"{i}_speciesGD.pdf"),
+            format="pdf",
+            bbox_inches="tight",
+            dpi=fig_config["dpi_size"],
+        )
+        plt.close()
+
+
+        ## Plot species GD ##
 
         ## Plot GD ##
         plt.plot(noneq_mm, line_data[noneq]['gladstone_dale'][cut_indx:] * 1e4,
@@ -211,6 +254,7 @@ def plot_stagnation_data(line_data, fig_config):
         plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
         plt.ylabel("Total GD $\\times 10^{-4}$ $[m^3/kg]$", fontsize=fig_config["axis_label_size"])
 
+        plt.xlim(noneq_mm[0], noneq_mm[-1]) 
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config["legend_size"])
@@ -222,8 +266,71 @@ def plot_stagnation_data(line_data, fig_config):
             dpi=fig_config["dpi_size"],
         )
         plt.close()
-        ## Plot Pressure ##
+        ## Plot GD ##
 
+        ## Plot Index ##
+        plt.plot(noneq_mm[:-1],
+                 (line_data[noneq]['dilute_index'][cut_indx:-1] - 1) * 1e3,
+                 color=colors[0],
+                 linewidth=fig_config["line_width"],
+                 label="Nonequilibrium")
+
+        plt.plot(frozen_mm[:-1],
+                 (line_data[frozen]['dilute_index'][cut_indx:-1] - 1) * 1e3,
+                 color=colors[1],
+                 linewidth=fig_config["line_width"],
+                 label="Frozen")
+        
+        plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
+        plt.ylabel(
+            "$(n - 1) \\times 10^{3}$ $[ ]$", fontsize=fig_config["axis_label_size"]
+        )
+
+        plt.xlim(noneq_mm[0], noneq_mm[-1]) 
+        plt.xticks(fontsize=fig_config["ticks_size"])
+        plt.yticks(fontsize=fig_config["ticks_size"])
+        plt.legend(fontsize=fig_config["legend_size"])
+
+        plt.savefig(
+            os.path.join(fig_config["out_path"], f"{i}_indexOfRefraction.pdf"),
+            format="pdf",
+            bbox_inches="tight",
+            dpi=fig_config["dpi_size"],
+        )
+        plt.close()
+        ## Plot Index ##
+
+        ## Plot Dielectric ##
+        plt.plot(noneq_mm[:-1],
+                line_data[noneq]['dielectric'][cut_indx:-1] / s_const.epsilon_0, 
+                 color=colors[0],
+                 linewidth=fig_config["line_width"],
+                 label="Nonequilibrium")
+
+        plt.plot(frozen_mm[:-1],
+                line_data[frozen]['dielectric'][cut_indx:-1] / s_const.epsilon_0, 
+                 color=colors[1],
+                 linewidth=fig_config["line_width"],
+                 label="Frozen")
+        
+        plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
+        plt.ylabel(
+            "$ \\epsilon_m / \\epsilon_0$ $[ ]$", fontsize=fig_config["axis_label_size"]
+        )
+
+        plt.xlim(noneq_mm[0], noneq_mm[-1]) 
+        plt.xticks(fontsize=fig_config["ticks_size"])
+        plt.yticks(fontsize=fig_config["ticks_size"])
+        plt.legend(fontsize=fig_config["legend_size"])
+
+        plt.savefig(
+            os.path.join(fig_config["out_path"], f"{i}_dielectricMedium.pdf"),
+            format="pdf",
+            bbox_inches="tight",
+            dpi=fig_config["dpi_size"],
+        )
+        plt.close()
+        ## Plot Dielectric ##
 
 def calculate_aero_props(mass_density_dict):
     index = haot.index_of_refraction(mass_density_dict)
@@ -251,6 +358,8 @@ def main(mesh_data, fig_config):
         mesh_data[i]['dense_index'] = index['dense']
         mesh_data[i]['gladstone_dale'] = gladstone['gladstone_dale']
         mesh_data[i]['dielectric'] = dielectric
+        for k in species:
+            mesh_data[i][f'gd_{k}'] = gladstone[k]
 
         # Get Line Data
         line_dict[i] = mesh_data[i].sample_over_line(point_1, point_2, n_points)
@@ -272,6 +381,8 @@ if __name__ == "__main__":
     )
     files_in = os.path.join(abs_path, 'R_files')
     fig_out_path = 'outTest'
+    fig_out_path =
+    '/Users/martin/Documents/Schools/UoA/Dissertation/figures/chapter5/chemistryReaction'
 
     # Users inputs #
     fig_config = {}
