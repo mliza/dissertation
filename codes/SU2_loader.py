@@ -127,10 +127,11 @@ def plot_wavefront_distortion_y(
     x_loc_vec = x_loc * np.ones(np.shape(y_range))
     # plt.plot(x_in_vec, y_range, '-', label='In')
 
-    # Plot WaveFront distortion
+    # Plot Undisturbed WF
     plt.plot(
         x_loc_vec, y_range, "-", linewidth=fig_config["line_width"], label="Theoretical"
     )
+    # Plot distortion WF
     plt.plot(
         wave_front_distortion,
         y_range,
@@ -147,8 +148,8 @@ def plot_wavefront_distortion_y(
     plt.gca().xaxis.set_major_formatter(ScalarFormatter())
     plt.gca().ticklabel_format(useOffset=False, style='plain', axis='x')
     #plt.locator_params(axis="x", nbins=3)
+    plt.xlabel("Distortion $[m]$", fontsize=fig_config["axis_label_size"])
     plt.ylabel("Y $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.xlabel("Aberration $[m]$", fontsize=fig_config["axis_label_size"])
     plt.savefig(
         os.path.join(wd_path, f"wavefrontDistortion_{time}.pdf"),
         format="pdf",
@@ -161,7 +162,7 @@ def plot_wavefront_distortion_y(
 # Plot OPL (wave travels on the x)
 def plot_optical_path_length_y(y_range, OPL, fig_config, opl_path, time):
     plt.plot(OPL, y_range, "-", linewidth=fig_config["line_width"])
-    plt.ylabel("y-distance $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("Y $[m]$", fontsize=fig_config["axis_label_size"])
     plt.xlabel("OPL $[m]$", fontsize=fig_config["axis_label_size"])
     plt.savefig(
         os.path.join(opl_path, f"opl_{time}.pdf"),
@@ -176,7 +177,7 @@ def plot_optical_path_length_y(y_range, OPL, fig_config, opl_path, time):
 def plot_optical_path_difference_y(y_range, OPD, fig_config, opd_path, time):
     plot_optical_path_difference_y
     plt.plot(OPD, y_range, "-", linewidth=fig_config["line_width"], label="Truth")
-    plt.ylabel("y-distance $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("Y $[m]$", fontsize=fig_config["axis_label_size"])
     plt.xlabel("OPD $[m]$", fontsize=fig_config["axis_label_size"])
     plt.locator_params(axis="x", nbins=3)
     plt.savefig(

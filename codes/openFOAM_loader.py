@@ -1,5 +1,6 @@
 import haot
 import matplotlib.pyplot as plt
+from matplotlib.ticker import ScalarFormatter
 import numpy as np
 import os
 import pyvista as pv
@@ -25,6 +26,67 @@ def call_plotter(mesh):
     plotter.camera.zoom(1.0)
 
     return plotter
+
+# Plot OPL (wave travels on the y)
+def plot_optical_path_length_x(x_range, OPL, fig_config, opl_path, time):
+    plt.plot(x_range, OPL, "-", linewidth=fig_config["line_width"])
+    plt.ylabel("OPL $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.savefig(
+        os.path.join(opl_path, f"opl_{time}.pdf"),
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
+
+# Plot OPD (wave travels on the x)
+def plot_optical_path_difference_x(x_range, OPD, fig_config, opd_path, time):
+    plt.plot(x_range, OPD, "-", linewidth=fig_config["line_width"], label="Truth")
+    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("OPD $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.locator_params(axis="y", nbins=3)
+    plt.savefig(
+        os.path.join(opd_path, f"opd_{time}.pdf"),
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
+
+# Plot Wavefront distortion
+def plot_wavefront_distortion_x(x_range, y_out, wave_front_distortion,
+                                fig_config, wv_path, current_time): 
+    y_loc_vec = y_out * np.ones(np.shape(x_range))
+    plt.plot(
+        x_range, y_loc_vec,  "-", linewidth=fig_config["line_width"],
+        label="theoretical"
+    )
+
+    plt.plot(
+        x_range,
+        wave_front_distortion,
+        "-",
+        linewidth=fig_config["line_width"],
+        label="truth",
+    )
+
+    plt.legend(fontsize=fig_config["legend_size"])
+    plt.yticks(
+        [np.mean(wave_front_distortion), y_out],
+        fontsize=fig_config["ticks_size"],
+    )
+    plt.gca().yaxis.set_major_formatter(ScalarFormatter())
+    plt.gca().ticklabel_format(useOffset=False, style='plain', axis='y')
+    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("Distortion $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.savefig(
+        os.path.join(wd_path, f"wavefrontdistortion_{current_time}.pdf"),
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
 
 # Process optical properties
 def call_optics(mesh):
@@ -80,18 +142,18 @@ def main(
     OPL = np.zeros([np.shape(time_data)[0], len(x_range)])
 
     # Choose the first time data for i in time_data:
-    for i, val in enumerate(time_data):
-        reader.set_active_time_value(time_data[i])
-        internal_mesh = mesh['internalMesh']
+    for i, current_time in enumerate(time_data):
+        reader.set_active_time_value(current_time)
+        internal_mesh = reader.read()['internalMesh']
         cell_data = internal_mesh.cell_data
         fields_in = internal_mesh.array_names
         # Post process optics
         call_optics(internal_mesh)
 
-        for j, value in enumerate(x_range): 
-            point_1 = [value, y_in, 0.0]
-            point_2 = [value, y_out, 0.0]
-            n_points = 500
+        for j, current_position in enumerate(x_range): 
+            point_1 = [current_position, y_in, 0.0]
+            point_2 = [current_position, y_out, 0.0]
+            n_points = 30
 
             # Create a line and OPL[time, x_range]
             line_data = internal_mesh.sample_over_line(point_1, point_2, n_points)
@@ -99,21 +161,40 @@ def main(
                                                     line_data["Distance"])
 
 # Calculate aero-optic properties
-# TODO: NOT CHANGING OPL[:,1] 
+    #OPD[time,x_position] beam travels on y-axis
     OPD = haot.optical_path_difference(OPL, avg_ax=1)
-    OPD_rms = haot.optical_path_difference_rms(OPD, avg_ax=1)
+    OPD_rms = haot.optical_path_difference_rms(OPD, avg_ax=0)
     phase_variance = haot.phase_variance(OPD_rms, 633)
     strehl_ratio = haot.strehl_ratio(phase_variance)
     y_out_vec = y_out * np.ones(np.shape(x_range))
     wave_front_distortion = y_out_vec + OPD
     print(f'The Strehl ratio is: {strehl_ratio}')
-    IPython.embed(colors = 'Linux')
+
+    for i, current_time in enumerate(time_data): 
+        time = current_time[0].replace('.','_')
+        plot_wavefront_distortion_x(x_range, y_out, wave_front_distortion[i],
+                                    fig_config, fig_config['wd_path'], time) 
+
+        plot_optical_path_length_x(x_range, OPL[i], 
+                                    fig_config, fig_config['opl_path'], time) 
+
+        plot_optical_path_difference_x(x_range, OPD[i], fig_config,
+                                       fig_config['opd_path'], time)
 
 
 
 
 
-    #TODO: Move Me
+
+
+
+
+
+
+
+
+
+    #todo: move me
     if plot_flag:
         plotter = pv.Plotter(window_size=[1800, 900])
         plotter.view_xy()
@@ -217,6 +298,9 @@ if __name__ == "__main__":
     fig_config["legend_size"] = 12
     fig_config["ticks_size"] = 13
     fig_config["title_size"] = 18
+    fig_config["wd_path"] = wd_path
+    fig_config["opd_path"] = opd_path
+    fig_config["opl_path"] = opl_path
 
     main(
         f_in,
