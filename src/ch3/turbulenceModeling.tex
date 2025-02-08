@@ -7,14 +7,16 @@ turbulence modeling approaches exist: \gls{DNS}, \gls{LES}, and \gls{RANS}.
 cost and modeling fidelity for these approaches.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
-        \includegraphics[width=0.8\textwidth]{chapter3/turbulenceComputationalCost}
+        \includegraphics[width=0.7\textwidth]{chapter3/turbulenceComputationalCost}
     }
     \caption{Turbulence models fidelity-cost} \label{fig:turbulenceFidelity}
 \end{figure}
 
 The choice of turbulence model depends on the specific problem and
 computational resources available. At very low Reynolds numbers, where
-resolving all turbulent scales is feasible, \gls{DNS} can be employed. In this approach, the smallest resolved scale corresponds to the Kolmogorov scale, capturing the full range of turbulence
+resolving all turbulent scales is feasible, \gls{DNS} can be employed. In this
+approach, the smallest resolved scale corresponds to the Kolmogorov scale,
+capturing the full range of turbulence
 without the need for modeling.\\
 
 At higher Reynolds numbers, where the computational cost of resolving all
@@ -46,9 +48,11 @@ without the need for any turbulence modeling. However, the computational cost
 is extremely high, making it infeasible for most real-world applications. 
 \begin{subequations}\label{eq:navierStokesEquationsEins}
     \begin{align}
-        \continuityEins \label{eq:continuityEins}\\
-        \momentumEins \label{eq:momentumEins} \\
-        \energyEins \label{eq:energyEins}
+        &\continuityEins \label{eq:continuityEins}\\
+        &\momentumEins \label{eq:momentumEins} \\
+        &\energyEins \label{eq:energyEins} \\
+        &\viscousStressTensor \label{eq:viscousStressTensor} \\
+        &\strainRateTensor \label{eq:strainRateTensor}
     \end{align}
 \end{subequations}
 
@@ -56,10 +60,11 @@ In $1963$, Smagorinsky \cite{Smagorinsky1963} introduced the \gls{LES} model to
 simulate atmospheric air currents. The \gls{LES} framework is grounded in the
 energy cascade (\cref{fig:ch2EnergyCascade}) model developed by Kolmogorov in the 
 $1940$s, which itself builds upon the earlier work of Richardson. The
-fundamental concept behind \gls{LES} is to explicitly compute the large-scale motions, which are
-influenced flow geometry and are not universal, up to a prescribed length
-scale. The smaller scales, which tend to exhibit more universal
-characteristics, are modeled using a \gls{SGS} model \cite{Pope2000}.\\
+fundamental concept behind \gls{LES} is to explicitly compute the large-scale
+motions, which are influenced flow geometry and are not universal, up to a
+prescribed length scale. The smaller scales, which tend to exhibit more
+universal characteristics, are modeled using a \gls{SGS} model
+\cite{Pope2000}.\\
 
 This separation between larger and smaller scales is typically achieved by
 spatially filtering the velocity field using a kernel \cite{Leonard1975}. The
@@ -88,7 +93,7 @@ There are two primary \gls{SGS} modeling strategies:
 \end{itemize}
 
 Functional models commonly represent the \gls{SGS} stress tensor (Reynolds
-stress tensor) using eddy-viscosity closures. However, this approach linearizes
+stress tensor) using eddy-viscosity closures. However, this approach linearize
 the inherently nonlinear stress tensor, leading to the loss of some physical
 details. It is important to note that the famous closure problem originates
 from the convective terms in the \gls{NS} equations. Additionally, functional
@@ -96,62 +101,85 @@ models are often criticized for being overly dissipative due to their nature of
 transferring energy from larger to smaller scales while failing to capture
 backscattering effects. In contrast, structural models incorporate
 backscattering and are typically nonlinear, allowing for a more accurate
-representation of small-scale flow structures.
+representation of small-scale flow structures.\\
 
-\todo{Missing RANS overview}
-
-
-\cite{DahmNotes} 
-\cite{Spalart1992}
-
-If we take the \gls{NS} \cref{eq:navierStokesEquationsEins} and applied a
+If we take the \gls{NS} \cref{eq:navierStokesEquationsEins} and apply a
 Reynolds decomposition \cref{eq:reynoldsDecomposition}
-
 \begin{subequations}
     \begin{align}
-        u = \overline{u} + u^{\prime}\label{eq:reynoldsDecomposition} \\
-        \overline{u} = \lim_{T\rightarrow\infty}\frac{1}{T}\int^T_0 u\,dt \label{eq:timeAverage}
+        u &= \overline{u} + u^{\prime}\label{eq:reynoldsDecomposition} \\
+        \overline{u} &= \lim_{T\rightarrow\infty}\frac{1}{T}\int^T_0 u\,dt \label{eq:timeAverage}
     \end{align}
 \end{subequations}
 
-You will end with the \gls{RANS} equations given on 
+We will obtain the \gls{RANS} equations give by
+\cref{eq:reynoldsAverageNavierStokesEquations}.
 \begin{subequations}\label{eq:reynoldsAverageNavierStokesEquations}
     \begin{align}
         &\ransContinuityEins \label{eq:ransContinuity}  \\
         &\ransMomentumEins \label{eq:ransMomentum}   \\
-        &\ransEnergyEins \label{eq:ransEnergy}
+        &\ransEnergyEins \label{eq:ransEnergy} \\
+        &\ransStressTensorEins \label{eq:ransStressTensor}
     \end{align}
 \end{subequations}
 
+The term \(\overline{u^{\prime}_i u^{\prime}_j}\) in \cref{eq:ransMomentum} is
+referred to as the \textit{Reynolds stress tensor}, as shown in
+\cref{eq:reynoldsStressTensor}. This is a symmetric tensor, meaning it has six
+independent components. Consequently, by applying a Reynolds average to the
+\gls{NS} equations, six additional unknowns emerge. However, since we only have
+four equations, the system of equations remains underdetermined and is not yet
+closed. This fundamental issue, arising from the application of Reynolds
+averaging to the \gls{NS} equations, is known as the \textit{closure problem}.
+\begin{equation}\label{eq:reynoldsStressTensor}
+    \tau_{ij} = - \overline{u^{\prime}_iu^{\prime}_j} 
+\end{equation}
+
+In $1925$, Prandtl introduced the mixing length model, an analogy to the mean
+free path in a gas. The model is based on the mixing length hypothesis and is
+commonly referred to as an \textit{algebraic model} or a \textit{zero-equation
+model} of turbulence. By definition, an $n$-equation model requires the
+solution of $n$ additional differential transport equations in addition to
+those governing the conservation of mass, momentum, and energy for the mean
+flow \cite{Wilcox1998}. \\
+
+In $1945$, Prandtl proposed a model in which the eddy viscosity depends on the
+kinetic energy, $\kappa$, of turbulent fluctuations. He introduced a partial
+differential equation to solve for $\kappa$, forming what is known as a
+\textit{one-equation model} of turbulence \cite{Wilcox1998}.\\
+
+In $1942$, Kolmogorov developed the first complete turbulence model. In
+addition to a modeled equation for kinetic energy $\kappa$, he introduced a
+second differential equation to solve for the dissipation rate of turbulent
+energy per unit volume and time, $\omega$. This model, known as the
+$\kappa$-$\omega$ model, formulates a differential equation for $\omega$
+similar in structure to the equation for $\kappa$. As a result, it is
+classified as a \textit{two-equation model} of turbulence \cite{Wilcox1998}.\\
+
+Further advancements were made by Chou $1945$ and Rotta $1951$, who laid the
+foundation for turbulence models that do not rely on the Boussinesq
+approximation. These models involve differential equations governing the
+evolution of the Reynolds stress tensor, which represents turbulent stresses.
+Such models are most appropriately classified as \textit{stress transport
+models} \cite{Wilcox1998}.\\
+
+Thus, four main categories of turbulence models have evolved:
+\begin{itemize}
+    \item \textbf{Zero-equation models}  
+    \item \textbf{One-equation models}  
+    \item \textbf{Two-equation models}  
+    \item \textbf{Stress transport models}  
+\end{itemize}
+
+
+\todo{Add these references}
+\cite{DahmNotes} 
+\cite{Spalart1992}
 
 
 
 
-In $1925$ Prandtl introduced the mixing length model (an analogy to the mean free
-path in a gas). Model's bases in the mixing length hypothesis referred to as an
-algebraic model or a zero-equation model of turbulence. In $1945$ Prandtl
-assumed a model in which the eddy viscosity depends upon the kinetic energy of
-the turbulent fluctuations, and proposed a partial differential equation to
-solve for the kinetic energy (this is a one-equation model).
 
 
-By definition, an n-equation model signifies a model that requires solution of n additional differential transport equations in addition to expressing conservation of mass, momentum and energy for the mean flow.
-
-
-In $1942$ Kolmogorov introduced a first complete model of turbulence, in
-addition to having a modeled equation for the kinetic energy $\kappa$, he introduced a
-second parameter $\omega$. This is a two-equation model of turbulence.
-
-Chou $(1945)$ and Rotta $(1951)$ laid the foundation of turbulence models that
-avoid the used of the Boussinesq Approximation. Model for the differential
-equation governing evolution of the tensor that represents turbulent stresses,
-such models are most appropriately described as stress transport models. Many
-authors refer to this approach as a second order closure or second moment
-closure. The primary conceptual advantage of a stres transport model is the
-natural manner in which nonlocal and history effects are incorporated.
-
-For a three-dimensional flow, a stress-transport model introduces seven
-equations, one for the turbulence (length or equivalent) scale and six for the
-components of the Reynolds-stress tensor.
 
 
