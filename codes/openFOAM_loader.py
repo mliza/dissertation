@@ -171,7 +171,7 @@ def main(
     print(f'The Strehl ratio is: {strehl_ratio}')
 
     for i, current_time in enumerate(time_data): 
-        time = current_time[0].replace('.','_')
+        time = str(current_time).replace('.','_')
         plot_wavefront_distortion_x(x_range, y_out, wave_front_distortion[i],
                                     fig_config, fig_config['wd_path'], time) 
 
