@@ -365,10 +365,8 @@ def main(mesh_data, fig_config):
         line_dict[i] = mesh_data[i].sample_over_line(point_1, point_2, n_points)
 
         # Generate Plots
-        """
         for k in scalar_field:
             plot_countour_scalar(mesh_data[i], i, k, fig_config)
-        """
             
     plot_stagnation_data(line_dict, fig_config)
 

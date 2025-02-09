@@ -40,8 +40,9 @@ keeping computational costs manageable. \\
 
 The appropriate choice of turbulence model depends on the specific objectives
 of a study, the available computational resources, and the level of fidelity
-required for accurate predictions \cite{Smits2009}. \\
+required for accurate predictions \cite{Smits2009}.
 
+\subsection{\gls{DNS}}
 For the \gls{DNS} case, the full \gls{NS} equations
 (\cref{eq:navierStokesEquationsEins}) are resolved in both space and time
 without the need for any turbulence modeling. However, the computational cost
@@ -56,53 +57,58 @@ is extremely high, making it infeasible for most real-world applications.
     \end{align}
 \end{subequations}
 
-In $1963$, Smagorinsky \cite{Smagorinsky1963} introduced the \gls{LES} model to
-simulate atmospheric air currents. The \gls{LES} framework is grounded in the
-energy cascade (\cref{fig:ch2EnergyCascade}) model developed by Kolmogorov in the 
-$1940$s, which itself builds upon the earlier work of Richardson. The
-fundamental concept behind \gls{LES} is to explicitly compute the large-scale
-motions, which are influenced flow geometry and are not universal, up to a
-prescribed length scale. The smaller scales, which tend to exhibit more
-universal characteristics, are modeled using a \gls{SGS} model
-\cite{Pope2000}.\\
+The range of instantaneous scales in a turbulent flow increases rapidly with
+the Reynolds number, as given by \cref{eq:reynoldsNumber} \cite{Moin1998}. The
+Reynolds number, defined as:
+\begin{equation}\label{eq:reynoldsNumber}
+    Re = \frac{\rho u L_c}{\mu}  = \frac{\text{Inertial Forces}}{\text{Viscous
+    Forces}} = \frac{\text{Convective transport}}{\text{Diffussive transport}} 
+\end{equation}
+The Reynolds number describes the ratio between inertial and viscous forces
+within a flow. A higher Reynolds number indicates a flow dominated by inertial
+effects, leading to increased turbulence and a broader spectrum of eddy sizes.
+Conversely, at lower Reynolds numbers, viscous forces play a more significant
+role, suppressing turbulence and limiting the range of scales present in the
+flow. This dependence on Reynolds number is crucial in turbulence modeling, as
+it dictates the level of resolution required to accurately capture the
+turbulent structures. Let take a look at the non-dimensional form of \gls{NS}
+\cref{eq:nonDimensionalNavierStokes}.
+\begin{equation}\label{eq:nonDimensionalNavierStokes}
+    \nonDimensionalNavierStokes
+\end{equation}
+As the flow velocity increases, the Reynolds number rises, leading to a greater
+separation of scales in the turbulent flow. While viscous forces remain
+significant at small scales, inertial forces increasingly dominate at higher
+Reynolds numbers. Recall that the Reynolds stress arises from the nonlinear
+convective term $\Parenthesis{ V^* \cdot \nabla} V^*$, in the momentum
+equation \cref{eq:momentumEins}. To fully resolve turbulence, we must consider
+the smallest scales of motion, known as the Kolmogorov scales, given by
+\cref{eq:kolmogorovScales}.
+\begin{subequations}\label{eq:kolmogorovScales}
+    \begin{align}
+        &\kolmogorovLengthScale \approx O\Parenthesis{Re^{-3/4}} \label{eq:kolmogorovLength} \\
+        &\kolmogorovTimeScale \approx O\Parenthesis{Re^{-1/2}} \label{eq:kolmogorovTime} \\
+        &\kolmogorovVelocityScale  \approx O\Parenthesis{Re^{-1/4} }\label{eq:kolmogorovVelocity} 
+    \end{align}
+\end{subequations}
+In \gls{DNS}, the computational grid must be fine
+enough to resolve all turbulent scales down to the Kolmogorov scale. If the
+grid resolution is coarser than these scales, the smallest turbulent structures
+will not be captured, leading to inaccurate results. This requirement makes
+\gls{DNS} computationally prohibitive, as the number of grid points needed
+scales as $O\Parenthesis{Re^{9/4}}$ in three-dimensional turbulence
+\cite{Pope2000}. The cost further increases when considering time stepping, as
+the smallest time scales must also be resolved, leading to a computational
+expense that grows even more steeply with Reynolds number. \\
 
-This separation between larger and smaller scales is typically achieved by
-spatially filtering the velocity field using a kernel \cite{Leonard1975}. The
-convolution kernel effectively splits the flow field into resolved large scales
-and modeled \gls{SGS} components in an \gls{LES} framework. Developing
-physically realistic \gls{SGS} models requires a comprehensive understanding of
-both the physics and statistical properties of scale interactions between large
-and small scales in turbulent flows. \gls{SGS} modeling is traditionally
-predicated on the hypothesis that if subgrid scales exist, the flow is locally
-turbulent in both space and time \cite{Garnier2009}.\\
+Due to these extreme computational requirements, \gls{DNS} is primarily used
+for fundamental turbulence research, validation of turbulence models, and
+benchmarking of lower-fidelity methods such a \gls{LES}, and \gls{RANS}. While
+\gls{DNS} povides the most detailed turbulence information, its application is
+restricted to relatively low Reynolds number flows, making alternative modeling
+approaches necessary for practical engineering problems.
 
-There are two primary \gls{SGS} modeling strategies:
-\begin{itemize}
-    \item \textbf{Functional modeling:} This approach focuses on the energetic
-        impact of subgrid scales on resolved scales. It assumes that balancing
-        energy transfer between scale ranges is sufficient to describe the
-        subgrid-scale effects. Functional models often neglect backscattering,
-        i.e., energy transfer from smaller scales back to larger scales
-        \cite{Burton2005}.
-    \item \textbf{Structural modeling:} This strategy attempts to reconstruct
-        subgrid-scale information directly by generating a new field from the
-        filtered field (e.g., velocity, density) that better approximates the
-        unfiltered field. Structural models account for backscattering because
-        they aim to reconstruct small-scale structures within the
-        flow \cite{Burton2005}.
-\end{itemize}
-
-Functional models commonly represent the \gls{SGS} stress tensor (Reynolds
-stress tensor) using eddy-viscosity closures. However, this approach linearize
-the inherently nonlinear stress tensor, leading to the loss of some physical
-details. It is important to note that the famous closure problem originates
-from the convective terms in the \gls{NS} equations. Additionally, functional
-models are often criticized for being overly dissipative due to their nature of
-transferring energy from larger to smaller scales while failing to capture
-backscattering effects. In contrast, structural models incorporate
-backscattering and are typically nonlinear, allowing for a more accurate
-representation of small-scale flow structures.\\
-
+\subsection{\gls{RANS}}
 If we take the \gls{NS} \cref{eq:navierStokesEquationsEins} and apply a
 Reynolds decomposition \cref{eq:reynoldsDecomposition}
 \begin{subequations}
@@ -171,9 +177,64 @@ Thus, four main categories of turbulence models have evolved:
     \item \textbf{Stress transport models}  
 \end{itemize}
 
+\gls{RANS} models generally assume that the turbulent kinetic energy, $\kappa$,
+and the dissipation rate, $\epsilon$, fully characterize all aspects of
+turbulent motion. However, in reality, $\kappa$ and $\epsilon$ are only
+sufficient to describe the inertial range of the turbulence spectrum, as
+illustrated in \cref{fig:ch2EnergyCascade} \cite{DahmNotes}. This limitation
+arises because \gls{RANS} models rely on statistical averaging, which
+inherently loses information about the anisotropy and non-equilibrium effects
+present in real turbulence.
+
+\subsection{\gls{LES}}
+In $1963$, Smagorinsky \cite{Smagorinsky1963} introduced the \gls{LES} model to
+simulate atmospheric air currents. The \gls{LES} framework is grounded in the
+energy cascade (\cref{fig:ch2EnergyCascade}) model developed by Kolmogorov in the 
+$1940$s, which itself builds upon the earlier work of Richardson. The
+fundamental concept behind \gls{LES} is to explicitly compute the large-scale
+motions, which are influenced flow geometry and are not universal, up to a
+prescribed length scale. The smaller scales, which tend to exhibit more
+universal characteristics, are modeled using a \gls{SGS} model
+\cite{Pope2000}.\\
+
+This separation between larger and smaller scales is typically achieved by
+spatially filtering the velocity field using a kernel \cite{Leonard1975}. The
+convolution kernel effectively splits the flow field into resolved large scales
+and modeled \gls{SGS} components in an \gls{LES} framework. Developing
+physically realistic \gls{SGS} models requires a comprehensive understanding of
+both the physics and statistical properties of scale interactions between large
+and small scales in turbulent flows. \gls{SGS} modeling is traditionally
+predicated on the hypothesis that if subgrid scales exist, the flow is locally
+turbulent in both space and time \cite{Garnier2009}.\\
+
+There are two primary \gls{SGS} modeling strategies:
+\begin{itemize}
+    \item \textbf{Functional modeling:} This approach focuses on the energetic
+        impact of subgrid scales on resolved scales. It assumes that balancing
+        energy transfer between scale ranges is sufficient to describe the
+        subgrid-scale effects. Functional models often neglect backscattering,
+        i.e., energy transfer from smaller scales back to larger scales
+        \cite{Burton2005}.
+    \item \textbf{Structural modeling:} This strategy attempts to reconstruct
+        subgrid-scale information directly by generating a new field from the
+        filtered field (e.g., velocity, density) that better approximates the
+        unfiltered field. Structural models account for backscattering because
+        they aim to reconstruct small-scale structures within the
+        flow \cite{Burton2005}.
+\end{itemize}
+
+Functional models commonly represent the \gls{SGS} stress tensor (Reynolds
+stress tensor) using eddy-viscosity closures. However, this approach linearize
+the inherently nonlinear stress tensor, leading to the loss of some physical
+details. It is important to note that the famous closure problem originates
+from the convective terms in the \gls{NS} equations. Additionally, functional
+models are often criticized for being overly dissipative due to their nature of
+transferring energy from larger to smaller scales while failing to capture
+backscattering effects. In contrast, structural models incorporate
+backscattering and are typically nonlinear, allowing for a more accurate
+representation of small-scale flow structures.
 
 \todo{Add these references}
-\cite{DahmNotes} 
 \cite{Spalart1992}
 
 

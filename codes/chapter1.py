@@ -95,7 +95,9 @@ if __name__ == "__main__":
     fig_config["axis_label_size"] = 16
     fig_config["title_size"] = 18
     output_png = "../figures/chapter1"
+    import IPython
 
     altitude = np.linspace(0, 81e3, 1000)
+    IPython.embed(colors = 'Linux')
     blue_sky = optics.atmospheric_index_of_refraction(altitude)
     plot_index(blue_sky, altitude, output_png, fig_config)
