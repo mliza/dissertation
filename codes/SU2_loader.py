@@ -42,7 +42,7 @@ def call_optics(mesh):
         cell_data["Temperature"], "Air", 633
     )
 
-    mesh.cell_data["dielectric_dilute"] = haot.dielectric_material_const(
+    mesh.cell_data["dielectric_dilute"] = haot.permittivity_material(
         index_of_refraction["dilute"]
     )
 

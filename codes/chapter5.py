@@ -273,6 +273,37 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         )
         plt.close()
 
+        # Plot Electric Susceptibility 
+        plt.semilogx(
+            tmp["temperature"]["time"],
+            tmp["electric_dilute"] * 1E5,
+            linewidth=fig_config["line_width"],
+            label="dilute",
+        )
+        plt.semilogx(
+            tmp["temperature"]["time"],
+            tmp["electric_dense"] * 1E5,
+            "--",
+            linewidth=fig_config["line_width"],
+            label="dense",
+        )
+        plt.legend(fontsize=fig_config["legend_size"])
+        plt.xticks(fontsize=fig_config["ticks_size"])
+        plt.yticks(fontsize=fig_config["ticks_size"])
+        plt.xlabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
+        plt.ylabel(
+            "$\\chi_e \\times 10^{-5} [\;]$", fontsize=fig_config["axis_label_size"]
+        )
+        if cut_dict and i in cut_dict and "refractiveIndex" in cut_dict[i]:
+            plt.xlim(cut_dict[i]["refractiveIndex"])
+        plt.savefig(
+            os.path.join(output_png_path, f"{i}_electricSusceptibility.pdf"),
+            format="pdf",
+            bbox_inches="tight",
+            dpi=fig_config["dpi_size"],
+        )
+        plt.close()
+
         ##  TESTING ##
         max_gl = np.max(tmp["gladstone_species"]["gladstone_dale"])
         max_Tt = np.max(tmp["temperature"]["Tt"])
@@ -429,6 +460,8 @@ def optical_properties(
         # Calculate Gladstone-Dale Constant and Index of Refraction
         gd_const = optics.gladstone_dale_constant(density_dict)
         refraction_index = optics.index_of_refraction(density_dict)
+        electric_dilute = optics.electric_susceptibility(refraction_index['dilute'])
+        electric_dense = optics.electric_susceptibility(refraction_index['dense'])
 
         # Gladstone-Dale constant frozen
         tot_density = sum(density_dict.values())[0]
@@ -442,6 +475,8 @@ def optical_properties(
         for key in mass_fraction.keys():
             gds += gd[key] * mass_fraction[key]
 
+        dict_data[f_in]["electric_dilute"] = electric_dilute
+        dict_data[f_in]["electric_dense"] = electric_dense
         dict_data[f_in]["temperature"] = temp_dict
         dict_data[f_in]["neutral_sp"] = neutral_dict
         dict_data[f_in]["ion_sp"] = ion_dict
@@ -464,7 +499,7 @@ def main(cfd_results_abs_path):
     fig_config["legend_size"] = 12
     fig_config["ticks_size"] = 13
     fig_config["title_size"] = 18
-    species_flag = True
+    species_flag = True 
 
     if not species_flag:
         # Chemistry Composition #

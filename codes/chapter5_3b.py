@@ -340,7 +340,7 @@ def plot_stagnation_data(line_data, fig_config):
 def calculate_aero_props(mass_density_dict):
     index = haot.index_of_refraction(mass_density_dict)
     gladstone = haot.gladstone_dale_constant(mass_density_dict)
-    dielectric = haot.dielectric_material_const(index['dilute'])
+    dielectric = haot.permittivity_material(index['dilute'])
     return index, gladstone, dielectric
 
 
