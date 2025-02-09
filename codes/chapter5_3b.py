@@ -19,13 +19,17 @@ def load_files(files_in_path):
 
 def plot_countour_scalar(mesh_data, case_name, scalar_field, fig_config):
     plotter = call_plotter(mesh_data)
+    # Lower bound at 5th percentile
+    min_val = np.percentile(mesh_data[scalar_field], 5)  
+    # Upper bound at 95th percentile
+    max_val = np.percentile(mesh_data[scalar_field], 95)  
+    # Gradual opacity variation
     plotter.add_mesh(mesh_data, scalars=scalar_field,
-                 #cmap="coolwarm_r",
-                 cmap='Spectral',
-                 clim=[np.min(mesh_data[scalar_field]), 
-                       np.max(mesh_data[scalar_field])],
-                 show_scalar_bar=False)
+                 cmap='inferno',
+                 clim=[min_val, max_val],
+                 show_scalar_bar=True)
 
+    """
     plotter.add_scalar_bar(
         title=f"{scalar_field}",
         title_font_size=22,
@@ -38,6 +42,7 @@ def plot_countour_scalar(mesh_data, case_name, scalar_field, fig_config):
         height=0.1,
         vertical=False,
     )
+    """
     # Save the plot as an image
     output_file = os.path.join(fig_config["out_path"], f"{case_name}_{scalar_field}.png")
     plotter.screenshot(output_file)
@@ -241,12 +246,12 @@ def plot_stagnation_data(line_data, fig_config):
         ## Plot species GD ##
 
         ## Plot GD ##
-        plt.plot(noneq_mm, line_data[noneq]['gladstone_dale'][cut_indx:] * 1e4,
+        plt.plot(noneq_mm, line_data[noneq]['gladstone_dale'][cut_indx:],
                  color=colors[0],
                  linewidth=fig_config["line_width"],
                  label="Nonequilibrium")
 
-        plt.plot(frozen_mm, line_data[frozen]['gladstone_dale'][cut_indx:] * 1e4, 
+        plt.plot(frozen_mm, line_data[frozen]['gladstone_dale'][cut_indx:], 
                  color=colors[1],
                  linewidth=fig_config["line_width"],
                  label="Frozen")
@@ -270,13 +275,13 @@ def plot_stagnation_data(line_data, fig_config):
 
         ## Plot Index ##
         plt.plot(noneq_mm[:-1],
-                 (line_data[noneq]['dilute_index'][cut_indx:-1] - 1) * 1e3,
+                 line_data[noneq]['dilute_index'][cut_indx:-1],
                  color=colors[0],
                  linewidth=fig_config["line_width"],
                  label="Nonequilibrium")
 
         plt.plot(frozen_mm[:-1],
-                 (line_data[frozen]['dilute_index'][cut_indx:-1] - 1) * 1e3,
+                 line_data[frozen]['dilute_index'][cut_indx:-1],
                  color=colors[1],
                  linewidth=fig_config["line_width"],
                  label="Frozen")
@@ -302,20 +307,20 @@ def plot_stagnation_data(line_data, fig_config):
 
         ## Plot Dielectric ##
         plt.plot(noneq_mm[:-1],
-                line_data[noneq]['dielectric'][cut_indx:-1] / s_const.epsilon_0, 
+                line_data[noneq]['dielectric'][cut_indx:-1], 
                  color=colors[0],
                  linewidth=fig_config["line_width"],
                  label="Nonequilibrium")
 
         plt.plot(frozen_mm[:-1],
-                line_data[frozen]['dielectric'][cut_indx:-1] / s_const.epsilon_0, 
+                line_data[frozen]['dielectric'][cut_indx:-1], 
                  color=colors[1],
                  linewidth=fig_config["line_width"],
                  label="Frozen")
         
         plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
         plt.ylabel(
-            "$ \\epsilon_m / \\epsilon_0$ $[ ]$", fontsize=fig_config["axis_label_size"]
+            "$ \\chi_e$ $[ ]$", fontsize=fig_config["axis_label_size"]
         )
 
         plt.xlim(noneq_mm[0], noneq_mm[-1]) 
@@ -324,7 +329,7 @@ def plot_stagnation_data(line_data, fig_config):
         plt.legend(fontsize=fig_config["legend_size"])
 
         plt.savefig(
-            os.path.join(fig_config["out_path"], f"{i}_dielectricMedium.pdf"),
+            os.path.join(fig_config["out_path"], f"{i}_electricSusceptibility.pdf"),
             format="pdf",
             bbox_inches="tight",
             dpi=fig_config["dpi_size"],
@@ -352,12 +357,13 @@ def main(mesh_data, fig_config):
     line_dict = { }
 
     for i in mesh_data:
+        #NOTE: Modified for plotting purposes
         mass_density_dict = create_mass_density(mesh_data[i], species)
         index, gladstone, dielectric = calculate_aero_props(mass_density_dict)
-        mesh_data[i]['dilute_index'] = index['dilute']
-        mesh_data[i]['dense_index'] = index['dense']
-        mesh_data[i]['gladstone_dale'] = gladstone['gladstone_dale']
-        mesh_data[i]['dielectric'] = dielectric
+        mesh_data[i]['dilute_index'] = (index['dilute'] - 1) * 1E3
+        mesh_data[i]['dense_index'] = (index['dense'] - 1) * 1E3
+        mesh_data[i]['gladstone_dale'] = gladstone['gladstone_dale'] * 1E4
+        mesh_data[i]['dielectric'] = (dielectric / s_const.epsilon_0 - 1)
         for k in species:
             mesh_data[i][f'gd_{k}'] = gladstone[k]
 

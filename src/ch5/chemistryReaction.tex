@@ -1,5 +1,4 @@
-\section{Chemistry Reaction
-Study\label{ch5:chemistryReactionStudy}}
+\section{Frozen Versus Nonequilibrium Study\label{ch5:chemistryReactionStudy}}
 
 This section investigates \gls{AO} properties at various Mach numbers for a
 hypersonic vehicle and compares the results between frozen flow and
@@ -44,6 +43,7 @@ the mesh used in this work.
     \caption{\label{fig:IRV2Images}IRV-2}
 \end{figure}
 
+\subsection{Flow results}
 \Cref{fig:contourTranslationTemperatureFrozen} presents contour plots of
 translational temperature, while \cref{fig:contourVibrationalTemperatureFrozen}
 displays vibrational temperature contours at different Mach numbers for a
@@ -187,6 +187,7 @@ reactions do not remove energy from the flow.
 \end{figure}
 % Vibrational Temperatures Contours Nonequilibrium %
 
+\subsection{Stagnation results}
 \Cref{fig:stagnationTemperatures} shows the temperatures along the stagnation
 line for different Mach numbers in both frozen and nonequilibrium flow
 conditions. As expected, the shock standoff distance in the frozen case is
@@ -389,39 +390,38 @@ flow properties.
 \end{figure}
 % Index of Refraction% 
 
-\Cref{fig:stagnationDielectricConstant} compares the nonequilibrium and frozen
-cases for the ratio between the dielectric constant of a medium, $\epsilon_m$,
-and the dielectric constant in a vacuum, $\epsilon_0$. The dielectric constant
-in a medium follows a similar trend to the index of refraction; thus, the frozen 
-case underpredicts the medium’s dielectric constant. A higher dielectric constant
-indicates that the material can store more electrical energy, which slows down
-the signal propagation speed and increases signal attenuation. This behavior
-effectively makes the medium a better insulator, impeding signal transmission
-and reducing its power. In hypersonic flow conditions, such changes in the
-dielectric constant can have significant implications for the performance of
-electromagnetic wave-based systems, such as communication devices and radar
-seekers. Accurate modeling of the dielectric constant in nonequilibrium flows
-is therefore critical for predicting and mitigating signal degradation in
-high-speed aerospace applications.
-% Dielectric medium %
+\Cref{fig:stagnationElectricSusceptibility} compares the nonequilibrium and frozen
+cases for electric susceptibility $\chi_e$ in a medium, as defined in
+\cref{eq:electricSusceptibility}. The behavior of electric susceptibility
+follows a similar trend to the refractive index, leading the frozen case to
+underpredict the medium’s response. A higher electric susceptibility indicates
+that the material becomes more polarized when exposed to an external \gls{EM}
+field. This increased polarization slows down signal propagation and enhances
+signal attenuation. Consequently, the medium behaves more like an insulator,
+impeding signal transmission and reducing power. In hypersonic flow conditions,
+variations in electric susceptibility can significantly impact electromagnetic
+wave-based systems, such as communication devices and radar seekers. Accurate
+modeling of nonequilibrium effects is therefore essential for predicting and
+mitigating signal degradation in high-speed aerospace applications.
+% Electric Susceptibility % 
 \begin{figure}[H]
     \makebox[\textwidth][c]{
     \hspace{-2em}
         \subfigure[Case $1R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_dielectricMedium.pdf}
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_electricSusceptibility.pdf}
         }
 
         \hspace{-2em}
         \subfigure[Case $2R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_dielectricMedium.pdf}
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_electricSusceptibility.pdf}
         }
 
         \hspace{-2em}
         \subfigure[Case $3R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_dielectricMedium.pdf}
+            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_electricSusceptibility.pdf}
         }
     }
-    \caption{Stagnation dielectric constant in
-    medium\label{fig:stagnationDielectricConstant}}
+    \caption{Electric susceptibility at stagnation
+    line\label{fig:stagnationElectricSusceptibility}}
 \end{figure}
-% Dielectric medium %
+% Electric Susceptibility % 

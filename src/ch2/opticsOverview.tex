@@ -41,7 +41,7 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     visible and ultraviolet, the vibrational transition in the infrared, and
     the rotation transition in the far infrared \cite{Schwabl2007}. 
 
-    \subsection{Distortions}
+    \subsection{Electromagnetism}
     As electromagnetic waves travel through a medium, these waves induce a
     polarization and magnetization on the medium's molecules; leading to the
     formation of dipoles. These dipoles generate their own electric and
@@ -58,7 +58,24 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
         n = \frac{c_0}{c_m} \equiv \sqrt{\frac{\mu_m\epsilon_m}{\mu_0\epsilon_0}}
         \approx \sqrt{\frac{\epsilon_m}{\epsilon_0}}
     \end{equation}
+    The electric susceptibility $\chi_e$ quantifies
+    the material's ability to become polarized in response to an applied
+    electric field. It is a dimensionless parameter that describes how much the
+    permittivity of the material $\epsilon_m$ deviates from the permittivity of
+    free space $\epsilon_0$. For a linear dielectric, the electric
+    susceptibility can be calculated using \cref{eq:electricSusceptibility}
+    \cite{Griffiths2017,Jackson1998}.
+    \begin{equation}\label{eq:electricSusceptibility}
+        \chi_e = \frac{\epsilon_m}{\epsilon_0} - 1 \approx n^2 -1  
+    \end{equation}
+    This approximation holds for non-magnetic materials where $\mu_m \approx
+    \mu_0$, and it provides a direct link between the optical and electrical
+    properties of a dielectric medium. The electric susceptibility plays a
+    crucial role in determining the polarization response of a material and
+    influences phenomena such as wave propagation, dispersion, and reflection
+    at dielectric interfaces.
 
+    \subsection{Optics in a Medium}
     \Cref{fig:ch2LightRefraction} shows a picture of a material bending a
     beam of light. Inside the material the speed of light is lower than outside
     the material. The same effect takes place when a beam of light travels
