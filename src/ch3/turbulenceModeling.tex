@@ -83,14 +83,15 @@ Reynolds numbers. Recall that the Reynolds stress arises from the nonlinear
 convective term $\Parenthesis{ V^* \cdot \nabla} V^*$, in the momentum
 equation \cref{eq:momentumEins}. To fully resolve turbulence, we must consider
 the smallest scales of motion, known as the Kolmogorov scales, given by
-\cref{eq:kolmogorovScales}.
-\begin{subequations}\label{eq:kolmogorovScales}
+\cref{eq:kolmogorovScales}, these scales can be approximated to the Reynolds number by \cref{eq:kolmogorovScalesApproximation}.
+begin{subequations}\label{eq:kolmogorovScalesApproximation}
     \begin{align}
-        &\kolmogorovLengthScale \approx O\Parenthesis{Re^{-3/4}} \label{eq:kolmogorovLength} \\
-        &\kolmogorovTimeScale \approx O\Parenthesis{Re^{-1/2}} \label{eq:kolmogorovTime} \\
-        &\kolmogorovVelocityScale  \approx O\Parenthesis{Re^{-1/4} }\label{eq:kolmogorovVelocity} 
+        \frac{\eta}{l_0} \approx O\Parenthesis{Re^{-3/4}} \label{eq:kolmogorovLength} \\
+        \frac{\tau_{\eta}}{\tau_0} \approx O\Parenthesis{Re^{-1/2}} \label{eq:kolmogorovTime} \\
+        \frac{u_{\eta}}{u_0} \approx O\Parenthesis{Re^{-1/4} }\label{eq:kolmogorovVelocity} 
     \end{align}
 \end{subequations}
+
 In \gls{DNS}, the computational grid must be fine
 enough to resolve all turbulent scales down to the Kolmogorov scale. If the
 grid resolution is coarser than these scales, the smallest turbulent structures
