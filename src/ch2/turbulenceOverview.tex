@@ -124,12 +124,19 @@ The smallest eddies exist in the dissipation range, where they exhibit
 universal characteristics independent of the flow geometry or boundary
 conditions. These eddies receive energy transferred from larger eddies and
 dissipate it as heat through the fluid's molecular viscosity. The length scales
-of these eddies are described by the Kolmogorov scales, which depend on the
+of these eddies are described by the Kolmogorov scales \cref{eq:kolmogorovScales}, which depend on the
 kinematic viscosity $(\nu)$ and the turbulent dissipation rate $(\varepsilon)$.
 These eddies are isotropic due to the dominance of viscosity at these scales,
 which smoothens out directional variations. The smallest-scale motions are
 entirely governed by dissipation, making them crucial for understanding energy
 conversion in turbulent flows.\\
+\begin{subequations}\label{eq:kolmogorovScales}
+    \begin{align}
+        &\kolmogorovLengthScale \label{eq:kolmogorovLength} \\
+        &\kolmogorovTimeScale \label{eq:kolmogorovTime} \\
+        &\kolmogorovVelocityScale  \label{eq:kolmogorovVelocity} 
+    \end{align}
+\end{subequations}
 
 \Cref{fig:ch2EnergySpectrum} illustrates the energy spectrum of turbulence,
 which organizes the energy distribution across different scales within a
