@@ -47,6 +47,29 @@
         \pic{0.85}{chapter1/atmosphericOptics}{Atmospheric index of
         refraction}{fig:ch1AtmosphericOptics}
 
+        However, the index of refraction consists of both a real and a complex
+        component, as expressed in \cref{eq:totalIndexOfRefraction}. The real
+        part, $n$, governs the phenomenon of bending or refraction of
+        light as it passes through a medium, while the complex part, $k$, is
+        associated with attenuation or absorption of the wave as it
+        propagates. The attenuation arises due to energy dissipation within the
+        medium, which is particularly relevant in plasmas, where ionization
+        effects contribute to optical losses. 
+        \begin{equation}\label{eq:totalIndexOfRefraction}
+            \mathcal{N} = n + ik 
+        \end{equation}
+        This work will primarily focus on analyzing the real part of
+        \cref{eq:totalIndexOfRefraction}, as it plays a crucial role in
+        determining optical path differences and wavefront distortions in
+        aero-optical applications. However, for completeness,
+        \cref{fig:attenuationDB} presents the atmospheric attenuation at two
+        different altitudes across a range of frequencies. The calculation of
+        this attenuation requires a thorough understanding of the complex part
+        of \cref{eq:totalIndexOfRefraction}, as it governs the absorption and
+        energy dissipation mechanisms in the medium.
+        \pic{0.5}{chapter1/attenuationDB}{Attenuation at different frequencies
+        \cite{ITU2022, Richards2010}}{fig:attenuationDB}
+
         Understanding the effects of the environment in which an optical beam
         traverse is imperative in target detection. Radar engineers will be
         mainly concerned with the atmospheric environment (rain, clouds, fog,
