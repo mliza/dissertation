@@ -44,7 +44,8 @@ def plot_countour_scalar(mesh_data, case_name, scalar_field, fig_config):
     )
     """
     # Save the plot as an image
-    output_file = os.path.join(fig_config["out_path"], f"{case_name}_{scalar_field}.png")
+    output_file = os.path.join(fig_config["out_path"],
+                               f"{case_name}_{scalar_field}.png")
     plotter.screenshot(output_file)
     plotter.close()
     del plotter
@@ -58,7 +59,7 @@ def create_mass_density(mesh_in, species):
 
 def call_plotter(mesh):
     # Plotting setup
-    plotter = pv.Plotter(off_screen=True, window_size=[1400, 800])
+    plotter = pv.Plotter(off_screen=True, window_size=[1250, 780])
     plotter.set_background("white")
     plotter.view_xy()
 
@@ -305,15 +306,15 @@ def plot_stagnation_data(line_data, fig_config):
         plt.close()
         ## Plot Index ##
 
-        ## Plot Dielectric ##
+        ## Plot Electric Susceptibility ##
         plt.plot(noneq_mm[:-1],
-                line_data[noneq]['dielectric'][cut_indx:-1], 
+                line_data[noneq]['susceptibility_dilute'][cut_indx:-1], 
                  color=colors[0],
                  linewidth=fig_config["line_width"],
                  label="Nonequilibrium")
 
         plt.plot(frozen_mm[:-1],
-                line_data[frozen]['dielectric'][cut_indx:-1], 
+                line_data[frozen]['susceptibility_dilute'][cut_indx:-1], 
                  color=colors[1],
                  linewidth=fig_config["line_width"],
                  label="Frozen")
@@ -335,20 +336,23 @@ def plot_stagnation_data(line_data, fig_config):
             dpi=fig_config["dpi_size"],
         )
         plt.close()
-        ## Plot Dielectric ##
+        ## Plot Electric Susceptibility ##
 
 def calculate_aero_props(mass_density_dict):
     index = haot.index_of_refraction(mass_density_dict)
     gladstone = haot.gladstone_dale_constant(mass_density_dict)
     dielectric = haot.permittivity_material(index['dilute'])
-    return index, gladstone, dielectric
+    susceptibility = haot.electric_susceptibility(index['dilute'])
+    return index, gladstone, dielectric, susceptibility
 
 
 def main(mesh_data, fig_config):
     species = ["N", "O", "NO", "N2", "O2"]
     scalar_field = ["Temperature_ve", "Temperature_tr", "Pressure", 
                     "dilute_index", "dense_index", "gladstone_dale",
-                    "dielectric"]
+                    "susceptibility_dilute"] 
+    scalar_field = ["dilute_index", "dense_index", "gladstone_dale",
+                    "susceptibility_dilute"] 
     
     point_1 = [-0.01, 0.0, 0.0]
     point_2 = [0.0, 0.0, 0.0]
@@ -359,11 +363,12 @@ def main(mesh_data, fig_config):
     for i in mesh_data:
         #NOTE: Modified for plotting purposes
         mass_density_dict = create_mass_density(mesh_data[i], species)
-        index, gladstone, dielectric = calculate_aero_props(mass_density_dict)
+        index, gladstone, dielectric, susceptibility = calculate_aero_props(mass_density_dict)
         mesh_data[i]['dilute_index'] = (index['dilute'] - 1) * 1E3
         mesh_data[i]['dense_index'] = (index['dense'] - 1) * 1E3
         mesh_data[i]['gladstone_dale'] = gladstone['gladstone_dale'] * 1E4
-        mesh_data[i]['dielectric'] = (dielectric / s_const.epsilon_0 - 1)
+        mesh_data[i]['dielectric_dilute'] = dielectric
+        mesh_data[i]['susceptibility_dilute'] = susceptibility
         for k in species:
             mesh_data[i][f'gd_{k}'] = gladstone[k]
 
