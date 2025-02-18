@@ -27,22 +27,20 @@ def plot_countour_scalar(mesh_data, case_name, scalar_field, fig_config):
     plotter.add_mesh(mesh_data, scalars=scalar_field,
                  cmap='inferno',
                  clim=[min_val, max_val],
-                 show_scalar_bar=True)
+                 show_scalar_bar=False)
 
-    """
     plotter.add_scalar_bar(
         title=f"{scalar_field}",
         title_font_size=22,
         label_font_size=18,
         bold=True,
-        position_x=0.027,
-        position_y=0.6,
+        position_x=0.035,
+        position_y=0.75,
         width=0.3,
         n_labels=5,
         height=0.1,
         vertical=False,
     )
-    """
     # Save the plot as an image
     output_file = os.path.join(fig_config["out_path"],
                                f"{case_name}_{scalar_field}.png")
@@ -59,7 +57,7 @@ def create_mass_density(mesh_in, species):
 
 def call_plotter(mesh):
     # Plotting setup
-    plotter = pv.Plotter(off_screen=True, window_size=[1250, 780])
+    plotter = pv.Plotter(off_screen=True, window_size=[1200, 700])
     plotter.set_background("white")
     plotter.view_xy()
 
@@ -74,7 +72,10 @@ def call_plotter(mesh):
     plotter.camera.position = (center[0], center[1], bounds[5] + 10)
 
     # Zoom
-    plotter.camera.zoom(80.0)
+    plotter.camera.zoom(86.0)
+    #plotter.show_axes()
+    #plotter.show_grid()
+    #plotter.add_axes(interactive=True)
 
     return plotter
 
@@ -389,8 +390,8 @@ if __name__ == "__main__":
     "/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/chemistryReaction"
     )
     files_in = os.path.join(abs_path, 'R_files')
-    fig_out_path = '/Users/martin/Documents/Schools/UoA/Dissertation/figures/chapter5/chemistryReaction'
     fig_out_path = 'outTest'
+    fig_out_path = '/Users/martin/Documents/Schools/UoA/Dissertation/figures/chapter5/chemistryReaction'
 
     # Users inputs #
     fig_config = {}
