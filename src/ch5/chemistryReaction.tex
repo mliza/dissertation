@@ -188,7 +188,14 @@ reactions do not remove energy from the flow.
 % Vibrational Temperatures Contours Nonequilibrium %
 
 \subsection{Optics results}
-
+\Cref{fig:contourGDNonequilibriumR} shows the contour of \gls{GD} for a
+nonequilibrium flow at three different Mach numbers. As expected, the highest
+Mach number (\cref{fig:nonequilibriumGD3R}) produces the highest \gls{GD}, since
+post-shock flow properties, such as temperature, increase with Mach number.
+Higher temperatures promote molecular dissociation, which significantly impacts
+\gls{GD}. The highest \gls{GD} appears at the stagnation point, which is
+reasonable because this region experiences the highest temperatures, leading to
+the most intense dissociation effects.
 % Gladstone Nonequilibrium % 
 \begin{figure}[H]
 \makebox[\textwidth][c]{
@@ -218,6 +225,18 @@ reactions do not remove energy from the flow.
 \end{figure}
 % Gladstone Nonequilibrium % 
 
+\Cref{fig:contourDiluteIndexOfRefractionNonequilibriumR} shows the contour
+plots for the dilute index of refraction at different Mach numbers in a
+nonequilibrium flow, while
+\cref{fig:contourDenseIndexOfRefractionNonequilibriumR} presents the contour
+plot for the dense index of refraction under the same conditions. A noticeable
+difference between the dense and dilute formulations of the index of refraction
+is not observed. This suggests that the dilute formulation serves as a good
+approximation, which is reasonable since air, even at high Mach numbers, is not
+dense enough to produce significant deviations between the two formulations. As
+expected, the highest variation in the index of refraction occurs along the
+stagnation line, where temperature and density gradients are most pronounced
+due to shock and compression effects in the nonequilibrium regime.
 % Dilute Index of refraction Contours Nonequilibrium %
 \begin{figure}[H]
 \makebox[\textwidth][c]{
@@ -278,6 +297,23 @@ reactions do not remove energy from the flow.
 \end{figure}
 % Dense Index of refraction Contours Nonequilibrium %
 
+\Cref{fig:contourDiluteIndexOfRefractionFrozenR} shows the contour plots for the
+dilute index of refraction at different Mach numbers in a frozen flow, while
+\cref{fig:contourDenseIndexOfRefractionFrozenR} presents the contour plot for
+the dense index of refraction under the same conditions. A noticeable
+difference between the dense and dilute formulations of the index of refraction
+is not observed. This suggests that the dilute formulation serves as a good
+approximation, which is reasonable since air, even at high Mach numbers, is not
+dense enough to produce significant deviations between the two formulations.\\
+
+As expected, the highest variation in the index of refraction occurs along the
+stagnation line, where temperature and density gradients are most pronounced
+due to shock and compression effects. However, a difference between the frozen
+and nonequilibrium cases is observed: the frozen case appears to underpredict
+the index of refraction. This is expected because, in the frozen case, the
+density is underpredicted, and since the index of refraction is closely related
+to the density through the \gls{GD}, a lower density results in a lower index
+of refraction.
 % Dilute Index of refraction Contours Frozen %
 \begin{figure}[H]
 \makebox[\textwidth][c]{
@@ -338,6 +374,59 @@ reactions do not remove energy from the flow.
 \end{figure}
 % Dense Index of refraction Contours Frozen %
 
+\Cref{fig:contourDiluteElectricSusceptibilityNonequilibriumR} presents the contour
+plots for the electric susceptibility at different Mach numbers for a
+nonequilibrium flow. As expected, the electric susceptibility increases with
+Mach number due to the higher post-shock temperatures and increased
+dissociation effects that enhance the medium's polarization response leading to
+an increase in electric susceptibility. Additionally, the
+most significant variations in electric susceptibility occur along the
+stagnation line, where temperature and density gradients are most pronounced.
+This region experiences the highest degree of molecular excitation and
+dissociation, further contributing to changes in the medium's electromagnetic
+properties.
+% Dilute Nonequilibrium Electric Susceptibility % 
+\begin{figure}[H]
+\makebox[\textwidth][c]{
+    \hspace{-2.0em}
+    \subfigure[Case $1R$]
+    {
+        \label{fig:nonequilibriumElectricSusceptibility1R}
+        \includegraphics[width=0.42\textwidth]{chapter5/chemistryReaction/1R_nonequilibrium_susceptibility_dilute.png}
+    }
+
+    \hspace{-1.0em}
+    \subfigure[Case $2R$]
+    {
+        \label{fig:nonequilibriumElectricSusceptibility2R}
+        \includegraphics[width=0.42\textwidth]{chapter5/chemistryReaction/2R_nonequilibrium_susceptibility_dilute.png}
+    }
+
+    \hspace{-1.0em}
+    \subfigure[Case $3R$]
+    {
+        \label{fig:nonequilibriumElectricSusceptibility3R}
+        \includegraphics[width=0.42\textwidth]{chapter5/chemistryReaction/3R_nonequilibrium_susceptibility_dilute.png}
+    }
+}
+\caption{Contour electric susceptibility for
+            nonequilibrium cases from
+            \cref{tab:chemistryReactionStudy}\label{fig:contourDiluteElectricSusceptibilityNonequilibriumR}}
+\end{figure}
+% Dilute Nonequilibrium Electric Susceptibility % 
+
+\Cref{fig:contourDiluteElectricSusceptibilityFrozenR} presents the contour plots
+for the electric susceptibility at different Mach numbers for a frozen flow. As
+expected, the electric susceptibility increases with Mach number due to higher
+post-shock temperatures and increased dissociation effects, which enhance the
+medium's electric susceptibility response. Additionally, the most significant
+variations in electric susceptibility occur along the stagnation line, where
+temperature and density gradients are most pronounced. This region experiences
+the highest degree of molecular excitation and dissociation, further
+influencing the medium's electromagnetic properties. However, a notable
+difference exists between the nonequilibrium and frozen cases: the frozen case
+appears to underpredict the electric susceptibility, leading to an
+underestimation of the medium's electromagnetic properties.
 % Dilute Frozen Electric Susceptibility % 
 \begin{figure}[H]
 \makebox[\textwidth][c]{
@@ -367,37 +456,6 @@ reactions do not remove energy from the flow.
             \cref{tab:chemistryReactionStudy}\label{fig:contourDiluteElectricSusceptibilityFrozenR}}
 \end{figure}
 % Dilute Frozen Electric Susceptibility % 
-
-% Dilute Nonequilibrium Electric Susceptibility % 
-\begin{figure}[H]
-\makebox[\textwidth][c]{
-    \hspace{-2.0em}
-    \subfigure[Case $1R$]
-    {
-        \label{fig:nonequilibriumElectricSusceptibility1R}
-        \includegraphics[width=0.42\textwidth]{chapter5/chemistryReaction/1R_nonequilibrium_susceptibility_dilute.png}
-    }
-
-    \hspace{-1.0em}
-    \subfigure[Case $2R$]
-    {
-        \label{fig:nonequilibriumElectricSusceptibility2R}
-        \includegraphics[width=0.42\textwidth]{chapter5/chemistryReaction/2R_nonequilibrium_susceptibility_dilute.png}
-    }
-
-    \hspace{-1.0em}
-    \subfigure[Case $3R$]
-    {
-        \label{fig:nonequilibriumElectricSusceptibility3R}
-        \includegraphics[width=0.42\textwidth]{chapter5/chemistryReaction/3R_nonequilibrium_susceptibility_dilute.png}
-    }
-}
-\caption{Contour electric susceptibility for
-            nonequilibrium cases from
-            \cref{tab:chemistryReactionStudy}\label{fig:contourDiluteElectricSusceptibilityNonequilibriumR}}
-\end{figure}
-% Dilute Frozen Electric Susceptibility % 
-\todo{Add comments about the plots}
 
 \subsection{Stagnation results}
 \Cref{fig:stagnationTemperatures} shows the temperatures along the stagnation

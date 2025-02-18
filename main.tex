@@ -16,15 +16,15 @@
 \begin{document}
 \listoftodos
 
-% Place holder for Symbols and Acronyms
-\subimport{src/glossary}{glossary}
-
 % Title Page
 \iffalse
 \begin{titlingpage}
-    \subimport{src/ch0}{TitlePage}
+    \subimport{src/ch0}{chapter_0}
 \end{titlingpage}
 \fi
+
+% Place holder for Symbols and Acronyms
+\subimport{src/glossary}{glossary}
 
 % Print table of contents
 \clearpage\thispagestyle{empty}
@@ -34,8 +34,6 @@
 \pagenumbering{roman}
 \setcounter{page}{1}
 
-% Add Quote, Abstract, License, Acknowledgments
-%\subimport{src/ch0}{chapter_0}
 
 % Add list of tables, list of figures, and glosaries
 \listoftables
@@ -50,12 +48,9 @@
 \setcounter{page}{1}
 
 % Add all the chapters
-\subimport{src/ch1}{chapter_1}
-\subimport{src/ch2}{chapter_2}
-\subimport{src/ch3}{chapter_3}
-\subimport{src/ch4}{chapter_4}
-\subimport{src/ch5}{chapter_5}
-\subimport{src/ch6}{chapter_6}
+\foreach \n in {1,2,3,4,5,6} {%
+    \subimport{src/ch\n}{chapter_\n}%
+}
 
 %% Documents after chapters
 \newpage 
