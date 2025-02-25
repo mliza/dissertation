@@ -16,34 +16,37 @@
 \begin{document}
 \listoftodos
 
+% Place holder for Symbols and Acronyms
+\subimport{src/glossary}{glossary}
+
 % Title Page
-\iffalse
 \begin{titlingpage}
     \subimport{src/ch0}{chapter_0}
 \end{titlingpage}
-\fi
 
-% Place holder for Symbols and Acronyms
-\subimport{src/glossary}{glossary}
+% Add list of tables, list of figures and abbreviations 
+% Roman numeration
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+% Lists and glossaries
+\subimport{src/ch0}{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\subimport{src/ch0}{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
+\printunsrtglossary[type=abbreviations]
+\printunsrtglossary[type=symbols, style=long, title={Nomenclature}]
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
 
 % Print table of contents
 \clearpage\thispagestyle{empty}
 \tableofcontents
 
-% Roman numeration
-\pagenumbering{roman}
-\setcounter{page}{1}
-
-
-% Add list of tables, list of figures, and glosaries
-\listoftables
-\addcontentsline{toc}{chapter}{List of Tables}
-\listoffigures
-\addcontentsline{toc}{chapter}{List of Figures}
-\printunsrtglossary[type=abbreviations]
-\printunsrtglossary[type=symbols, style=long, title={Nomenclature}]
-
 % Arabic numeration
+\clearpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
