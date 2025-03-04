@@ -299,4 +299,18 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     demonstrated that both techniques (Snell’s law and optical Lagrange
     equations) matched well. It was observed in this study that the
     contribution to the refractive index by diatomic nitrogen and oxygen is
-    greater upstream than downstream. 
+    greater upstream than downstream.\\ 
+
+    Some work considering the complex part of the index of refraction
+\cref{eq:totalIndexOfRefraction} by Yang \cite{Yang2023}, using a Photon
+Monte Carlo simulation, showed that the complex part of the index of
+refraction becomes stronger as the beam propagates over a larger distance.
+However, in this study, Yang used an approximation as a function of
+wavelength for the \gls{GD} of air. This approximation is
+given in \cref{eq:yangGladstoneDaleApproximation}. In this study, Yang did
+not consider nonequilibrium effects but accounted for turbulent effects.
+    \begin{equation}\label{eq:yangGladstoneDaleApproximation}
+        K_{GD} = 2.2244 \times 10^{-4} \SqBracket{1 + \Parenthesis{\frac{6.7132
+        \times 10^{-8}}{\lambda} }^2}
+        \UnitsFrac{m^3}{kg}
+    \end{equation}
