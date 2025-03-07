@@ -29,6 +29,40 @@ def call_plotter(mesh):
     return plotter
 
 
+def plot_scalar_contour(internal_mesh, scalar_field, title_field, path_out, time):
+    # https://matplotlib.org/stable/users/explain/colors/colormaps.html
+    plotter = pv.Plotter(window_size=[1800, 900])
+    plotter.view_xy()
+    plotter.add_mesh(
+        internal_mesh,
+        scalars=f"{scalar_field}",
+        cmap="turbo",
+        reset_camera="True",
+        show_scalar_bar=False,
+    )
+    # clim='rng',
+    plotter.set_background("white")
+    plotter.camera.zoom(2.0)
+
+    plotter.add_scalar_bar(
+        title=f"{title_field}",
+        title_font_size=22,
+        label_font_size=18,
+        bold=True,
+        position_x=0.02,
+        position_y=0.6,
+        width=0.3,
+        n_labels=8,
+        height=0.1,
+        vertical=False,
+        fmt="",
+    )
+    # Modify colorbar position and font size
+    plotter.save_graphic(os.path.join(path_out, f"{scalar_field}_{time}.pdf"))
+    plotter.clear()
+    plotter.close()
+
+
 # Plot OPL (wave travels on the y)
 def plot_optical_path_length_x(x_range, OPL, fig_config, opl_path, time):
     plt.plot(x_range, OPL, "-", linewidth=fig_config["line_width"])
@@ -77,7 +111,7 @@ def plot_wavefront_distortion_x(
 
     plt.legend(fontsize=fig_config["legend_size"])
     plt.yticks(
-        [np.round(np.mean(wave_front_distortion), 2), y_out],
+        [np.min(wave_front_distortion), y_out, np.max(wave_front_distortion)],
         fontsize=fig_config["ticks_size"],
     )
     plt.gca().yaxis.set_major_formatter(ScalarFormatter())
@@ -96,6 +130,8 @@ def plot_wavefront_distortion_x(
 # Process optical properties
 def call_optics(mesh):
     cell_data = mesh.point_data_to_cell_data()
+
+    mesh.cell_data["Unorm"] = np.linalg.norm(cell_data["U"], axis=1)
 
     index_of_refraction = haot.index_of_refraction_density_temperature(
         cell_data["T"], cell_data["rho"], "Air", 633
@@ -135,9 +171,9 @@ def main(
     x_range,
     y_in,
     y_out,
-    index_path,
-    electric_path,
-    kerl_path,
+    plot_fields,
+    title_fields,
+    path_out,
     opl_path,
     opd_path,
     wd_path,
@@ -149,7 +185,7 @@ def main(
     mesh = reader.read()
     time_data = reader.time_values
     time_data = np.array(time_data)
-    plot_flag = True
+    plot_flag = False
 
     OPL = np.zeros([np.shape(time_data)[0], len(x_range)])
     y_distance = np.zeros([np.shape(time_data)[0], len(x_range)])
@@ -175,107 +211,10 @@ def main(
                 line_data["index_dilute"], line_data["Distance"]
             )
         if plot_flag:
-            plotter = pv.Plotter(window_size=[1800, 900])
-            plotter.view_xy()
-            plotter.add_mesh(
-                internal_mesh,
-                scalars="index_dilute",
-                cmap="plasma",
-                reset_camera="True",
-                show_scalar_bar=False,
-            )
-            # clim='rng',
-            plotter.set_background("white")
-            plotter.camera.zoom(2.0)
-
-            plotter.add_scalar_bar(
-                title=f"Index of refraction",
-                title_font_size=22,
-                label_font_size=18,
-                bold=True,
-                position_x=0.02,
-                position_y=0.6,
-                width=0.3,
-                n_labels=8,
-                height=0.1,
-                vertical=False,
-                fmt="",
-            )
-            # Modify colorbar position and font size
-            plotter.save_graphic(
-                os.path.join(index_path, f"index_of_refraction_{time}.pdf")
-            )
-            # plotter.show()
-            plotter.clear()
-            plotter.close()
-
-            # Kerl
-            plotter = pv.Plotter(window_size=[1800, 900])
-            plotter.view_xy()
-            plotter.add_mesh(
-                internal_mesh,
-                scalars="kerl_polarizability",
-                cmap="plasma",
-                reset_camera="True",
-                show_scalar_bar=False,
-            )
-            # clim='rng',
-            plotter.set_background("white")
-            plotter.camera.zoom(2.0)
-
-            plotter.add_scalar_bar(
-                title=f"Polarizability",
-                title_font_size=22,
-                label_font_size=18,
-                bold=True,
-                position_x=0.02,
-                position_y=0.6,
-                width=0.3,
-                n_labels=8,
-                height=0.1,
-                vertical=False,
-                fmt="",
-            )
-            # Modify colorbar position and font size
-            plotter.save_graphic(
-                os.path.join(kerl_path, f"kerl_polarizability_{time}.pdf")
-            )
-            plotter.clear()
-            plotter.close()
-
-            # Electric
-            plotter = pv.Plotter(window_size=[1800, 900])
-            plotter.view_xy()
-            plotter.add_mesh(
-                internal_mesh,
-                scalars="electric",
-                cmap="plasma",
-                reset_camera="True",
-                show_scalar_bar=False,
-            )
-            # clim='rng',
-            plotter.set_background("white")
-            plotter.camera.zoom(2.0)
-
-            plotter.add_scalar_bar(
-                title=f"electric susceptibility",
-                title_font_size=22,
-                label_font_size=18,
-                bold=True,
-                position_x=0.02,
-                position_y=0.6,
-                width=0.3,
-                n_labels=8,
-                height=0.1,
-                vertical=False,
-                fmt="",
-            )
-            # Modify colorbar position and font size
-            plotter.save_graphic(
-                os.path.join(electric_path, f"electric_susceptibility_{time}.pdf")
-            )
-            plotter.clear()
-            plotter.close()
+            for indx, val in enumerate(plot_fields):
+                plot_scalar_contour(
+                    internal_mesh, val, title_fields[indx], path_out[indx], time
+                )
 
     # Calculate aero-optic properties
     # OPD[time,x_position] beam travels on y-axis
@@ -306,8 +245,6 @@ def main(
             x_range, OPD[i], fig_config, fig_config["opd_path"], time
         )
 
-    # TODO: move me
-
 
 if __name__ == "__main__":
 
@@ -315,6 +252,8 @@ if __name__ == "__main__":
     figures_path = os.path.join("figures", "openFoam")
     index_path = os.path.join(figures_path, "index")
     electric_path = os.path.join(figures_path, "electric")
+    velocity_path = os.path.join(figures_path, "velocityMag")
+    permittivity_path = os.path.join(figures_path, "permittivity")
     kerl_path = os.path.join(figures_path, "kerl")
     opl_path = os.path.join(figures_path, "opl")
     opd_path = os.path.join(figures_path, "opd")
@@ -337,14 +276,29 @@ if __name__ == "__main__":
     fig_config["opd_path"] = opd_path
     fig_config["opl_path"] = opl_path
 
+    # There is a maximum of two
+    """
+    plot_scalars = ["kerl_polarizability","permittivity_dilute"]
+    title_fields = ["Polarizability", "Permittivity"]
+    path_out = [kerl_path, permittivity_path]
+
+    plot_scalars = ["electric", "Unorm"]
+    title_fields = ["Electric susceptibility", "Velocity magnitude"]
+    path_out = [electric_path, velocity_path]
+
+    plot_scalars = ["index_dilute"]
+    title_fields = ["Index of refraction"]
+    path_out = [index_path]
+    """
+
     main(
         f_in,
         x_range,
         y_in,
         y_out,
-        index_path,
-        electric_path,
-        kerl_path,
+        plot_scalars,
+        title_fields,
+        path_out,
         opl_path,
         opd_path,
         wd_path,
