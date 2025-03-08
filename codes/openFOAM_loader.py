@@ -63,8 +63,69 @@ def plot_scalar_contour(internal_mesh, scalar_field, title_field, path_out, time
     plotter.close()
 
 
+def plot_OPD_3D(time_data, x_range, OPD, fig_config):
+    T, X = np.meshgrid(x_range, time_data)
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
+    ax = fig.add_subplot(111, projection="3d")
+    surf = ax.plot_surface(T, X, OPD, cmap="turbo", edgecolor="none")
+    ax.set_xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    ax.set_ylabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
+    ax.set_zlabel("OPD $[m]$", labelpad=20, fontsize=fig_config["axis_label_size"])
+    ax.tick_params(axis="z", pad=10)
+    plt.savefig(
+        os.path.join(fig_config["tmp_path"], f"OPD_3D.pdf"),
+        format="pdf",
+        # bbox_inches="tight",
+    )
+    plt.close()
+
+    fig, ax = plt.subplots(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
+    contour = ax.contourf(T, X, OPD, levels=5, cmap="turbo")
+    cbar = plt.colorbar(contour, ax=ax)
+    ax.set_xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    ax.set_ylabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
+    plt.savefig(
+        os.path.join(fig_config["tmp_path"], f"OPD_contour.pdf"),
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
+
+
+def plot_OPL_3D(time_data, x_range, OPL, fig_config):
+    T, X = np.meshgrid(x_range, time_data)
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
+    ax = fig.add_subplot(111, projection="3d")
+    surf = ax.plot_surface(T, X, OPL, cmap="turbo", edgecolor="none")
+    ax.set_xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    ax.set_ylabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
+    ax.set_zlabel("OPL $[m]$", labelpad=20, fontsize=fig_config["axis_label_size"])
+    ax.tick_params(axis="z", pad=10)
+    plt.savefig(
+        os.path.join(fig_config["tmp_path"], f"OPL_3D.pdf"),
+        format="pdf",
+        # bbox_inches="tight",
+    )
+    plt.close()
+
+    fig, ax = plt.subplots(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
+    contour = ax.contourf(T, X, OPL, levels=5, cmap="turbo")
+    cbar = plt.colorbar(contour, ax=ax)
+    ax.set_xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    ax.set_ylabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
+    plt.savefig(
+        os.path.join(fig_config["tmp_path"], f"OPL_contour.pdf"),
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
+
+
 # Plot OPL (wave travels on the y)
 def plot_optical_path_length_x(x_range, OPL, fig_config, opl_path, time):
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     plt.plot(x_range, OPL, "-", linewidth=fig_config["line_width"])
     plt.ylabel("OPL $[m]$", fontsize=fig_config["axis_label_size"])
     plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
@@ -79,10 +140,11 @@ def plot_optical_path_length_x(x_range, OPL, fig_config, opl_path, time):
 
 # Plot OPD (wave travels on the x)
 def plot_optical_path_difference_x(x_range, OPD, fig_config, opd_path, time):
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     plt.plot(x_range, OPD, "-", linewidth=fig_config["line_width"], label="Truth")
     plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
     plt.ylabel("OPD $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.locator_params(axis="y", nbins=3)
+    plt.locator_params(axis="y", nbins=4)
     plt.savefig(
         os.path.join(opd_path, f"opd_{time}.pdf"),
         format="pdf",
@@ -111,13 +173,13 @@ def plot_wavefront_distortion_x(
 
     plt.legend(fontsize=fig_config["legend_size"])
     plt.yticks(
-        [np.min(wave_front_distortion), y_out, np.max(wave_front_distortion)],
+        [y_out],
         fontsize=fig_config["ticks_size"],
     )
     plt.gca().yaxis.set_major_formatter(ScalarFormatter())
     plt.gca().ticklabel_format(useOffset=False, style="plain", axis="y")
     plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.ylabel("Distortion $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("WD $[m]$", fontsize=fig_config["axis_label_size"])
     plt.savefig(
         os.path.join(wd_path, f"wavefrontdistortion_{current_time}.pdf"),
         format="pdf",
@@ -159,11 +221,66 @@ def call_optics(mesh):
         index_of_refraction["dilute"]
     )
 
-    mesh.cell_data["electric"] = haot.electric_susceptibility(
+    mesh.cell_data["susceptibility_dilute"] = haot.electric_susceptibility(
         index_of_refraction["dilute"]
     )
 
     del index_of_refraction
+
+
+def plot_time_mean(OPL, OPD, x_range, y_out_vec, fig_config):
+    # OPL
+    plt.plot(x_range, np.mean(OPL, axis=0), "-", linewidth=fig_config["line_width"])
+    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("$\\overline{OPL} [m]$", fontsize=fig_config["axis_label_size"])
+    plt.savefig(
+        os.path.join(fig_config["tmp_path"], f"OPL_mean.pdf"),
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
+
+    # OPD
+    plt.plot(x_range, np.mean(OPD, axis=0), "-", linewidth=fig_config["line_width"])
+    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("$\\overline{OPD} [m]$", fontsize=fig_config["axis_label_size"])
+    plt.savefig(
+        os.path.join(fig_config["tmp_path"], f"OPD_mean.pdf"),
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
+
+    # Wave front
+    plt.plot(
+        x_range, y_out_vec, "-", linewidth=fig_config["line_width"], label="theoretical"
+    )
+    plt.plot(
+        x_range,
+        np.mean(OPD, axis=0) + y_out_vec,
+        "-",
+        linewidth=fig_config["line_width"],
+        label="truth",
+    )
+
+    plt.legend(fontsize=fig_config["legend_size"])
+    plt.yticks(
+        [y_out_vec[0]],
+        fontsize=fig_config["ticks_size"],
+    )
+    plt.gca().yaxis.set_major_formatter(ScalarFormatter())
+    plt.gca().ticklabel_format(useOffset=False, style="plain", axis="y")
+    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("$\\overline{WD}$ $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.savefig(
+        os.path.join(fig_config["tmp_path"], f"WD_mean.pdf"),
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
 
 
 def main(
@@ -226,6 +343,11 @@ def main(
     wave_front_distortion = y_out_vec + OPD
     print(f"The Strehl ratio is: {strehl_ratio}")
 
+    # 3D plots
+    plot_OPL_3D(time_data, x_range, OPL, fig_config)
+    plot_OPD_3D(time_data, x_range, OPL, fig_config)
+    plot_time_mean(OPL, OPD, x_range, y_out_vec, fig_config)
+
     for i, current_time in enumerate(time_data):
         time = str(current_time).replace(".", "_")
         plot_wavefront_distortion_x(
@@ -251,13 +373,15 @@ if __name__ == "__main__":
     f_in = "/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/LES/openFoam"
     figures_path = os.path.join("figures", "openFoam")
     index_path = os.path.join(figures_path, "index")
-    electric_path = os.path.join(figures_path, "electric")
+    susceptibility_path = os.path.join(figures_path, "susceptibility")
     velocity_path = os.path.join(figures_path, "velocityMag")
     permittivity_path = os.path.join(figures_path, "permittivity")
     kerl_path = os.path.join(figures_path, "kerl")
     opl_path = os.path.join(figures_path, "opl")
     opd_path = os.path.join(figures_path, "opd")
     wd_path = os.path.join(figures_path, "wd")
+    tmp_path = os.path.join(figures_path, "tmp")
+    temperature_path = os.path.join(figures_path, "temperature")
     x_range = np.arange(0.3, 0.9, 0.01)
     y_in = 0.0
     y_out = 0.14
@@ -265,8 +389,8 @@ if __name__ == "__main__":
     # Users inputs #
     fig_config = {}
     fig_config["line_width"] = 3
-    fig_config["fig_width"] = 6
-    fig_config["fig_height"] = 5
+    fig_config["fig_width"] = 8
+    fig_config["fig_height"] = 6
     fig_config["dpi_size"] = 600
     fig_config["axis_label_size"] = 14
     fig_config["legend_size"] = 12
@@ -275,21 +399,20 @@ if __name__ == "__main__":
     fig_config["wd_path"] = wd_path
     fig_config["opd_path"] = opd_path
     fig_config["opl_path"] = opl_path
+    fig_config["tmp_path"] = tmp_path
 
     # There is a maximum of two
-    """
-    plot_scalars = ["kerl_polarizability","permittivity_dilute"]
+    plot_scalars = ["kerl_polarizability", "permittivity_dilute"]
     title_fields = ["Polarizability", "Permittivity"]
     path_out = [kerl_path, permittivity_path]
 
-    plot_scalars = ["electric", "Unorm"]
-    title_fields = ["Electric susceptibility", "Velocity magnitude"]
-    path_out = [electric_path, velocity_path]
+    plot_scalars = ["index_dilute", "T"]
+    title_fields = ["Index of refraction", "Temperature"]
+    path_out = [index_path, temperature_path]
 
-    plot_scalars = ["index_dilute"]
-    title_fields = ["Index of refraction"]
-    path_out = [index_path]
-    """
+    plot_scalars = ["susceptibility_dilute", "Unorm"]
+    title_fields = ["Electric susceptibility", "Velocity magnitude"]
+    path_out = [susceptibility_path, velocity_path]
 
     main(
         f_in,
