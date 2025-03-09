@@ -1,5 +1,17 @@
 \section{LES Study\label{ch4:lesStudy}}
 \todo{Missing LES writing}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Case & $M\Units{\;}$ & $T_{\infty}$ &
+            $P_{\infty}\Units{kPa}$  \\ 
+            \hline \hline
+            1L & $0.5$ & $288.0$ & $101.3$ \\ \hline
+        \end{tabular}
+    \caption{LES Study \label{tab:lesStudy}}
+    \end{center}
+\end{table}
 
 Results below were calculated using \gls{OpenFOAM}
 
@@ -38,7 +50,7 @@ Results below were calculated using \gls{OpenFOAM}
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         \includegraphics[height=0.215\textwidth, trim=0cm 11cm 0cm 10cm, clip]
-        {chapter5/lesStudy/index_of_refraction}
+        {chapter5/lesStudy/index_dilute_3_4}
     }
     \caption{Contour index of refraction at $3.04\Units{s}$
     \label{ch5:lesContourIndex}}
@@ -47,7 +59,7 @@ Results below were calculated using \gls{OpenFOAM}
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         \includegraphics[height=0.215\textwidth, trim=0cm 11cm 0cm 10cm, clip]
-        {chapter5/lesStudy/kerl_polarizability}
+        {chapter5/lesStudy/kerl_polarizability_3_4}
     }
     \caption{Contour Kerl Polarizability at $3.04\Units{s}$
     \label{ch5:lesContourKerlPolarizability}}
@@ -57,8 +69,18 @@ Results below were calculated using \gls{OpenFOAM}
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         \includegraphics[height=0.215\textwidth, trim=0cm 11cm 0cm 10cm, clip]
-        {chapter5/lesStudy/dielectric}
+        {chapter5/lesStudy/permittivity_dilute_3_4}
     }
-    \caption{Dielectric at $3.04\Units{s}$
+    \caption{Medium's permittivity at $3.04\Units{s}$
+    \label{ch5:lesContourDielectric}}
+\end{figure}
+
+% [trim = left bottom right top
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        \includegraphics[height=0.215\textwidth, trim=0cm 11cm 0cm 10cm, clip]
+        {chapter5/lesStudy/susceptibility_dilute_3_4}
+    }
+    \caption{Medium's electric susceptibility at $3.04\Units{s}$
     \label{ch5:lesContourDielectric}}
 \end{figure}
