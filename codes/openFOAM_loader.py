@@ -158,6 +158,7 @@ def plot_optical_path_difference_x(x_range, OPD, fig_config, opd_path, time):
 def plot_wavefront_distortion_x(
     x_range, y_out, wave_front_distortion, fig_config, wv_path, current_time
 ):
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     y_loc_vec = y_out * np.ones(np.shape(x_range))
     plt.plot(
         x_range, y_loc_vec, "-", linewidth=fig_config["line_width"], label="theoretical"
