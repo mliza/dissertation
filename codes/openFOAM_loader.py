@@ -68,9 +68,9 @@ def plot_OPD_3D(time_data, x_range, OPD, fig_config):
     fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     ax = fig.add_subplot(111, projection="3d")
     surf = ax.plot_surface(T, X, OPD, cmap="turbo", edgecolor="none")
-    ax.set_xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    ax.set_xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
     ax.set_ylabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
-    ax.set_zlabel("OPD $[m]$", labelpad=20, fontsize=fig_config["axis_label_size"])
+    ax.set_zlabel("OPD $[cm]$", labelpad=20, fontsize=fig_config["axis_label_size"])
     ax.tick_params(axis="z", pad=10)
     plt.savefig(
         os.path.join(fig_config["tmp_path"], f"OPD_3D.pdf"),
@@ -82,7 +82,7 @@ def plot_OPD_3D(time_data, x_range, OPD, fig_config):
     fig, ax = plt.subplots(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     contour = ax.contourf(T, X, OPD, levels=5, cmap="turbo")
     cbar = plt.colorbar(contour, ax=ax)
-    ax.set_xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    ax.set_xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
     ax.set_ylabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
     plt.savefig(
         os.path.join(fig_config["tmp_path"], f"OPD_contour.pdf"),
@@ -98,9 +98,9 @@ def plot_OPL_3D(time_data, x_range, OPL, fig_config):
     fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     ax = fig.add_subplot(111, projection="3d")
     surf = ax.plot_surface(T, X, OPL, cmap="turbo", edgecolor="none")
-    ax.set_xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    ax.set_xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
     ax.set_ylabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
-    ax.set_zlabel("OPL $[m]$", labelpad=20, fontsize=fig_config["axis_label_size"])
+    ax.set_zlabel("OPL $[cm]$", labelpad=20, fontsize=fig_config["axis_label_size"])
     ax.tick_params(axis="z", pad=10)
     plt.savefig(
         os.path.join(fig_config["tmp_path"], f"OPL_3D.pdf"),
@@ -112,7 +112,7 @@ def plot_OPL_3D(time_data, x_range, OPL, fig_config):
     fig, ax = plt.subplots(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     contour = ax.contourf(T, X, OPL, levels=5, cmap="turbo")
     cbar = plt.colorbar(contour, ax=ax)
-    ax.set_xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    ax.set_xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
     ax.set_ylabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
     plt.savefig(
         os.path.join(fig_config["tmp_path"], f"OPL_contour.pdf"),
@@ -127,8 +127,8 @@ def plot_OPL_3D(time_data, x_range, OPL, fig_config):
 def plot_optical_path_length_x(x_range, OPL, fig_config, opl_path, time):
     fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     plt.plot(x_range, OPL, "-", linewidth=fig_config["line_width"])
-    plt.ylabel("OPL $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("OPL $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
     plt.savefig(
         os.path.join(opl_path, f"opl_{time}.pdf"),
         format="pdf",
@@ -142,8 +142,8 @@ def plot_optical_path_length_x(x_range, OPL, fig_config, opl_path, time):
 def plot_optical_path_difference_x(x_range, OPD, fig_config, opd_path, time):
     fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     plt.plot(x_range, OPD, "-", linewidth=fig_config["line_width"], label="Truth")
-    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.ylabel("OPD $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("OPD $[cm]$", fontsize=fig_config["axis_label_size"])
     plt.locator_params(axis="y", nbins=4)
     plt.savefig(
         os.path.join(opd_path, f"opd_{time}.pdf"),
@@ -179,8 +179,8 @@ def plot_wavefront_distortion_x(
     )
     plt.gca().yaxis.set_major_formatter(ScalarFormatter())
     plt.gca().ticklabel_format(useOffset=False, style="plain", axis="y")
-    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.ylabel("WD $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("WD $[cm]$", fontsize=fig_config["axis_label_size"])
     plt.savefig(
         os.path.join(wd_path, f"wavefrontdistortion_{current_time}.pdf"),
         format="pdf",
@@ -231,9 +231,11 @@ def call_optics(mesh):
 
 def plot_time_mean(OPL, OPD, x_range, y_out_vec, fig_config):
     # OPL
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     plt.plot(x_range, np.mean(OPL, axis=0), "-", linewidth=fig_config["line_width"])
-    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.ylabel("$\\overline{OPL} [m]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("$\\overline{OPL} [cm]$", fontsize=fig_config["axis_label_size"])
+    plt.locator_params(axis="y", nbins=4)
     plt.savefig(
         os.path.join(fig_config["tmp_path"], f"OPL_mean.pdf"),
         format="pdf",
@@ -243,9 +245,11 @@ def plot_time_mean(OPL, OPD, x_range, y_out_vec, fig_config):
     plt.close()
 
     # OPD
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     plt.plot(x_range, np.mean(OPD, axis=0), "-", linewidth=fig_config["line_width"])
-    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.ylabel("$\\overline{OPD} [m]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("$\\overline{OPD} [cm]$", fontsize=fig_config["axis_label_size"])
+    plt.locator_params(axis="y", nbins=4)
     plt.savefig(
         os.path.join(fig_config["tmp_path"], f"OPD_mean.pdf"),
         format="pdf",
@@ -255,6 +259,7 @@ def plot_time_mean(OPL, OPD, x_range, y_out_vec, fig_config):
     plt.close()
 
     # Wave front
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     plt.plot(
         x_range, y_out_vec, "-", linewidth=fig_config["line_width"], label="theoretical"
     )
@@ -267,14 +272,10 @@ def plot_time_mean(OPL, OPD, x_range, y_out_vec, fig_config):
     )
 
     plt.legend(fontsize=fig_config["legend_size"])
-    plt.yticks(
-        [y_out_vec[0]],
-        fontsize=fig_config["ticks_size"],
-    )
     plt.gca().yaxis.set_major_formatter(ScalarFormatter())
     plt.gca().ticklabel_format(useOffset=False, style="plain", axis="y")
-    plt.xlabel("X $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.ylabel("$\\overline{WD}$ $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("$\\overline{WD}$ $[cm]$", fontsize=fig_config["axis_label_size"])
     plt.savefig(
         os.path.join(fig_config["tmp_path"], f"WD_mean.pdf"),
         format="pdf",

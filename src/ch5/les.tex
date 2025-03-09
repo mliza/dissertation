@@ -104,7 +104,7 @@ through high-speed flow fields.
     \label{ch5:lesContourIndex}}
 \end{figure}
 
-\Cref{lesContourPermitivity} presents the permittivity contour plot, computed
+\Cref{ch5:lesContourPermitivity} presents the permittivity contour plot, computed
 using \cref{eq:generalIndexOfRefraction}, while
 \cref{ch5:lesContourSusceptibility} shows the susceptibility, calculated using
 \cref{eq:electricSusceptibility}. As observed, the \gls{EM} properties are
@@ -138,18 +138,52 @@ for applying this concept to analyze and visualize compressible flows
 
 \Cref{ch5:lesOPL} shows the \gls{OPL} at $3.4\Units{s}$, the \gls{OPL} was
 calculated using the results presented above, considering a laser beam
-propagating in the normal direction with a beam width ranging from $0.3$ to
-$0.9$. This computation was performed using \cref{eq:OPL}. The \gls{OPL} is a
-critical parameter in \gls{AO} analysis, as it quantifies the phase distortion
-introduced by variations in the refractive index along the beam path. These
-variations are influenced by turbulence, density fluctuations, making accurate
-\gls{OPL} calculations essential for assessing beam quality in high-speed flow
-environments.
+propagating in the normal direction with a beam width ranging from
+$0.3\Units{cm}$ to $0.9\Units{cm}$. This computation was performed using
+\cref{eq:OPL}. The \gls{OPL} is a critical parameter in \gls{AO} analysis, as
+it quantifies the phase distortion introduced by variations in the refractive
+index along the beam path. These variations are influenced by turbulence,
+density fluctuations, making accurate \gls{OPL} calculations essential for
+assessing beam quality in high-speed flow environments.
 \pic{0.5}{chapter5/lesStudy/opl_3_4}{\gls{OPL} at $3.4\Units{s}$}{ch5:lesOPL}
 
-\todo{Stopped Here}
+\Cref{ch5:lesOPD} presents the \gls{OPD} at $3.4\Units{s}$, the \gls{OPD} was
+computed using the previously presented results, assuming a laser beam
+ with a wavelength of $633\Units{nm}$ propagating in the normal direction. This
+ calculation follows \cref{eq:OPD}. The \gls{OPD} quantifies the phase shift
+ between light rays caused by variation in the refractive index.
 \pic{0.5}{chapter5/lesStudy/opd_3_4}{\gls{OPD} at $3.4\Units{s}$}{ch5:lesOPD}
+
+\Cref{ch5:lesWD} presents the \gls{WD} at $3.4\Units{s}$, computed using
+\cref{eq:WD}. The theoretical location represents where the wave would be in
+the absence of disturbances, while the true location indicates where the wave
+is due to fluctuations in the turbulent flow.
 \pic{0.5}{chapter5/lesStudy/wavefrontdistortion_3_4}{\gls{WD} at $3.4\Units{s}$}{ch5:lesWD}
 
+\Cref{fig:opd3d} consists of two figures: a $3D$ plot depicting \gls{OPD} as a
+function of time and spatial coordinate $X$, and a contour plot where \gls{OPD}
+is represented as intensity over time and space. \Cref{fig:opd3d} illustrates
+the \gls{OPD} across all temporal and spatial steps. As expected, the \gls{OPD}
+varies with both time and space due to the evolving nature of the flow field.
+% 3D OPD % 
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+    \hspace{-2em}
+        \subfigure[OPD 3D]{
+            % trim = left bottom right top
+            \includegraphics[width=0.65\textwidth, trim=1cm 0.5cm 0.5cm 2cm,
+            clip]{chapter5/lesStudy/OPD_3D}
+        }
 
+        \hspace{-1em}
+        \subfigure[OPD Contour]{
+            \includegraphics[width=0.55\textwidth]{chapter5/lesStudy/OPD_contour}
+        }
+    }
+    \caption{\gls{OPD} as a function of time and space\label{fig:opd3d}}
+\end{figure}
 
+\Cref{fig:wdAssemblyTimeAvg} shows the assembly time average of the
+$\gls{WD}$.
+\pic{0.5}{chapter5/lesStudy/WD_mean}{\gls{WD}, assembly time
+average}{fig:wdAssemblyTimeAvg}
