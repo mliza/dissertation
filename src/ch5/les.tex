@@ -1,20 +1,59 @@
 \section{LES Study\label{ch4:lesStudy}}
-\todo{Missing LES writing}
+This section investigates \gls{AO} properties for a turbulent flow in thermal
+and chemical equilibrium. \Cref{tab:lesStudy} summarized the flow conditions
+used on this investigation.
 \begin{table}[H]
     \begin{center}
-        \begin{tabular}{|c|c|c|c|}
+        \begin{tabular}{|c|c|c|c|c|}
             \hline
-            Case & $M\Units{\;}$ & $T_{\infty}$ &
+            Case & Solver & $M\Units{\;}$ & $T_{\infty}$ &
             $P_{\infty}\Units{kPa}$  \\ 
             \hline \hline
-            1L & $0.5$ & $288.0$ & $101.3$ \\ \hline
+            1L & OpenFOAM & $0.5$ & $288.0$ & $101.3$ \\ \hline
         \end{tabular}
     \caption{LES Study \label{tab:lesStudy}}
     \end{center}
 \end{table}
 
-Results below were calculated using \gls{OpenFOAM}
+\subsection{Internal Flow}
+The results presented below were obtained using the \textit{rhoPimpleFoam}
+application from \gls{OpenFOAM}, which is specifically designed for simulating
+turbulent flows of compressible fluids. For this study, the one-equation
+eddy-viscosity model proposed by Yoshizawa \cite{Yoshizawa1986} was employed to
+account for turbulence effects, providing a balance between computational
+efficiency and accuracy in capturing turbulent transport phenomena. \\
 
+\Cref{ch5:lesContourVelocityMagnitude} presents the contour plot of velocity
+magnitude for the inner flow at a time step of $3.4\Units{s}$. As expected, the
+\gls{LES} solution captures more turbulent eddies compared to the \gls{RANS}
+solvers, highlighting its ability to resolve finer flow structures.
+Additionally, the velocity magnitude is not only a function of spatial
+coordinates but also varies with time, reflecting the unsteady nature of the
+flow. This temporal dependence is particularly important in accurately
+capturing transient flow phenomena, which are often smoothed out in \gls{RANS}
+simulations.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        \includegraphics[height=0.36\textwidth]{chapter5/lesStudy/velocityMagnitude_time3_4}
+    }
+    \caption{Contour velocity magnitude at $3.4\Units{s}$
+    \label{ch5:lesContourVelocityMagnitude}}
+\end{figure}
+\Cref{ch5:lesContourTemperature} presents the temperature fluctuations,
+\cref{ch5:lesContourPressure} illustrates the pressure fluctuations, and
+\cref{ch5:lesContourDensity} depicts the density fluctuations for the case
+described in \cref{tab:lesStudy}. As expected, these simulations exhibit a
+greater number of small-scale eddy structures compared to the \gls{RANS} cases,
+highlighting the improved resolution of turbulence characteristics in the
+\gls{LES} framework. This enhanced level of detail is crucial for accurately
+capturing the unsteady nature of the flow.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        \includegraphics[height=0.36\textwidth]{chapter5/lesStudy/temperature_time3_4}
+    }
+    \caption{Contour temperature at $3.4\Units{s}$
+    \label{ch5:lesContourTemperature}}
+\end{figure}
 
 \begin{figure}[H]
     \makebox[\textwidth][c]{
@@ -31,22 +70,33 @@ Results below were calculated using \gls{OpenFOAM}
     \caption{Contour density at $3.4\Units{s}$ \label{ch5:lesContourDensity}}
 \end{figure}
 
+\Cref{ch5:lesContourKerlPolarizability} presents the polarizability calculated
+using the Kerl approximation \cite{Kerl1992}, as defined in
+\cref{eq:kerlFitting}, for a wavelength of $633\Units{nm}$. As expected, the
+results indicate that polarizability is dependent not only on the wavelength
+but also on temperature. This temperature dependence arises due to variations
+in molecular interactions and density fluctuations within the flow, which
+influence the medium’s optical properties. Understanding these dependencies is
+crucial for accurately modeling aero-optic effects in hypersonic flows.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
-        \includegraphics[height=0.36\textwidth]{chapter5/lesStudy/temperature_time3_4}
+        \includegraphics[height=0.215\textwidth, trim=0cm 11cm 0cm 10cm, clip]
+        {chapter5/lesStudy/kerl_polarizability_3_4}
     }
-    \caption{Contour temperature at $3.4\Units{s}$
-    \label{ch5:lesContourTemperature}}
+    \caption{Contour Kerl Polarizability at $3.04\Units{s}$ for a
+    $633\Units{nm}$ wavelength
+    \label{ch5:lesContourKerlPolarizability}}
 \end{figure}
 
-\begin{figure}[H]
-    \makebox[\textwidth][c]{
-        \includegraphics[height=0.36\textwidth]{chapter5/lesStudy/velocityMagnitude_time3_4}
-    }
-    \caption{Contour velocity magnitude at $3.4\Units{s}$
-    \label{ch5:lesContourVelocityMagnitude}}
-\end{figure}
-
+\Cref{ch5:lesContourIndex} presents the dilute formulation of the index of
+refraction, as defined in \cref{eq:diluteRefractiveIndex}, illustrating its
+dependence on temperature and laser wavelength. As expected, the index of
+refraction varies with temperature due to changes in the local density and
+molecular composition of the flow. Additionally, its dependence on wavelength
+arises from dispersion effects, where different wavelengths experience varying
+degrees of refractive behavior. These variations are critical in aero-optic
+applications, as they influence wavefront distortions and signal propagation
+through high-speed flow fields.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         \includegraphics[height=0.215\textwidth, trim=0cm 11cm 0cm 10cm, clip]
@@ -56,31 +106,34 @@ Results below were calculated using \gls{OpenFOAM}
     \label{ch5:lesContourIndex}}
 \end{figure}
 
+\Cref{lesContourPermitivity} presents the permittivity contour plot, computed
+using \cref{eq:generalIndexOfRefraction}, while
+\cref{ch5:lesContourSusceptibility} shows the susceptibility, calculated using
+\cref{eq:electricSusceptibility}. As observed, the \gls{EM} properties are
+significantly influenced by turbulent fluctuations in the flow, leading to
+variations in permittivity and susceptibility that can degrade beam quality.
+These effects are particularly relevant in aero-optic applications, where
+changes in the optical path due to turbulence can introduce phase distortions
+and wavefront aberrations. Schlieren visualization techniques, which leverage
+variations in the refractive index to depict density gradients, are well known
+for applying this concept to analyze and visualize compressible flows
+\cite{Settles2001}.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
-        \includegraphics[height=0.215\textwidth, trim=0cm 11cm 0cm 10cm, clip]
-        {chapter5/lesStudy/kerl_polarizability_3_4}
-    }
-    \caption{Contour Kerl Polarizability at $3.04\Units{s}$
-    \label{ch5:lesContourKerlPolarizability}}
-\end{figure}
-
-% [trim = left bottom right top
-\begin{figure}[H]
-    \makebox[\textwidth][c]{
+            % trim = left bottom right top
         \includegraphics[height=0.215\textwidth, trim=0cm 11cm 0cm 10cm, clip]
         {chapter5/lesStudy/permittivity_dilute_3_4}
     }
     \caption{Medium's permittivity at $3.04\Units{s}$
-    \label{ch5:lesContourDielectric}}
+    \label{ch5:lesContourPermitivity}}
 \end{figure}
 
-% [trim = left bottom right top
 \begin{figure}[H]
     \makebox[\textwidth][c]{
+            % trim = left bottom right top
         \includegraphics[height=0.215\textwidth, trim=0cm 11cm 0cm 10cm, clip]
         {chapter5/lesStudy/susceptibility_dilute_3_4}
     }
     \caption{Medium's electric susceptibility at $3.04\Units{s}$
-    \label{ch5:lesContourDielectric}}
+    \label{ch5:lesContourSusceptibility}}
 \end{figure}
