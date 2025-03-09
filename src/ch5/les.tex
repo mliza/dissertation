@@ -15,7 +15,7 @@ used on this investigation.
     \end{center}
 \end{table}
 
-\subsection{Internal Flow}
+\subsection{Internal flow}
 The results presented below were obtained using the \textit{rhoPimpleFoam}
 application from \gls{OpenFOAM}, which is specifically designed for simulating
 turbulent flows of compressible fluids. For this study, the one-equation
@@ -54,7 +54,6 @@ capturing the unsteady nature of the flow.
     \caption{Contour temperature at $3.4\Units{s}$
     \label{ch5:lesContourTemperature}}
 \end{figure}
-
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         \includegraphics[height=0.36\textwidth]{chapter5/lesStudy/pressure_time3_4}
@@ -62,7 +61,6 @@ capturing the unsteady nature of the flow.
     \caption{Contour pressure at $3.4\Units{s}$
     \label{ch5:lesContourPressure}}
 \end{figure}
-
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         \includegraphics[height=0.36\textwidth]{chapter5/lesStudy/density_time3_4}
@@ -137,3 +135,21 @@ for applying this concept to analyze and visualize compressible flows
     \caption{Medium's electric susceptibility at $3.04\Units{s}$
     \label{ch5:lesContourSusceptibility}}
 \end{figure}
+
+\Cref{ch5:lesOPL} shows the \gls{OPL} at $3.4\Units{s}$, the \gls{OPL} was
+calculated using the results presented above, considering a laser beam
+propagating in the normal direction with a beam width ranging from $0.3$ to
+$0.9$. This computation was performed using \cref{eq:OPL}. The \gls{OPL} is a
+critical parameter in \gls{AO} analysis, as it quantifies the phase distortion
+introduced by variations in the refractive index along the beam path. These
+variations are influenced by turbulence, density fluctuations, making accurate
+\gls{OPL} calculations essential for assessing beam quality in high-speed flow
+environments.
+\pic{0.5}{chapter5/lesStudy/opl_3_4}{\gls{OPL} at $3.4\Units{s}$}{ch5:lesOPL}
+
+\todo{Stopped Here}
+\pic{0.5}{chapter5/lesStudy/opd_3_4}{\gls{OPD} at $3.4\Units{s}$}{ch5:lesOPD}
+\pic{0.5}{chapter5/lesStudy/wavefrontdistortion_3_4}{\gls{WD} at $3.4\Units{s}$}{ch5:lesWD}
+
+
+
