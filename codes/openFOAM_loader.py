@@ -137,6 +137,28 @@ def plot_optical_path_length_x(x_range, OPL, fig_config, opl_path, time):
     )
     plt.close()
 
+def plot_optical_path_length_shift(x_range, OPL, wavelength_nm, fig_config,
+                                   opl_shift_path, time):
+    freq_Hz = (3 * 1E8) / (wavelength_nm * 1E-9)
+    amplitude = 1
+    truth = amplitude * np.sin(2 * np.pi * freq_Hz * x_range / (3 * 1E8))
+    shift = truth + OPL
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
+    plt.plot(x_range, truth, "-", linewidth=fig_config["line_width"],
+    label='Truth')
+    plt.plot(x_range, shift, "-.", linewidth=fig_config["line_width"],
+    label='Shift (OPL)')
+    plt.ylabel("Amplitude $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.legend(fontsize=fig_config["legend_size"])
+    plt.savefig(
+        os.path.join(opl_shift_path, f"opl_shift_{time}.pdf"),
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
+
 
 # Plot OPD (wave travels on the x)
 def plot_optical_path_difference_x(x_range, OPD, fig_config, opd_path, time):
@@ -365,6 +387,9 @@ def main(
             x_range, OPL[i], fig_config, fig_config["opl_path"], time
         )
 
+        plot_optical_path_length_shift(x_range, OPL[i], 633, fig_config,
+                                       fig_config["opl_shift"], time)
+
         plot_optical_path_difference_x(
             x_range, OPD[i], fig_config, fig_config["opd_path"], time
         )
@@ -380,6 +405,7 @@ if __name__ == "__main__":
     permittivity_path = os.path.join(figures_path, "permittivity")
     kerl_path = os.path.join(figures_path, "kerl")
     opl_path = os.path.join(figures_path, "opl")
+    opl_shift = os.path.join(figures_path, "oplShift")
     opd_path = os.path.join(figures_path, "opd")
     wd_path = os.path.join(figures_path, "wd")
     tmp_path = os.path.join(figures_path, "tmp")
@@ -401,6 +427,7 @@ if __name__ == "__main__":
     fig_config["wd_path"] = wd_path
     fig_config["opd_path"] = opd_path
     fig_config["opl_path"] = opl_path
+    fig_config["opl_shift"] = opl_shift
     fig_config["tmp_path"] = tmp_path
 
     # There is a maximum of two
