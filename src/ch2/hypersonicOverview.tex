@@ -118,9 +118,9 @@
             \item \textbf{Real Gas:} A gas in which the effect of
                 intermolecular forces is considered. Specific heats
                 (\cref{eq:realHeatCapP,eq:realHeatCapV}) are functions of
-                temperature and pressure or volume). Due to intermolecular
+                temperature and pressure or volume. Due to intermolecular
                 forces, the enthalpy and internal energy
-                (\cref{eq:realGasEnthalpy,eq:realGasEnergy} are functions of
+                (\cref{eq:realGasEnthalpy,eq:realGasEnergy}) are functions of
                 temperature and pressure or volume. 
             \begin{subequations}\label{eq:realGasAssumptions}
                 \begin{align}
@@ -162,6 +162,33 @@
         Similarly, molecular nitrogen starts to dissociate above
         $4000\Units{K}$, and complete dissociation occurs at temperatures
         exceeding $9000\Units{K}$ \cite{Anderson2006}.\\
+
+        \todo{Table with dissociation temperatures}
+    \begin{table}[H]
+        %https://srd.nist.gov/NSRDS/NSRDS-NBS31.pdf (for N2 and O2)
+        %https://labs.chem.ucsb.edu/zakarian/armen/11---bonddissociationenergy.pdf (NO)
+        %https://quantemoldb.com/species/search/?species_search_query=N2
+        %http://wild.life.nctu.edu.tw/class/common/energy-unit-conv-table.html
+        %kJtoEv = 0.01036410
+            \centering
+            \begin{tabular}{|c|c|c|}
+                \hline
+                Molecule & Dissociation $\Units{eV}$ & Ionization
+                $\Units{eV}$ \\
+                \hline\hline
+                \ce{N} & $N/A$ & $14.534$ \\ \hline
+                \ce{O} & $N/A$  & $13.618$ \\ \hline
+                \ce{NO} & $6.535$ & $9.264$ \\ \hline
+                \ce{N2} & $9.798$ & $15.581$ \\ \hline
+                \ce{O2} & $5.166$ & $12.070$ \\ \hline
+                \ce{N+} & $N/A$ & $N/A$ \\ \hline
+                \ce{O+} & $N/A$ & $N/A$ \\ \hline
+                \ce{NO+} & & $N/A$ \\ \hline
+                \ce{N2+} & & $N/A$ \\ \hline
+                \ce{O2+} & & $N/A$ \\ \hline
+            \end{tabular}
+            \caption{Dissociation and Ionization energies for oxigen}\label{tab:chemistryTable}
+    \end{table}
 
         At these elevated temperatures, the internal energy modes of gas
         molecules are significantly altered. The Hamiltonian of the system,
