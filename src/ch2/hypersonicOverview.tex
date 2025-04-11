@@ -164,31 +164,54 @@
         exceeding $9000\Units{K}$ \cite{Anderson2006}.\\
 
         \todo{Table with dissociation temperatures}
-    \begin{table}[H]
         %https://srd.nist.gov/NSRDS/NSRDS-NBS31.pdf (for N2 and O2)
         %https://labs.chem.ucsb.edu/zakarian/armen/11---bonddissociationenergy.pdf (NO)
         %https://quantemoldb.com/species/search/?species_search_query=N2
         %http://wild.life.nctu.edu.tw/class/common/energy-unit-conv-table.html
         %kJtoEv = 0.01036410
+        %https://atct.anl.gov/Thermochemical%20Data/version%201.176/species/?species_number=387 (N2+)
+        % 10.1016/0378-4363(78)90063-3 (NO+) Rao
+
+        % \usepackage{multirow}
+
+        % Please add the following required packages to your document preamble:
+\begin{table}[H]
             \centering
-            \begin{tabular}{|c|c|c|}
-                \hline
-                Molecule & Dissociation $\Units{eV}$ & Ionization
-                $\Units{eV}$ \\
-                \hline\hline
-                \ce{N} & $N/A$ & $14.534$ \\ \hline
-                \ce{O} & $N/A$  & $13.618$ \\ \hline
-                \ce{NO} & $6.535$ & $9.264$ \\ \hline
-                \ce{N2} & $9.798$ & $15.581$ \\ \hline
-                \ce{O2} & $5.166$ & $12.070$ \\ \hline
-                \ce{N+} & $N/A$ & $N/A$ \\ \hline
-                \ce{O+} & $N/A$ & $N/A$ \\ \hline
-                \ce{NO+} & & $N/A$ \\ \hline
-                \ce{N2+} & & $N/A$ \\ \hline
-                \ce{O2+} & & $N/A$ \\ \hline
-            \end{tabular}
-            \caption{Dissociation and Ionization energies for oxigen}\label{tab:chemistryTable}
-    \end{table}
+\begin{tabular}{@{}|c|cc|cc|@{}}
+\hline
+\multirow{2}{*}{Molecule} & \multicolumn{2}{c|}{Dissociation}       &
+    \multicolumn{2}{c|}{Ionization}         \\ \cline{2-5} 
+                          & \multicolumn{1}{c|}{{[}ev{]}} & {[}K{]} &
+                          \multicolumn{1}{c|}{{[}ev{]}} & {[}K{]} \\
+                          \hline\hline
+    \ce{N}                         & \multicolumn{1}{c|}{N/A}      & N/A     &
+    \multicolumn{1}{c|}{14.534}   &         \\ \hline
+    \ce{O}                         & \multicolumn{1}{c|}{N/A}      & N/A     &
+    \multicolumn{1}{c|}{13.618}   &         \\ \hline
+    \ce{NO}                        & \multicolumn{1}{c|}{6.535}    &         &
+    \multicolumn{1}{c|}{9.264}    &         \\ \hline
+    \ce{N2}                        & \multicolumn{1}{c|}{9.798}    &         &
+    \multicolumn{1}{c|}{15.581}   &         \\ \hline
+    \ce{O2}                        & \multicolumn{1}{c|}{5.166}    &         &
+    \multicolumn{1}{c|}{12.070}   &         \\ \hline
+    \ce{N+}                        & \multicolumn{1}{c|}{N/A}      & N/A     &
+    \multicolumn{1}{c|}{N/A}      & N/A     \\ \hline
+    \ce{O+}                        & \multicolumn{1}{c|}{N/A}      & N/A     &
+    \multicolumn{1}{c|}{N/A}      & N/A     \\ \hline
+    \ce{NO+}                       & \multicolumn{1}{c|}{10.780}   &         &
+    \multicolumn{1}{c|}{N/A}      & N/A     \\ \hline
+    \ce{N2+}                       & \multicolumn{1}{c|}{8.706}    &         &
+    \multicolumn{1}{c|}{N/A}      & N/A     \\ \hline
+    \ce{O2+}                       & \multicolumn{1}{c|}{6.650}    &         &
+    \multicolumn{1}{c|}{N/A}      & N/A     \\ \hline
+\end{tabular}
+            \caption{Dissociation and Ionization energies}\label{tab:chemistryTable}
+\end{table}
+
+
+
+
+
 
         At these elevated temperatures, the internal energy modes of gas
         molecules are significantly altered. The Hamiltonian of the system,
