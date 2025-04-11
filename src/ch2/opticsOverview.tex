@@ -270,7 +270,7 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     The polarizability is then use to calculate the index of refraction,
     \cref{eq:diluteRefractiveIndex} is valid for a dilute medium. For a dense medium the
     \textit{Clausius}-\textit{Mossotti} \cref{eq:denseRefractiveIndex} can be used
-    \cite{Feynman2011, Feynman2011a, Feynman2011b}.
+    \cite{Feynman2011, Feynman2011a, Feynman2011b}. 
     \begin{subequations}\label{eq:refractiveIndex}
         \begin{align}
             n - 1 &= \frac{1}{2\epsilon_0}\sum_{i=1}^N\alpha_iN_i
@@ -280,7 +280,26 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
             \label{eq:denseRefractiveIndex}
         \end{align}
     \end{subequations}
+    Typically, a dilute gas is defined as a gas in which the particles are
+    sufficiently far apart that intermolecular interactions can be neglected.
+    In this regime, the behavior of the gas can be accurately described by the
+    ideal gas law, and molecular collisions are considered infrequent and
+    uncorrelated \cite{Daily2018}. \\
 
+    Conversely, a dense gas refers to a gas in which the particle density is
+    high enough that intermolecular interactions become significant. These
+    interactions—such as \textit{Van der Waals} forces or short-range repulsive
+    forces—must be accounted for, as they influence the thermodynamic and
+    transport properties of the gas. In dense gases, the ideal gas assumption
+    breaks down, and more complex equations of state and models are required to
+    capture the effects of particle correlations and collective behavior. \\
+
+    This distinction between dilute and dense gases is important in the
+    modeling of optical properties in hypersonic flows, particularly when
+    calculating quantities such as the index of refraction or polarizability,
+    which may be affected by particle interactions under high-density
+    conditions. \\
+    
     Some authors \cite{Mandarino1976, Mandarino1981, Wang2023, Miller2022,
     Gupta2023} use the \gls{GD} \cref{eq:gladstoneDaleConst} constant to calculate the
     index of refraction \cref{eq:gladstoneDaleRelationship}. 
