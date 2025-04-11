@@ -31,14 +31,49 @@ documentation for the tool, including usage instructions with or without
 \href{https://haot.readthedocs.io/en/latest/}{documentation page}. The
 \gls{HAOT} tool has a GitHub pipeline that automatically runs unit tests to
 ensure that the functions developed do not break when changes in the code are
-submitted.
+submitted. \\
 
-\todo{Talk more about defensive programming and add references}
+Defensive programming is the core software development technique employed in
+the development of the \gls{HAOT} tool. Defensive programming is a software
+safety and reliability practice that operates under the assumption that any
+input, even from seemingly reliable sources, may be erroneous, malicious, or
+unexpected. As such, the program is designed to anticipate and handle incorrect
+usage, edge cases, and failures gracefully \cite{Denault2006}. \\
+
+In the context of \gls{HAOT}, this means that every user-provided input—such as
+simulation files, physical parameters, numerical data, and file paths—is
+rigorously validated before the program proceeds with any operations. Input
+validation routines check for correct data types, valid ranges, logical
+consistency, and completeness to prevent the software from executing under
+invalid or dangerous conditions. This ensures robustness, fault tolerance, and
+easier debugging, especially in high-stakes engineering contexts where accuracy
+and reliability are critical. \\
+
+\Cref{fig:defensiveProgramming} illustrates the structure and philosophy behind
+the function implementation in this work. By design, each function assumes that
+the user may provide invalid or nonsensical input—commonly referred to as
+"garbage in."\\
+
+The first check is for undefined inputs. For example, if the function prototype
+requires a positive integer and the user instead passes a string, the function
+will catch this mismatch and output an appropriate error message. \\
+
+The second layer checks for logical errors. Suppose the correct input type is
+provided (an integer), but the value is semantically incorrect (e.g., a
+negative number instead of a positive one). In that case, the function again
+detects the issue and halts execution with an informative error. \\
+
+Only after passing these two layers of input validation—type correctness and
+semantic correctness—does the function proceed to the solution space, where the
+actual computation or processing is performed.  
 \begin{figure}[H]
-    \makebox[\textwidth][c]{\includegraphics[width=0.4\textwidth]{chapter4/defensivePrograming}}
-    \caption{Defensive Programing}\label{fig:defensivePrograming}
+    \makebox[\textwidth][c]{\includegraphics[width=0.5\textwidth]{chapter4/defensiveProgramming}}
+    \caption{Defensive Programmings}\label{fig:defensiveProgramming}
 \end{figure}
-
+By adopting a defensive programming paradigm, \gls{HAOT} is more resistant to
+crashes, data corruption, and unintended behavior, which is particularly
+important in research tools used for high-fidelity scientific computing and
+analysis in hypersonic \gls{AO} simulations.
 
 \input{aerodynamics}
 \input{optics}
