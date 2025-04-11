@@ -11,18 +11,21 @@
 \input{configuration/myResources/Latex/macros/pictureMacros}
 \input{configuration/myResources/Latex/macros/codeMacros}
 \addbibresource{bibliography.bib}
-%\usepackage[text=Draft1, colorspec=0.92, fontsize=7cm]{draftwatermark} %Draft mark package
+%\usepackage[text=Draft-Ch1, colorspec=0.92, scale=5]{draftwatermark} %Draft mark package
 
 \begin{document}
 \listoftodos
+
 
 % Place holder for Symbols and Acronyms
 \subimport{src/glossary}{glossary}
 
 % Title Page
-\begin{titlingpage}
-    \subimport{src/ch0}{chapter_0}
-\end{titlingpage}
+\iffalse
+    \begin{titlingpage}
+        \subimport{src/ch0}{chapter_0}
+    \end{titlingpage}
+\fi
 
 % Add list of tables, list of figures and abbreviations 
 % Roman numeration
@@ -30,16 +33,18 @@
 \setcounter{page}{1}
 
 % Lists and glossaries
-\subimport{src/ch0}{Abstract}
-\addcontentsline{toc}{chapter}{Abstract}
-\subimport{src/ch0}{Acknowledgments}
-\addcontentsline{toc}{chapter}{Acknowledgments}
-\printunsrtglossary[type=abbreviations]
-\printunsrtglossary[type=symbols, style=long, title={Nomenclature}]
-\listoftables
-\addcontentsline{toc}{chapter}{List of Tables}
-\listoffigures
-\addcontentsline{toc}{chapter}{List of Figures}
+\iffalse
+    \subimport{src/ch0}{Abstract}
+    \addcontentsline{toc}{chapter}{Abstract}
+    \subimport{src/ch0}{Acknowledgments}
+    \addcontentsline{toc}{chapter}{Acknowledgments}
+\fi
+    \printunsrtglossary[type=abbreviations]
+    \printunsrtglossary[type=symbols, style=long, title={Nomenclature}]
+    \listoftables
+    \addcontentsline{toc}{chapter}{List of Tables}
+    \listoffigures
+    \addcontentsline{toc}{chapter}{List of Figures}
 
 % Print table of contents
 \clearpage\thispagestyle{empty}
@@ -60,9 +65,11 @@
 \newpage 
     \printbibliography 
      
-\appendix
-\begin{appendices}
-    \subimport{src/appendices}{appendices}
-\end{appendices}
+\iffalse
+    \appendix
+    \begin{appendices}
+        \subimport{src/appendices}{appendices}
+    \end{appendices}
+\fi
 
 \end{document}
