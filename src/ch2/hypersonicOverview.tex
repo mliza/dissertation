@@ -163,6 +163,7 @@
         $4000\Units{K}$, and complete dissociation occurs at temperatures
         exceeding $9000\Units{K}$ \cite{Anderson2006}.\\
 
+\iffalse
         \todo{Table with dissociation temperatures}
         %https://srd.nist.gov/NSRDS/NSRDS-NBS31.pdf (for N2 and O2)
         %https://labs.chem.ucsb.edu/zakarian/armen/11---bonddissociationenergy.pdf (NO)
@@ -209,15 +210,17 @@
 \end{table}
 
         \todo{Explain more about dissociation chemistry}
+\fi
 
-        At these elevated temperatures, the internal energy modes of gas
+        At these elevated temperatures, the internal energy modes of the
         molecules are significantly altered. The Hamiltonian of the system,
         which represents the total kinetic and potential energy, must be
-        modified to account for additional \glspl{dof}. These additional energy
-        modes include rotational, vibrational and electronic energies, which
-        become accessible due to the high energy levels present in hypersonic
-        flows. \Cref{eq:hamiltonianEnergyExpansion} shows how the additional energy modes in
-        a hypersonic flow.
+        modified to account for these additional \glspl{dof}. These additional
+        \glspl{dof} are characterized by additional energy modes.
+        These additional energy modes include rotational, vibrational and
+        electronic energies, which become accessible at high temperatures.
+        \Cref{eq:hamiltonianEnergyExpansion} shows how the additional energy
+        modes in a hypersonic flow.
         \begin{equation}\label{eq:hamiltonianEnergyExpansion}
             \mathcal{H} = \mathcal{E}_{kinetic} + \mathcal{E}_{potential} =
             \underbrace{\mathcal{E}_{tr} + \mathcal{E}_{rot} +
@@ -229,7 +232,8 @@
         This modification in the Hamiltonian is critical because the
         traditional energy models, which assume only translational motion, are
         insufficient to describe the thermodynamic behavior at such extreme
-        conditions. \\
+        conditions. However, for supersonic flows the translational energy
+        model will be enough to characterize the thermodynamic behavior. \\
 
         \Cref{fig:ch2AdditionalDoFs} illustrates the additional degrees of
         freedom that emerge in a hypersonic flow. As molecules absorb
@@ -239,7 +243,6 @@
         thermodynamic properties of the gas, including heat capacity, thermal
         conductivity, and viscosity, all of which must be accurately modeled to
         predict the behavior of hypersonic flows. 
-
         \pic{1.0}{chapter2/aditionalDoFs}{Additional Degrees of
         Freedom}{fig:ch2AdditionalDoFs}
 
@@ -247,7 +250,8 @@
         time scales, which significantly influences the thermodynamic response
         of the gas in hypersonic flows. These time scales are associated with
         the energy required for the excitation of rotational, vibrational, and
-        electronic modes, as well as ionization. For instance, rotational modes
+        electronic modes, as well as ionization to reach a \textit{steady
+        thermodynamic state}. For instance, rotational modes
         tend to equilibrate quickly, while vibrational and electronic
         excitations, along with dissociation and ionization, occur over longer
         time scales due to the higher energy thresholds involved. \\
