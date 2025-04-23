@@ -215,12 +215,14 @@
         At these elevated temperatures, the internal energy modes of the
         molecules are significantly altered. The Hamiltonian of the system,
         which represents the total kinetic and potential energy, must be
-        modified to account for these additional \glspl{dof}. These additional
-        \glspl{dof} are characterized by additional energy modes.
-        These additional energy modes include rotational, vibrational and
-        electronic energies, which become accessible at high temperatures.
-        \Cref{eq:hamiltonianEnergyExpansion} shows how the additional energy
-        modes in a hypersonic flow.
+        modified to account for additional \glspl{dof}. These additional degrees of
+        freedom correspond to internal energy modes such as rotational,
+        vibrational, and electronic energies, which become increasingly active
+        as temperature rises. These modes contribute significantly to the total
+        internal energy and cannot be neglected in high-temperature
+        environments, such as those encountered in hypersonic flows.
+        \Cref{eq:hamiltonianEnergyExpansion} illustrates how the Hamiltonian
+        can be expanded to incorporate these additional energy contributions.
         \begin{equation}\label{eq:hamiltonianEnergyExpansion}
             \mathcal{H} = \mathcal{E}_{kinetic} + \mathcal{E}_{potential} =
             \underbrace{\mathcal{E}_{tr} + \mathcal{E}_{rot} +
@@ -229,11 +231,12 @@
             +\mathcal{E}_{elect}}_{\text{monatomic}} 
         \end{equation}
 
-        This modification in the Hamiltonian is critical because the
-        traditional energy models, which assume only translational motion, are
-        insufficient to describe the thermodynamic behavior at such extreme
-        conditions. However, for supersonic flows the translational energy
-        model will be enough to characterize the thermodynamic behavior. \\
+        This modification to the Hamiltonian is critical because the
+        traditional energy models, which assume only translational motion; are
+        insufficient to accurately describe the thermodynamic behavior under extreme
+        conditions. In contrast, for supersonic flows, where temperatures are
+        generally lower, the translational energy model is often sufficient to
+        characterize the thermodynamic state of the gas.\\
 
         \Cref{fig:ch2AdditionalDoFs} illustrates the additional degrees of
         freedom that emerge in a hypersonic flow. As molecules absorb
@@ -275,17 +278,20 @@
         characteristics of the flow can be characterize by comparing the flow
         characteristic time with the other time scales \cite{Neitzel2017}. \\
 
-        These additional energy modes increase the \gls{dof} of the system,
-        allowing molecules to occupy more energy levels (rotational,
-        vibrational, electronic). Due to this, the partition function (which
-        indicates how particles in an assembly are partitioned among various
-        energy levels of an atom or molecule \cite{Laurendeau2005}) given in
-        \cref{eq:partitionFunction} has to be
-        modified to consider these additional \glspl{dof}. In statistical
-        mechanics, the partition function is used to calculate the heat
-        capacities of the system, which are then used to calculate macro
-        properties such as heat transfer and temperature, which are employed in
-        fluid dynamics. 
+These additional energy modes increase the number of degrees of freedom
+(\gls{dof}) of the system, allowing molecules to occupy a broader range of
+energy levels—including rotational, vibrational, and electronic states. As a
+result, the partition function, which quantifies how particles in an ensemble
+are distributed among available energy states \cite{Laurendeau2005} must be
+modified to account for these added \glspl{dof}, as shown in
+\cref{eq:partitionFunction}. In statistical mechanics, the partition function
+plays a central role in determining thermodynamic quantities, including heat
+capacities. These heat capacities, in turn, are critical for computing
+macroscopic properties such as internal energy, enthalpy, temperature, and heat
+transfer. In the context of fluid dynamics, particularly for high-enthalpy
+flows such as those encountered in hypersonic regimes, these thermodynamic
+properties strongly influence shock structures, boundary layer behavior, and
+overall flowfield characteristics.
         \begin{equation}\label{eq:partitionFunction} 
             Z = \sum_{i}g_ie^{-\beta E_i}
         \end{equation}
