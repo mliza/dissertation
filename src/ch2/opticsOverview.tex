@@ -1,5 +1,4 @@
 \section{Optics Overview \label{ch2:opticsOverview}}
-\todo{Did not proof read this}
     The origins of optics trace back to the earliest foundations of science, as
     ancient Greek philosophers like Pythagoras, Democritus, Empedocles, Plato,
     Aristotle, and others formulated early theories on the nature of light
@@ -78,9 +77,10 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
 
     \subsection{Optics in a Medium}
     \Cref{fig:ch2LightRefraction} shows a picture of a material bending a
-    beam of light. Inside the material the speed of light is lower than outside
-    the material. The same effect takes place when a beam of light travels
-    across a denser medium such as a boundary layer.
+    beam of light. Inside the material the speed of light is slows down due to
+    the interaction of light with atoms and molecules in the material. The same
+    effect takes place when a beam of light travels across a denser medium such
+    as a boundary layer.
     \pic{0.6}{chapter2/refractionOfLight}{A ray of light refracted in a
         plastic block}{fig:ch2LightRefraction}
 
@@ -165,6 +165,7 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
         WD = OPD + y_{out} 
     \end{equation}
     Where: $y_{out}$ is the location where the undisturbed planar wave is
+    located.\\
 
     The time-averaged Strehl ratio for a given optical phase variance is given
     by \cref{eq:strehlRatio}.
@@ -191,7 +192,8 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     real and a perfect gas. \\
 
     \subsection{Polarizability}
-    The discrepancy is due to polarizability, which refers to a molecule's
+    The discrepancy in the \gls{AO} properties between a real and a perfect gas
+    in a hypersonic flow is due to polarizability; which refers to a molecule's
     tendency to develop a temporary dipole moment when exposed to an electric
     field. When an electric field is applied, the positively charged nucleus
     and negatively charged electron cloud experience opposing forces, causing a
@@ -229,7 +231,7 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     several contributions to
     polarizability}{fig:ch2FrequencyDependencePolarizability}
 
-    It has to be noted that polarizability it is a tensor but for cases of weak
+    It has to be noted that polarizability is a tensor but for cases of weak
     electric fields the rotational invariant polrizability
     \cref{eq:rotationalInvariantPolarizability}, which is one-third of the
     second-rank polarizability tensor is a good approximation. For
@@ -251,8 +253,9 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
 
     Traditionally polarizability is thought to be a function of
     the frequency of the \gls{EM} wave traveling across the medium. However,
-    this is not the case; Hohm \cite{Hohm1986,Hohm1990} showed a temperature dependency on
-    polarizability using interferometric measurements.\\
+    this is not the full story. Hohm \cite{Hohm1986,Hohm1990} showed a
+    temperature dependency on polarizability using interferometric
+    measurements.\\
 
     Rychlewski \cite{Rychlewski1980} showed a dependency in the rotational and
     vibrational quantum numbers in the polarizability constant. Kerl
@@ -265,13 +268,17 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     demonstrated an influence of vibrational energy modes on polarizability.
     Kerl \cite{Hohm1986} and Buldakov \cite{Buldakov2000,Buldakov2003a,
     Buldakov2003b} have demonstrated a temperature dependency in the
-    polarizability. As expected in hypersonic flows, these phenomena are very
-    important. \\
+    polarizability. As expected in hypersonic flows, the assumption that
+    polarizability is only affected by the frequency of the incoming
+    \gls{EM} is not valid anymore.\\
 
-    The polarizability is then use to calculate the index of refraction,
-    \cref{eq:diluteRefractiveIndex} is valid for a dilute medium. For a dense medium the
-    \textit{Clausius}-\textit{Mossotti} \cref{eq:denseRefractiveIndex} can be used
-    \cite{Feynman2011, Feynman2011a, Feynman2011b}. 
+    For a hypersonic flow, the index of refraction will account for the change
+    in polarizability by considering the species' number density.
+    \Cref{eq:diluteRefractiveIndex} is used to calculated the index of
+    refraction in a "dilute medium", and \cref{eq:denseRefractiveIndex}
+    (also known as the \textit{Clausius}-\textit{Mossotti} relation) is used
+    to calculate the index of refraction in a "dense medium" \cite{Feynman2011,
+    Feynman2011a, Feynman2011b}. 
     \begin{subequations}\label{eq:refractiveIndex}
         \begin{align}
             n - 1 &= \frac{1}{2\epsilon_0}\sum_{i=1}^N\alpha_iN_i
@@ -302,10 +309,10 @@ energy can only be exchanged in discrete packets known as \textit{photons}. \\
     conditions. \\
     
     Some authors \cite{Mandarino1976, Mandarino1981, Wang2023, Miller2022,
-    Gupta2023} use the \gls{GD} \cref{eq:gladstoneDaleConst} constant to calculate the
-    index of refraction \cref{eq:gladstoneDaleRelationship}. 
-    This constant was first formulated by \textit{Gladstone} \&
-    \textit{Dale} in $1864$ and it is heavily used in the field of mineralogist
+    Gupta2023} use the \gls{GD} \cref{eq:gladstoneDaleConst} constant to
+    calculate the index of refraction \cref{eq:gladstoneDaleRelationship}. This
+    constant was first formulated by \textit{Gladstone} \& \textit{Dale} in
+    $1864$ and it is heavily used in the field of mineralogist.
     \cite{Mandarino1976}. 
     \begin{subequations}
         \begin{align}

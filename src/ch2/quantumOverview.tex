@@ -10,11 +10,11 @@
    flow, the \textit{Hamiltonian} \cref{eq:hamiltonianEnergyExpansion} of a
    system must be modified. In molecular spectroscopy, the \Gls{BO}
    approximation is used to represent the total energy of the
-   system \cite{Gupta2016}. The \Gls{BO} assumes that the wave function of an
-   atomic nuclei and electrons in a molecule can be treated separately, base on
-   the fact that the nuclei are much heavier than the electrons
-   \cite{Lindon2016, McNab2017} and it is
-   shown in \cref{eq:bornOppWaveApprox}.
+   system \cite{Gupta2016}. The \Gls{BO} approximation assumes that the wave
+   function of an atomic nuclei and electrons in a molecule can be treated
+   separately, base on the fact that the nuclei are much heavier than the
+   electrons \cite{Lindon2016, McNab2017} and it is shown in
+   \cref{eq:bornOppWaveApprox}.
    \begin{subequations}\label{eq:bornOppWaveApprox}
        \begin{align}
            \psi_{total} &= \psi_{elec}\,\psi_{vib}\,\psi_{rot}  \\
@@ -22,8 +22,8 @@
        \end{align}
     \end{subequations}
 
-    Note $\psi$ is the wave function and in order to calculate it, the
-    Schr\"{o}dinger's equation \cref{eq:schrodingerEq} needs to be solved.
+    In order to calculate the wave function $\psi$, the Schr\"{o}dinger's
+    equation \cref{eq:schrodingerEq} needs to be solved.s
     \begin{equation}\label{eq:schrodingerEq}
         \hat{H}\ket{\psi} = i\hbar\PartialFrac{}{t}\ket{\psi} 
     \end{equation}
@@ -263,33 +263,41 @@
     between microscopic behavior (individual atoms and molecules) and the
     observable bulk properties of materials. \\
 
-    In the case of \gls{AO} Statistical mechanics serves like a bridge use
-    to predict optical properties such as polarizability and index of
-    refraction from the molecular behavior. \\
+    In the case of \gls{AO}, statistical mechanics offers the critical
+    framework that connects the microscopic behavior described by \gls{QM} to the
+    macroscopic \gls{EM} properties relevant to optical signal propagation. At
+    the microscopic scale, individual atoms and molecules possess discrete
+    energy levels - including electronic, vibrational and rotational states -
+    whose populations are governed by \gls{QM}. However, in a macroscopic
+    system, it is impractical to track each particle individually. Instead,
+    statistical mechanics provides a probabilistic treatment of a large
+    ensemble of particles, enabling the prediction of bulk properties from
+    microscopic laws.\\ 
 
-    A system is in thermodynamic equilibrium when the entropy of the system
-    has reached its maximum possible value. Entropy is a measure of the
-    number of possible microscopic configurations that correspond to the
-    macroscopic state of the system \cite{Reichl2016}. At low vibrational
-    and rotational quantum numbers, the entropy is lower due to fewer accessible states in
-    which energy can be distributed. In contrast, at higher quantum
-    numbers, there are more possible "energy buckets" available for energy
-    distribution, leading to increased entropy. \\
- 
+A system reaches thermodynamic equilibrium when its entropy is maximized.
+Entropy, fundamentally, is a measure of the number of microscopic
+configurations (microstates) that correspond to a given macroscopic state
+\cite{Reichl2016}. At low vibrational and rotational quantum numbers, the
+system's entropy is lower because fewer energy states are available for
+population. In contrast, at higher quantum numbers, the number of accessible
+"energy buckets" increases, allowing energy to be distributed among more
+states, thereby increasing the entropy.\\
+
     The energy distribution of a system in thermal equilibrium can be
     mathematically described by the Boltzmann distribution. This distribution
-    provides the probability of a system occupying a specific energy state,
-    showing that states with higher energy are less probable but increasingly
-    accessible as temperature rises \cite{Callen1991}. Consequently, the Boltzmann distribution
-    is foundational in explaining how temperature and entropy are related in a
-    system at equilibrium, offering insight into molecular behavior at varying
-    energy levels. \\
+    provides the probability that a system occupies a particular energy state,
+    demonstrating that higher-energy states are less probable, but become
+    increasingly populated as temperature rises \cite{Callen1991}.
+    Consequently, the Boltzmann distribution is fundamental for explaining the
+    relationship between temperature, entropy, and the statistical behavior of
+    molecules across various energy levels. \\
 
-    The Boltzmann distribution, which describes the particle distribution over
-    different energy states at thermal equilibrium, is applied to calculate the
-    energy levels as a function of the vibrational quantum number. This
-    probability distribution is given in \cref{eq:boltzmannDistribution}.
- 
+Specifically for \gls{AO}, the Boltzmann distribution is applied to determine
+how molecules populate different vibrational and rotational energy levels as a
+function of temperature. The probability distribution used for this calculation
+is presented in \cref{eq:boltzmannDistribution}, forming a foundational step in
+computing macroscopic \gls{EM} properties from microscopic energy state
+populations.
     \begin{equation}\label{eq:boltzmannDistribution}
         p_{v,J} = \frac{g_Je^{-\beta E_{v,J}}}{Z} = \frac{\Parenthesis{2J +
         1}e^{-\beta\Parenthesis{\varepsilon_i +
