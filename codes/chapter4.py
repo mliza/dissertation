@@ -252,7 +252,8 @@ def test_quantum_mechanics_module(fig_config=None, output_png=None):
                 plt.show()
 
             
-def plot_buldakov_kerl(fig_config, output_png, paper_data=None):
+def plot_buldakov_kerl(fig_config, output_png, paper_data=None,
+                       field_key='kerl'):
     buldakov = test_buldakov_method()
     kerl = test_optics_module()
     keys = ['N2', 'O2', 'H2']
@@ -269,14 +270,10 @@ def plot_buldakov_kerl(fig_config, output_png, paper_data=None):
                 label='Buldakov, HAOT')
 
         if paper_data:
-            plt.plot(paper_data[f'kerl_{k}']['temperature_K'],
-                     paper_data[f'kerl_{k}']['polarizability_m3'],
+            plt.plot(paper_data[f'{field_key}_{k}']['temperature_K'],
+                     paper_data[f'{field_key}_{k}']['polarizability_m3'],
                      '-.', linewidth=fig_config['line_width'],
-                     label='Kerl, Paper')
-            plt.plot(paper_data[f'buldakov_{k}']['temperature_K'],
-                     paper_data[f'buldakov_{k}']['polarizability_m3'],
-                     '-.', linewidth=fig_config['line_width'],
-                     label='Buldakov, Paper')
+                     label=f'{field_key}, Paper')
 
         plt.xlabel('Temperature $[K]$',
                     fontsize=fig_config['axis_label_size'])
@@ -319,14 +316,15 @@ if __name__ == "__main__":
     fig_config["title_size"] = 18
     output_png = "figures"
     output_png = "../figures/chapter4"
-    paper_data = "buldakovPaper"
+    paper_csv = "buldakovPaper"
 
-    paper_data = load_paper_data(paper_data) 
+    paper_data = load_paper_data(paper_csv) 
     test_aerodynamics_module(fig_config, output_png)
-    test_optics_module(fig_config, output_png, paper_data)
+    test_optics_module(fig_config, output_png)
     test_quantum_mechanics_module(fig_config, output_png) 
     test_buldakov_method(fig_config, output_png)
-    plot_buldakov_kerl(fig_config, output_png)
+    buldakov_dict = test_buldakov_method( )
+    plot_buldakov_kerl(fig_config, output_png, paper_data, 'buldakov')
 
 
 
