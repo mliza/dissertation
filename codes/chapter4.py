@@ -344,8 +344,9 @@ if __name__ == "__main__":
     paper_csv = "buldakovPaper"
 
     paper_data = load_paper_data(paper_csv) 
+    kerl_data = load_paper_data("kerlPaper") 
     test_aerodynamics_module(fig_config, output_png)
-    test_optics_module(fig_config, output_png)
+    test_optics_module(fig_config, output_png, kerl_data)
     test_quantum_mechanics_module(fig_config, output_png) 
     test_buldakov_method(fig_config, output_png)
     buldakov_dict = test_buldakov_method( )
