@@ -302,6 +302,31 @@ def load_paper_data(paper_data):
         dict_out[key] = df_in.to_dict(orient='list')
     return dict_out
 
+def plot_buldakov_buldakov(fig_config, buldakov_dict, buldakov_paper):
+    calc_temp = buldakov_dict['temperature_K']
+    keys = ['N2', 'O2', 'H2']
+    
+    for i in keys:
+        plt.plot(buldakov_paper[f'buldakov_{i}']['temperature_K'],
+                 buldakov_paper[f'buldakov_{i}']['polarizability_m3'],
+                      linewidth=fig_config['line_width'],
+                 label='Buldakov, Paper')
+        plt.plot(calc_temp, buldakov_dict[f'{i}'], 
+                     '-.', linewidth=fig_config['line_width'],
+                    label='HAOT')
+        plt.xlabel('Temperature $[K]$',
+                    fontsize=fig_config['axis_label_size'])
+        plt.ylabel('Polarizability $[m^3]$',
+                   fontsize=fig_config['axis_label_size'])
+
+
+        plt.legend(fontsize=fig_config['legend_size'])
+        plt.savefig(os.path.join(output_png,
+            f'buldakovHAOT_{i}.pdf'), format = 'pdf',
+            bbox_inches='tight', dpi=fig_config['dpi_size'])
+        plt.close()
+
+
 
 
 if __name__ == "__main__":
@@ -325,6 +350,4 @@ if __name__ == "__main__":
     test_buldakov_method(fig_config, output_png)
     buldakov_dict = test_buldakov_method( )
     plot_buldakov_kerl(fig_config, output_png, paper_data, 'buldakov')
-
-
-
+    plot_buldakov_buldakov(fig_config, buldakov_dict, paper_data)
