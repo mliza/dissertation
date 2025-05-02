@@ -12,7 +12,6 @@ from matplotlib.ticker import MaxNLocator
 from matplotlib.patches import Patch
 from mpl_toolkits.mplot3d import Axes3D
 
-
 import IPython
 
 
@@ -30,20 +29,20 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
                                               fig_config["fig_height"]),
                                     dpi=fig_config["dpi_size"])
 
-        axs[0].plot(atmosphere.speed_of_sound, altitude*1E-3, linewidth=
-                      fig_config["line_width"], label='Ambiance')
-        axs[0].plot(haot_speed_of_sound, altitude*1E-3, '--', linewidth=
+        axs[0].plot(haot_speed_of_sound, altitude*1E-3, linewidth=
                       fig_config["line_width"], label='HAOT')
+        axs[0].plot(atmosphere.speed_of_sound, altitude*1E-3, '-.', linewidth=
+                      fig_config["line_width"], label='Ambiance')
         axs[0].set_xlabel('Speed of Sound $[m/s]$',
                           fontsize=fig_config["axis_label_size"])
         axs[0].set_ylabel('Altitude $[km]$',
                           fontsize=fig_config["axis_label_size"])
         axs[0].legend(fontsize=fig_config['legend_size'])
 
-        axs[1].plot(atmosphere.dynamic_viscosity, altitude*1E-3, linewidth=
-                      fig_config["line_width"], label='Ambiance')
-        axs[1].plot(haot_dynamic_visc, altitude*1E-3, '--', linewidth=
+        axs[1].plot(haot_dynamic_visc, altitude*1E-3, linewidth=
                       fig_config["line_width"], label='HAOT')
+        axs[1].plot(atmosphere.dynamic_viscosity, altitude*1E-3, '-.', linewidth=
+                      fig_config["line_width"], label='Ambiance')
         axs[1].set_xlabel('Dynamic Viscosity $[Pa\,s]$',
                           fontsize=fig_config["axis_label_size"])
         axs[1].set_ylabel('Altitude $[km]$',
@@ -63,7 +62,7 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
 def test_optics_module(fig_config=None, output_png=None, paper_data=None):
     keys = ['N2', 'O2', 'H2', 'Air']
     wavelength_nm = 633
-    temperature_K = np.arange(100, 1950 + 50, 50)
+    temperature_K = np.arange(100, 2000, 50)
     dict_kerl = { }
     dict_kerl['temperature_K'] = temperature_K
 
@@ -87,8 +86,15 @@ def test_optics_module(fig_config=None, output_png=None, paper_data=None):
                 plt.plot(paper_data[f'kerl_{k}']['temperature_K'],
                          paper_data[f'kerl_{k}']['polarizability_m3'],
                          '-.', linewidth=fig_config['line_width'],
-                         label='Paper')
+                         label='Kerl')
                 plt.legend(fontsize=fig_config['legend_size'])
+
+            if k == 'O2':
+                plt.xlim([100, 1500])
+                plt.ylim([np.min(paper_data[f'kerl_{k}']['polarizability_m3']),
+                          np.max(paper_data[f'kerl_{k}']['polarizability_m3'])])
+            else:
+                plt.xlim([100, 2000])
 
             plt.xlabel('Temperature $[K]$',
                         fontsize=fig_config['axis_label_size'])
@@ -110,7 +116,7 @@ def test_optics_module(fig_config=None, output_png=None, paper_data=None):
 
 def test_buldakov_method(fig_config=None, output_png=None):
     molecule = ['H2', 'N2', 'O2']
-    temperature_K = np.arange(100, 1500 + 50, 50)
+    temperature_K = np.arange(100, 2000, 50)
     vibrational_number = 1 
     rotational_number = 2
     vib_axis = range(vibrational_number + 1)
@@ -267,7 +273,13 @@ def plot_buldakov_kerl(fig_config, output_png, paper_data=None,
 
         plt.plot(buldakov['temperature_K'], buldakov[k],
                 linewidth=fig_config['line_width'], 
-                label='Buldakov, HAOT')
+                label='HAOT')
+
+        if k == 'O2':
+            plt.xlim([100, 1500])
+        else:
+            plt.xlim([100, 2000])
+
 
         if paper_data:
             plt.plot(paper_data[f'{field_key}_{k}']['temperature_K'],
@@ -310,10 +322,15 @@ def plot_buldakov_buldakov(fig_config, buldakov_dict, buldakov_paper):
         plt.plot(buldakov_paper[f'buldakov_{i}']['temperature_K'],
                  buldakov_paper[f'buldakov_{i}']['polarizability_m3'],
                       linewidth=fig_config['line_width'],
-                 label='Buldakov, Paper')
+                 label='Buldakov')
         plt.plot(calc_temp, buldakov_dict[f'{i}'], 
                      '-.', linewidth=fig_config['line_width'],
                     label='HAOT')
+        if i == 'O2':
+            plt.xlim([100, 1500])
+        else:
+            plt.xlim([100, 2000])
+
         plt.xlabel('Temperature $[K]$',
                     fontsize=fig_config['axis_label_size'])
         plt.ylabel('Polarizability $[m^3]$',
@@ -346,9 +363,9 @@ if __name__ == "__main__":
     paper_data = load_paper_data(paper_csv) 
     kerl_data = load_paper_data("kerlPaper") 
     test_aerodynamics_module(fig_config, output_png)
-    test_optics_module(fig_config, output_png, kerl_data)
     test_quantum_mechanics_module(fig_config, output_png) 
     test_buldakov_method(fig_config, output_png)
     buldakov_dict = test_buldakov_method( )
     plot_buldakov_kerl(fig_config, output_png, paper_data, 'buldakov')
     plot_buldakov_buldakov(fig_config, buldakov_dict, paper_data)
+    test_optics_module(fig_config, output_png, kerl_data)
