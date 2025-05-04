@@ -116,21 +116,32 @@
         \end{align}
     \end{subequations}
 
+    The characteristic translational $(T_{tr})$ and vibrational $(T_{vib})$ temperatures were
+    calculated using \cref{eq:characteristic2Tspectroscopy}.
+    \begin{subequations}\label{eq:characteristic2Tspectroscopy}
+        \begin{align}
+            T_{tr} &= \frac{2\pi\hbar c_0 B_e}{k_B}
+            \label{eq:translationalTemperatureSpec} \\
+            T_{vib} &= \frac{2\pi\hbar c_0 \omega_e}{k_B}
+            \label{eq:vibrationalTemperatureSpec}
+        \end{align}
+    \end{subequations}
+
     \begin{table}[H]
         \centering
         \makebox[\linewidth][c]{
-            \begin{tabular}{|c|c|c|c|}
+            \begin{tabular}{|c|c|c|c|c|c|}
                 \hline
                 Molecule & $r_e\Units{\r{A}}$ & $\mu \times 10^{-26}\Units{kg}$
-                & $k\Units{N/m}$\\ 
+                & $k\Units{N/m}$ & $T_{tr}\Units{K}$ & $T_{vib}\Units{K}$\\ 
                 \hline \hline
-                $\ce{NO+}$ & $1.06322$ & $1.240$ & $2485.629$ \\ \hline
-                $\ce{N2+}$ & $1.11642$ & $1.628$ & $2009.857$ \\ \hline
-                $\ce{O2+}$ & $1.1164$ & $1.328$  & $1712.066$ \\ \hline
-                $\ce{NO}$ & $1.15077$ & $1.240$  & $1595.422$ \\ \hline
-                $\ce{N2}$ & $1.09768$ & $1.162$  & $2295.375$ \\ \hline
-                $\ce{O2}$ & $1.20752$ & $1.328$  & $1176.865$ \\ \hline
-                $\ce{H2}$ & $0.74144$ & $0.0836$ & $575.174$ \\ \hline
+                $\ce{NO+}$ & $1.06322$ & $1.240$ & $2485.629$ & $2.87$ & $3420$ \\ \hline
+                $\ce{N2+}$ & $1.11642$ & $1.628$ & $2009.857$ & $2.78$ & $3180$\\ \hline
+                $\ce{O2+}$ & $1.1164$ & $1.328$  & $1712.066$ & $2.43$ & $2740$\\ \hline
+                $\ce{NO}$ & $1.15077$ & $1.240$  & $1595.422$ & $2.45$ & $2740$\\ \hline
+                $\ce{N2}$ & $1.09768$ & $1.162$  & $2295.375$ & $2.88$ & $3390$\\ \hline
+                $\ce{O2}$ & $1.20752$ & $1.328$  & $1176.865$ & $2.08$ & $2270$\\ \hline
+                $\ce{H2}$ & $0.74144$ & $0.0836$ & $575.174$  & $87.6$ & $6330$\\ \hline
             \end{tabular}
         }
             \caption{Spectroscopy constants for ground level

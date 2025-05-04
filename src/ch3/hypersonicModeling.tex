@@ -1,23 +1,59 @@
 \section{Hypersonic Modeling\label{ch3:hypersonicModeling}}
 
+In hypersonic flows, the fluid can no longer be assumed to be in chemical and
+thermal equilibrium. Consequently, the \gls{NS} equations must be
+modified to account for nonequilibrium effects. \Cref{eq:navierStokesNoneq}
+presents the multicomponent \gls{NS} equations, which involve $4N+19$ unknowns
+\cite{Daily2018}.
+\begin{subequations}\label{eq:navierStokesNoneq}
+    \begin{align}
+        &\continuityEins \label{eq:noneqSpeciesContinuity}\\
+        &\noneqSpeciesContinuityEins \label{eq:speciesContinuityEinsNoneq} \\
+        &\noneqMomentumEins \label{eq:noneqMomentum} \\
+        &\noneqEnergyEins \label{eq:noneqEnegy}
+    \end{align}
+\end{subequations}
 
+The multicomponent \gls{NS} equations can be solved using:
+\begin{itemize}
+    \item \textbf{Single-temperature $(1T)$ models:} All energy modes
+        (translational, rotational, vibrational and electronic) are in
+    equilibrium and are described by a single temperature. Low fidelity, low
+        computational cost.  
+    \item \textbf{Two-temperature $(2T)$ models:} These models treat the
+        vibrational energy separately, assuming rotational and translational
+        energy equilibrates faster than vibrational energy. Medium fidelity,
+        low computational cost.
+    \item \textbf{Multi-temperature $(nT)$ models:} These models describe each
+        energy level with a different temperature. High fidelity, medium computational cost.
+    \item \textbf{State to state $(StS)$ models:} Solves the governing
+        equations coupled to the master equation that accounts for the
+        state-to-state transition \cite{Josyula2017}. Highest fidelity, highest
+        computational cost.
+\end{itemize}
 
+The Park $2T$ model \cite{Park1989} is employed to investigate \gls{AO} properties
+in nonequilibrium flows. This model assumes that the flow can be characterized by
+two distinct temperatures: the translational-rotational temperature $(T_{tr})$,
+which represents the energy associated with the translational and rotational
+modes; and the vibrational-electronic temperature $(T_{vib})$, which accounts
+for the vibrational, and electronic energy modes. This two-temperature
+formulation enables a more accurate description of thermochemical
+nonequilibrium, which becomes significant at the high enthalpies characteristic
+of hypersonic regimes. \\
 
-\todo{Missing hypersonic modeling}
-
-A commonly used model to describe nonequilibrium effects is the Park $2T$ model
-\cite{Park1989}, which assumes that the flow can be described by two
-temperatures. One temperature $\Parenthesis{T_{tr}}$ will describe the heavy-particle translational
-and molecular rotational energy and the other temperature
-$\Parenthesis{T_{vr}}$ will describe the molecular vibrational, electron
-translational, and electronic excitation energies. \\
-
-\Gls{SU2}--\Gls{NEMO} \cite{Maier2023a} solves the governing equations for
-viscous gases in thermochemical nonequilibrium to model continuum hypersonic
-flows. These equations are expressed compactly in conservation form in
-\cref{eq:nonequilibriumGoverningEqConservativeA} and expanded in
-\cref{eq:nonequilibriumGoverningEqConservativeB}.
-
+To numerically solve the nonequilibrium governing equations incorporating these
+thermochemical effects, the open-source \gls{CFD} solver \Gls{SU2}--\Gls{NEMO}
+\cite{Maier2023a} is used. \Gls{SU2}--\Gls{NEMO} extends the \Gls{SU2}
+framework to model continuum flows in thermochemical nonequilibrium by solving
+the multicomponent Navier–Stokes equations with appropriate source terms for
+chemical reactions and internal energy relaxation. These equations are
+expressed compactly in conservation form in
+\cref{eq:nonequilibriumGoverningEqConservativeA} and expanded component-wise in
+\cref{eq:nonequilibriumGoverningEqConservativeB}. The solver incorporates
+detailed thermodynamic models, finite-rate chemical kinetics, and energy
+exchange mechanisms, making it suitable for predicting both fluid dynamic and
+optical properties in hypersonic environments.
 \begin{equation}\label{eq:nonequilibriumGoverningEqConservativeA}
     \nonequilibriumGoverningEqConservativeA
 \end{equation}
@@ -25,4 +61,3 @@ flows. These equations are expressed compactly in conservation form in
 \begin{equation}\label{eq:nonequilibriumGoverningEqConservativeB}
     \ScaleMath{0.72}{\nonequilibriumGoverningEqConservativeB}
 \end{equation}
-

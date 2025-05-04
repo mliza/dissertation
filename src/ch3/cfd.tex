@@ -4,9 +4,30 @@
         fluid flow. This period saw the initial application of numerical
         analysis to solve simplified fluid problems.\\
 
-        Numerical analysis provides methods and algorithms that suitable for \gls{CFD} such as \gls{FVM}, \gls{FDM} and \gls{FEM}
-        \cite{Greenshields2022}. In the $1970$s and $1980$s, the field of
-        \gls{CFD} has been established as a
+        Numerical analysis provides methods and algorithms that are suitable
+        for \gls{CFD}, such as \gls{FDM}, \gls{FVM}, and \gls{FEM}
+        \cite{Greenshields2022}.
+        \begin{itemize}
+            \item \textbf{\gls{FDM}:} Approximates derivatives, usually using
+                Taylor series expansions. These methods are simpler to
+                implement and well-suited for structured grids. However, these
+                methods perform poorly for complex flows with strong gradients,
+                nonequilibrium properties, or complex geometries.
+            \item \textbf{\gls{FVM}:} Integrates the governing equations over a
+                control volume and applies the divergence theorem to convert
+                volume integrals into surface integrals. It enforces local
+                conservation of fluxes across volume boundaries. This method is
+                applicable to unstructured meshes and well-suited for complex
+                flows with strong conservation requirements.
+            \item \textbf{\gls{FEM}:} Formulates the \gls{PDE} as a variational
+                problem (typically a \textit{weak} or \textit{Galerkin} form).
+                The solution is approximated using basis functions defined over
+                elements. This method is very flexible in handling complex
+                geometries and boundary conditions, although it is more
+                mathematically involved.  
+        \end{itemize}
+
+        In the $1970$s and $1980$s, the field of \gls{CFD} has been established as a
         distinct discipline, and the availability of more powerful computers
         allowed researches to address more complex and realistic problems. This
         development was driven by the aerospace community \cite{Anderson1995}.\\
