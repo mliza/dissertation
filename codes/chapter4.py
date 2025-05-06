@@ -59,6 +59,16 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
         if output_png is None:
             plt.show()
 
+    ## Oblique shockwaves 
+    mach_number = np.linspace(0, 4, 200)
+    deflection = [2,3,4]
+    for i in deflection:
+        haot.oblique_shock_angle(mach_number, i)
+        # TODO: PLOT ME and update
+
+
+
+
 def test_optics_module(fig_config=None, output_png=None, paper_data=None):
     keys = ['N2', 'O2', 'H2', 'Air']
     wavelength_nm = 633

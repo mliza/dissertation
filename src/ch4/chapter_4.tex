@@ -31,10 +31,25 @@ software tools are often poorly written, inadequately tested, insufficiently
 documented, and underdeveloped \cite{Robillard1998,Liu2008}. Comprehensive
 documentation for the tool, including usage instructions with or without
 \gls{CFD} data, can be found on the
-\href{https://haot.readthedocs.io/en/latest/}{documentation page}. The
-\gls{HAOT} tool has a GitHub pipeline that automatically runs unit tests to
-ensure that the functions developed do not break when changes in the code are
-submitted. \\
+\href{https://haot.readthedocs.io/en/latest/}{documentation page}. \\
+
+The \gls{HAOT} tool is integrated with a GitHub Actions pipeline that is
+automatically triggered whenever a \gls{PR} is submitted. This \gls{CI}
+workflow ensures the integrity of the codebase by running automated tests and
+checks to verify that new contributions do not introduce errors or regressions.
+By validating each proposed change before it is merged, the pipeline plays a
+critical role in maintaining the stability, reliability, and reproducibility of
+the \gls{HAOT} software. \\
+
+In addition to the unit tests, every time a \gls{PR} is merged into the main
+branch, the project’s documentation is automatically regenerated and published
+to the official \href{https://haot.readthedocs.io/en/latest/}{documentation
+page}. This automated deployment ensures that the documentation remains
+synchronized with the latest version of the codebase, providing users and
+developers with up-to-date information about the functionality, usage, and
+configuration of the \gls{HAOT} tool. The process is managed through a \gls{CD}
+pipeline, which integrates with Read the Docs to streamline the publication of
+updated content. \\ 
 
 Defensive programming is the core software development technique employed in
 the development of the \gls{HAOT} tool. Defensive programming is a software
