@@ -119,7 +119,7 @@ def plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict=None):
                 noneq[f"MassFrac_{i}"],
                 color=colors[i],
                 linewidth=fig_config["line_width"],
-                label=value,
+                label=figure_configurations.rename_label(value),
             )
 
             plt.plot(
@@ -164,7 +164,7 @@ def plot_stagnation_fields(data_in, fig_config, out_pdf_fig, cut_dict=None):
                 noneq_GD[value] * 1e4,
                 color=colors[i],
                 linewidth=fig_config["line_width"],
-                label=value,
+                label=figure_configurations.rename_label(value),
             )
 
             plt.plot(
@@ -317,7 +317,7 @@ def create_mass_density_dict(data_in, species):
 def calculate_aero_props(mass_density_dict):
     index_of_refraction = haot.index_of_refraction(mass_density_dict)
     gladstone_dale_const = haot.gladstone_dale_constant(mass_density_dict)
-    dielectric_property = haot.dielectric_material_const(index_of_refraction["dilute"])
+    dielectric_property = haot.permittivity_material(index_of_refraction["dilute"])
 
     return index_of_refraction, gladstone_dale_const, dielectric_property
 

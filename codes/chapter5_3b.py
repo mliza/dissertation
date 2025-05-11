@@ -183,7 +183,7 @@ def plot_stagnation_data(line_data, fig_config):
                 line_data[noneq][f"MassFrac_{s}"][cut_indx:],
                 color=colors[s],
                 linewidth=fig_config["line_width"],
-                label=value,
+                label=figure_configurations.rename_label(value),
             )
 
             plt.plot(
@@ -217,7 +217,7 @@ def plot_stagnation_data(line_data, fig_config):
                      line_data[noneq][f'gd_{value}'][cut_indx:] * 1e4,
                      color=colors[n],
                     linewidth=fig_config["line_width"],
-                    label=value)
+                    label=figure_configurations.rename_label(value))
 
             plt.plot(frozen_mm,
                      line_data[frozen][f'gd_{value}'][cut_indx:] * 1e4,

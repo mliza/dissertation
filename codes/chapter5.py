@@ -115,7 +115,7 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
                 tmp["temperature"]["time"],
                 tmp["neutral_sp"][j] / total_density,
                 linewidth=fig_config["line_width"],
-                label=f"${j}$",
+                label=figure_configurations.rename_label(j),
             )
             # Plot Ions
             if tmp["ion_sp"]:
@@ -124,7 +124,7 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
                     tmp["ion_sp"][f"{j}+"] / total_density * 1e3,
                     linestyle="dotted",
                     linewidth=fig_config["line_width"],
-                    label=f"${j}+$",
+                    label=figure_configurations.rename_label(f"{j}+"),
                 )
 
         axes1.legend(fontsize=fig_config["legend_size"])
@@ -167,7 +167,7 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
                 tmp["temperature"]["time"],
                 tmp["gladstone_species"][j] * 1e4,
                 linewidth=fig_config["line_width"],
-                label=f"${j}$",
+                label=figure_configurations.rename_label(j),
             )
             # Plot Ions
             if tmp["ion_sp"]:
@@ -176,7 +176,7 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
                     tmp["gladstone_species"][f"{j}+"] * 1e7,
                     linestyle="dotted",
                     linewidth=fig_config["line_width"],
-                    label=f"${j}+$",
+                    label=figure_configurations.rename_label(f"{j}+"),
                 )
         axes1.legend(fontsize=fig_config["legend_size"])
         axes1.set_xlabel("Time $[s]$", fontsize=fig_config["axis_label_size"])
@@ -493,7 +493,7 @@ def optical_properties(
 
 def main(cfd_results_abs_path):
     fig_config = figure_configurations.figure_settings()
-    species_flag = True 
+    species_flag = True
 
     if not species_flag:
         # Chemistry Composition #
