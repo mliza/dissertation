@@ -5,6 +5,7 @@ import sys
 import IPython
 import numpy as np
 import matplotlib.pyplot as plt
+import figure_configurations
 import matplotlib.colors as mcolors
 import scipy.constants as s_const
 
@@ -394,15 +395,7 @@ if __name__ == "__main__":
     fig_out_path = '/Users/martin/Documents/Schools/UoA/Dissertation/figures/chapter5/chemistryReaction'
 
     # Users inputs #
-    fig_config = {}
-    fig_config["line_width"] = 3
-    fig_config["fig_width"] = 6
-    fig_config["fig_height"] = 5
-    fig_config["dpi_size"] = 600
-    fig_config["axis_label_size"] = 14
-    fig_config["legend_size"] = 12
-    fig_config["ticks_size"] = 13
-    fig_config["title_size"] = 18
+    fig_config = figure_configurations.figure_settings()
     fig_config["out_path"] = fig_out_path
 
     mesh_data = load_files(files_in)

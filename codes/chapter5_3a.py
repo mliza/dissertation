@@ -3,6 +3,7 @@ import haot
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import scipy.constants as s_const
+import figure_configurations
 import IPython
 import os
 
@@ -335,15 +336,7 @@ if __name__ == "__main__":
 
     out_pdf_fig = "../figures/chapter5/chemistryReaction"
     pickle_path = "../resultsCFD/chemistryReaction/tecOutData/stagnation.pickle"
-    fig_config = {}
-    fig_config["line_width"] = 3
-    fig_config["fig_width"] = 6
-    fig_config["fig_height"] = 5
-    fig_config["dpi_size"] = 600
-    fig_config["axis_label_size"] = 14
-    fig_config["legend_size"] = 12
-    fig_config["ticks_size"] = 13
-    fig_config["title_size"] = 18
+    fig_config = figure_configurations.figure_settings() 
 
     cut_dict = get_cut_dict()
 

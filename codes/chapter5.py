@@ -10,6 +10,8 @@ import scipy.stats
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import IPython
+import figure_configurations
 from haot import optics
 
 
@@ -46,11 +48,11 @@ def get_dicts(data_path: str, f_in: str) -> tuple[dict, object, dict]:
         neutral_dict[density_key] = df_in[density_key].to_numpy()
 
     if len(df_in.keys()) >= 10:
-        ion_dict["N+"] = df_in["N+"]
-        ion_dict["O+"] = df_in["O+"]
-        ion_dict["NO+"] = df_in["NO+"]
-        ion_dict["N2+"] = df_in["N2+"]
-        ion_dict["O2+"] = df_in["O2+"]
+        ion_dict["N+"] = df_in["N+"].to_numpy()
+        ion_dict["O+"] = df_in["O+"].to_numpy()
+        ion_dict["NO+"] = df_in["NO+"].to_numpy()
+        ion_dict["N2+"] = df_in["N2+"].to_numpy()
+        ion_dict["O2+"] = df_in["O2+"].to_numpy()
         ion_dict["e+"] = df_in["e+"].to_numpy()
 
     temp_dict = {}
@@ -490,15 +492,7 @@ def optical_properties(
 
 
 def main(cfd_results_abs_path):
-    fig_config = {}
-    fig_config["line_width"] = 3
-    fig_config["fig_width"] = 6 #3.5
-    fig_config["fig_height"] = 5 #2.5
-    fig_config["dpi_size"] = 600
-    fig_config["axis_label_size"] = 14
-    fig_config["legend_size"] = 12
-    fig_config["ticks_size"] = 13
-    fig_config["title_size"] = 18
+    fig_config = figure_configurations.figure_settings()
     species_flag = True 
 
     if not species_flag:
