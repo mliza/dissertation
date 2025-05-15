@@ -84,15 +84,18 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
                 if theta < beta_strong < 90:
                     strong_shock[j] = beta_strong
                 mach_2 =  aerodynamics.oblique_shock_relations(mach, beta_weak)['mach_2']
+                """
                 if mach_2 > 0.99 and mach_2 < 1.1:
-                    print(f"{mach}: {mach_2}; beta: {beta_weak}")
-                    tmp.append(mach_2)
+                    #print(f"{mach}: {mach_2}; beta: {beta_weak}")
+                    #tmp.append(mach_2)
+                """
 
             except Exception:
                 continue  # skip and leave np.nan
 
 
         # Remove straight line
+
         index = int(np.where((strong_shock - weak_shock) < 0.0)[0][0])
         max_attached_shock.append(weak_shock[index])
         max_attached_deflection.append(deflection_angle[index]) 
@@ -108,7 +111,6 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
     plt.ylabel("Shock Angle $\\beta$ $[deg]$", fontsize=fig_config["axis_label_size"])
     plt.legend()
     plt.grid(True)
-    plt.tight_layout()
     if output_png is not None: 
         plt.tight_layout()
         plt.savefig(os.path.join(output_png,'obliqueShockRelations.pdf'),
@@ -119,9 +121,29 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
     if output_png is None:
         plt.show()
 
-    #IPython.embed(colors = 'Linux')
 
 
+    # Comparing Results for Mach 5
+    shock = load_paper_data("obliqueShockData")
+    plt.plot(deflection_angle[:index], weak_shock[:index], color='tab:blue',
+             linewidth=fig_config["line_width"], label='HAOT')
+    plt.plot(deflection_angle[:index], strong_shock[:index], color='tab:blue',
+             linewidth=fig_config["line_width"])
+    plt.plot(shock['mach5']['theta'] , shock['mach5']['beta'], '-.',
+            color='tab:orange', 
+             linewidth=fig_config["line_width"], label='Anderson')
+    plt.xlabel("Deflection Angle $\\theta$ $[deg]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("Shock Angle $\\beta$ $[deg]$", fontsize=fig_config["axis_label_size"])
+    plt.legend()
+    if output_png is not None: 
+        plt.tight_layout()
+        plt.savefig(os.path.join(output_png,'obliqueShockComparisonM5.pdf'),
+                    format='pdf',
+            bbox_inches='tight', dpi=fig_config["dpi_size"])
+        plt.close()
+
+    if output_png is None:
+        plt.show()
 
 
 
@@ -410,6 +432,7 @@ def plot_buldakov_buldakov(fig_config, buldakov_dict, buldakov_paper):
             f'buldakovHAOT_{i}.pdf'), format = 'pdf',
             bbox_inches='tight', dpi=fig_config['dpi_size'])
         plt.close()
+    
 
 
 
