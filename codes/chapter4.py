@@ -59,12 +59,70 @@ def test_aerodynamics_module(fig_config='None', output_png='None'):
         if output_png is None:
             plt.show()
 
-    ## Oblique shockwaves 
-    mach_number = np.linspace(0, 4, 200)
-    deflection = [2,3,4]
-    for i in deflection:
-        haot.oblique_shock_angle(mach_number, i)
-        # TODO: PLOT ME and update
+    ## Oblique shock waves 
+    mach_number = [2, 3, 4, 5]
+    colors = ['tab:orange', 'tab:blue', 'tab:green', 'tab:purple']
+    deflection_angle = np.linspace(0.1, 44, 1000)
+    max_attached_shock = [ ]
+    max_attached_deflection = [ ]
+    mach_2 = [ ]
+
+
+    fig = plt.figure(figsize=(fig_config['fig_width'],
+                                      fig_config['fig_height']))
+    for i, mach in enumerate(mach_number):
+        weak_shock = np.full_like(deflection_angle, np.nan)
+        strong_shock = np.full_like(deflection_angle, np.nan)
+
+        for j, theta in enumerate(deflection_angle):
+            tmp = [ ]
+            try:
+                beta_weak, beta_strong = aerodynamics.oblique_shock_angle(mach, theta)
+                # Discard solutions that are not physical (e.g., beta < theta or beta > 90°)
+                if theta < beta_weak < 90:
+                    weak_shock[j] = beta_weak
+                if theta < beta_strong < 90:
+                    strong_shock[j] = beta_strong
+                mach_2 =  aerodynamics.oblique_shock_relations(mach, beta_weak)['mach_2']
+                if mach_2 > 0.99 and mach_2 < 1.1:
+                    print(f"{mach}: {mach_2}; beta: {beta_weak}")
+                    tmp.append(mach_2)
+
+            except Exception:
+                continue  # skip and leave np.nan
+
+
+        # Remove straight line
+        index = int(np.where((strong_shock - weak_shock) < 0.0)[0][0])
+        max_attached_shock.append(weak_shock[index])
+        max_attached_deflection.append(deflection_angle[index]) 
+
+        plt.plot(deflection_angle[:index], weak_shock[:index], color=colors[i],
+                 linewidth=fig_config["line_width"], label=f"M={mach}")
+        plt.plot(deflection_angle[:index], strong_shock[:index], '--', color=colors[i], linewidth=fig_config["line_width"])
+
+
+    plt.plot(max_attached_deflection, max_attached_shock, '-.',
+             linewidth=fig_config["line_width"] - 1, color='tab:red', label="Max attached shock")
+    plt.xlabel("Deflection Angle $\\theta$ $[deg]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("Shock Angle $\\beta$ $[deg]$", fontsize=fig_config["axis_label_size"])
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    if output_png is not None: 
+        plt.tight_layout()
+        plt.savefig(os.path.join(output_png,'obliqueShockRelations.pdf'),
+                    format='pdf',
+            bbox_inches='tight', dpi=fig_config["dpi_size"])
+        plt.close()
+
+    if output_png is None:
+        plt.show()
+
+    #IPython.embed(colors = 'Linux')
+
+
+
 
 
 
