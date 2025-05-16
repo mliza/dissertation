@@ -4,6 +4,7 @@ from haot import quantum_mechanics
 from haot import constants
 from haot import conversions
 from ambiance import Atmosphere
+import figure_configurations
 import pandas as pd
 import numpy as np
 import os
@@ -204,7 +205,8 @@ def test_optics_module(fig_config=None, output_png=None, paper_data=None):
             if output_png is None:
                 plt.show()
 
-def test_buldakov_method(fig_config=None, output_png=None):
+def test_buldakov_method(fig_config=None, output_png=None,
+                    test_formulation=None):
     molecule = ['H2', 'N2', 'O2']
     temperature_K = np.arange(100, 2000, 50)
     vibrational_number = 1 
@@ -227,6 +229,9 @@ def test_buldakov_method(fig_config=None, output_png=None):
                                 vibrational_number=v,
                                 rotational_number=j,
                                 molecule=k)
+                if test_formulation:
+                    expansion[v,j] -= constants.buldakov_polarizability_derivatives_2016(k)['zeroth']
+                    expansion[v,j] += constants.kerl_interpolation(k)['groundPolarizability']
 
         # Probability Distribution
         for t, val in enumerate(temperature_K):
@@ -350,7 +355,8 @@ def test_quantum_mechanics_module(fig_config=None, output_png=None):
             
 def plot_buldakov_kerl(fig_config, output_png, paper_data=None,
                        field_key='kerl'):
-    buldakov = test_buldakov_method()
+    buldakov = test_buldakov_method(fig_config=None, output_png=None,
+                    test_formulation=None)
     kerl = test_optics_module()
     keys = ['N2', 'O2', 'H2']
 
@@ -363,7 +369,7 @@ def plot_buldakov_kerl(fig_config, output_png, paper_data=None,
 
         plt.plot(buldakov['temperature_K'], buldakov[k],
                 linewidth=fig_config['line_width'], 
-                label='HAOT')
+                label='Buldakov, HAOT')
 
         if k == 'O2':
             plt.xlim([100, 1500])
@@ -438,15 +444,7 @@ def plot_buldakov_buldakov(fig_config, buldakov_dict, buldakov_paper):
 
 
 if __name__ == "__main__":
-    fig_config = {}
-    fig_config['line_width'] = 3
-    fig_config['fig_width'] = 6
-    fig_config['fig_height'] = 5
-    fig_config['dpi_size'] = 600
-    fig_config['axis_label_size'] = 14
-    fig_config['legend_size'] = 12
-    fig_config['ticks_size'] = 13
-    fig_config["title_size"] = 18
+    fig_config = figure_configurations.figure_settings()
     output_png = "figures"
     output_png = "../figures/chapter4"
     paper_csv = "buldakovPaper"
@@ -457,6 +455,6 @@ if __name__ == "__main__":
     test_quantum_mechanics_module(fig_config, output_png) 
     test_buldakov_method(fig_config, output_png)
     buldakov_dict = test_buldakov_method( )
-    plot_buldakov_kerl(fig_config, output_png, paper_data, 'buldakov')
+    plot_buldakov_kerl(fig_config, output_png)#, paper_data, 'buldakov')
     plot_buldakov_buldakov(fig_config, buldakov_dict, paper_data)
     test_optics_module(fig_config, output_png, kerl_data)
