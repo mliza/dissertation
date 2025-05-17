@@ -210,7 +210,7 @@ def test_buldakov_method(fig_config=None, output_png=None,
     molecule = ['H2', 'N2', 'O2']
     temperature_K = np.arange(100, 2000, 50)
     vibrational_number = 1 
-    rotational_number = 2
+    rotational_number = 1
     vib_axis = range(vibrational_number + 1)
     rot_axis = range(rotational_number + 1)
     buldakov_dict = { }
