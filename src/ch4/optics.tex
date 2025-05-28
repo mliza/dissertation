@@ -1,4 +1,27 @@
 \section{Optics\label{ch4:optics}}
+The \gls{HAOT}, \myPythonInline{optics} module contains the following
+functions. Refer to the
+\href{https://haot.readthedocs.io/en/latest/modules/optics.html}{optics documentation}
+to see the implementation of each function.
+\begin{itemize}
+    \item \myPythonInline{index_of_refraction_density_temperature}
+    \item \myPythonInline{index_of_refraction}
+    \item \myPythonInline{permittivity_material}
+    \item \myPythonInline{electric_susceptibility}
+    \item \myPythonInline{buldakov_expansion}
+    \item \myPythonInline{total_internal_reflection_angle}
+    \item \myPythonInline{normal_incidence_reflectance}
+    \item \myPythonInline{brewster_angle}
+    \item \myPythonInline{optical_path_length}
+    \item \myPythonInline{optical_path_difference}
+    \item \myPythonInline{optical_path_difference_rms}
+    \item \myPythonInline{kerl_polarizability_temperature}
+    \item \myPythonInline{gladstone_dale_constant}
+    \item \myPythonInline{gladstone_dale_air_wavelength}
+\end{itemize}
+Unit test results for the \myPythonInline{optics} module in the
+\gls{HAOT} package are provided below. \\
+
     \Cref{fig:kerlAirPolarizabilityT} shows the results of curve fitting developed
     by Kerl \cite{Kerl1992}. This fitting uses constants defined in
     \cref{tab:kerlConstants}. These constants are accessible in the

@@ -1,8 +1,21 @@
 \section{Aerodynamics\label{ch4:aerodynamics}}
-\todo{ADD} 
-This section provides unit test for some of the functions implemented on the
-aerodynamics module in \gls{HAOT}. These functions are not hard to implement
-but some of them are used to calculate other results. \\
+The \gls{HAOT}, \myPythonInline{aerodynamics} module contains the following
+functions. Refer to the
+\href{https://haot.readthedocs.io/en/latest/modules/aerodynamics.html}{aerodynamics documentation}
+to see the implementation of each function.
+\begin{itemize}
+    \item \myPythonInline{sutherland_law_viscosity}  
+    \item \myPythonInline{sutherland_law_conductivity}  
+    \item \myPythonInline{air_atomic_molar_mass}
+    \item \myPythonInline{speed_of_sound}
+    \item \myPythonInline{isentropic_relations}
+    \item \myPythonInline{normal_shock_relation}
+    \item \myPythonInline{oblique_shock_angle}
+    \item \myPythonInline{oblique_shock_relations}
+\end{itemize}
+
+Unit test results for the \myPythonInline{aerodynamics} module in the
+\gls{HAOT} package are provided below. \\
 
 \Cref{fig:aerodynamicsHaotAmbiance} calculates the dynamic viscosity \gls{HAOT}
 packages and compares the results against the
