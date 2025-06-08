@@ -10,13 +10,13 @@ used on this investigation.
             $P_{\infty}\Units{kPa}$  \\ 
             \hline \hline
             1L & OpenFOAM & $0.5$ & $288.0$ & $101.3$ \\ \hline
-            2L & SU2 & $0.5$ & $288.0$ & $101.3$ \\ \hline
+            2L & SU2 & $0.1$ & $288.0$ & $101.2$ \\ \hline
         \end{tabular}
     \caption{LES Study \label{tab:lesStudy}}
     \end{center}
 \end{table}
 
-\subsection{Internal flow}
+\subsection{OpeFOAM}
 The results presented below were obtained using the \textit{rhoPimpleFoam}
 application from \gls{OpenFOAM}, which is specifically designed for simulating
 turbulent flows of compressible fluids. For this study, the one-equation
@@ -188,3 +188,9 @@ varies with both time and space due to the evolving nature of the flow field.
 $\gls{WD}$.
 \pic{0.5}{chapter5/lesStudy/WD_mean}{\gls{WD}, assembly time
 average}{fig:wdAssemblyTimeAvg}
+
+
+
+\subsection{SU2}
+\todo{Missing SU2 LES}
+\cite{Uzun2017,Uzun2018}

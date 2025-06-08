@@ -11,17 +11,18 @@
 \input{configuration/myResources/Latex/macros/pictureMacros}
 \input{configuration/myResources/Latex/macros/codeMacros}
 \addbibresource{bibliography.bib}
-%\usepackage[text=Draft-Ch1, colorspec=0.92, scale=5]{draftwatermark} %Draft mark package
+\usepackage[text=Draft, colorspec=0.92, scale=5]{draftwatermark} %Draft mark package
 
 \begin{document}
 \listoftodos
+
 
 
 % Place holder for Symbols and Acronyms
 \subimport{src/glossary}{glossary}
 
 % Title Page
-\iffalse
+\iftrue
     \begin{titlingpage}
         \subimport{src/ch0}{chapter_0}
     \end{titlingpage}
@@ -33,7 +34,7 @@
 \setcounter{page}{1}
 
 % Lists and glossaries
-\iffalse
+\iftrue
     \subimport{src/ch0}{Abstract}
     \addcontentsline{toc}{chapter}{Abstract}
     \subimport{src/ch0}{Acknowledgments}

@@ -216,6 +216,7 @@ def main(
 
     # OPL[time, y_range], sum on x_range
     OPL = np.zeros([np.shape(flow_files)[0], len(y_range)])
+    IPython.embed(colors = 'Linux')
 
     # Make this a for loop base in time steps
     for i, val in enumerate(flow_files):
