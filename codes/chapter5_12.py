@@ -493,7 +493,7 @@ def optical_properties(
 
 def main(cfd_results_abs_path):
     fig_config = figure_configurations.figure_settings()
-    species_flag = True
+    species_flag = False
 
     if not species_flag:
         # Chemistry Composition #

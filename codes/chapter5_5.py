@@ -179,7 +179,9 @@ if __name__ == "__main__":
     # -1 is required due to the meshing ignores the last element
     index_refraction = haot.index_of_refraction_density_temperature(data_in['T'][:-1],
                                                 data_in['rho'][:-1], 'Air', 633)
-    opl_dict = haot.optical_path_length(index_refraction, data_in['Y'][:-1], 2)
+    # TODO: FIX ME 
+    opl_dict = haot.optical_path_length(index_refraction['dilute'], data_in['Y'][:-1], 2)
+    # TODO: FIX ME 
     opd_dict_t = haot.optical_path_difference(opl_dict, 0)
 
     #y_vector = [x,y], it changes based on X 
