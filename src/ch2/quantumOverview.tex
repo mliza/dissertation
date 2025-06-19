@@ -6,15 +6,15 @@
    To better understand the connection between hypersonic flows and optics,
    an overview of \Gls{QM} is necessary. \\
 
-   As previously explained in \cref{ch2:hypersonicOverview}, in a hypersonic
-   flow, the \textit{Hamiltonian} \cref{eq:hamiltonianEnergyExpansion} of a
+   As previously explained in \Cref{ch2:hypersonicOverview}, in a hypersonic
+   flow, the \textit{Hamiltonian} \Cref{eq:hamiltonianEnergyExpansion} of a
    system must be modified. In molecular spectroscopy, the \Gls{BO}
    approximation is used to represent the total energy of the
    system \cite{Gupta2016}. The \Gls{BO} approximation assumes that the wave
    function of an atomic nuclei and electrons in a molecule can be treated
    separately, base on the fact that the nuclei are much heavier than the
    electrons \cite{Lindon2016, McNab2017} and it is shown in
-   \cref{eq:bornOppWaveApprox}.
+   \Cref{eq:bornOppWaveApprox}.
    \begin{subequations}\label{eq:bornOppWaveApprox}
        \begin{align}
            \psi_{total} &= \psi_{elec}\,\psi_{vib}\,\psi_{rot}  \\
@@ -23,15 +23,15 @@
     \end{subequations}
 
     In order to calculate the wave function $\psi$, the Schr\"{o}dinger's
-    equation \cref{eq:schrodingerEq} needs to be solved.s
+    equation \Cref{eq:schrodingerEq} needs to be solved.s
     \begin{equation}\label{eq:schrodingerEq}
         \hat{H}\ket{\psi} = i\hbar\PartialFrac{}{t}\ket{\psi} 
     \end{equation}
 
    The vibration-rotation energy for a diatomic molecules approximated up to
-   the 2nd order is shown in \cref{eq:bornOppenheimerApproximation}, and the
+   the 2nd order is shown in \Cref{eq:bornOppenheimerApproximation}, and the
    general form using using the \textit{Dunham} energy coefficients is shown in
-   \cref{eq:rotVibrationalDunhamEnergy} \cite{Sun2002}.
+   \Cref{eq:rotVibrationalDunhamEnergy} \cite{Sun2002}.
     \begin{equation}\label{eq:bornOppenheimerApproximation}
         \resizebox{.9\hsize}{!}{$E_{v,J} = \underbrace{\omega_e \Parenthesis{v + \frac{1}{2}} + B_eJ\Parenthesis{J +
         1}}_{\text{Harmonic}}  - \overbrace{\omega_e x_e\Parenthesis{v +
@@ -46,12 +46,12 @@
     \end{equation}
 
     Some textbooks \cite{Harris2008} use only the
-    \textit{Harmonic} terms from \cref{eq:bornOppenheimerApproximation} to
+    \textit{Harmonic} terms from \Cref{eq:bornOppenheimerApproximation} to
     define the \textit{Hamiltonian}, which
     is a good approximation near the ground state. The vibrational energy for
     the \textit{harmonic} energy equation is given in
-    \cref{eq:vibrationalEnergy} for the vibrational term and in
-    \cref{eq:rotationalEnergy} for the rotational term. The additional terms
+    \Cref{eq:vibrationalEnergy} for the vibrational term and in
+    \Cref{eq:rotationalEnergy} for the rotational term. The additional terms
     come from perturbation theory and are called the \textit{anharmonic}
     terms \cite{Griffiths2018}.
     \begin{subequations}\label{eq:vibrationalRotationalEnergies}
@@ -66,9 +66,9 @@
     \subsection{Rotational spectroscopy}
         Spectroscopy is the practice of examining how light is absorbed,
         emitted or scattered by atoms or molecules \cite{Daily2018}.
-        \Cref{tab:spectroscopyConstant} and \cref{tab:spectroscopyConstant2}
+        \Cref{tab:spectroscopyConstant} and \Cref{tab:spectroscopyConstant2}
         provide the spectroscopy constants used to
-    calculate \cref{eq:bornOppenheimerApproximation}. These constants are given
+    calculate \Cref{eq:bornOppenheimerApproximation}. These constants are given
     in wavenumber units, which are sometimes called \textit{Kayser} units and
     are often used in spectroscopy \cite{Gauglitz2003}. These
     units represent the number of wavelengths per centimeter
@@ -102,9 +102,9 @@
             \caption{Spectroscopy energy constants for ground level \cite{Irikura2007, USDC2023}\label{tab:spectroscopyConstant}}
     \end{table}
 
-    The reduced mass ($\mu$) was calculated using \cref{eq:reducedMass} and the
+    The reduced mass ($\mu$) was calculated using \Cref{eq:reducedMass} and the
     molecular force $(k)$
-    constants are calculated using \cref{eq:forceConstant}. The molecular force
+    constants are calculated using \Cref{eq:forceConstant}. The molecular force
     constant measures the stiffness of a chemical bond.
     \begin{subequations}\label{eq:additionalDiatomicCalculations}
         \begin{align}
@@ -117,7 +117,7 @@
     \end{subequations}
 
     The characteristic translational $(T_{tr})$ and vibrational $(T_{vib})$ temperatures were
-    calculated using \cref{eq:characteristic2Tspectroscopy}.
+    calculated using \Cref{eq:characteristic2Tspectroscopy}.
     \begin{subequations}\label{eq:characteristic2Tspectroscopy}
         \begin{align}
             T_{tr} &= \frac{2\pi\hbar c_0 B_e}{k_B}
@@ -148,8 +148,8 @@
             \cite{USDC2023}\label{tab:spectroscopyConstant2}}
     \end{table}
     \textit{Kayser} units can be easily converted to energy
-    units of \textit{Joules} using \cref{eq:wavenumberToJoules} and to
-    \textit{electronvolts} using \cref{eq:wavenumberToElectronvolts}.
+    units of \textit{Joules} using \Cref{eq:wavenumberToJoules} and to
+    \textit{electronvolts} using \Cref{eq:wavenumberToElectronvolts}.
     \begin{subequations}\label{eq:wavenumberToEnergy}
         \begin{align}
             \Units{J} &= \UnitsFrac{1}{cm} \times c_0 \UnitsFrac{m}{s} \times
@@ -160,7 +160,7 @@
         \end{align}
     \end{subequations}
 
-    The \gls{ZPE} was calculated using \cref{eq:zpe} provided in
+    The \gls{ZPE} was calculated using \Cref{eq:zpe} provided in
     \cite{Irikura2007}. The \gls{ZPE} is the lowest possible energy that a
     quantum mechanical system may have. It has to be noted that this is only
     possible to be obtained for diatomic molecules, because monatomic
@@ -171,7 +171,7 @@
         \frac{\alpha_e^2\omega_e^2}{144B_e^3}
     \end{equation}
 
-    Some authors refer to the constants in \cref{tab:spectroscopyConstant} 
+    Some authors refer to the constants in \Cref{tab:spectroscopyConstant} 
     as the \textit{Dunham} coefficients \cite{Dunham1932} $\Parenthesis{Y_{ij}
     = Y_{vJ}}$ \cite{Chandra2005}. However, in the literature, these
     coefficients may also be referred to as the \textit{Dunham} potential
@@ -180,7 +180,7 @@
     potential-coefficients. These conventions will be used for the remainder
     of this work.\Cref{eq:dunhamEnergyCoefficients} provides a relationship between the
     energy coefficients and the spectroscopy constants found in
-    \cref{tab:spectroscopyConstant}.
+    \Cref{tab:spectroscopyConstant}.
     \begin{equation}\label{eq:dunhamEnergyCoefficients}
         \begin{aligned}
             Y_{00} &= ZPE   &  Y_{02} &= D_e        & Y_{11} &= -\alpha_e   &
@@ -190,8 +190,8 @@
     \end{equation}
 
     The \textit{Dunham} potential coefficients are found using
-    \cref{eq:dunhamA0} \cite{Ogilvie1976}, \cref{eq:dunhamA1,eq:dunhamA2}
-    \cite{Herschbach1961}, and \cref{eq:dunhamA3}
+    \Cref{eq:dunhamA0} \cite{Ogilvie1976}, \Cref{eq:dunhamA1,eq:dunhamA2}
+    \cite{Herschbach1961}, and \Cref{eq:dunhamA3}
     \cite{Noorizadeh2004}.
     \begin{subequations}\label{eq:dunhamPotentialCoefficients}
         \begin{align}
@@ -205,7 +205,7 @@
 
     \Cref{tab:potentialDunhamCoefficients} shows the \textit{Dunham} potential
     coefficients for multiple diatomic constants using
-    \cref{eq:dunhamPotentialCoefficients}.
+    \Cref{eq:dunhamPotentialCoefficients}.
     \begin{table}[H]
         \makebox[\linewidth][c]{
             \begin{tabular}{|c|c|c|c|c|}
@@ -222,13 +222,13 @@
             \end{tabular}
         }
             \caption{Potential \textit{Dunham} coefficients,
-            \cref{eq:dunhamPotentialCoefficients}}\label{tab:potentialDunhamCoefficients}
+            \Cref{eq:dunhamPotentialCoefficients}}\label{tab:potentialDunhamCoefficients}
     \end{table}
 
     Buldakov \cite{Buldakov2000} postulated a formulation for
     the polarizability of diatomic molecules, assuming that near the
     equilibrium internuclear distance, the polarizability can be expressed as a
-    power series \cref{eq:buldakovPowerSeriesPolarizability}.
+    power series \Cref{eq:buldakovPowerSeriesPolarizability}.
     \begin{equation}\label{eq:buldakovPowerSeriesPolarizability}
         \alpha(r,\omega) = \alpha_e + \alpha_e^{\prime}x +
             \frac{1}{2}\alpha_e^{\prime\prime}x^2 +
@@ -236,8 +236,8 @@
     \end{equation}
 
     Buldakov then expressed the polarizability of diatomic molecules using
-    \cref{eq:buldakovPolarizabilityDistance}. The full expansion of this
-    equation can be found in \cref{app:buldakovExpansion}.
+    \Cref{eq:buldakovPolarizabilityDistance}. The full expansion of this
+    equation can be found in \Cref{app:buldakovExpansion}.
     \Cref{tab:polarizabilityDerivatives} shows the polarizability derivatives
     used in this method, and it requires the \textit{Dunham}
     potential-coefficients.
@@ -265,7 +265,7 @@
     \end{table}
 
     \Cref{eq:buldakovPolarizabilityDistance} requires calculating the Boltzmann
-    distribution (\cref{eq:boltzmannDistribution}). However, the Boltzmann
+    distribution (\Cref{eq:boltzmannDistribution}). However, the Boltzmann
     distribution assumes that the system is in thermal equilibrium. \\
     
     \subsection{Statistical mechanics}
@@ -306,7 +306,7 @@ states, thereby increasing the entropy.\\
 Specifically for \gls{AO}, the Boltzmann distribution is applied to determine
 how molecules populate different vibrational and rotational energy levels as a
 function of temperature. The probability distribution used for this calculation
-is presented in \cref{eq:boltzmannDistribution}, forming a foundational step in
+is presented in \Cref{eq:boltzmannDistribution}, forming a foundational step in
 computing macroscopic \gls{EM} properties from microscopic energy state
 populations.
     \begin{equation}\label{eq:boltzmannDistribution}
@@ -323,7 +323,7 @@ populations.
     \cite{Ott2000}. Therefore, for the purposes of this approach, it is assumed
     that the system consists solely of harmonic oscillators. As a result, the
     anharmonic terms in the vibrational-rotational energy described by
-    \cref{eq:bornOppenheimerApproximation} will be neglected.
+    \Cref{eq:bornOppenheimerApproximation} will be neglected.
 
 
 %% TODO: DO I NEED THIS? %%
@@ -339,7 +339,7 @@ populations.
         \end{align*}
     \end{subequations}
 
-    The gamma coefficient is given by \cref{eq:gammaRotational} and it is
+    The gamma coefficient is given by \Cref{eq:gammaRotational} and it is
     calculated using paper \cite{Bouanich1978}
     \begin{equation}\label{eq:gammaRotational}
         \gamma = \frac{2B_e}{\omega_e}

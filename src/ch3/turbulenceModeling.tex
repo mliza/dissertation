@@ -44,7 +44,7 @@ required for accurate predictions \cite{Smits2009}.
 
 \subsection{\gls{DNS}}
 For the \gls{DNS} case, the full \gls{NS} equations
-(\cref{eq:navierStokesEquationsEins}) are resolved in both space and time
+(\Cref{eq:navierStokesEquationsEins}) are resolved in both space and time
 without the need for any turbulence modeling. However, the computational cost
 is extremely high, making it infeasible for most real-world applications. 
 \begin{subequations}\label{eq:navierStokesEquationsEins}
@@ -58,7 +58,7 @@ is extremely high, making it infeasible for most real-world applications.
 \end{subequations}
 
 The range of instantaneous scales in a turbulent flow increases rapidly with
-the Reynolds number, as given by \cref{eq:reynoldsNumber} \cite{Moin1998}. The
+the Reynolds number, as given by \Cref{eq:reynoldsNumber} \cite{Moin1998}. The
 Reynolds number, defined as:
 \begin{equation}\label{eq:reynoldsNumber}
     Re = \frac{\rho u L_c}{\mu}  = \frac{\text{Inertial Forces}}{\text{Viscous
@@ -72,7 +72,7 @@ role, suppressing turbulence and limiting the range of scales present in the
 flow. This dependence on Reynolds number is crucial in turbulence modeling, as
 it dictates the level of resolution required to accurately capture the
 turbulent structures. Let take a look at the non-dimensional form of \gls{NS}
-\cref{eq:nonDimensionalNavierStokes}.
+\Cref{eq:nonDimensionalNavierStokes}.
 \begin{equation}\label{eq:nonDimensionalNavierStokes}
     \nonDimensionalNavierStokes
 \end{equation}
@@ -81,9 +81,9 @@ separation of scales in the turbulent flow. While viscous forces remain
 significant at small scales, inertial forces increasingly dominate at higher
 Reynolds numbers. Recall that the Reynolds stress arises from the nonlinear
 convective term $\Parenthesis{ V^* \cdot \nabla} V^*$, in the momentum
-equation \cref{eq:momentumEins}. To fully resolve turbulence, we must consider
+equation \Cref{eq:momentumEins}. To fully resolve turbulence, we must consider
 the smallest scales of motion, known as the Kolmogorov scales, given by
-\cref{eq:kolmogorovScales}, these scales can be approximated to the Reynolds number by \cref{eq:kolmogorovScalesApproximation}.
+\Cref{eq:kolmogorovScales}, these scales can be approximated to the Reynolds number by \Cref{eq:kolmogorovScalesApproximation}.
 \begin{subequations}\label{eq:kolmogorovScalesApproximation}
     \begin{align}
         \frac{\eta}{l_0} \approx O\Parenthesis{Re^{-3/4}} \label{eq:kolmogorovLengthApprox} \\
@@ -112,7 +112,7 @@ approaches necessary for practical engineering problems.
 \subsection{\gls{LES}}
 In $1963$, Smagorinsky \cite{Smagorinsky1963} introduced the \gls{LES} model to
 simulate atmospheric air currents. The \gls{LES} framework is grounded in the
-energy cascade (\cref{fig:ch2EnergyCascade}) model developed by Kolmogorov in the 
+energy cascade (\Cref{fig:ch2EnergyCascade}) model developed by Kolmogorov in the 
 $1940$s, which itself builds upon the earlier work of Richardson. The
 fundamental concept behind \gls{LES} is to explicitly compute the large-scale
 motions, which are influenced flow geometry and are not universal, up to a
@@ -158,8 +158,8 @@ backscattering and are typically nonlinear, allowing for a more accurate
 representation of small-scale flow structures. 
 
 \subsection{\gls{RANS}}
-If we take the \gls{NS} \cref{eq:navierStokesEquationsEins} and apply a
-Reynolds decomposition \cref{eq:reynoldsDecomposition}
+If we take the \gls{NS} \Cref{eq:navierStokesEquationsEins} and apply a
+Reynolds decomposition \Cref{eq:reynoldsDecomposition}
 \begin{subequations}
     \begin{align}
         u &= \overline{u} + u^{\prime}\label{eq:reynoldsDecomposition} \\
@@ -168,7 +168,7 @@ Reynolds decomposition \cref{eq:reynoldsDecomposition}
 \end{subequations}
 
 We will obtain the \gls{RANS} equations give by
-\cref{eq:reynoldsAverageNavierStokesEquations}.
+\Cref{eq:reynoldsAverageNavierStokesEquations}.
 \begin{subequations}\label{eq:reynoldsAverageNavierStokesEquations}
     \begin{align}
         &\ransContinuityEins \label{eq:ransContinuity}  \\
@@ -178,9 +178,9 @@ We will obtain the \gls{RANS} equations give by
     \end{align}
 \end{subequations}
 
-The term \(\overline{u^{\prime}_i u^{\prime}_j}\) in \cref{eq:ransMomentum} is
+The term \(\overline{u^{\prime}_i u^{\prime}_j}\) in \Cref{eq:ransMomentum} is
 referred to as the \textit{Reynolds stress tensor}, as shown in
-\cref{eq:reynoldsStressTensor}. This is a symmetric tensor, meaning it has six
+\Cref{eq:reynoldsStressTensor}. This is a symmetric tensor, meaning it has six
 independent components. Consequently, by applying a Reynolds average to the
 \gls{NS} equations, six additional unknowns emerge. However, since we only have
 four equations, the system of equations remains underdetermined and is not yet
@@ -230,7 +230,7 @@ Thus, four main categories of turbulence models have evolved:
 and the dissipation rate, $\epsilon$, fully characterize all aspects of
 turbulent motion. However, in reality, $\kappa$ and $\epsilon$ are only
 sufficient to describe the inertial range of the turbulence spectrum, as
-illustrated in \cref{fig:ch2EnergyCascade} \cite{DahmNotes}. This limitation
+illustrated in \Cref{fig:ch2EnergyCascade} \cite{DahmNotes}. This limitation
 arises because \gls{RANS} models rely on statistical averaging, which
 inherently loses information about the anisotropy and non-equilibrium effects
 present in real turbulence.
