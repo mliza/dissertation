@@ -55,26 +55,37 @@ cases studied during this analysis. Most of these conditions were took from
     \Cref{fig:temperatures1C} displays a higher
     energy transfer between the translational and vibrational modes. 
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-    \hspace{-2em}
-    \subfigure[Case $1C$]{
-        \label{fig:temperatures1C}
-        \includegraphics[height=0.34\textwidth]{chapter5/chemistryComposition/1C_temperatures}
-    }
-
-    \hspace{-1.2em}
-    \subfigure[Case $2C$]{
-        \label{fig:temperatures2C}
-        \includegraphics[height=0.34\textwidth]{chapter5/chemistryComposition/2C_temperatures}
-    }
-
-    \hspace{-1.2em}
-    \subfigure[Case $3C$]{
-        \label{fig:temperatures3C}
-        \includegraphics[height=0.34\textwidth]{chapter5/chemistryComposition/3C_temperatures}
+    \centering
+    % First row: 2 subfigures side by side
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \subfigure[Case $1C$]{
+            \label{fig:temperatures1C}
+            \includegraphics[width=\linewidth]{chapter5/chemistryComposition/1C_temperatures}
         }
-}
-\caption{\label{fig:temperaturesChemistryComposition}Temperature results for cases in
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \subfigure[Case $2C$]{
+            \label{fig:temperatures2C}
+            \includegraphics[width=\linewidth]{chapter5/chemistryComposition/2C_temperatures}
+        }
+    \end{minipage}
+
+    % Vertical space between rows
+    \vspace{1em}
+
+    % Second row: 1 centered subfigure
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \subfigure[Case $3C$]{
+            \label{fig:temperatures3C}
+            \includegraphics[width=\linewidth]{chapter5/chemistryComposition/3C_temperatures}
+        }
+    \end{minipage}
+
+    \caption{\label{fig:temperaturesChemistryComposition}Temperature results for cases in
         \Cref{tab:chemistryCompositionStudyMassFraction}}
 \end{figure}
 % Temperatures %
@@ -97,30 +108,40 @@ cases studied during this analysis. Most of these conditions were took from
     $5\Units{n s}$.
 % Mass Fraction %%
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-        \hspace{-2em}
-        \subfigure[Case $1C$] 
-        {
+\noindent
+\hspace*{-0.03\textwidth}
+\begin{minipage}{\textwidth}
+    % First row: two subfigures
+    \begin{minipage}[t]{0.42\textwidth}
+        \centering
+        \subfigure[Case $1C$]{
             \label{fig:massFraction1C}
-            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/1C_massFraction}
+            \includegraphics[height=\linewidth]{chapter5/chemistryComposition/1C_massFraction}
         }
-
-        \hspace{-1em}
-        \subfigure[Case $2C$] 
-        {
+    \end{minipage}
+    \hspace{0.08\textwidth}  % small gap between the two figures
+    \begin{minipage}[t]{0.42\textwidth}
+        \centering
+        \subfigure[Case $2C$]{
             \label{fig:massFraction2C}
-            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/2C_massFraction}
+            \includegraphics[height=\linewidth]{chapter5/chemistryComposition/2C_massFraction}
         }
-
-        \hspace{-1em}
-        \subfigure[Case $3C$] 
-        {
+    \end{minipage}
+    \vspace{1em}
+    % Second row: centered subfigure
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3C$]{
             \label{fig:massFraction3C}
-            \includegraphics[height=0.35\textwidth]{chapter5/chemistryComposition/3C_massFraction}
+            \includegraphics[height=\linewidth]{chapter5/chemistryComposition/3C_massFraction}
         }
-}
+    \end{minipage}
+    \end{center}
+
     \caption{\label{fig:massFractionChemistryComposition}Mass fraction results for cases in
     \Cref{tab:chemistryCompositionStudyMassFraction}}
+\end{minipage}
 \end{figure}
 % Mass Fraction %%
 
@@ -152,32 +173,40 @@ cases studied during this analysis. Most of these conditions were took from
     known, in a nonequilibrium flow, the high temperatures cause molecular
     dissociation. 
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-    \hspace{-2em}
-
-    \subfigure[Case $1C$] 
-    {
+\noindent
+\hspace*{-0.03\textwidth}
+\begin{minipage}{\textwidth}
+    % First row: two subfigures
+    \begin{minipage}[t]{0.42\textwidth}
+        \centering
+        \subfigure[Case $1C$]{
         \label{fig:speciesGladstoneDale1C}
-        \includegraphics[height=0.34\textwidth]{chapter5/chemistryComposition/1C_speciesGladstoneDale}
-    }
-
-    \hspace{-1.2em}
-    \subfigure[Case $2C$] 
-    {
+        \includegraphics[height=\linewidth]{chapter5/chemistryComposition/1C_speciesGladstoneDale}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}  % small gap between the two figures
+    \begin{minipage}[t]{0.42\textwidth}
+        \centering
+        \subfigure[Case $2C$]{
         \label{fig:speciesGladstoneDale2C}
-        \includegraphics[height=0.34\textwidth]{chapter5/chemistryComposition/2C_speciesGladstoneDale}
-    }
-
-    \hspace{-1.2em}
-    \subfigure[Case $3C$] 
-    {
+        \includegraphics[height=\linewidth]{chapter5/chemistryComposition/2C_speciesGladstoneDale}
+        }
+    \end{minipage}
+    \vspace{1em}
+    % Second row: centered subfigure
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3C$]{
         \label{fig:speciesGladstoneDale3C}
-        \includegraphics[height=0.34\textwidth]{chapter5/chemistryComposition/3C_speciesGladstoneDale}
-    }
-}
+        \includegraphics[height=\linewidth]{chapter5/chemistryComposition/3C_speciesGladstoneDale}
+        }
+    \end{minipage}
+    \end{center}
     \caption{\label{fig:speciesGladstoneDaleChemistryComposition}Species
     \gls{GD} results for cases in
     \Cref{tab:chemistryCompositionStudyMassFraction}}
+\end{minipage}
 \end{figure}
     % Gladstone Species %
 
