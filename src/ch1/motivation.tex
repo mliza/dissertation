@@ -1,18 +1,18 @@
     \section{Motivation\label{ch1:motivation}}
-        Several reports in the classified and unclassified
-        \cite{Jones2009, ChiefScientistAirForce2010, Stone2022} environment have stated
-        the concern of \gls{AO} effects at hypersonic speeds to be of
-        paramount importance for national security. Applied work in this field
-        is not only being done by national laboratories such as \gls{LLNL},
-        \gls{JHU}-\gls{APL}, \gls{LANL} but also by the
-        \gls{DoD} contractors such as Lockheed Martin Corp.,
-        Northrop Grumman Corp., Raytheon Technologies. As expected most of
-        this work is limited in the open literature. However, there is some
-        fundamental lacking of understanding of the effects of nonequilibrium
-        hypersonic flows in \gls{AO} applications that this dissertation aims to
-        answer. For instance, how much \gls{EM} properties such as speed of
-        light, dielectric constant and index of refraction are affected by
-        hypersonic flows. \\
+        Several reports, both classified and unclassified \cite{Jones2009,
+ChiefScientistAirForce2010, Stone2022}, have identified \gls{AO} effects at
+hypersonic speeds as a matter of paramount importance for national security.
+Applied research in this area is being conducted not only at national
+laboratories such as \gls{LLNL}, \gls{JHU}-\gls{APL}, and \gls{LANL}, but also
+by major \gls{DoD} contractors, including Lockheed Martin Corp., Northrop
+Grumman Corp., and Raytheon Technologies. As expected, much of this work
+remains absent from the open literature. Nevertheless, there remains a
+fundamental lack of understanding regarding the influence of high-enthalpy
+flows at hypersonic speeds on \gls{AO} applications. This dissertation seeks to
+address some of these knowledge gaps through high-fidelity \gls{CFD}
+simulations, with the aim of characterizing the impact of high-enthalpy flow on
+\gls{AO}-relevant properties, such as the index of refraction, dielectric
+constant, and polarizability. \\
 
         \Cref{fig:ch1strategicWeapon} illustrates the notional flight paths for
         various long-range weapons. Accurate target detection is of paramount
@@ -107,6 +107,19 @@
         effects such as shock wave and boundary layer interactions has on the
         optical beam.\\
 
+        For subsonic
+        flows, it might be a valid assumption to ignore the aerodynamic effects
+        on the optical beam; however for supersonic and specially for
+        hypersonic flows this assumption has to be revisit. During a hypersonic
+        flight the temperatures behind the shock are very high, that will no
+        only induce thermal noise on the sensor but will also affect the
+        electromagnetic properties that will influence the sensor's
+        performance. Hence a higher distortion as well as power loss will be
+        expected in a hypersonic flow. Being able to accurately understand this
+        is of importance to build accurate sensors that can not only target
+        objects moving at these speeds, but can also accurate predict targets
+        from an object moving at hypersonic speeds.\\
+
         \Cref{fig:ch1AeroOpticsSchematic}, shows the path that a beam in a
         hypersonic flight will follow. The beam has to travel across the
         isolated gas, the radome, the boundary layer, shock layer and lastly
@@ -117,7 +130,7 @@
         layer and shock layer change. 
         \pic{0.8}{chapter1/aeroOpticsSchematic}{Optics Schematic}{fig:ch1AeroOpticsSchematic}
 
-        Aero-optical investigations can be split into four quadrants as shown
+        \gls{AO} investigation can be split into four quadrants as shown
         in \Cref{tab:ch1AeroOpticalFidelities}. The optical parameters are
         contingent on the degree to which turbulence eddy resolution and
         turbulence fluctuations are captured in the \gls{CFD} simulation. In cases where a lower level of flow
@@ -133,8 +146,10 @@
         This includes nonequilibrium, reactive flows, and excitation of
         molecular internal modes, all of which can affect optical signals
         either directly or indirectly; these are shown in the top Quadrants.
-        This work aims to develope an open-source \gls{AO} tool to investigate
-        all quandrants. However, the results will be focus on Quadrants II and
-        III.
+        This work investigates Quadrant III in
+        \Cref{tab:ch1AeroOpticalFidelities}, by using results from
+        high-fidelity \gls{CFD} simulations. These results are then
+        post-process using a Open-Source tool developed in this dissertation.
+        This tool has the capability of post processing results from all four
+        Quadrants.
         \input{aeroOpticsQuadrant}
-    A conference paper focusing on Quadrant III was published by Liza et al. \cite{Liza2023}. In this paper, the authors examined the impact of high temperatures and nonequilibrium conditions on polarizability. Additionally, they investigated the effects of Mach number, turbulence, and chemistry modeling on optical properties, including the index of refraction and the dielectric constant of air.
