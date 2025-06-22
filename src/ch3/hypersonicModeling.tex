@@ -108,10 +108,9 @@ individual energy states, enabling detailed resolution of thermochemical
 nonequilibrium phenomena that are inaccessible to lower-fidelity models.
 
 \subsection{\Gls{SU2}--\Gls{NEMO}}
-\todo{Update SU2-NEMO}
 To numerically solve the nonequilibrium governing equations incorporating these
 thermochemical effects, the open-source \gls{CFD} solver \Gls{SU2}--\Gls{NEMO}
-\cite{Maier2023a} is used. \Gls{SU2}--\Gls{NEMO} extends the \Gls{SU2}
+\cite{Maier2021,Maier2023a} is used. \Gls{SU2}--\Gls{NEMO} extends the \Gls{SU2}
 framework to model continuum flows in thermochemical nonequilibrium by solving
 the multicomponent Navier–Stokes equations with appropriate source terms for
 chemical reactions and internal energy relaxation. These equations are
@@ -128,12 +127,6 @@ optical properties in hypersonic environments.
 \begin{equation}\label{eq:nonequilibriumGoverningEqConservativeB}
     \ScaleMath{0.72}{\nonequilibriumGoverningEqConservativeB}
 \end{equation}
-
-
-
-
-
-
-
-
-
+where $\mathcal{U}$ are the conservative variables, $\mathcal{F}^c$ are the
+convective fluxes, $\mathcal{F}^{v}$ are the viscous fluxes, and $\mathcal{Q}$
+source terms
