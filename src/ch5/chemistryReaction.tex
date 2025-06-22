@@ -601,28 +601,41 @@ radius of the vehicle. When chemistry effects are neglected, the density ratio
 across the shock is greater, and as a result, the shock standoff distance is
 larger compared to when chemistry effects are taken into account.
 % Stagnation Temperatures % 
-\todo{Stopped Figures Fixing here}
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-    \hspace{-2em}
-
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R — larger and closer
+    \hspace*{-0.05\textwidth}  % Slight left shift
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_temperatures.pdf}
+            \includegraphics[width=\linewidth]{chapter5/chemistryReaction/1R_temperatures.pdf}
         }
-
-        \hspace{-2em}
+    \end{minipage}
+    \hspace{0.05\textwidth}  % Reduced horizontal space
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_temperatures.pdf}
+            \includegraphics[width=\linewidth]{chapter5/chemistryReaction/2R_temperatures.pdf}
         }
+    \end{minipage}
 
-        \hspace{-2em}
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}  % Slightly wider to emphasize
+        \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_temperatures.pdf}
+            \includegraphics[width=\linewidth]{chapter5/chemistryReaction/3R_temperatures.pdf}
         }
-    }
+    \end{minipage}
+    \end{center}
+
     \caption{Stagnation temperatures: solid lines represent the nonequilibrium
-    cases, while dashed lines represent the frozen cases
-    \label{fig:stagnationTemperatures}}
+    cases, while dashed lines represent the frozen cases.}
+    \label{fig:stagnationTemperatures}
+\end{minipage}
 \end{figure}
 % Stagnation Temperatures % 
 
@@ -630,23 +643,39 @@ larger compared to when chemistry effects are taken into account.
 different mach numbers for a frozen and nonequilibrium flow.
 % Stagnation pressures % 
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-    \hspace{-2em}
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_pressures.pdf}
+            \includegraphics[width=\linewidth]{chapter5/chemistryReaction/1R_pressures.pdf}
         }
-
-        \hspace{-2em}
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_pressures.pdf}
+            \includegraphics[width=\linewidth]{chapter5/chemistryReaction/2R_pressures.pdf}
         }
+    \end{minipage}
 
-        \hspace{-2em}
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_pressures.pdf}
+            \includegraphics[width=\linewidth]{chapter5/chemistryReaction/3R_pressures.pdf}
         }
-    }
-    \caption{Stagnation pressures\label{fig:stagnationPressures}}
+    \end{minipage}
+    \end{center}
+
+    \caption{Stagnation pressures.}
+    \label{fig:stagnationPressures}
+\end{minipage}
 \end{figure}
 % Stagnation Pressures % 
 
@@ -666,25 +695,39 @@ required to overcome the dissociation energy of molecular species, leading to
 greater production of \ce{NO}, \ce{O}, and \ce{N}.
 % Stagnation mass fraction % 
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-    \hspace{-2em}
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_massFraction.pdf}
+            \includegraphics[width=\linewidth]{chapter5/chemistryReaction/1R_massFraction.pdf}
         }
-
-        \hspace{-2em}
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_massFraction.pdf}
+            \includegraphics[width=\linewidth]{chapter5/chemistryReaction/2R_massFraction.pdf}
         }
+    \end{minipage}
 
-        \hspace{-2em}
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_massFraction.pdf}
+            \includegraphics[width=\linewidth]{chapter5/chemistryReaction/3R_massFraction.pdf}
         }
-    }
+    \end{minipage}
+    \end{center}
     \caption{Stagnation mass fractions: solid lines represent the nonequilibrium
     cases, while dashed lines represent the frozen
     cases\label{fig:stagnationMassFraction}}
+\end{minipage}
 \end{figure}
 % Stagnation mass fraction % 
 
@@ -699,25 +742,39 @@ trend very similar to that of the mass fractions; hence, the results presented
 here closely resemble those in \Cref{fig:stagnationMassFraction}.
 % Stagnation species GD % 
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-    \hspace{-2em}
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_speciesGD.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/1R_speciesGD.pdf}
         }
-
-        \hspace{-2em}
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_speciesGD.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/2R_speciesGD.pdf}
         }
+    \end{minipage}
 
-        \hspace{-2em}
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_speciesGD.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/3R_speciesGD.pdf}
         }
-    }
+    \end{minipage}
+    \end{center}
     \caption{Stagnation species \gls{GD}: solid lines represent the nonequilibrium
     cases, while dashed lines represent the frozen
     cases\label{fig:stagnationSpeciesGD}}
+\end{minipage}
 \end{figure}
 % Stagnation species GD % 
 
@@ -732,23 +789,37 @@ thermodynamic and chemical state of the flow. The dependence of the total
 to the dynamic and thermal state of the system.
 % Stagnation total GD % 
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-    \hspace{-2em}
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_totalGD.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/1R_totalGD.pdf}
         }
-
-        \hspace{-2em}
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_totalGD.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/2R_totalGD.pdf}
         }
+    \end{minipage}
 
-        \hspace{-2em}
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_totalGD.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/3R_totalGD.pdf}
         }
-    }
+    \end{minipage}
+    \end{center}
     \caption{Stagnation total \gls{GD} \label{fig:stagnationTotalGD}}
+\end{minipage}
 \end{figure}
 % Stagnation total GD % 
 
@@ -765,24 +836,38 @@ in a more accurate representation of the index of refraction and associated
 flow properties.
 % Index of Refraction% 
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-    \hspace{-2em}
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_indexOfRefraction.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/1R_indexOfRefraction.pdf}
         }
-
-        \hspace{-2em}
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_indexOfRefraction.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/2R_indexOfRefraction.pdf}
         }
+    \end{minipage}
 
-        \hspace{-2em}
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_indexOfRefraction.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/3R_indexOfRefraction.pdf}
         }
-    }
+    \end{minipage}
+    \end{center}
     \caption{Stagnation index of refraction
     \label{fig:stagnationIndexOfRefraction}}
+\end{minipage}
 \end{figure}
 % Index of Refraction% 
 
@@ -801,23 +886,37 @@ modeling of nonequilibrium effects is therefore essential for predicting and
 mitigating signal degradation in high-speed aerospace applications.
 % Electric Susceptibility % 
 \begin{figure}[H]
-    \makebox[\textwidth][c]{
-    \hspace{-2em}
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/1R_electricSusceptibility.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/1R_electricSusceptibility.pdf}
         }
-
-        \hspace{-2em}
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/2R_electricSusceptibility.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/2R_electricSusceptibility.pdf}
         }
+    \end{minipage}
 
-        \hspace{-2em}
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=0.44\textwidth]{chapter5/chemistryReaction/3R_electricSusceptibility.pdf}
+            \includegraphics[width=\textwidth]{chapter5/chemistryReaction/3R_electricSusceptibility.pdf}
         }
-    }
+    \end{minipage}
+    \end{center}
     \caption{Electric susceptibility at stagnation
     line\label{fig:stagnationElectricSusceptibility}}
+\end{minipage}
 \end{figure}
 % Electric Susceptibility % 
