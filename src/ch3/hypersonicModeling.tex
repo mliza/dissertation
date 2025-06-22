@@ -1,20 +1,41 @@
 \section{Hypersonic Modeling\label{ch3:hypersonicModeling}}
-
 In hypersonic flows, the fluid can no longer be assumed to be in chemical and
-thermal equilibrium. Consequently, the \gls{NS} equations must be
+thermal equilibrium \cite{Candler2019}. Consequently, the \gls{NS} equations must be
 modified to account for nonequilibrium effects. \Cref{eq:navierStokesNoneq}
 presents the multicomponent \gls{NS} equations, which involve $4N+19$ unknowns
 \cite{Daily2018}.
 \begin{subequations}\label{eq:navierStokesNoneq}
     \begin{align}
         &\continuityEins \label{eq:noneqSpeciesContinuity}\\
-        &\noneqSpeciesContinuityEins \label{eq:speciesContinuityEinsNoneq} \\
+        &\noneqSpeciesContinuityEins \label{eq:noneqSpecies} \\
         &\noneqMomentumEins \label{eq:noneqMomentum} \\
         &\noneqEnergyEins \label{eq:noneqEnegy}
     \end{align}
 \end{subequations}
+The addition of the evolution of the mass of the chemical species $s$
+\Cref{eq:noneqSpecies} gives the addition needed to account for chemical
+reactions. As an example lets look at diatomic nitrogen:  
+\begin{equation}\label{eq:diatomicNitrogen}
+    \ce{N2 + M \rightleftharpoons N + N + M}
+\end{equation}
+The source term for the diatomic nitrogen is given on
+\Cref{eq:diatomicNitrogenSourceTerm}
+\begin{equation}\label{eq:diatomicNitrogenSourceTerm}
+    w_{N_2} = -M_{N_2} \SqBracket{\frac{\rho_{N_2}}{M_{N_2}}
+    \sum_{s}k_{f,s}\frac{\rho_s}{M_s} - \Parenthesis{\frac{\rho_N}{M_N}}^2 \sum_{s}
+    k_{b,s}\frac{\rho}{M_s}  }
+\end{equation}
+Usually the dissociation rate is computed from a temperature-dependent
+\textit{Arrhenius} reaction rate, and the combination rate is set so that the
+source term is zero in thermodynamic equilibrium \cite{Candler2019}.  \\
 
-The multicomponent \gls{NS} equations can be solved using:
+The total energy term in \Cref{eq:noneqEnegy} can be decomposed as: 
+\begin{equation}\label{eq:totalDecomposedNoneqEnergy}
+    E = \sum_s \rho_s\Parenthesis{e_{tr,s} + e_{int,s} + h_s^{o} } +
+    \frac{1}{2}\rho u_k u_k
+\end{equation}
+
+The multicomponent \gls{NS} equations can be solved using some of the models:
 \begin{itemize}
     \item \textbf{Single-temperature $(1T)$ models:} All energy modes
         (translational, rotational, vibrational and electronic) are in
@@ -31,7 +52,6 @@ The multicomponent \gls{NS} equations can be solved using:
         state-to-state transition \cite{Josyula2017}. Highest fidelity, highest
         computational cost.
 \end{itemize}
-
 
 \subsection{Two-Temperature}
 The two-temperature $(2T)$ approach is one of the most commonly used models for
@@ -70,17 +90,25 @@ k_d = A e^{- \beta E_a }
 \end{equation}
 where $A$ is a pre-exponential factor, $\beta$ is the thermodynamic beta, and $E_a$ is the activation energy for the dissociation or reaction process. These reaction rates govern the time scales of chemical nonequilibrium and are essential for modeling high-temperature reacting flows in hypersonic regimes.
 
-\subsection{State to State}
+\subsection{\acrfull{StS}}
+The \gls{StS} approach is a higher-fidelity model used to describe energy
+transfer in nonequilibrium gas dynamics. In contrast to the $2T$ model,
+\gls{StS} directly simulates the population of each discrete internal energy
+state, such as individual vibrational and electronic levels. These populations
+evolve according to a system of master equations, which account for energy
+exchange between states due to collisional and radiative processes.\\
 
+The transition rates between states are state-specific and are typically
+obtained through quantum chemistry methods such as quasi-classical trajectory
+(\gls{QCT}) calculations \cite{Andrienko2017,Chaudhry2019}, or through more
+generalized semi-empirical models like the forced harmonic oscillator
+(\gls{FHO}) approach \cite{Adamovich1998a}. These rates capture excitation,
+de-excitation, dissociation, and recombination processes at the level of
+individual energy states, enabling detailed resolution of thermochemical
+nonequilibrium phenomena that are inaccessible to lower-fidelity models.
 
-\todo{Update this section with Candler \cite{Candler2019}, Hanquist
-\cite{Hanquist2020}} 
-
-
-
-
-
-
+\subsection{\Gls{SU2}--\Gls{NEMO}}
+\todo{Update SU2-NEMO}
 To numerically solve the nonequilibrium governing equations incorporating these
 thermochemical effects, the open-source \gls{CFD} solver \Gls{SU2}--\Gls{NEMO}
 \cite{Maier2023a} is used. \Gls{SU2}--\Gls{NEMO} extends the \Gls{SU2}
@@ -92,7 +120,7 @@ expressed compactly in conservation form in
 \Cref{eq:nonequilibriumGoverningEqConservativeB}. The solver incorporates
 detailed thermodynamic models, finite-rate chemical kinetics, and energy
 exchange mechanisms, making it suitable for predicting both fluid dynamic and
-optical properties in hypersonic environments.
+optical properties in hypersonic environments. 
 \begin{equation}\label{eq:nonequilibriumGoverningEqConservativeA}
     \nonequilibriumGoverningEqConservativeA
 \end{equation}
@@ -100,3 +128,12 @@ optical properties in hypersonic environments.
 \begin{equation}\label{eq:nonequilibriumGoverningEqConservativeB}
     \ScaleMath{0.72}{\nonequilibriumGoverningEqConservativeB}
 \end{equation}
+
+
+
+
+
+
+
+
+
