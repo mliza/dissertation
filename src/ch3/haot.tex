@@ -1,0 +1,96 @@
+\section{\acrfull{HAOT}\label{ch3:haot}}
+An open-source tool, \gls{HAOT}, has been developed to perform \gls{AO}
+analysis using \gls{CFD} results as input. This tool enables automated
+post-processing of flowfield data to extract relevant optical metrics in
+hypersonic nonequilibrium regimes, aiding in the analysis and prediction of
+aero-optical distortions. \gls{HAOT} is published on
+\href{https://pypi.org/project/haot/}{PyPI}, with its source code hosted on
+\href{https://github.com/mliza/HAOT}{GitHub}, and its documentation provided on
+\href{https://haot.readthedocs.io/en/latest/}{Read the Docs}. The current
+version $1.1.2$ of \gls{HAOT} includes five modules:
+\begin{itemize} 
+\item \textbf{Aerodynamics:} Implements commonly used aerodynamic functions.
+\item \textbf{Optics:} Provides equations used in aero-optics and hypersonic
+    flow analysis.
+\item \textbf{Quantum Mechanics:} Offers commonly used quantum mechanical
+    functions relevant to hypersonic flow.
+\item \textbf{Constants:} Contains various constants, primarily
+    spectroscopy-related used in optics.
+\item \textbf{Conversion:} Provides a suite of conversion functions used in
+    this module. 
+\end{itemize}
+
+Validation results are provided in subsequent sections. The constants and
+conversion functions were validated through visual inspection. The primary
+objective of \gls{HAOT} is to enable researchers to perform optical analysis
+using \gls{CFD} results. \gls{HAOT} is an open-source tool designed with the
+intention of allowing other developers to expand its current functionalities.
+The goal of the tool is to serve as a \textit{software blueprint} that provides
+a foundational framework for researchers, particularly in academia, where
+software tools are often poorly written, inadequately tested, insufficiently
+documented, and underdeveloped \cite{Robillard1998,Liu2008}. Comprehensive
+documentation for the tool, including usage instructions with or without
+\gls{CFD} data, can be found on the
+\href{https://haot.readthedocs.io/en/latest/}{documentation page}. \\
+
+The \gls{HAOT} tool is integrated with a GitHub Actions pipeline that is
+automatically triggered whenever a \gls{PR} is submitted. This \gls{CI}
+workflow ensures the integrity of the codebase by running automated tests and
+checks to verify that new contributions do not introduce errors or regressions.
+By validating each proposed change before it is merged, the pipeline plays a
+critical role in maintaining the stability, reliability, and reproducibility of
+the \gls{HAOT} software. \\
+
+In addition to the unit tests, every time a \gls{PR} is merged into the main
+branch, the project’s documentation is automatically regenerated and published
+to the official \href{https://haot.readthedocs.io/en/latest/}{documentation
+page}. This automated deployment ensures that the documentation remains
+synchronized with the latest version of the codebase, providing users and
+developers with up-to-date information about the functionality, usage, and
+configuration of the \gls{HAOT} tool. The process is managed through a \gls{CD}
+pipeline, which integrates with Read the Docs to streamline the publication of
+updated content. \\ 
+
+Defensive programming is the core software development technique employed in
+the development of the \gls{HAOT} tool. Defensive programming is a software
+safety and reliability practice that operates under the assumption that any
+input, even from seemingly reliable sources, may be erroneous, malicious, or
+unexpected. As such, the program is designed to anticipate and handle incorrect
+usage, edge cases, and failures gracefully \cite{Denault2006}. \\
+
+In the context of \gls{HAOT}, this means that every user-provided input—such as
+simulation files, physical parameters, numerical data, and file paths—is
+rigorously validated before the program proceeds with any operations. Input
+validation routines check for correct data types, valid ranges, logical
+consistency, and completeness to prevent the software from executing under
+invalid or dangerous conditions. This ensures robustness, fault tolerance, and
+easier debugging, especially in high-stakes engineering contexts where accuracy
+and reliability are critical. \\
+
+\Cref{fig:defensiveProgramming} illustrates the structure and philosophy behind
+the function implementation in this work. By design, each function assumes that
+the user may provide invalid or nonsensical input—commonly referred to as
+"garbage in."\\
+
+The first check is for undefined inputs. For example, if the function prototype
+requires a positive integer and the user instead passes a string, the function
+will catch this mismatch and output an appropriate error message. \\
+
+The second layer checks for logical errors. Suppose the correct input type is
+provided (an integer), but the value is semantically incorrect (e.g., a
+negative number instead of a positive one). In that case, the function again
+detects the issue and halts execution with an informative error. \\
+
+Only after passing these two layers of input validation—type correctness and
+semantic correctness—does the function proceed to the solution space, where the
+actual computation or processing is performed.  
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=0.5\textwidth]{chapter3/defensiveProgramming}}
+    \caption{Defensive Programmings}\label{fig:defensiveProgramming}
+\end{figure}
+By adopting a defensive programming paradigm, \gls{HAOT} is more resistant to
+crashes, data corruption, and unintended behavior, which is particularly
+important in research tools used for high-fidelity scientific computing and
+analysis in hypersonic \gls{AO} simulations.
+
+Results to the unit test can be found on the \Cref{app:haotResults}.

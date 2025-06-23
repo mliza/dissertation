@@ -1,0 +1,48 @@
+\section{Quantum Mechanics\label{ch4:quantumMechanics}}
+The \gls{HAOT}, \myPythonInline{quantum_mechanics} module contains the following
+functions. Refer to the
+\href{https://haot.readthedocs.io/en/latest/modules/quantum_mechanics.html}{quantum
+mechanics documentation}
+to see the implementation of each function.
+\begin{itemize}
+    \item \myPythonInline{zero_point_energy}
+    \item \myPythonInline{vibrational_partition_function}
+    \item \myPythonInline{rotational_partition_function}
+    \item \myPythonInline{born_oppenheimer_partition_function}
+    \item \myPythonInline{potential_dunham_coef_012}
+    \item \myPythonInline{potential_dunham_coeff_m}
+    \item \myPythonInline{boltzmann_factor}
+    \item \myPythonInline{boltzmann_distribution}
+    \item \myPythonInline{born_oppenheimer_approximation}
+    \item \myPythonInline{vibrational_energy_k}
+    \item \myPythonInline{rotational_energy_k}
+    \item \myPythonInline{characteristic_temperatures_K}
+    \item \myPythonInline{reduced_mass_kg}
+    \item \myPythonInline{molecular_spring_constant}
+\end{itemize}
+Unit test results for the \myPythonInline{quantum_mechanics} module in the
+\gls{HAOT} package are provided below. \\
+
+\Cref{fig:harmonicBoltzmannN2,fig:harmonicBoltzmannO2,fig:harmonicBoltzmannNO}
+show the Boltzmann Distribution \Cref{eq:boltzmannDistribution}, which was
+implemented using \gls{HAOT}. As expected, the Boltzmann Distribution
+demonstrates that most of the energy is concentrated in the lower energy
+levels. Additionally, the temperature has an effect on the kurtosis; as the
+temperature increases, the kurtosis decreases.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=0.65\textwidth]{chapter4/boltzmannDistribution_N2}}
+    \caption{Harmonic Boltzmann Distribution for
+    $\ce{N2}$}\label{fig:harmonicBoltzmannN2}
+\end{figure}
+
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=0.65\textwidth]{chapter4/boltzmannDistribution_O2}}
+    \caption{Harmonic Boltzmann Distribution for
+    $\ce{O2}$}\label{fig:harmonicBoltzmannO2}
+\end{figure}
+
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=0.65\textwidth]{chapter4/boltzmannDistribution_NO}}
+    \caption{Harmonic Boltzmann Distribution for
+    $\ce{NO}$}\label{fig:harmonicBoltzmannNO}
+\end{figure}

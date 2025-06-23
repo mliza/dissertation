@@ -1,0 +1,45 @@
+\section{Aerodynamics\label{ch4:aerodynamics}}
+The \gls{HAOT}, \myPythonInline{aerodynamics} module contains the following
+functions. Refer to the
+\href{https://haot.readthedocs.io/en/latest/modules/aerodynamics.html}{aerodynamics documentation}
+to see the implementation of each function.
+\begin{itemize}
+    \item \myPythonInline{sutherland_law_viscosity}  
+    \item \myPythonInline{sutherland_law_conductivity}  
+    \item \myPythonInline{air_atomic_molar_mass}
+    \item \myPythonInline{speed_of_sound}
+    \item \myPythonInline{isentropic_relations}
+    \item \myPythonInline{normal_shock_relation}
+    \item \myPythonInline{oblique_shock_angle}
+    \item \myPythonInline{oblique_shock_relations}
+\end{itemize}
+
+Unit test results for the \myPythonInline{aerodynamics} module in the
+\gls{HAOT} package are provided below. \\
+
+\Cref{fig:aerodynamicsHaotAmbiance} calculates the dynamic viscosity \gls{HAOT}
+packages and compares the results against the
+\href{https://ambiance.readthedocs.io/en/latest/}{Ambiance} package, which is
+an implementation of the \textit{ICAO Standard Atmosphere 1993} manual \cite{InternationalCivilAviationOrganization1993}.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter4/aerodynamics}}
+    \caption{Ambiance Vs. \gls{HAOT}}\label{fig:aerodynamicsHaotAmbiance}
+\end{figure}
+
+\Cref{fig:thetaBetaMachCurvesComparison} compares the solution of the
+$\theta-\beta-M$ for a $M=5$ using results from \gls{HAOT} and Anderson
+\cite{Anderson2004}. The \gls{HAOT} results show good agreement with the
+results published by Anderson.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter4/obliqueShockComparisonM5.pdf}}
+    \caption{$\theta-\beta-M$ curve for $M=5$ using
+    \gls{HAOT} and Anderson \cite{Anderson2004}}\label{fig:thetaBetaMachCurvesComparison}
+\end{figure}
+
+\Cref{fig:thetaBetaMachCurves} shows the $\theta-\beta-M$ curves for multiple
+mach numbers using \gls{HAOT}. 
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth]{chapter4/obliqueShockRelations.pdf}}
+    \caption{$\theta-\beta-M$ curves using
+    \gls{HAOT}}\label{fig:thetaBetaMachCurves}
+\end{figure}
