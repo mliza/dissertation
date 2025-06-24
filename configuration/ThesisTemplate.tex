@@ -78,9 +78,11 @@
              pdfsubject={Licensed under CC BY-NC-SA 4.0},
              pdfpagemode={FullScreen},
             }
-
-%Headers and Footers
+% Headers and Footers
+\usepackage{fancyhdr}
 \pagestyle{fancyplain}
-\rhead{\fancyplain{}{\thepage}}
-\cfoot{}
-\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}                        % clear all header and footer fields
+\rhead{\fancyplain{}{\thepage}}  % right header: page number
+\lhead{}                          % left header: clear it
+\cfoot{}                          % center footer: clear it
+\renewcommand{\headrulewidth}{0pt} % remove horizontal line in header
