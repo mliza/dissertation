@@ -15,6 +15,7 @@
 ## Ignore data folder
 resultsCFD/
 codes/figures
+external/
 
 ## Glossary stuff ##
 *.gls-abr
@@ -26,6 +27,7 @@ codes/figures
 *.dvi
 *.xdv
 *-converted-to.*
+.DS_Store
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
