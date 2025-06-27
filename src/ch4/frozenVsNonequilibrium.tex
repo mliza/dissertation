@@ -2,7 +2,7 @@
 
 This section investigates \gls{AO} properties at various Mach numbers for a
 hypersonic vehicle and compares the results between frozen flow and
-nonequilibrium flow conditions. \Cref{tab:chemistryReactionStudy} summarizes
+nonequilibrium flow conditions. \Cref{tab:frozenVsNonequilibriumStudy} summarizes
 the key characteristics of each case analyzed. The gas composition if the same
 composition from \Cref{tab:speciesStudyMassFraction}.
 \begin{table}[H]
@@ -17,7 +17,7 @@ composition from \Cref{tab:speciesStudyMassFraction}.
             $2R$\cite{Mackey2019} & $13.2$ & $1000$ & $293$ & $1200$ & $10.25$ & $146$ \\\hline
             $3R$\cite{Mackey2019} & $15.2$ & $1000$ & $293$ & $1200$ & $13.60$ & $193$ \\\hline
         \end{tabular}
-    \caption{Chemistry Study \label{tab:chemistryReactionStudy}}
+    \caption{Chemistry Study \label{tab:frozenVsNonequilibriumStudy}}
     \end{center}
 \end{table}
 
@@ -33,24 +33,24 @@ the mesh used in this work.
     \subfigure[IRV-2 vehicle]
     {
         \label{fig:IRV2}
-        \includegraphics[height=0.5\textwidth]{chapter4/chemistryReaction/irv2}
+        \includegraphics[height=0.5\textwidth]{chapter4/frozenVsNonequilibrium/irv2}
     }
     \subfigure[IRV-2 mesh]
     {
         \label{fig:IRV2Mesh}
-        \includegraphics[height=0.5\textwidth]{chapter4/chemistryReaction/1R_frozenMesh}
+        \includegraphics[height=0.5\textwidth]{chapter4/frozenVsNonequilibrium/1R_frozenMesh}
     }
     \caption{\label{fig:IRV2Images}IRV-2}
 \end{figure}
 
 The time evolution of the spacies concentration \gls{RMS} values and $y^+$ are
 shwown in \Cref{fig:irv2Convergence} for cases $3R$ on
-\Cref{tab:chemistryReactionStudy}, the highest Mach number.
+\Cref{tab:frozenVsNonequilibriumStudy}, the highest Mach number.
 \Cref{fig:irv2Convergence} shows that the flow reaches a steady-state after
 $2.5$ million iterations.
 \todo{Upadate Convergence plot}
 \begin{figure}[H]
-    \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth,trim=20 10 20 10, clip]{chapter4/chemistryReaction/irv2Convergence.pdf}}
+    \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth,trim=20 10 20 10, clip]{chapter4/frozenVsNonequilibrium/irv2Convergence.pdf}}
     \caption{Convergence Study \label{fig:irv2Convergence}}
 \end{figure}
 
@@ -74,7 +74,7 @@ and vibrational temperatures.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:frozenTr1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozenContourTtr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_frozenContourTtr.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -82,7 +82,7 @@ and vibrational temperatures.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:frozenTr2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozenContourTtr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_frozenContourTtr.png}
         }
     \end{minipage}
 
@@ -94,13 +94,13 @@ and vibrational temperatures.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:frozenTr3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozenContourTtr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_frozenContourTtr.png}
         }
     \end{minipage}
     \end{center}
 
     \caption{Contour translational temperature for
-    frozen cases from \Cref{tab:chemistryReactionStudy}}
+    frozen cases from \Cref{tab:frozenVsNonequilibriumStudy}}
     \label{fig:contourTranslationTemperatureFrozen}
 \end{minipage}
 \end{figure}
@@ -116,7 +116,7 @@ and vibrational temperatures.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:frozenTvr1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozenContourTvr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_frozenContourTvr.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -124,7 +124,7 @@ and vibrational temperatures.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:frozenTvr2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozenContourTvr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_frozenContourTvr.png}
         }
     \end{minipage}
 
@@ -136,14 +136,14 @@ and vibrational temperatures.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:frozenTvr3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozenContourTvr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_frozenContourTvr.png}
         }
     \end{minipage}
     \end{center}
 
 \caption{Contour vibrational temperature for
     frozen cases from
-    \Cref{tab:chemistryReactionStudy}\label{fig:contourVibrationalTemperatureFrozen}}
+    \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourVibrationalTemperatureFrozen}}
 \end{minipage}
 \end{figure}
 % Vibrational Temperatures Contours Frozen %
@@ -170,7 +170,7 @@ reactions do not remove energy from the flow.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:nonequilibriumTtr1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibriumContourTtr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_nonequilibriumContourTtr.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -178,7 +178,7 @@ reactions do not remove energy from the flow.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:nonequilibriumTtr2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibriumContourTtr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_nonequilibriumContourTtr.png}
         }
     \end{minipage}
 
@@ -190,13 +190,13 @@ reactions do not remove energy from the flow.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:nonequilibriumTtr3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibriumContourTtr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibriumContourTtr.png}
         }
     \end{minipage}
     \end{center}
 \caption{Contour translational temperature for
             nonequilibrium cases from
-            \Cref{tab:chemistryReactionStudy}\label{fig:contourTranslationTemperatureNonequilibrium}}
+            \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourTranslationTemperatureNonequilibrium}}
 \end{minipage}
 \end{figure}
 % Translational Temperatures Contours Nonequilibrium %
@@ -212,7 +212,7 @@ reactions do not remove energy from the flow.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:nonequilibriumTvr1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibriumContourTvr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_nonequilibriumContourTvr.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -220,7 +220,7 @@ reactions do not remove energy from the flow.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:nonequilibriumTvr2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibriumContourTvr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_nonequilibriumContourTvr.png}
         }
     \end{minipage}
 
@@ -232,7 +232,7 @@ reactions do not remove energy from the flow.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:nonequilibriumTvr3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibriumContourTvr.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibriumContourTvr.png}
         }
     \end{minipage}
     \end{center}
@@ -240,7 +240,7 @@ reactions do not remove energy from the flow.
 \end{minipage}
 \caption{Contour vibrational temperature for
             nonequilibrium cases from
-            \Cref{tab:chemistryReactionStudy}\label{fig:contourVibrationalTemperatureNonequilibrium}}
+            \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourVibrationalTemperatureNonequilibrium}}
 \end{figure}
 % Vibrational Temperatures Contours Nonequilibrium %
 
@@ -263,7 +263,7 @@ the most intense dissociation effects.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:nonequilibriumGD1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibrium_gladstone_dale.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_nonequilibrium_gladstone_dale.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -271,7 +271,7 @@ the most intense dissociation effects.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:nonequilibriumGD2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibrium_gladstone_dale.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_nonequilibrium_gladstone_dale.png}
         }
     \end{minipage}
 
@@ -283,13 +283,13 @@ the most intense dissociation effects.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:nonequilibriumGD3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibrium_gladstone_dale.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibrium_gladstone_dale.png}
         }
     \end{minipage}
     \end{center}
 
     \caption{Contour \gls{GD} for nonequilibrium cases from
-        \Cref{tab:chemistryReactionStudy}}
+        \Cref{tab:frozenVsNonequilibriumStudy}}
     \label{fig:contourGDNonequilibriumR}
 \end{minipage}
 \end{figure}
@@ -317,7 +317,7 @@ due to shock and compression effects in the nonequilibrium regime.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:nonequilibriumDiluteIndex1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibrium_dilute_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_nonequilibrium_dilute_index.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -325,7 +325,7 @@ due to shock and compression effects in the nonequilibrium regime.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:nonequilibriumDiluteIndex2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibrium_dilute_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_nonequilibrium_dilute_index.png}
         }
     \end{minipage}
 
@@ -337,13 +337,13 @@ due to shock and compression effects in the nonequilibrium regime.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:nonequilibriumDiluteIndex3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibrium_dilute_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibrium_dilute_index.png}
         }
     \end{minipage}
     \end{center}
 \caption{Contour dilute index of refraction for
             nonequilibrium cases from
-            \Cref{tab:chemistryReactionStudy}\label{fig:contourDiluteIndexOfRefractionNonequilibriumR}}
+            \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDiluteIndexOfRefractionNonequilibriumR}}
 \end{minipage}
 \end{figure}
 % Dilute Index of refraction Contours Nonequilibrium %
@@ -358,7 +358,7 @@ due to shock and compression effects in the nonequilibrium regime.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:nonequilibriumDenseIndex1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibrium_dense_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_nonequilibrium_dense_index.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -366,7 +366,7 @@ due to shock and compression effects in the nonequilibrium regime.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:nonequilibriumDenseIndex2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibrium_dense_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_nonequilibrium_dense_index.png}
         }
     \end{minipage}
 
@@ -378,13 +378,13 @@ due to shock and compression effects in the nonequilibrium regime.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:nonequilibriumDenseIndex3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibrium_dense_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibrium_dense_index.png}
         }
     \end{minipage}
     \end{center}
 \caption{Contour dense index of refraction for
             nonequilibrium cases from
-            \Cref{tab:chemistryReactionStudy}\label{fig:contourDenseIndexOfRefractionNonequilibriumR}}
+            \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDenseIndexOfRefractionNonequilibriumR}}
 \end{minipage}
 \end{figure}
 % Dense Index of refraction Contours Nonequilibrium %
@@ -416,7 +416,7 @@ of refraction.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:frozenDiluteIndex1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozen_dilute_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_frozen_dilute_index.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -424,7 +424,7 @@ of refraction.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:frozenDiluteIndex2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozen_dilute_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_frozen_dilute_index.png}
         }
     \end{minipage}
 
@@ -436,13 +436,13 @@ of refraction.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:frozenDiluteIndex3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozen_dilute_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_frozen_dilute_index.png}
         }
     \end{minipage}
     \end{center}
 \caption{Contour dilute index of refraction for
             frozen cases from
-            \Cref{tab:chemistryReactionStudy}\label{fig:contourDiluteIndexOfRefractionFrozenR}}
+            \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDiluteIndexOfRefractionFrozenR}}
 \end{minipage}
 \end{figure}
 % Dilute Index of refraction Contours Frozen %
@@ -457,7 +457,7 @@ of refraction.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:frozenDenseIndex1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozen_dense_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_frozen_dense_index.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -465,7 +465,7 @@ of refraction.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:frozenDenseIndex2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozen_dense_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_frozen_dense_index.png}
         }
     \end{minipage}
 
@@ -477,13 +477,13 @@ of refraction.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:frozenDenseIndex3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozen_dense_index.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_frozen_dense_index.png}
         }
     \end{minipage}
     \end{center}
 \caption{Contour dense index of refraction for
             frozen cases from
-            \Cref{tab:chemistryReactionStudy}\label{fig:contourDenseIndexOfRefractionFrozenR}}
+            \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDenseIndexOfRefractionFrozenR}}
 \end{minipage}
 \end{figure}
 % Dense Index of refraction Contours Frozen %
@@ -509,7 +509,7 @@ properties.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:nonequilibriumElectricSusceptibility1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibrium_susceptibility_dilute.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_nonequilibrium_susceptibility_dilute.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -517,7 +517,7 @@ properties.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:nonequilibriumElectricSusceptibility2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibrium_susceptibility_dilute.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_nonequilibrium_susceptibility_dilute.png}
         }
     \end{minipage}
 
@@ -529,13 +529,13 @@ properties.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:nonequilibriumElectricSusceptibility3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibrium_susceptibility_dilute.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibrium_susceptibility_dilute.png}
         }
     \end{minipage}
     \end{center}
 \caption{Contour electric susceptibility for
             nonequilibrium cases from
-            \Cref{tab:chemistryReactionStudy}\label{fig:contourDiluteElectricSusceptibilityNonequilibriumR}}
+            \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDiluteElectricSusceptibilityNonequilibriumR}}
 \end{minipage}
 \end{figure}
 % Dilute Nonequilibrium Electric Susceptibility % 
@@ -562,7 +562,7 @@ underestimation of the medium's electromagnetic properties.
         \centering
         \subfigure[Case $1R$]{
             \label{fig:frozenElectricSusceptibility1R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozen_susceptibility_dilute.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_frozen_susceptibility_dilute.png}
         }
     \end{minipage}
     \hspace{0.08\textwidth}
@@ -570,7 +570,7 @@ underestimation of the medium's electromagnetic properties.
         \centering
         \subfigure[Case $2R$]{
             \label{fig:frozenElectricSusceptibility2R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozen_susceptibility_dilute.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_frozen_susceptibility_dilute.png}
         }
     \end{minipage}
 
@@ -582,13 +582,13 @@ underestimation of the medium's electromagnetic properties.
         \centering
         \subfigure[Case $3R$]{
             \label{fig:frozenElectricSusceptibility3R}
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozen_susceptibility_dilute.png}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_frozen_susceptibility_dilute.png}
         }
     \end{minipage}
     \end{center}
 \caption{Contour electric susceptibility for
             frozen cases from
-            \Cref{tab:chemistryReactionStudy}\label{fig:contourDiluteElectricSusceptibilityFrozenR}}
+            \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDiluteElectricSusceptibilityFrozenR}}
 \end{minipage}
 \end{figure}
 % Dilute Frozen Electric Susceptibility % 
@@ -620,14 +620,14 @@ larger compared to when chemistry effects are taken into account.
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_temperatures.pdf}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_temperatures.pdf}
         }
     \end{minipage}
     \hspace{0.05\textwidth}  % Reduced horizontal space
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_temperatures.pdf}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_temperatures.pdf}
         }
     \end{minipage}
 
@@ -638,7 +638,7 @@ larger compared to when chemistry effects are taken into account.
     \begin{minipage}[t]{0.5\textwidth}  % Slightly wider to emphasize
         \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_temperatures.pdf}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_temperatures.pdf}
         }
     \end{minipage}
     \end{center}
@@ -661,14 +661,14 @@ different mach numbers for a frozen and nonequilibrium flow.
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_pressures.pdf}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_pressures.pdf}
         }
     \end{minipage}
     \hspace{0.03\textwidth}  % Reduced horizontal spacing
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_pressures.pdf}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_pressures.pdf}
         }
     \end{minipage}
 
@@ -679,7 +679,7 @@ different mach numbers for a frozen and nonequilibrium flow.
     \begin{minipage}[t]{0.5\textwidth}
         \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_pressures.pdf}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_pressures.pdf}
         }
     \end{minipage}
     \end{center}
@@ -713,14 +713,14 @@ greater production of \ce{NO}, \ce{O}, and \ce{N}.
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_massFraction.pdf}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/1R_massFraction.pdf}
         }
     \end{minipage}
     \hspace{0.03\textwidth}  % Reduced horizontal spacing
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_massFraction.pdf}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/2R_massFraction.pdf}
         }
     \end{minipage}
 
@@ -731,7 +731,7 @@ greater production of \ce{NO}, \ce{O}, and \ce{N}.
     \begin{minipage}[t]{0.5\textwidth}
         \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_massFraction.pdf}
+            \includegraphics[width=\linewidth]{chapter4/frozenVsNonequilibrium/3R_massFraction.pdf}
         }
     \end{minipage}
     \end{center}
@@ -760,14 +760,14 @@ here closely resemble those in \Cref{fig:stagnationMassFraction}.
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/1R_speciesGD.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/1R_speciesGD.pdf}
         }
     \end{minipage}
     \hspace{0.03\textwidth}  % Reduced horizontal spacing
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/2R_speciesGD.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/2R_speciesGD.pdf}
         }
     \end{minipage}
 
@@ -778,7 +778,7 @@ here closely resemble those in \Cref{fig:stagnationMassFraction}.
     \begin{minipage}[t]{0.5\textwidth}
         \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/3R_speciesGD.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/3R_speciesGD.pdf}
         }
     \end{minipage}
     \end{center}
@@ -807,14 +807,14 @@ to the dynamic and thermal state of the system.
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/1R_totalGD.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/1R_totalGD.pdf}
         }
     \end{minipage}
     \hspace{0.03\textwidth}  % Reduced horizontal spacing
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/2R_totalGD.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/2R_totalGD.pdf}
         }
     \end{minipage}
 
@@ -825,7 +825,7 @@ to the dynamic and thermal state of the system.
     \begin{minipage}[t]{0.5\textwidth}
         \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/3R_totalGD.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/3R_totalGD.pdf}
         }
     \end{minipage}
     \end{center}
@@ -854,14 +854,14 @@ flow properties.
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/1R_indexOfRefraction.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/1R_indexOfRefraction.pdf}
         }
     \end{minipage}
     \hspace{0.03\textwidth}  % Reduced horizontal spacing
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/2R_indexOfRefraction.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/2R_indexOfRefraction.pdf}
         }
     \end{minipage}
 
@@ -872,7 +872,7 @@ flow properties.
     \begin{minipage}[t]{0.5\textwidth}
         \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/3R_indexOfRefraction.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/3R_indexOfRefraction.pdf}
         }
     \end{minipage}
     \end{center}
@@ -904,14 +904,14 @@ mitigating signal degradation in high-speed aerospace applications.
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $1R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/1R_electricSusceptibility.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/1R_electricSusceptibility.pdf}
         }
     \end{minipage}
     \hspace{0.03\textwidth}  % Reduced horizontal spacing
     \begin{minipage}[t]{0.49\textwidth}
         \centering
         \subfigure[Case $2R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/2R_electricSusceptibility.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/2R_electricSusceptibility.pdf}
         }
     \end{minipage}
 
@@ -922,7 +922,7 @@ mitigating signal degradation in high-speed aerospace applications.
     \begin{minipage}[t]{0.5\textwidth}
         \centering
         \subfigure[Case $3R$]{
-            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/3R_electricSusceptibility.pdf}
+            \includegraphics[width=\textwidth]{chapter4/frozenVsNonequilibrium/3R_electricSusceptibility.pdf}
         }
     \end{minipage}
     \end{center}
