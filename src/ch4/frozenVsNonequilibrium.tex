@@ -1,0 +1,927 @@
+\subsection{Frozen Versus Nonequilibrium Study\label{ch4:frozenVsNonequilibrium}}
+
+This section investigates \gls{AO} properties at various Mach numbers for a
+hypersonic vehicle and compares the results between frozen flow and
+nonequilibrium flow conditions. \Cref{tab:chemistryReactionStudy} summarizes
+the key characteristics of each case analyzed. The gas composition if the same
+composition from \Cref{tab:speciesStudyMassFraction}.
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            Case & $M\Units{\;}$ & $T_{wall}\Units{K}$ &
+            $T_{\infty}\Units{K}$ & $P_{\infty}\Units{Pa}$ &
+            $h_0\Units{MJ}$ & $q\Units{kPa}$ \\
+            \hline\hline
+            $1R$\cite{Mackey2019} & $11.2$ & $1000$ & $293$ & $1200$ & $7.38$  & $105$ \\\hline
+            $2R$\cite{Mackey2019} & $13.2$ & $1000$ & $293$ & $1200$ & $10.25$ & $146$ \\\hline
+            $3R$\cite{Mackey2019} & $15.2$ & $1000$ & $293$ & $1200$ & $13.60$ & $193$ \\\hline
+        \end{tabular}
+    \caption{Chemistry Study \label{tab:chemistryReactionStudy}}
+    \end{center}
+\end{table}
+
+For this investigation the IRV-2 vehicle, shown in \Cref{fig:IRV2} is used.
+The IRV-2 vehicle is a sphere-biconic with a nose radius of $1.95\Units{cm}$ and a total
+length of $1.386 \Units{m}$. Six drag flaps are located at the aft end of
+the vehicle and can be deployed to a maximum angle of $45$ degrees
+\cite{Kuntz2001}. For this work, only axisymmetric calculations on the
+IRV-2 nosetip are performed. \Cref{fig:IRV2Mesh} shows
+the mesh used in this work. 
+\begin{figure}[H]
+    \centering
+    \subfigure[IRV-2 vehicle]
+    {
+        \label{fig:IRV2}
+        \includegraphics[height=0.5\textwidth]{chapter4/chemistryReaction/irv2}
+    }
+    \subfigure[IRV-2 mesh]
+    {
+        \label{fig:IRV2Mesh}
+        \includegraphics[height=0.5\textwidth]{chapter4/chemistryReaction/1R_frozenMesh}
+    }
+    \caption{\label{fig:IRV2Images}IRV-2}
+\end{figure}
+
+\begin{figure}[H]
+    \makebox[\textwidth][c]{\includegraphics{chapter4/chemistryReaction/irv2Convergence.pdf}}
+    \caption{Convergence Study \label{ch4:irvConvergence}}
+\end{figure}
+
+\subsubsection{Flow results}
+\Cref{fig:contourTranslationTemperatureFrozen} presents contour plots of
+translational temperature, while \Cref{fig:contourVibrationalTemperatureFrozen}
+displays vibrational temperature contours at different Mach numbers for a
+frozen flow. As expected, the post-shock temperature increases with Mach number
+due to the rapid compression of the flow. In the case of a frozen flow, this
+compression occurs as an adiabatic process, where kinetic energy is converted
+into thermal energy, leading to a sudden temperature rise. Furthermore, higher
+Mach numbers result in proportionally greater increases in both translational
+and vibrational temperatures.
+% Translational Temperatures Contours Frozen %
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for better alignment
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:frozenTr1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozenContourTtr.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:frozenTr2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozenContourTtr.png}
+        }
+    \end{minipage}
+
+    \vspace{1em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:frozenTr3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozenContourTtr.png}
+        }
+    \end{minipage}
+    \end{center}
+
+    \caption{Contour translational temperature for
+    frozen cases from \Cref{tab:chemistryReactionStudy}}
+    \label{fig:contourTranslationTemperatureFrozen}
+\end{minipage}
+\end{figure}
+% Translational Temperatures Contours Frozen %
+
+% Vibrational Temperatures Contours Frozen %
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for better alignment
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:frozenTvr1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozenContourTvr.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:frozenTvr2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozenContourTvr.png}
+        }
+    \end{minipage}
+
+    \vspace{1em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:frozenTvr3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozenContourTvr.png}
+        }
+    \end{minipage}
+    \end{center}
+
+\caption{Contour vibrational temperature for
+    frozen cases from
+    \Cref{tab:chemistryReactionStudy}\label{fig:contourVibrationalTemperatureFrozen}}
+\end{minipage}
+\end{figure}
+% Vibrational Temperatures Contours Frozen %
+
+
+\Cref{fig:contourTranslationTemperatureNonequilibrium} presents contour plots
+of translational temperature, while
+\Cref{fig:contourVibrationalTemperatureNonequilibrium} displays vibrational
+temperature contours at different Mach numbers for a nonequilibrium flow. As
+expected, the translational temperature increases with Mach number, primarily
+at the leading edge of the geometry, where most of the kinetic energy of the
+flow is converted into internal energy. However, the increase in vibrational
+temperature is relatively lower due to nonequilibrium effects, as the process
+is no longer adiabatic. Additionally, as expected, the frozen chemistry case
+exhibits higher translational and vibrational temperatures since chemical
+reactions do not remove energy from the flow.
+% Translational Temperatures Contours Nonequilibrium %
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for better alignment
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:nonequilibriumTtr1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibriumContourTtr.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:nonequilibriumTtr2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibriumContourTtr.png}
+        }
+    \end{minipage}
+
+    \vspace{1em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:nonequilibriumTtr3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibriumContourTtr.png}
+        }
+    \end{minipage}
+    \end{center}
+\caption{Contour translational temperature for
+            nonequilibrium cases from
+            \Cref{tab:chemistryReactionStudy}\label{fig:contourTranslationTemperatureNonequilibrium}}
+\end{minipage}
+\end{figure}
+% Translational Temperatures Contours Nonequilibrium %
+    
+
+% Vibrational Temperatures Contours Nonequilibrium %
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for better alignment
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:nonequilibriumTvr1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibriumContourTvr.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:nonequilibriumTvr2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibriumContourTvr.png}
+        }
+    \end{minipage}
+
+    \vspace{1em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:nonequilibriumTvr3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibriumContourTvr.png}
+        }
+    \end{minipage}
+    \end{center}
+
+\end{minipage}
+\caption{Contour vibrational temperature for
+            nonequilibrium cases from
+            \Cref{tab:chemistryReactionStudy}\label{fig:contourVibrationalTemperatureNonequilibrium}}
+\end{figure}
+% Vibrational Temperatures Contours Nonequilibrium %
+
+\subsubsection{Optics results}
+\Cref{fig:contourGDNonequilibriumR} shows the contour of \gls{GD} for a
+nonequilibrium flow at three different Mach numbers. As expected, the highest
+Mach number (\Cref{fig:nonequilibriumGD3R}) produces the highest \gls{GD}, since
+post-shock flow properties, such as temperature, increase with Mach number.
+Higher temperatures promote molecular dissociation, which significantly impacts
+\gls{GD}. The highest \gls{GD} appears at the stagnation point, which is
+reasonable because this region experiences the highest temperatures, leading to
+the most intense dissociation effects.
+% Gladstone Nonequilibrium % 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight shift to the left
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:nonequilibriumGD1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibrium_gladstone_dale.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:nonequilibriumGD2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibrium_gladstone_dale.png}
+        }
+    \end{minipage}
+
+    \vspace{1.5em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:nonequilibriumGD3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibrium_gladstone_dale.png}
+        }
+    \end{minipage}
+    \end{center}
+
+    \caption{Contour \gls{GD} for nonequilibrium cases from
+        \Cref{tab:chemistryReactionStudy}}
+    \label{fig:contourGDNonequilibriumR}
+\end{minipage}
+\end{figure}
+% Gladstone Nonequilibrium % 
+
+\Cref{fig:contourDiluteIndexOfRefractionNonequilibriumR} shows the contour
+plots for the dilute index of refraction at different Mach numbers in a
+nonequilibrium flow, while
+\Cref{fig:contourDenseIndexOfRefractionNonequilibriumR} presents the contour
+plot for the dense index of refraction under the same conditions. A noticeable
+difference between the dense and dilute formulations of the index of refraction
+is not observed. This suggests that the dilute formulation serves as a good
+approximation, which is reasonable since air, even at high Mach numbers, is not
+dense enough to produce significant deviations between the two formulations. As
+expected, the highest variation in the index of refraction occurs along the
+stagnation line, where temperature and density gradients are most pronounced
+due to shock and compression effects in the nonequilibrium regime.
+% Dilute Index of refraction Contours Nonequilibrium %
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight shift to the left
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:nonequilibriumDiluteIndex1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibrium_dilute_index.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:nonequilibriumDiluteIndex2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibrium_dilute_index.png}
+        }
+    \end{minipage}
+
+    \vspace{1.5em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:nonequilibriumDiluteIndex3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibrium_dilute_index.png}
+        }
+    \end{minipage}
+    \end{center}
+\caption{Contour dilute index of refraction for
+            nonequilibrium cases from
+            \Cref{tab:chemistryReactionStudy}\label{fig:contourDiluteIndexOfRefractionNonequilibriumR}}
+\end{minipage}
+\end{figure}
+% Dilute Index of refraction Contours Nonequilibrium %
+
+% Dense Index of refraction Contours Nonequilibrium %
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight shift to the left
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:nonequilibriumDenseIndex1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibrium_dense_index.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:nonequilibriumDenseIndex2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibrium_dense_index.png}
+        }
+    \end{minipage}
+
+    \vspace{1.5em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:nonequilibriumDenseIndex3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibrium_dense_index.png}
+        }
+    \end{minipage}
+    \end{center}
+\caption{Contour dense index of refraction for
+            nonequilibrium cases from
+            \Cref{tab:chemistryReactionStudy}\label{fig:contourDenseIndexOfRefractionNonequilibriumR}}
+\end{minipage}
+\end{figure}
+% Dense Index of refraction Contours Nonequilibrium %
+
+\Cref{fig:contourDiluteIndexOfRefractionFrozenR} shows the contour plots for the
+dilute index of refraction at different Mach numbers in a frozen flow, while
+\Cref{fig:contourDenseIndexOfRefractionFrozenR} presents the contour plot for
+the dense index of refraction under the same conditions. A noticeable
+difference between the dense and dilute formulations of the index of refraction
+is not observed. This suggests that the dilute formulation serves as a good
+approximation, which is reasonable since air, even at high Mach numbers, is not
+dense enough to produce significant deviations between the two formulations.\\
+
+As expected, the highest variation in the index of refraction occurs along the
+stagnation line, where temperature and density gradients are most pronounced
+due to shock and compression effects. However, a difference between the frozen
+and nonequilibrium cases is observed: the frozen case appears to underpredict
+the index of refraction. This is expected because, in the frozen case, the
+density is underpredicted, and since the index of refraction is closely related
+to the density through the \gls{GD}, a lower density results in a lower index
+of refraction.
+% Dilute Index of refraction Contours Frozen %
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight shift to the left
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:frozenDiluteIndex1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozen_dilute_index.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:frozenDiluteIndex2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozen_dilute_index.png}
+        }
+    \end{minipage}
+
+    \vspace{1.5em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:frozenDiluteIndex3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozen_dilute_index.png}
+        }
+    \end{minipage}
+    \end{center}
+\caption{Contour dilute index of refraction for
+            frozen cases from
+            \Cref{tab:chemistryReactionStudy}\label{fig:contourDiluteIndexOfRefractionFrozenR}}
+\end{minipage}
+\end{figure}
+% Dilute Index of refraction Contours Frozen %
+
+% Dense Index of refraction Contours Frozen %
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight shift to the left
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:frozenDenseIndex1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozen_dense_index.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:frozenDenseIndex2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozen_dense_index.png}
+        }
+    \end{minipage}
+
+    \vspace{1.5em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:frozenDenseIndex3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozen_dense_index.png}
+        }
+    \end{minipage}
+    \end{center}
+\caption{Contour dense index of refraction for
+            frozen cases from
+            \Cref{tab:chemistryReactionStudy}\label{fig:contourDenseIndexOfRefractionFrozenR}}
+\end{minipage}
+\end{figure}
+% Dense Index of refraction Contours Frozen %
+
+\Cref{fig:contourDiluteElectricSusceptibilityNonequilibriumR} presents the contour
+plots for the electric susceptibility at different Mach numbers for a
+nonequilibrium flow. As expected, the electric susceptibility increases with
+Mach number due to the higher post-shock temperatures and increased
+dissociation effects that enhance the medium's polarization response leading to
+an increase in electric susceptibility. Additionally, the
+most significant variations in electric susceptibility occur along the
+stagnation line, where temperature and density gradients are most pronounced.
+This region experiences the highest degree of molecular excitation and
+dissociation, further contributing to changes in the medium's electromagnetic
+properties.
+% Dilute Nonequilibrium Electric Susceptibility % 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight shift to the left
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:nonequilibriumElectricSusceptibility1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_nonequilibrium_susceptibility_dilute.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:nonequilibriumElectricSusceptibility2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_nonequilibrium_susceptibility_dilute.png}
+        }
+    \end{minipage}
+
+    \vspace{1.5em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:nonequilibriumElectricSusceptibility3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_nonequilibrium_susceptibility_dilute.png}
+        }
+    \end{minipage}
+    \end{center}
+\caption{Contour electric susceptibility for
+            nonequilibrium cases from
+            \Cref{tab:chemistryReactionStudy}\label{fig:contourDiluteElectricSusceptibilityNonequilibriumR}}
+\end{minipage}
+\end{figure}
+% Dilute Nonequilibrium Electric Susceptibility % 
+
+\Cref{fig:contourDiluteElectricSusceptibilityFrozenR} presents the contour plots
+for the electric susceptibility at different Mach numbers for a frozen flow. As
+expected, the electric susceptibility increases with Mach number due to higher
+post-shock temperatures and increased dissociation effects, which enhance the
+medium's electric susceptibility response. Additionally, the most significant
+variations in electric susceptibility occur along the stagnation line, where
+temperature and density gradients are most pronounced. This region experiences
+the highest degree of molecular excitation and dissociation, further
+influencing the medium's electromagnetic properties. However, a notable
+difference exists between the nonequilibrium and frozen cases: the frozen case
+appears to underpredict the electric susceptibility, leading to an
+underestimation of the medium's electromagnetic properties.
+% Dilute Frozen Electric Susceptibility % 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight shift to the left
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \label{fig:frozenElectricSusceptibility1R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_frozen_susceptibility_dilute.png}
+        }
+    \end{minipage}
+    \hspace{0.08\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \label{fig:frozenElectricSusceptibility2R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_frozen_susceptibility_dilute.png}
+        }
+    \end{minipage}
+
+    \vspace{1.5em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \label{fig:frozenElectricSusceptibility3R}
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_frozen_susceptibility_dilute.png}
+        }
+    \end{minipage}
+    \end{center}
+\caption{Contour electric susceptibility for
+            frozen cases from
+            \Cref{tab:chemistryReactionStudy}\label{fig:contourDiluteElectricSusceptibilityFrozenR}}
+\end{minipage}
+\end{figure}
+% Dilute Frozen Electric Susceptibility % 
+
+\subsubsection{Stagnation results}
+\Cref{fig:stagnationTemperatures} shows the temperatures along the stagnation
+line for different Mach numbers in both frozen and nonequilibrium flow
+conditions. As expected, the shock standoff distance in the frozen case is
+observed to be larger: approximately $2.3\Units{mm}$ for the slowest and medium
+Mach numbers (Cases $1R$ and $2$), and $2\Units{mm}$ for the largest Mach
+number (Case $3R$). On the other hand, the nonequilibrium case shows a shock
+standoff distance of approximately $2\Units{mm}$ for the slow Mach number (Case
+$1R$), $1.7\Units{mm}$ for the medium Mach number (Case $2R$), and
+$1.5\Units{mm}$ for the largest Mach number (Case $3R$).\\
+
+This difference arises because when chemistry effects are not considered, the
+post-shock density is under-predicted (increasing the density ratio), and the
+post-shock temperature is over-predicted (decreasing the temperature ratio).
+The shock standoff scales with the density ratio across the shock times the
+radius of the vehicle. When chemistry effects are neglected, the density ratio
+across the shock is greater, and as a result, the shock standoff distance is
+larger compared to when chemistry effects are taken into account.
+% Stagnation Temperatures % 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R — larger and closer
+    \hspace*{-0.05\textwidth}  % Slight left shift
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_temperatures.pdf}
+        }
+    \end{minipage}
+    \hspace{0.05\textwidth}  % Reduced horizontal space
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_temperatures.pdf}
+        }
+    \end{minipage}
+
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}  % Slightly wider to emphasize
+        \centering
+        \subfigure[Case $3R$]{
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_temperatures.pdf}
+        }
+    \end{minipage}
+    \end{center}
+
+    \caption{Stagnation temperatures: solid lines represent the nonequilibrium
+    cases, while dashed lines represent the frozen cases.}
+    \label{fig:stagnationTemperatures}
+\end{minipage}
+\end{figure}
+% Stagnation Temperatures % 
+
+\Cref{fig:stagnationPressures} shows the pressure along the stagnation line at
+different mach numbers for a frozen and nonequilibrium flow.
+% Stagnation pressures % 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_pressures.pdf}
+        }
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_pressures.pdf}
+        }
+    \end{minipage}
+
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_pressures.pdf}
+        }
+    \end{minipage}
+    \end{center}
+
+    \caption{Stagnation pressures.}
+    \label{fig:stagnationPressures}
+\end{minipage}
+\end{figure}
+% Stagnation Pressures % 
+
+\Cref{fig:stagnationMassFraction} illustrates the mass fraction of species
+along the stagnation line. As expected, in the frozen flow case, there is no
+change in mass fraction because there is no energy exchange with the internal
+energy modes. However, in the nonequilibrium flow case, energy is exchanged
+between internal energy modes, resulting in changes in the mass fractions of
+chemical species. \\
+
+For the nonequilibrium case, diatomic nitrogen (\ce{N2}) and diatomic oxygen
+(\ce{O2}) dissociate partially, forming nitric oxide (\ce{NO}), atomic oxygen
+(\ce{O}), and atomic nitrogen (\ce{N}) after the shock wave. The extent of this
+dissociation increases with Mach number due to the higher post-shock
+temperatures at greater Mach numbers. Higher temperatures provide the energy
+required to overcome the dissociation energy of molecular species, leading to
+greater production of \ce{NO}, \ce{O}, and \ce{N}.
+% Stagnation mass fraction % 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/1R_massFraction.pdf}
+        }
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/2R_massFraction.pdf}
+        }
+    \end{minipage}
+
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \includegraphics[width=\linewidth]{chapter4/chemistryReaction/3R_massFraction.pdf}
+        }
+    \end{minipage}
+    \end{center}
+    \caption{Stagnation mass fractions: solid lines represent the nonequilibrium
+    cases, while dashed lines represent the frozen
+    cases\label{fig:stagnationMassFraction}}
+\end{minipage}
+\end{figure}
+% Stagnation mass fraction % 
+
+\Cref{fig:stagnationSpeciesGD} illustrates the species \gls{GD} along the
+stagnation line. As expected, in the frozen case, there is no change in the
+species \gls{GD} because the mass fractions remain constant
+(\Cref{fig:stagnationMassFraction}) due to the lack of exchange within internal
+energy modes. However, in the nonequilibrium flow case, energy is exchanged
+between internal energy modes, leading to a change in the mass fractions and,
+consequently, a change in the species \gls{GD}. The species \gls{GD} follows a
+trend very similar to that of the mass fractions; hence, the results presented
+here closely resemble those in \Cref{fig:stagnationMassFraction}.
+% Stagnation species GD % 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/1R_speciesGD.pdf}
+        }
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/2R_speciesGD.pdf}
+        }
+    \end{minipage}
+
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/3R_speciesGD.pdf}
+        }
+    \end{minipage}
+    \end{center}
+    \caption{Stagnation species \gls{GD}: solid lines represent the nonequilibrium
+    cases, while dashed lines represent the frozen
+    cases\label{fig:stagnationSpeciesGD}}
+\end{minipage}
+\end{figure}
+% Stagnation species GD % 
+
+\Cref{fig:stagnationTotalGD} illustrates the total \gls{GD}. As expected, in
+the frozen case, the total \gls{GD} remains constant due to the absence of
+energy exchange between internal energy modes. In contrast, the nonequilibrium
+case exhibits variation in the total \gls{GD}. Specifically, as the Mach number
+increases, the total \gls{GD} also increases. This behavior is attributed to
+the energy exchange between internal energy modes, which causes changes in the
+thermodynamic and chemical state of the flow. The dependence of the total
+\gls{GD} on the Mach number highlights the sensitivity of nonequilibrium flows
+to the dynamic and thermal state of the system.
+% Stagnation total GD % 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/1R_totalGD.pdf}
+        }
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/2R_totalGD.pdf}
+        }
+    \end{minipage}
+
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/3R_totalGD.pdf}
+        }
+    \end{minipage}
+    \end{center}
+    \caption{Stagnation total \gls{GD} \label{fig:stagnationTotalGD}}
+\end{minipage}
+\end{figure}
+% Stagnation total GD % 
+
+\Cref{fig:stagnationIndexOfRefraction} shows the stagnation index of refraction
+for both the frozen and nonequilibrium cases at different Mach numbers. As
+expected, the frozen case underpredicts the index of refraction and
+overpredicts the standoff distance. This overprediction of the standoff
+distance could significantly impact the beam quality of a seeker, as the
+increased standoff distance may introduce additional phase distortions and beam
+defocusing. Such effects could reduce the accuracy and effectiveness of optical
+systems operating in hypersonic flow conditions. The nonequilibrium case, by
+contrast, accounts for energy exchange between internal energy modes, resulting
+in a more accurate representation of the index of refraction and associated
+flow properties.
+% Index of Refraction% 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/1R_indexOfRefraction.pdf}
+        }
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/2R_indexOfRefraction.pdf}
+        }
+    \end{minipage}
+
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/3R_indexOfRefraction.pdf}
+        }
+    \end{minipage}
+    \end{center}
+    \caption{Stagnation index of refraction
+    \label{fig:stagnationIndexOfRefraction}}
+\end{minipage}
+\end{figure}
+% Index of Refraction% 
+
+\Cref{fig:stagnationElectricSusceptibility} compares the nonequilibrium and frozen
+cases for electric susceptibility $\chi_e$ in a medium, as defined in
+\Cref{eq:electricSusceptibility}. The behavior of electric susceptibility
+follows a similar trend to the refractive index, leading the frozen case to
+underpredict the medium’s response. A higher electric susceptibility indicates
+that the material becomes more polarized when exposed to an external \gls{EM}
+field. This increased polarization slows down signal propagation and enhances
+signal attenuation. Consequently, the medium behaves more like an insulator,
+impeding signal transmission and reducing power. In hypersonic flow conditions,
+variations in electric susceptibility can significantly impact electromagnetic
+wave-based systems, such as communication devices and radar seekers. Accurate
+modeling of nonequilibrium effects is therefore essential for predicting and
+mitigating signal degradation in high-speed aerospace applications.
+% Electric Susceptibility % 
+\begin{figure}[H]
+\noindent
+\begin{minipage}{\textwidth}
+    % Top row: Case 1R and 2R
+    \hspace*{-0.01\textwidth}  % Slight left shift for alignment
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $1R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/1R_electricSusceptibility.pdf}
+        }
+    \end{minipage}
+    \hspace{0.03\textwidth}  % Reduced horizontal spacing
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \subfigure[Case $2R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/2R_electricSusceptibility.pdf}
+        }
+    \end{minipage}
+
+    \vspace{1.2em}
+
+    % Bottom row: Case 3R centered
+    \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \subfigure[Case $3R$]{
+            \includegraphics[width=\textwidth]{chapter4/chemistryReaction/3R_electricSusceptibility.pdf}
+        }
+    \end{minipage}
+    \end{center}
+    \caption{Electric susceptibility at stagnation
+    line\label{fig:stagnationElectricSusceptibility}}
+\end{minipage}
+\end{figure}
+% Electric Susceptibility % 
