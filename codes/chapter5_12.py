@@ -100,6 +100,7 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         #### Temperatures ####
 
         ### Mass Fraction ###
+        # TODO: Update ficgure size
         fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
         total_density = sum(tmp["neutral_sp"].values())
         axes1 = fig.add_subplot(111)
@@ -155,6 +156,7 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
         plt.close()
 
         # Plot Species GladStone-Dale constant
+        # TODO: Update ficgure size
         fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
         axes1 = fig.add_subplot(111)
 
