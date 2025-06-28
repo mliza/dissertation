@@ -44,7 +44,9 @@ def plot_countour_scalar(mesh_data, case_name, scalar_field, fig_config):
     )
     # Save the plot as an image
     output_file = os.path.join(fig_config["out_path"],
-                               f"{case_name}_{scalar_field}.png")
+                               f"{case_name}_{scalar_field}.pdf",
+                               format="pdf", bbox_inches="tight")
+
     plotter.screenshot(output_file)
     plotter.close()
     del plotter
@@ -392,7 +394,8 @@ if __name__ == "__main__":
     )
     files_in = os.path.join(abs_path, 'R_files')
     fig_out_path = 'outTest'
-    fig_out_path = '/Users/martin/Documents/Schools/UoA/Dissertation/figures/chapter5/chemistryReaction'
+    fig_out_path = (
+            '/Users/martin/Documents/Schools/UoA/Dissertation/figures/chapter4/frozenVsNonequilibrium')
 
     # Users inputs #
     fig_config = figure_configurations.figure_settings()
@@ -400,4 +403,3 @@ if __name__ == "__main__":
 
     mesh_data = load_files(files_in)
     main(mesh_data, fig_config)
-

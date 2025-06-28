@@ -495,7 +495,7 @@ def optical_properties(
 
 def main(cfd_results_abs_path):
     fig_config = figure_configurations.figure_settings()
-    species_flag = False
+    species_flag = True
 
     if not species_flag:
         # Chemistry Composition #
@@ -503,13 +503,13 @@ def main(cfd_results_abs_path):
             cfd_results_abs_path, "chemistryComposition", "outputs"
         )
         files_in = ["1C.csv", "2C.csv", "3C.csv"]
-        output_png_path = "../figures/chapter5/chemistryComposition"
+        output_png_path = "../figures/chapter4/gasComposition"
         # Chemistry Composition #
     else:
         # Species #
         data_in_path = os.path.join(cfd_results_abs_path, "species", "outputs")
         files_in = ["1S1.csv", "2S1.csv", "1S2.csv", "2S2.csv"]
-        output_png_path = "../figures/chapter5/species"
+        output_png_path = "../figures/chapter4/fiveVsElevenSpecies"
         # Species #
 
     cut_dict_chemistry = get_chemistry_cut()
