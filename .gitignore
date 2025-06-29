@@ -16,6 +16,7 @@
 resultsCFD/
 codes/figures
 external/
+tmp/
 
 ## Glossary stuff ##
 *.gls-abr
