@@ -146,10 +146,26 @@ constant, and polarizability. \\
         This includes nonequilibrium, reactive flows, and excitation of
         molecular internal modes, all of which can affect optical signals
         either directly or indirectly; these are shown in the top Quadrants.
-        This work investigates Quadrant III in
+        This work investigates Quadrants II and III in
         \Cref{tab:ch1AeroOpticalFidelities}, by using results from
         high-fidelity \gls{CFD} simulations. These results are then
         post-process using a Open-Source tool developed in this dissertation.
         This tool has the capability of post processing results from all four
         Quadrants.
         \input{aeroOpticsQuadrant}
+
+\Cref{fig:gdFidelities} provides a summary of the different approaches
+used to determine the \gls{GD} constants. To the best of the author's knowledge,
+most published work assumes a constant \gls{GD} across the flow. This may be a
+reasonable assumption for low-enthalpy flows, but it becomes invalid in
+high-enthalpy regimes. At low enthalpy, there are no chemical reactions that
+alter the flow composition or excite internal energy modes. However, as the
+temperature increases, chemical reactions occur that modify the composition of
+the gas, motivating the need for species-specific \gls{GD} constants. One could
+further extend this model to account for both internal state-specific and
+species-specific \gls{GD} values, which is one of the case studies examined in
+this work.
+        \begin{figure}[H]
+            \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter1/gdFidelities}}
+            \caption{\gls{GD} fidelities \label{fig:gdFidelities}}
+        \end{figure}

@@ -55,6 +55,7 @@ def plot_rms(dict_data: str, key_iter: str, key_in: str = False, figh_config=Non
 
 if __name__ == "__main__":
     path_r = "/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/chemistryReaction/R_files"
+    path_r = "/Users/martin/Desktop/R_files"
     cases_in = os.listdir(path_r)
     fig_config = figure_configurations.figure_settings()
     key_iter = "Inner_Iter"
