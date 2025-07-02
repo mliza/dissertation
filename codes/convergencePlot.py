@@ -11,10 +11,11 @@ import IPython
 def load_csv(file_in: str, key_iter: str) -> dict:
     df = pd.read_csv(file_in)
     dict_out = {}
-    rms_keys = df.drop(columns=["Time_Iter", "Outer_Iter", "Inner_Iter"])
+    fields = list(df.keys())
+    #rms_keys = df.drop(columns=["Time_Iter", "Outer_Iter", "Inner_Iter"])
     dict_out[key_iter] = np.array(df[key_iter])
 
-    for i in rms_keys:
+    for i in fields[3:-10]:
         i_temp = i.strip().replace('"', "")
         match = re.match(r"(\w+)\[(\w+)", i_temp)
         clean_str = (f"{match.group(1)}_{match.group(2)}").strip("rms_")
@@ -29,7 +30,7 @@ def plot_rms(dict_data: str, key_iter: str, key_in: str = False, figh_config=Non
 
     fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     for indx, key in enumerate([k for k in dict_data if k != key_iter][:5]):
-        plt.semilogx(
+        plt.plot(
             dict_data[key_iter],
             dict_data[key],
             linewidth=fig_config["line_width"],
@@ -56,6 +57,7 @@ def plot_rms(dict_data: str, key_iter: str, key_in: str = False, figh_config=Non
 if __name__ == "__main__":
     path_r = "/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/chemistryReaction/R_files"
     path_r = "/Users/martin/Desktop/R_files"
+    path_r = "/Users/martin/Desktop/mackey/R_files"
     cases_in = os.listdir(path_r)
     fig_config = figure_configurations.figure_settings()
     key_iter = "Inner_Iter"

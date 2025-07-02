@@ -42,16 +42,32 @@ the mesh used in this work.
     \caption{\label{fig:IRV2Images}IRV-2}
 \end{figure}
 
-The time evolution of the spacies concentration \gls{RMS} values and $y^+$ are
-shwown in \Cref{fig:irv2Convergence} for cases $3R$ on
-\Cref{tab:frozenVsNonequilibriumStudy}, the highest Mach number.
-\Cref{fig:irv2Convergence} shows that the flow reaches a steady-state after
-$2.5$ million iterations.
-\todo{Upadate Convergence plot}
+\Cref{fig:frozenConvergence,fig:nonequilibriumConvergence} show the convergence
+plots for cases described in \Cref{tab:frozenVsNonequilibrium}.
 \begin{figure}[H]
-    \makebox[\textwidth][c]{\includegraphics[width=1.1\textwidth,trim=20 10 20 10, clip]{chapter4/frozenVsNonequilibrium/irv2Convergence.pdf}}
-    \caption{Convergence Study \label{fig:irv2Convergence}}
+    \centering
+        \subfigure[Case $1R$]{
+            \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/1R_frozen_convergence.pdf}}
+        \subfigure[Case $2R$]{
+            \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/2R_frozen_convergence.pdf}}
+        \subfigure[Case $3R$]{
+            \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_frozen_convergence.pdf}}
+        \caption{Convergence plot for frozen
+        cases\label{fig:frozenConvergence}}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+        \subfigure[Case $1R$]{
+            \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/1R_nonequilibrium_convergence.pdf}}
+        \subfigure[Case $2R$]{
+            \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/2R_nonequilibrium_convergence.pdf}}
+        \subfigure[Case $3R$]{
+            \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibrium_convergence.pdf}}
+        \caption{Convergence plot for nonequilibrium
+        cases\label{fig:nonequilibriumConvergence}}
+\end{figure}
+
 
 \subsubsection{Flow results}
 \Cref{fig:contourTranslationTemperatureFrozen} presents contour plots of
