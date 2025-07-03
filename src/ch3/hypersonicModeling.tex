@@ -129,4 +129,50 @@ optical properties in hypersonic environments.
 \end{equation}
 where $\mathcal{U}$ are the conservative variables, $\mathcal{F}^c$ are the
 convective fluxes, $\mathcal{F}^{v}$ are the viscous fluxes, and $\mathcal{Q}$
-source terms. 
+source terms. \\
+
+\gls{SU2}--\gls{NEMO} uses a rigid-rotor harmonic oscillator two-temperature
+model to calculate the thermodynamic state. The total energy and
+vibrational-electronic energy per unit volume are given on \Cref{eq:nemoEnergy}.
+\begin{subequations}\label{eq:nemoEnergy}
+    \begin{align}
+        &\rho e = \sum_{s}\rho_s\Parenthesis{e_s^{tr} + e_{s}^{rot} + e_s^{vib} + e_s^{el}
+        + e^0_s + \frac{1}{2}\bm{u}^T\bm{u}} \label{eq:nemoTotalEnergy} \\
+        &\rho e^{ve} =\sum_s \rho_s \Parenthesis{e_s^{vib} + e_s^{el} }
+        \label{eq:nemoVibrationalEnergy} 
+    \end{align}
+\end{subequations}
+
+Where:
+\begin{equation}\label{eq:nemoTranslationalSpeciesEnergy}
+    e^{tr}_s = \begin{cases}
+        \frac{3}{2}\frac{R T}{M_s} & \text{monatomic and polyatomic species} \\
+        0 & \text{electrons}
+    \end{cases}
+\end{equation}
+
+\begin{equation}\label{eq:nemoRotationalSpeciesEnergy}
+    e^{rot}_s = \begin{cases}
+        \frac{\zeta}{2}\frac{R T}{M_s} & \text{polyatomic species} \\
+        0 & \text{electrons and monatomic species}
+    \end{cases}
+\end{equation}
+where $\zeta$ is an integer specifying the number of axes of rotation
+\begin{equation}\label{eq:nemoVibrationalSpeciesEnergy}
+    e^{vib}_s = \begin{cases}
+        \frac{R}{M_s}\frac{\theta_s^{vib}}{exp(\theta_s^{vib}/T_{ve}) -1}  & \text{polyatomic species} \\
+        0 & \text{electrons and monatomic species}
+    \end{cases}
+\end{equation}
+where $\theta_s^{vib}$ is the characteristic vibrational temperature of the
+species
+\begin{equation}\label{eq:nemoElectronicSpeciesEnergy}
+    e^{el}_s = \begin{cases}
+        \frac{R}{M_s}\frac{\sum_{i=1} g_{i,s}\theta_{i,s}^{el}exp\Parenthesis{
+            -\theta_{i,s}^{el}/T_{ve}}}{\sum_{i=0}g_{i,s}exp\Parenthesis{-\theta_{i,s}^{el}/T_{ve}}}  &
+        \text{polyatomic and monatomic species} \\
+        \frac{3}{2}\frac{RT_{ve}}{M_s} & \text{electrons}
+    \end{cases}
+\end{equation}
+where $\theta_s^{el}$ is the characteristic electronic temperature of the
+species and $g_i$ is the degeneracy of the $i$th state.
