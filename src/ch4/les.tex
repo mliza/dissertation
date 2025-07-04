@@ -1,8 +1,9 @@
 \subsection{\acrfull{LES} Study\label{sec:lesStudy}}
-This section investigates \gls{AO} properties for a turbulent flow in thermal
-and chemical equilibrium. \Cref{tab:lesStudy} summarized the flow conditions
-used on this investigation. The case was validated by Tumuklu
-\cite{Tumuklu2024} against experimental data.
+This section investigates \gls{AO} properties in a turbulent flow under thermal
+and chemical equilibrium conditions. \Cref{tab:lesStudy} summarizes the flow
+conditions used in this investigation. The numerical case was previously
+validated by Tumuklu \cite{Tumuklu2024} through comparison with experimental
+data, providing confidence in the accuracy of the simulation setup.
 \begin{table}[H]
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|}
@@ -35,7 +36,7 @@ capturing transient flow phenomena, which are often smoothed out in \gls{RANS}
 simulations.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
-        \includegraphics[height=0.32\textwidth]{chapter4/lesStudy/velocityMagnitude_time3_4}
+        \includegraphics[height=0.31\textwidth,trim=0.5cm 0cm 0cm 0cm, clip]{chapter4/lesStudy/velocityMagnitude_time3_4}
     }
     \caption{Contour velocity magnitude at $3.4\Units{s}$
     \label{ch5:lesContourVelocityMagnitude}}
@@ -50,33 +51,33 @@ highlighting the improved resolution of turbulence characteristics in the
 capturing the unsteady nature of the flow.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
-        \includegraphics[height=0.32\textwidth]{chapter4/lesStudy/temperature_time3_4}
+        \includegraphics[height=0.31\textwidth,trim=0.5cm 0cm 0cm 0cm, clip]{chapter4/lesStudy/temperature_time3_4}
     }
     \caption{Contour temperature at $3.4\Units{s}$
     \label{ch5:lesContourTemperature}}
 \end{figure}
 \begin{figure}[H]
     \makebox[\textwidth][c]{
-        \includegraphics[height=0.32\textwidth]{chapter4/lesStudy/pressure_time3_4}
+        \includegraphics[height=0.31\textwidth, trim=0.5cm 0cm 0cm 0cm, clip]{chapter4/lesStudy/pressure_time3_4}
     }
     \caption{Contour pressure at $3.4\Units{s}$
     \label{ch5:lesContourPressure}}
 \end{figure}
 \begin{figure}[H]
     \makebox[\textwidth][c]{
-        \includegraphics[height=0.32\textwidth]{chapter4/lesStudy/density_time3_4}
+        \includegraphics[height=0.31\textwidth, trim=0.5cm 0cm 0cm 0cm, clip]{chapter4/lesStudy/density_time3_4}
     }
     \caption{Contour density at $3.4\Units{s}$ \label{ch5:lesContourDensity}}
 \end{figure}
 
 \Cref{ch5:lesContourKerlPolarizability} presents the polarizability calculated
 using the Kerl approximation \cite{Kerl1992}, as defined in
-\Cref{eq:kerlFitting}, for a wavelength of $633\Units{nm}$. As expected, the
-results indicate that polarizability is dependent not only on the wavelength
-but also on temperature. This temperature dependence arises due to variations
-in molecular interactions and density fluctuations within the flow, which
-influence the medium’s optical properties. Understanding these dependencies is
-crucial for accurately modeling aero-optic effects in hypersonic flows.
+\Cref{eq:kerlFitting}, for a wavelength of $633\Units{nm}$. The Kerl
+approximation expresses polarizability as a function of temperature and radar
+frequency. As expected, the results indicate that polarizability depends not
+only on the wavelength but also on temperature. This temperature dependence
+arises from variations in molecular interactions and density fluctuations
+within the flow, both of which influence the medium’s optical properties.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         \includegraphics[height=0.165\textwidth, trim=0cm 11cm 0cm 10cm, clip]
@@ -93,7 +94,7 @@ dependence on temperature and laser wavelength. As expected, the index of
 refraction varies with temperature due to changes in the local density and
 molecular composition of the flow. Additionally, its dependence on wavelength
 arises from dispersion effects, where different wavelengths experience varying
-degrees of refractive behavior. These variations are critical in aero-optic
+degrees of refractive behavior. These variations are critical in \gls{AO}
 applications, as they influence wavefront distortions and signal propagation
 through high-speed flow fields.
 \begin{figure}[H]
