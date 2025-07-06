@@ -11,12 +11,12 @@
 \input{configuration/myResources/Latex/macros/pictureMacros}
 \input{configuration/myResources/Latex/macros/codeMacros}
 \addbibresource{bibliography.bib}
-\usepackage[text=Draft, colorspec=0.92, scale=5]{draftwatermark} %Draft mark package
+\usepackage[text=Draft 2, colorspec=0.92, scale=5]{draftwatermark} %Draft mark package
 
 \begin{document}
-\listoftodos
-
-
+%\listoftodos
+% Roman for the beginning stuff
+\pagenumbering{roman}
 
 % Place holder for Symbols and Acronyms
 \subimport{src/glossary}{glossary}
@@ -28,41 +28,45 @@
     \end{titlingpage}
 \fi
 
-% Add list of tables, list of figures and abbreviations 
-% Roman numeration
-\pagenumbering{roman}
-\setcounter{page}{1}
-
-% Lists and glossaries
-\iftrue
-    \subimport{src/ch0}{Abstract}
-    \addcontentsline{toc}{chapter}{Abstract}
-    \subimport{src/ch0}{Acknowledgments}
-    \addcontentsline{toc}{chapter}{Acknowledgments}
-\fi
-    \printunsrtglossary[type=abbreviations]
-    \printunsrtglossary[type=symbols, style=long, title={Nomenclature}]
-    \listoftables
-    \addcontentsline{toc}{chapter}{List of Tables}
-    \listoffigures
-    \addcontentsline{toc}{chapter}{List of Figures}
-
 % Print table of contents
-\clearpage\thispagestyle{empty}
-\renewcommand{\contentsname}{Table of Contents}
 \tableofcontents
+\thispagestyle{fancy}
 
-% Arabic numeration
+% List of Figures
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+\thispagestyle{fancy}
+
+% List of Tables
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+\thispagestyle{fancy}
+
+% List of Abbreviations and Nomenclature
 \clearpage
+\printunsrtglossary[type=abbreviations, title=\listabbreviation]
+\printunsrtglossary[type=symbols, style=long, title=\listnomenclature]
+
+% Abstract
+\clearpage
+\addcontentsline{toc}{chapter}{Abstract}
+\subimport{src/ch0}{Abstract}
+
+% Revert back to arabic
+\cleardoublepage
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
 % Add all the chapters
-\foreach \n in {1,2,3,4,5} {%
-    \subimport{src/ch\n}{chapter_\n}%
+\foreach \n in {1,2,3,4,5} {
+    \subimport{src/ch\n}{chapter_\n}
 }
 
-%% Documents after chapters
+% Documents after chapters
 \newpage 
     \printbibliography 
      

@@ -39,7 +39,14 @@
 \usepackage{pgffor} %For loop
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{titlesec}
 
+% Rename titles
+\renewcommand*\contentsname{Table of Contents}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
+\newcommand{\listabbreviation}{List of Abbreviations}
+\newcommand{\listnomenclature}{Nomenclature}
 
 % Fix Cref
 \crefname{equation}{eq.}{equations}
@@ -58,10 +65,12 @@
       \node[outer sep=1cm,above,rotate=90] at (current page.east) {\thepage};}
 }
 
-%Spacing  
+% Spacing  
 \usepackage{setspace}
-\doublespacing
-\renewcommand{\glsgroupskip}{\vspace{1em}}
+\setlength{\parskip}{0em} %Sets spacing between paragraphs
+\renewcommand{\baselinestretch}{1.5} %Sets line spacing to 1.5
+
+% Glossaries
 \makeglossaries
 
 %Paths
@@ -78,6 +87,7 @@
              pdfsubject={Licensed under CC BY-NC-SA 4.0},
              pdfpagemode={FullScreen},
             }
+
 % Headers and Footers
 \usepackage{fancyhdr}
 \pagestyle{fancyplain}
