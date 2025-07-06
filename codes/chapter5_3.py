@@ -131,11 +131,14 @@ def plot_stagnation_data(line_data, fig_config):
                  "-.",
                  color=colors[1],
                  linewidth=fig_config["line_width"])
+
+
         
         plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
         plt.ylabel("T $[K]$", fontsize=fig_config["axis_label_size"])
 
         plt.xlim(noneq_mm[0], noneq_mm[-1]) 
+        plt.ylim(plt.ylim()[0], 12000)
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config['legend_size'])
@@ -164,6 +167,7 @@ def plot_stagnation_data(line_data, fig_config):
         plt.ylabel("P $[kPa]$", fontsize=fig_config["axis_label_size"])
 
         plt.xlim(noneq_mm[0], noneq_mm[-1]) 
+        plt.ylim(plt.ylim()[0], 380)
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config["legend_size"])
@@ -264,6 +268,7 @@ def plot_stagnation_data(line_data, fig_config):
         plt.ylabel("Total GD $\\times 10^{-4}$ $[m^3/kg]$", fontsize=fig_config["axis_label_size"])
 
         plt.xlim(noneq_mm[0], noneq_mm[-1]) 
+        plt.ylim(plt.ylim()[0], 2.31)
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config["legend_size"])
@@ -296,6 +301,7 @@ def plot_stagnation_data(line_data, fig_config):
         )
 
         plt.xlim(noneq_mm[0], noneq_mm[-1]) 
+        plt.ylim(plt.ylim()[0], 0.040)
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config["legend_size"])
@@ -328,6 +334,7 @@ def plot_stagnation_data(line_data, fig_config):
         )
 
         plt.xlim(noneq_mm[0], noneq_mm[-1]) 
+        plt.ylim(plt.ylim()[0], 8E-5)
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config["legend_size"])
