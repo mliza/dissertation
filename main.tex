@@ -22,11 +22,9 @@
 \subimport{src/glossary}{glossary}
 
 % Title Page
-\iftrue
-    \begin{titlingpage}
-        \subimport{src/ch0}{chapter_0}
-    \end{titlingpage}
-\fi
+\begin{titlingpage}
+    \subimport{src/ch0}{chapter_0}
+\end{titlingpage}
 
 % Print table of contents
 \tableofcontents
@@ -52,9 +50,10 @@
 \printunsrtglossary[type=symbols, style=long, title=\listnomenclature]
 
 % Abstract
-\clearpage
-\subimport{src/ch0}{Abstract}
+\cleardoublepage
+\phantomsection
 \addcontentsline{toc}{chapter}{Abstract}
+\subimport{src/ch0}{Abstract}
 
 % Revert back to arabic
 \cleardoublepage
