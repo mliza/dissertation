@@ -53,8 +53,8 @@
 
 % Abstract
 \clearpage
-\addcontentsline{toc}{chapter}{Abstract}
 \subimport{src/ch0}{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
 
 % Revert back to arabic
 \cleardoublepage
@@ -67,12 +67,12 @@
 }
 
 % Documents after chapters
-\newpage 
-    \printbibliography 
-     
-    \appendix
-    \begin{appendices}
-        \subimport{src/appendices}{appendices}
-    \end{appendices}
+\appendix
+\begin{appendices}
+    \subimport{src/appendices}{appendices}
+\end{appendices}
+
+\newpage
+\printbibliography[heading=bibintoc]
 
 \end{document}
