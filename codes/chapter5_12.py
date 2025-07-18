@@ -145,6 +145,11 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
             axes2.legend(fontsize=fig_config["legend_size"])
             axes2.tick_params(axis="x", labelsize=fig_config["ticks_size"])
 
+        IPython.embed(colors = 'Linux')
+        ## TODO: TESTING ##
+        plt.show()
+        ## TODO: TESTING ##
+
         if cut_dict and i in cut_dict and "massFraction" in cut_dict[i]:
             plt.xlim(cut_dict[i]["massFraction"])
         plt.savefig(
@@ -467,7 +472,9 @@ def optical_properties(
         electric_dilute = optics.electric_susceptibility(refraction_index['dilute'])
         electric_dense = optics.electric_susceptibility(refraction_index['dense'])
 
+
         # Gladstone-Dale constant frozen
+        print(f"{f_in}")
         tot_density = sum(density_dict.values())[0]
 
         # Calculate mass fraction at the initialization
@@ -495,14 +502,14 @@ def optical_properties(
 
 def main(cfd_results_abs_path):
     fig_config = figure_configurations.figure_settings()
-    species_flag = True
+    species_flag = False
 
     if not species_flag:
         # Chemistry Composition #
         data_in_path = os.path.join(
             cfd_results_abs_path, "chemistryComposition", "outputs"
         )
-        files_in = ["1C.csv", "2C.csv", "3C.csv"]
+        files_in = ["1C.csv", "2C.csv", "3C.csv", "4C.csv", "5C.csv"]
         output_png_path = "../figures/chapter4/gasComposition"
         # Chemistry Composition #
     else:
