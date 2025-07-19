@@ -145,7 +145,6 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
             axes2.legend(fontsize=fig_config["legend_size"])
             axes2.tick_params(axis="x", labelsize=fig_config["ticks_size"])
 
-        IPython.embed(colors = 'Linux')
         ## TODO: TESTING ##
         plt.show()
         ## TODO: TESTING ##
@@ -497,7 +496,10 @@ def optical_properties(
             np.shape(temp_dict["time"])
         )
 
-    plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict)
+    return dict_data 
+
+
+
 
 
 def main(cfd_results_abs_path):
@@ -510,6 +512,7 @@ def main(cfd_results_abs_path):
             cfd_results_abs_path, "chemistryComposition", "outputs"
         )
         files_in = ["1C.csv", "2C.csv", "3C.csv", "4C.csv", "5C.csv"]
+        files_in = ["4C.csv"]
         output_png_path = "../figures/chapter4/gasComposition"
         # Chemistry Composition #
     else:
@@ -520,9 +523,10 @@ def main(cfd_results_abs_path):
         # Species #
 
     cut_dict_chemistry = get_chemistry_cut()
-    optical_properties(
+    dict_data = optical_properties(
         data_in_path, files_in, output_png_path, fig_config, cut_dict_chemistry
     )
+    plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict)
 
 
 if __name__ == "__main__":

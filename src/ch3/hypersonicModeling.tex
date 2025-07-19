@@ -50,7 +50,7 @@ The multicomponent \gls{NS} equations can be solved using some of the models:
     \item \textbf{State to state $(StS)$ models:} Solves the governing
         equations coupled to the master equation that accounts for the
         state-to-state transition \cite{Josyula2017}. Highest fidelity, highest
-        computational cost.
+        computational cost \cite{Hanquist2020}.
 \end{itemize}
 
 \subsection{Two-Temperature}
@@ -105,7 +105,18 @@ generalized semi-empirical models like the forced harmonic oscillator
 (\gls{FHO}) approach \cite{Adamovich1998a}. These rates capture excitation,
 de-excitation, dissociation, and recombination processes at the level of
 individual energy states, enabling detailed resolution of thermochemical
-nonequilibrium phenomena that are inaccessible to lower-fidelity models.
+nonequilibrium phenomena that are inaccessible to lower-fidelity models.\\
+
+The Master equation given on \Cref{eq:masterEquation} for the \gls{StS} model account for conservation of
+momentum and trans-rotational energy as well as for number density of the
+individual vibrational states.
+\begin{equation}\label{eq:masterEquation}
+\frac{dN_v}{dt} = \sum_s\Parenthesis{ R_{v,s}N^2_ON_s - D_{v,s}N_vN_s} +
+    \sum_s\Parenthesis{K_{v^{\prime}, v} N^{\prime}_{v}N_s -
+    K_{v,v^{\prime}}N_vN_s  }, \;\;\;\; v = 0, ..., v_{max}
+\end{equation}
+where: $R_{v,s}$ and $D_{v,s}$ are the state specific recombination and
+dissociation rates.
 
 \subsection{\Gls{SU2}--\Gls{NEMO}}
 To numerically solve the nonequilibrium governing equations incorporating these
