@@ -145,10 +145,6 @@ def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=
             axes2.legend(fontsize=fig_config["legend_size"])
             axes2.tick_params(axis="x", labelsize=fig_config["ticks_size"])
 
-        ## TODO: TESTING ##
-        plt.show()
-        ## TODO: TESTING ##
-
         if cut_dict and i in cut_dict and "massFraction" in cut_dict[i]:
             plt.xlim(cut_dict[i]["massFraction"])
         plt.savefig(
@@ -511,8 +507,8 @@ def main(cfd_results_abs_path):
         data_in_path = os.path.join(
             cfd_results_abs_path, "chemistryComposition", "outputs"
         )
-        files_in = ["1C.csv", "2C.csv", "3C.csv", "4C.csv", "5C.csv"]
         files_in = ["4C.csv"]
+        files_in = ["1C.csv", "2C.csv", "3C.csv", "4C.csv", "5C.csv"]
         output_png_path = "../figures/chapter4/gasComposition"
         # Chemistry Composition #
     else:
@@ -526,7 +522,8 @@ def main(cfd_results_abs_path):
     dict_data = optical_properties(
         data_in_path, files_in, output_png_path, fig_config, cut_dict_chemistry
     )
-    plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict)
+    plot_chemistry_composition(dict_data, output_png_path, fig_config,
+                               cut_dict_chemistry)
 
 
 if __name__ == "__main__":
