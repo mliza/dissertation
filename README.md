@@ -18,4 +18,6 @@ flowchart TD
 - **src:** contains appendices, glossaries, and all the chapters
 - **figures:** contains all the figures and it is structured by chapter
 - **configuration:** contains the preamble, shortcuts, and a submodule for additional resources
-- **codes:** contains all the code that will go in the appendix and the scripts used to generate figures used in this dissertation
+- **codes:** contains all the scripts used to generate figures used in this dissertation
+
+If data is required please reach out.
