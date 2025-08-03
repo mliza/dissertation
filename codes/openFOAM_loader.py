@@ -124,11 +124,16 @@ def plot_OPL_3D(time_data, x_range, OPL, fig_config):
 
 
 # Plot OPL (wave travels on the y)
-def plot_optical_path_length_x(x_range, OPL, fig_config, opl_path, time):
+def plot_optical_path_length_x(x_range, OPL, spatial_var, fig_config, opl_path, time):
+
     fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
-    plt.plot(x_range, OPL, "-", linewidth=fig_config["line_width"])
-    plt.ylabel("OPL $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.plot(x_range, OPL * 10, "-", linewidth=fig_config["line_width"],
+             label=f'$\sigma_x$={spatial_var:0.3}')
+    plt.ticklabel_format(style='plain', axis='y')
+    plt.gca().yaxis.get_major_formatter().set_useOffset(False)
+    plt.ylabel("OPL $[mm]$", fontsize=fig_config["axis_label_size"])
     plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.legend(fontsize=fig_config["legend_size"])
     plt.savefig(
         os.path.join(opl_path, f"opl_{time}.pdf"),
         format="pdf",
@@ -137,22 +142,37 @@ def plot_optical_path_length_x(x_range, OPL, fig_config, opl_path, time):
     )
     plt.close()
 
-def plot_optical_path_length_shift(x_range, OPL, wavelength_nm, fig_config,
-                                   opl_shift_path, time):
+def plot_optical_path_length_shift(x_range, y_out, OPL, wavelength_nm, fig_config,
+                                   opl_shift_path, cur_time):
+
+    my_time = float(cur_time.replace('_', '.'))
     freq_Hz = (3 * 1E8) / (wavelength_nm * 1E-9)
     amplitude = 1
-    truth = amplitude * np.sin(2 * np.pi * freq_Hz * x_range / (3 * 1E8))
-    shift = truth + OPL
+    y_range =  np.linspace(0, y_out, len(x_range))
+    truth = amplitude * np.sin(2 * np.pi * freq_Hz * my_time * x_range /
+                               (wavelength_nm * 1E-7))
+    shift = amplitude * np.sin(2 * np.pi * freq_Hz * my_time * (x_range + OPL)
+                               / (wavelength_nm * 1E-7))
+
+
+    plt.scatter(x_range, y_out + OPL, linewidth=fig_config["line_width"],
+    label=f'Y_out = {y_out} $[cm]$')
+    plt.ylabel("OPL $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
+    plt.legend(fontsize=fig_config["legend_size"])
+
+    """
     fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     plt.plot(x_range, truth, "-", linewidth=fig_config["line_width"],
-    label='Truth')
-    plt.plot(x_range, shift, "-.", linewidth=fig_config["line_width"],
-    label='Shift (OPL)')
+    label='PPL')
+    plt.plot(x_range, shift, "-", linewidth=fig_config["line_width"],
+    label='OPL')
     plt.ylabel("Amplitude $[cm]$", fontsize=fig_config["axis_label_size"])
     plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
     plt.legend(fontsize=fig_config["legend_size"])
+    """
     plt.savefig(
-        os.path.join(opl_shift_path, f"opl_shift_{time}.pdf"),
+        os.path.join(opl_shift_path, f"opl_shift_{cur_time}.pdf"),
         format="pdf",
         bbox_inches="tight",
         dpi=fig_config["dpi_size"],
@@ -161,12 +181,14 @@ def plot_optical_path_length_shift(x_range, OPL, wavelength_nm, fig_config,
 
 
 # Plot OPD (wave travels on the x)
-def plot_optical_path_difference_x(x_range, OPD, fig_config, opd_path, time):
+def plot_optical_path_difference_x(x_range, OPD, opl_mean, fig_config, opd_path, time):
     fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
-    plt.plot(x_range, OPD, "-", linewidth=fig_config["line_width"], label="Truth")
+
+    plt.plot(x_range, OPD * 1E7, "-", linewidth=fig_config["line_width"],
+             label=fr'$\overline{{OPL_x}} = {opl_mean:0.3}$')
+    plt.ylabel("OPD $[nm]$", fontsize=fig_config["axis_label_size"])
     plt.xlabel("X $[cm]$", fontsize=fig_config["axis_label_size"])
-    plt.ylabel("OPD $[cm]$", fontsize=fig_config["axis_label_size"])
-    plt.locator_params(axis="y", nbins=4)
+    plt.legend(fontsize=fig_config["legend_size"])
     plt.savefig(
         os.path.join(opd_path, f"opd_{time}.pdf"),
         format="pdf",
@@ -332,6 +354,7 @@ def main(
     y_distance = np.zeros([np.shape(time_data)[0], len(x_range)])
 
     # Choose the first time data for i in time_data:
+    #TODO: time_data
     for i, current_time in enumerate(time_data):
         time = str(current_time).replace(".", "_")
         reader.set_active_time_value(current_time)
@@ -359,13 +382,25 @@ def main(
 
     # Calculate aero-optic properties
     # OPD[time,x_position] beam travels on y-axis
-    OPD = haot.optical_path_difference(OPL, avg_ax=1)  # avg over space
+    #TODO: DO OPD as afunction of TIME
+    OPD = haot.optical_path_difference(OPL, avg_ax=1)  # avg space
+    OPD_time = haot.optical_path_difference(OPL, avg_ax=0)  # avg time
+
     OPD_rms = haot.optical_path_difference_rms(OPD, avg_ax=0)
     phase_variance = haot.phase_variance(OPD_rms, 633)
     strehl_ratio = haot.strehl_ratio(phase_variance)
     y_out_vec = y_out * np.ones(np.shape(x_range))
     wave_front_distortion = y_out_vec + OPD
-    print(f"The Strehl ratio is: {strehl_ratio}")
+    time_var = np.mean(np.std(OPL, axis=0))
+    spatial_var = np.mean(np.std(OPL, axis=1))
+    mean_space_OPL = np.mean(np.mean(OPL, axis=1))
+    mean_time_OPL = np.mean(np.mean(OPL, axis=0))
+
+    print(f"The Strehl ratio is: {strehl_ratio:0.4}")
+    print(f"Spatial_var: {spatial_var:0.4}")
+    print(f"Time_var: {time_var:0.4}")
+    print(f"OPL_mean_space: {mean_space_OPL:0.4}")
+    print(f"OPL_mean_time: {mean_time_OPL:0.4}")
 
     # 3D plots
     plot_OPL_3D(time_data, x_range, OPL, fig_config)
@@ -384,15 +419,14 @@ def main(
         )
 
         plot_optical_path_length_x(
-            x_range, OPL[i], fig_config, fig_config["opl_path"], time
+            x_range, OPL[i], spatial_var, fig_config, fig_config["opl_path"], time
         )
 
-        plot_optical_path_length_shift(x_range, OPL[i], 633, fig_config,
+        plot_optical_path_length_shift(x_range, y_out, OPL[i], 633, fig_config,
                                        fig_config["opl_shift"], time)
 
         plot_optical_path_difference_x(
-            x_range, OPD[i], fig_config, fig_config["opd_path"], time
-        )
+            x_range, OPD[i], mean_time_OPL, fig_config, fig_config["opd_path"], time)
 
 
 if __name__ == "__main__":
