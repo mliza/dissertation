@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import figure_configurations
 
 
-index_refraction = np.linspace(1, 1.1, 5000)
+index_refraction = np.linspace(1, 2, 10000)
 dilute = index_refraction - 1
 dense = (index_refraction**2 - 1) / (index_refraction**2 + 2)
 fig_config = figure_configurations.figure_settings()
@@ -22,5 +22,4 @@ plt.show()
 plt.savefig('dilute_dense_delta.pdf', format="pdf", bbox_inches="tight",
             dpi=fig_config["dpi_size"])
 """
-
 
