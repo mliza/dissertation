@@ -433,6 +433,7 @@ if __name__ == "__main__":
 
     f_in = "/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/LES/openFoam"
     figures_path = os.path.join("figures", "openFoam")
+    figures_path = os.path.join("newFigures", "openFoam")
     index_path = os.path.join(figures_path, "index")
     susceptibility_path = os.path.join(figures_path, "susceptibility")
     velocity_path = os.path.join(figures_path, "velocityMag")
@@ -446,7 +447,7 @@ if __name__ == "__main__":
     temperature_path = os.path.join(figures_path, "temperature")
     x_range = np.arange(0.3, 0.9, 0.01)
     y_in = 0.0
-    y_out = 0.14
+    y_out = 0.17
 
     # Users inputs #
     fig_config = {}
