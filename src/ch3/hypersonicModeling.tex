@@ -107,7 +107,7 @@ de-excitation, dissociation, and recombination processes at the level of
 individual energy states, enabling detailed resolution of thermochemical
 nonequilibrium phenomena that are inaccessible to lower-fidelity models.\\
 
-The Master equation given on \Cref{eq:masterEquation} for the \gls{StS} model account for conservation of
+The Master equation given in \Cref{eq:masterEquation} for the \gls{StS} model account for conservation of
 momentum and trans-rotational energy as well as for number density of the
 individual vibrational states \cite{Kim2013}.
 \begin{equation}\label{eq:masterEquation}
@@ -144,7 +144,7 @@ source terms. \\
 
 \gls{SU2}--\gls{NEMO} uses a rigid-rotor harmonic oscillator two-temperature
 model to calculate the thermodynamic state. The total energy and
-vibrational-electronic energy per unit volume are given on \Cref{eq:nemoEnergy}.
+vibrational-electronic energy per unit volume are given in \Cref{eq:nemoEnergy}.
 \begin{subequations}\label{eq:nemoEnergy}
     \begin{align}
         &\rho e = \sum_{s}\rho_s\Parenthesis{e_s^{tr} + e_{s}^{rot} + e_s^{vib} + e_s^{el}
@@ -190,7 +190,7 @@ species and $g_i$ is the degeneracy of the $i$th state. \\
 
 The vibrational relaxation is computing using the \textit{Landau-Teller}
 relaxation time with \textit{Park}\cite{Park1989} high energy correction and it
-is given on \Cref{eq:vibrationalRelaxation}
+is given in \Cref{eq:vibrationalRelaxation}
 \begin{equation}\label{eq:vibrationalRelaxation}
     \dot{\Theta}^{tr:vib} = \sum_s \rho_s \frac{de_s^{vib}}{dt} =
     \sum_s\rho_s\frac{e_s^{vib*} - e_s^{vib}}{\tau_s}

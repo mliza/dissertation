@@ -1,4 +1,6 @@
     \section{Motivation\label{ch1:motivation}}
+    
+\glsreset{AO}
 Several reports, both classified and unclassified \cite{Jones2009,
 ChiefScientistAirForce2010, Stone2022}, have identified \gls{AO} effects at
 hypersonic speeds as a matter of critical importance to national security.
@@ -8,11 +10,25 @@ also by major \gls{DoD} contractors, including Lockheed Martin Corp.,
 Northrop Grumman Corp., and Raytheon Technologies. As expected, much of this
 applied work remains unavailable in the open literature. Despite these
 efforts, a fundamental gap in understanding persists regarding the influence of
-high-enthalpy flows at hypersonic speeds on \gls{AO} phenomena. This
-dissertation seeks to address some of these knowledge gaps through
-high-fidelity \gls{CFD} simulations, aiming to characterize the impact of
-high-enthalpy flow on \gls{AO}-relevant properties, such as the index of
-refraction, dielectric constant, and polarizability.\\
+high-enthalpy flows at hypersonic speeds on \gls{AO} phenomena. \\
+
+This dissertation seeks to address several existing knowledge gaps through
+high-fidelity \gls{CFD} simulations, with the objective of characterizing the
+influence of high-enthalpy flows on \gls{AO}-relevant \gls{EM}
+properties, including the index of refraction, dielectric constant, electric
+susceptibility, and polarizability. These properties are critical not only for
+\gls{AO} applications but also for radar systems. While light beams and radar
+signals are both \gls{EM} waves, they operate at vastly different frequency
+ranges, leading to potentially distinct interactions with a high-enthalpy,
+nonequilibrium medium. Understanding these interactions is essential for
+predicting and mitigating performance degradation in optical and
+radio-frequency sensing systems operating in extreme aerothermal
+environments. \\
+
+This work focus primarily on \gls{Lidar} sensor applications but it is also
+relevant to \glspl{DEW}. The range of frequencies considered in this work is
+constrained by available experimental data, and these limitations will be
+specified where applicable.\\
 
         \Cref{fig:ch1strategicWeapon} illustrates the notional flight paths for
         various long-range weapons. Accurate target detection is of paramount
@@ -59,34 +75,50 @@ refraction, dielectric constant, and polarizability.\\
         hypersonic weapons.
 
         A crude approximation for the index of refraction in the atmosphere was proposed by Smith and Weintraub \cite{Smith1953}
-        and it is given on \Cref{eq:crudeIndexApproximation}. Where $K_1 =
-        79\UnitsFrac{K}{mB}$, $K_2=4800\Units{K}$, $e$ is the partial pressure
-        of water vapor in millibars. 
+        and it is given in \Cref{eq:crudeIndexApproximation}. 
         \begin{equation}\label{eq:crudeIndexApproximation}
             n(h) \approx 1 + \frac{K_1}{T(h)} \Parenthesis{ p(h) +
             K_2\frac{e(h)}{T(h)}} 
         \end{equation}
+        Where $K_1 =
+        79\UnitsFrac{K}{mB}$, $K_2=4800\Units{K}$, $e$ is the partial pressure
+        of water vapor in millibars. \\
+
+
         \Cref{fig:ch1AtmosphericOptics} illustrates the index of refraction
         as a function of altitude for a \textit{blue-sky} scenario. The most
-        drastic change in the index of refraction occurs at approximately
-        $15\Units{km}$ above sea level, which is in the tropopause, near the
-        boundary where the troposphere ends and the stratosphere begins. This
-        is also the altitude at which commercial planes and jets typically fly.
-        It is a critical region where sensor accuracy is especially important.
+        significant change in the index of refraction occurs at approximately
+        $15\Units{km}$ above sea level, within the tropopause, near the
+        boundary between the troposphere and the stratosphere. This is also the
+        typical cruising altitude for commercial aircraft and many high-speed
+        jets. 
         \pic{0.85}{chapter1/atmosphericOptics}{Atmospheric index of
         refraction}{fig:ch1AtmosphericOptics}
 
+        This region is critical for sensor accuracy because it is relatively
+        close to the ground (where high-resolution sensing is often required)
+        and is frequently associated with atmospheric turbulence. Both
+        turbulence and variations in chemical composition can influence
+        \gls{EM} wave propagation. In hypersonic flows, the chemical
+        composition is not constant due to chemical nonequilibrium, resulting
+        in additional spatial and temporal variations in the index of
+        refraction. These variations can degrade the performance of optical
+        systems, radar, and other \gls{EM}-based sensing technologies operating
+        in or through this altitude band.
+
         However, the index of refraction consists of both a real and a complex
-        component, as expressed in \Cref{eq:totalIndexOfRefraction}. The real
+        component, as expressed in \Cref{eq:totalIndexOfRefraction}. 
+        \begin{equation}\label{eq:totalIndexOfRefraction}
+            \mathcal{N} = n + ik 
+        \end{equation}
+        The real
         part, $n$, governs the phenomenon of bending or refraction of
         light as it passes through a medium, while the complex part, $k$, is
         associated with attenuation or absorption of the wave as it
         propagates. The attenuation arises due to energy dissipation within the
         medium, which is particularly relevant in plasmas, where ionization
-        effects contribute to optical losses. 
-        \begin{equation}\label{eq:totalIndexOfRefraction}
-            \mathcal{N} = n + ik 
-        \end{equation}
+        effects contribute to optical losses. \\
+
         This work focus on analyzing the real part of
         \Cref{eq:totalIndexOfRefraction}, as it plays a crucial role in
         determining optical path differences and wavefront distortions in
@@ -109,7 +141,7 @@ refraction, dielectric constant, and polarizability.\\
         For subsonic
         flows, it might be a valid assumption to ignore the aerodynamic effects
         on the optical beam; however for supersonic and specially for
-        hypersonic flows this assumption has to be revisit. During a hypersonic
+        hypersonic flows this assumption has to be revisited. During a hypersonic
         flight the temperatures behind the shock are very high, that will no
         only induce thermal noise on the sensor but will also affect the
         electromagnetic properties that will influence the sensor's
@@ -139,7 +171,7 @@ refraction, dielectric constant, and polarizability.\\
         hypersonic vehicle analysis due to it’s efficiency \cite{Candler2019}
         and can still provide aero-optical quantities such as \gls{GD}
         constant, polarizability, \gls{BSE}, \gls{OPL}, \gls{OPD}, and
-        \gls{WD}. The amount of enthalpy is also an important criteria in the
+        \gls{WD}, these are defined in \cref{ch2:opticsOverview}. The amount of enthalpy is also an important criteria in the
         flow field. With high enthalpy flows, many physical phenomena in the
         flow field that are not present in low-speed flows present themselves.
         This includes nonequilibrium, reactive flows, and excitation of
@@ -174,3 +206,12 @@ Low-Enthalpy, High-Flow case (Quadrant II) is used to investigate
             \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter1/gdFidelities}}
             \caption{\gls{GD} fidelities \label{fig:gdFidelities}}
         \end{figure}
+
+        \Cref{fig:turbulenceFlows} illustrates how the flow field appears at increasing levels of simulation fidelity, from \gls{RANS} to \gls{LES} and finally to \gls{DNS} resolution for a jet flow. Each increase in \gls{CFD} resolution captures progressively finer turbulent structures, which in turn influence the predicted optical properties of the flow.
+        \begin{figure}[H]
+            \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter1/turbulenceFlows}}
+            \caption{Flow fidelities \cite{idealsimulations2025}\label{fig:turbulenceFlows}}
+        \end{figure}
+
+
+
