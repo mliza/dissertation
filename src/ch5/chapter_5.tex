@@ -66,7 +66,7 @@ significantly from the Boltzmann form. However, while these distributions vary,
 the deviations occur primarily in higher vibrational levels, which are sparsely
 populated and contribute minimally to the overall polarizability. \\
 
-The computational framework developed in this work is equipped to handle such
+The computational package developed in this work is equipped to handle such
 non-Boltzmann scenarios. Nonetheless, the primary focus remains on
 characterizing trends and sensitivities rather than delivering a fully
 comprehensive treatment of non-Boltzmann effects.  \\
@@ -85,5 +85,51 @@ rely on precise optical targeting—such as infrared seekers or laser-based trac
 technologies—must incorporate the influence of high-enthalpy flow conditions to reliably
 predict target locations and maintain operational accuracy at high speeds. This work
 provides a framework for incorporating such effects through high-fidelity modeling and
-analysis of \gls{AO} phenomena under realistic hypersonic flow conditions.
+analysis of \gls{AO} phenomena under realistic hypersonic flow conditions.\\
+
+From the results presented in \cref{ch:ch4}, one conclusion that can be drawn
+is whether the dilute formulation of the index of refraction
+\cref{eq:diluteRefractiveIndex} remains valid for hypersonic flows, or if there
+are cases in which it breaks down and the dense formulation
+\cref{eq:denseRefractiveIndex} must be applied. \Cref{fig:diluteDenseDelta}
+shows the limits of the dilute formulation.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        \includegraphics[width=0.9\textwidth]{chapter5/dilute_dense_delta}
+    }
+    \caption{Dilute vs. Dense formulation}\label{fig:diluteDenseDelta}
+\end{figure}
+
+From \Cref{fig:diluteDenseDelta}, it appears that the dilute formulation is
+valid as long as $n - 1 < 10^{-2}$. For all results presented in
+\cref{ch:ch4}, the maximum value of $n - 1$ is less than $10^{-4}$,
+confirming the validity of the dilute formulation. However, one could consider
+a hypersonic case in which the dilute formulation may break down.
+\Cref{fig:1kPa,fig:1MPa,fig:1GPa} shows a comparison between the dilute and dense
+formulation for standard air at different pressures.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+    \includegraphics[width=0.9\textwidth]{chapter5/dilute_dense_pressure_1E+03}
+    }
+    \caption{Dilute vs. Dense at $1\Units{kPa}$}\label{fig:1kPa}
+\end{figure}
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+    \includegraphics[width=0.9\textwidth]{chapter5/dilute_dense_pressure_1E+06}
+    }
+    \caption{Dilute vs. Dense at $1\Units{MPa}$}\label{fig:1MPa}
+\end{figure}
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+    \includegraphics[width=0.9\textwidth]{chapter5/dilute_dense_pressure_1E+09}
+    }
+    \caption{Dilute vs. Dense at $1\Units{GPa}$}\label{fig:1GPa}
+\end{figure}
+
+
+
+
+
+
+
 \input{futureWork}
