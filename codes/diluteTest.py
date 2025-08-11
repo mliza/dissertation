@@ -7,18 +7,20 @@ import IPython
 
 index_refraction = np.linspace(1, 2, 10000)
 temperature_K = np.linspace(100, 50000, 1000)
-pressure_Pa = 1E6
+pressure_Pa = 1E3
+wavelength_nm = 1000
 gas_constant = 287.058
 mass_density = pressure_Pa / (gas_constant * temperature_K)
+
 
 dilute = index_refraction - 1
 dense = (index_refraction**2 - 1) / (index_refraction**2 + 2)
 
 kerl_polarizability = haot.kerl_polarizability_temperature(temperature_K,
-                                                           "Air", 633)
+                                                           "Air", wavelength_nm)
 
 index = haot.index_of_refraction_density_temperature(temperature_K, mass_density,
-                                             "Air", 633)
+                                             "Air", wavelength_nm)
 
 # Plot n(T, pro)
 fig_config = figure_configurations.figure_settings()

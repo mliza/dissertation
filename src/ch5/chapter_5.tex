@@ -126,10 +126,25 @@ formulation for standard air at different pressures.
     \caption{Dilute vs. Dense at $1\Units{GPa}$}\label{fig:1GPa}
 \end{figure}
 
+Results in \Cref{fig:1kPa,fig:1MPa,fig:1GPa} were obtained using the \gls{HAOT}
+package. For each case, a temperature vector and a fixed pressure were
+specified to compute the index of refraction. The \textit{perfect gas} equation
+\cref{eq:equationOfState} was used to determine the densities, and the Kerl
+formulation \cref{eq:kerlFitting} was applied to estimate the polarizability.
+The index of refraction was then calculated using both the dilute and dense
+formulations \cref{eq:diluteRefractiveIndex,eq:denseRefractiveIndex}. All
+calculations correspond to a wavelength of $633\Units{nm}$. Additional
+calculations for a wavelength of $1000\Units{nm}$ are given in the
+\crefApendex{app:diluteDenseFormulation}. \\
 
-
-
-
-
+Several assumptions underlie these results, including the use of the
+\textit{perfect gas} equation of state, constant composition, and the Kerl
+formulation for polarizability. Based on the analysis, an air density of
+approximately $34000\UnitsFrac{kg}{m^3}$ at $\approx 100\Units{K}$ would be required for the dilute
+formulation to break down and for the dense formulation to become necessary.
+Such a density is far beyond physically realistic values for air, even under
+extreme conditions such as high-enthalpy hypersonic flows or shock-compressed
+regions, where densities typically remain below $\mathcal{O}(10^2),
+\UnitsFrac{kg}{m^3}$. Therefore, for the hypersonic flows, the dilute formulation of the index of refraction can be regarded as an accurate and robust approximation.
 
 \input{futureWork}
