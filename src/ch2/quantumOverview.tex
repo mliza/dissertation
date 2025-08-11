@@ -329,26 +329,23 @@ populations.
     \cite{Ott2000}. Therefore, for the purposes of this approach, it is assumed
     that the system consists solely of harmonic oscillators. As a result, the
     anharmonic terms in the vibrational-rotational energy described by
-    \Cref{eq:bornOppenheimerApproximation} will be neglected.
+    \Cref{eq:bornOppenheimerApproximation} will be neglected. \\ 
 
+However, for high-enthalpy flows, such as those encountered in hypersonic
+applications, the assumption of thermal equilibrium inherent in the Boltzmann
+distribution becomes invalid. In these conditions, the vibrational and
+electronic energy modes can be far from equilibrium with the translational and
+rotational modes, leading to significant deviations from the Maxwell–Boltzmann
+population distribution.\\
 
-%% TODO: DO I NEED THIS? %%
-\iffalse
-    The total orbital angular momentum quantum number for molecular gas is
-    called $\Lambda$: 
-    \begin{subequations}\label{eq:spectroscopyNotation}
-        \begin{align*}
-            \Lambda = 0\,\rightarrow \Sigma \\
-            \Lambda = 1\,\rightarrow \Pi \\
-            \Lambda = 2\,\rightarrow \Delta \\
-            \Lambda = 3\,\rightarrow \Phi \\
-        \end{align*}
-    \end{subequations}
-
-    The gamma coefficient is given by \Cref{eq:gammaRotational} and it is
-    calculated using paper \cite{Bouanich1978}
-    \begin{equation}\label{eq:gammaRotational}
-        \gamma = \frac{2B_e}{\omega_e}
-    \end{equation}
-\fi 
-%% TODO: DO I NEED THIS? %%
+\Cref{fig:vibStates} illustrates the relationship between energy levels and
+vibrational quantum numbers, comparing the predictions from the Varandas model
+and the Dunham Expansion. The Varandas formulation remains valid for both
+dissociation and anharmonicity, whereas the Dunham Expansion is only accurate
+for low vibrational levels and fails near dissociation.
+    \begin{figure}[H]
+        \makebox[\textwidth][c]{
+            \includegraphics[width=0.9\textwidth]{chapter2/VibStates}
+        }
+        \caption{Energy as a function of vibrational states \cite{Hanquist2020}}\label{fig:vibStates}
+    \end{figure}
