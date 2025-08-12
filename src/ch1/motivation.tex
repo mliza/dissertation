@@ -42,9 +42,13 @@ specified where applicable.\\
         thermal interference, signal distortion and change in \gls{EM} properties. 
         Advanced guidance systems must compensate for these factors to maintain
         precision in target acquisition and engagement.
-        \pic{0.17}{chapter1/strategicWeapons}{Notional flight paths of
+    \begin{figure}[H]
+        \makebox[\textwidth][c]{
+            \includegraphics[width=0.9\textwidth]{chapter1/strategicWeapons}}
+        \caption{Notional flight paths of
         hypersonic boost-glide missiles, ballistic missiles, and cruise
-        missiles. (\gls{CSBA} graphic)}{fig:ch1strategicWeapon}
+        missiles. (\gls{CSBA} graphic)}\label{fig:ch1strategicWeapon}
+    \end{figure}
 
         In addition, hypersonic vehicles can be detected by enemy ground-based
         radar systems. \Cref{fig:radarStrategicWeapons} illustrates the flight
@@ -104,9 +108,18 @@ specified where applicable.\\
         in additional spatial and temporal variations in the index of
         refraction. These variations can degrade the performance of optical
         systems, radar, and other \gls{EM}-based sensing technologies operating
-        in or through this altitude band.
+        in or through this altitude band. \\
 
-        However, the index of refraction consists of both a real and a complex
+        Active seekers are not engaged throughout the entire flight trajectory;
+        they are typically activated only during the terminal phase of flight.
+        This phase is generally characterized by lower speeds compared to
+        midcourse flight, although the exact conditions depend on the specific
+        vehicle and mission profile. The present work focuses on this
+        region—the terminal phase—because it is the portion of the trajectory
+        where the vehicle is more vulnerable to enemy defenses and
+        interception.\\
+
+        The index of refraction consists of both a real and a complex
         component, as expressed in \Cref{eq:totalIndexOfRefraction}. 
         \begin{equation}\label{eq:totalIndexOfRefraction}
             \mathcal{N} = n + ik 

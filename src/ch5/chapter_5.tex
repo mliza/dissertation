@@ -1,4 +1,8 @@
 \chapter{Conclusion\label{ch:ch5}} 
+\glsreset{AO}
+\glsreset{HGV}
+\glsreset{ICBM}
+\glsreset{HAOT}
 The study of \gls{AO} properties in hypersonic flow is a complex, multi-physics
 problem. \Cref{fig:aoVennDiagram} illustrates the many different disciplines
 involved in understanding \gls{AO} effects within hypersonic regimes. While
@@ -37,7 +41,7 @@ the use of \gls{LES}. \\
 
 The second study in this work (\Cref{sec:medFidelity}) focused on
 medium-fidelity (species-specific \gls{GD}) modeling. This fidelity involved
-both a zero-D (heat bath) and a two-D (IRV-vehicle) flow study. Additionally,
+both a zero-Dimensional (heat bath) and a two-Dimensional (IRV-vehicle) flow study. Additionally,
 a comparison across multiple gases was conducted (\Cref{sec:gasComposition}),
 demonstrating that \gls{AO} properties depend on the species composition. \\
 
@@ -71,21 +75,24 @@ non-Boltzmann scenarios. Nonetheless, the primary focus remains on
 characterizing trends and sensitivities rather than delivering a fully
 comprehensive treatment of non-Boltzmann effects.  \\
 
-The central research question—\textit{To what extent do high-enthalpy flow conditions
-influence the \gls{AO} properties of the medium?}—was directly addressed in this work.
-The results demonstrated that high-enthalpy effects, including vibrational excitation,
-chemical nonequilibrium, and species composition variations, significantly alter the
-\gls{AO} properties of the medium. These changes affect the polarizability in
-the medium, which in turn modify the index of refraction propagating through
-the flow.\\ 
-
-Accurately accounting for these variations is essential for the design and performance
-assessment of optical systems in hypersonic vehicles. In particular, sensor systems that
-rely on precise optical targeting—such as infrared seekers or laser-based tracking
-technologies—must incorporate the influence of high-enthalpy flow conditions to reliably
-predict target locations and maintain operational accuracy at high speeds. This work
-provides a framework for incorporating such effects through high-fidelity modeling and
-analysis of \gls{AO} phenomena under realistic hypersonic flow conditions.\\
+The central research question—\textit{To what extent do high-enthalpy flow
+conditions influence the \gls{AO} properties of the medium?}—was directly
+addressed in this work. The results show that high-enthalpy effects, including
+vibrational excitation, chemical nonequilibrium, and variations in species
+composition, do alter the \gls{AO} properties of the medium. These processes
+modify the polarizability of the gas, which in turn changes the index of
+refraction experienced by optical waves propagating through the flow. However,
+for the conditions studied here, these effects are minimal. The analysis
+focused on low-hypersonic flight regimes in which additional molecular degrees
+of freedom become active, but where the overall density remains relatively low.
+This regime is particularly relevant for hypersonic vehicles such as
+\glspl{HGV} and \glspl{ICBM}, which would benefit from \cref{LiDAR} systems or
+other active optical seekers. Such systems typically operate only during the
+terminal phase of flight, when the vehicle is closest to the target, traveling
+through higher-density atmospheric regions but at reduced Mach numbers compared
+to midcourse flight. These conditions define the operational window in which
+\gls{AO} effects must be accurately characterized to ensure seeker
+performance.\\
 
 From the results presented in \cref{ch:ch4}, one conclusion that can be drawn
 is whether the dilute formulation of the index of refraction
@@ -139,11 +146,26 @@ calculations for a wavelength of $1000\Units{nm}$ are given in the
 
 Several assumptions underlie these results, including the use of the
 \textit{perfect gas} equation of state, constant composition, and the Kerl
-formulation for polarizability. Based on the analysis, a pressure of
-$1\Units{GPa}$ will be required for the dilute formulation to break down and
-for the dense formulation to become necessary. Such a pressure is far beyond physically realistic values for air, even under
-extreme conditions such as high-enthalpy hypersonic flows or shock-compressed
-regions, where densities typically remain below $\mathcal{O}(10^2),
-\UnitsFrac{kg}{m^3}$. Therefore, for the hypersonic flows, the dilute formulation of the index of refraction can be regarded as an accurate and robust approximation.
+formulation for polarizability. The analysis indicates that a pressure of
+$1\Units{GPa}$ would be required for the dilute formulation to break down and
+for the dense formulation to become necessary. Such a pressure is far beyond
+physically realistic values for air, even under extreme conditions such as
+high-enthalpy hypersonic flows or shock-compressed regions, where densities
+typically remain below $\mathcal{O}(10^2)\UnitsFrac{kg}{m^3}$. Therefore, for
+hypersonic flows, the dilute formulation of the index of refraction can be
+considered an accurate and robust approximation. \\
+
+Accurately accounting for these variations is essential for the design and
+performance assessment of optical systems in hypersonic vehicles. In
+particular, sensor systems that rely on precise optical targeting—such as
+infrared seekers or laser-based tracking technologies—must consider the
+influence of high-enthalpy flow conditions to ensure reliable target
+acquisition and maintain operational accuracy at high speeds. Although the
+present results indicate that high-enthalpy effects are minimal for the
+low-hypersonic regimes studied, the modeling framework developed here enables
+these effects to be incorporated into high-fidelity \gls{AO} simulations when
+needed. This provides a pathway for evaluating and mitigating \gls{AO}
+impacts under realistic hypersonic flight conditions, thereby supporting robust
+sensor and seeker design. \\
 
 \input{futureWork}
