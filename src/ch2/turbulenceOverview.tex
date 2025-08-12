@@ -149,10 +149,6 @@ conditions. These eddies receive energy transferred from larger eddies and
 dissipate it as heat through the fluid's molecular viscosity. The length scales
 of these eddies are described by the Kolmogorov scales \Cref{eq:kolmogorovScales}, which depend on the
 kinematic viscosity $(\nu)$ and the turbulent dissipation rate $(\varepsilon)$.
-These eddies are isotropic due to the dominance of viscosity at these scales,
-which smoothness out directional variations. The smallest-scale motions are
-entirely governed by dissipation, making them crucial for understanding energy
-conversion in turbulent flows.
 \begin{subequations}\label{eq:kolmogorovScales}
     \begin{align}
         &\kolmogorovLengthScale \label{eq:kolmogorovLength} \\
@@ -160,6 +156,10 @@ conversion in turbulent flows.
         &\kolmogorovVelocityScale  \label{eq:kolmogorovVelocity} 
     \end{align}
 \end{subequations}
+These eddies are isotropic due to the dominance of viscosity at these scales,
+which smoothness out directional variations. The smallest-scale motions are
+entirely governed by dissipation, making them crucial for understanding energy
+conversion in turbulent flows.\\
 
 \Cref{fig:ch2EnergySpectrum} illustrates the energy spectrum of turbulence,
 which organizes the energy distribution across different scales within a
@@ -185,7 +185,8 @@ include flow around an aircraft. The study of these flows is highly challenging
 because the presence of a solid wall imposes additional constraints that are
 not present in free-shear flows (such as jets and wakes) \cite{Tennekes1972}.\\
 
-A common tool to understand and characterize a turbulent \acrlong{BL} is to use the Van-Driest
+A common tool to understand and characterize a turbulent \acrlong{BL} is to use
+the \textit{Van-Driest}
 transformation, as shown in \Cref{eq:VanDriestTransformation}.
 \begin{subequations}\label{eq:VanDriestTransformation}
     \begin{align}
@@ -246,6 +247,7 @@ presence of the energy cascade in wall-bounded flows. Marati et al. used
 results from a low-Reynolds-number \gls{DNS} to describe the characteristics of
 turbulence in different regions of the boundary layer \cite{Marati2004}. \\
 
+\subsection{Optical effects in turbulent flows}
 Wyckham \cite{Wyckham2009} conducted an experimental study on transonic and
 hypersonic \glspl{BL}, showing that the largest scales in the boundary layer
 tend to dominate \gls{AO} distortions. These large scales often begin to emerge
