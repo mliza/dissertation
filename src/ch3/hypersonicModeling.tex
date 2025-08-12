@@ -74,7 +74,7 @@ shock-dominated regions or boundary layers of hypersonic vehicles. \\
 The evolution of the internal vibrational energy is described by the
 \textit{Landau-Teller} \cite{Hanquist2020} relaxation equation:
 \begin{equation}\label{eq:landauTeller}
-\frac{\mathcal{E}_{vib}}{dt} = \frac{\mathcal{E}_{vib, 0} -
+\frac{d\mathcal{E}_{vib}}{dt} = \frac{\mathcal{E}_{vib, 0} -
     \mathcal{E}_{vib}}{\tau_{vib}}
 \end{equation}
 where $\mathcal{E}_{vib, 0}$ is the vibrational energy at equilibrium, and
@@ -83,6 +83,12 @@ $\tau_{vib}$ can be obtained by various methods; the most common approach is
 based on the Millikan-White correlation for relaxation time
 \cite{Millikan1963}, which accounts for both temperature and molecular species
 effects.\\
+
+\Cref{eq:millikanWhite} provides the vibrational relaxation time formula:
+\begin{equation}\label{eq:millikanWhite}
+    \tau_{vib} = \frac{1}{p} exp\Parenthesis{ \frac{AT^{1/3}}{T} - B} 
+\end{equation}
+Where: $A$ and $B$ are empirical constants dependent on gas species. \\
 
 The chemical kinetics are captured through temperature-dependent reaction rates, commonly expressed using \textit{Arrhenius}-type rate coefficients:
 \begin{equation}\label{eq:arrheniusRates}
@@ -98,14 +104,18 @@ state, such as individual vibrational and electronic levels. These populations
 evolve according to a system of master equations, which account for energy
 exchange between states due to collisional and radiative processes.\\
 
-The transition rates between states are state-specific and are typically
 obtained through quantum chemistry methods such as quasi-classical trajectory
 (\gls{QCT}) calculations \cite{Andrienko2017,Chaudhry2019}, or through more
 generalized semi-empirical models like the forced harmonic oscillator
-(\gls{FHO}) approach \cite{Adamovich1998a}. These rates capture excitation,
-de-excitation, dissociation, and recombination processes at the level of
-individual energy states, enabling detailed resolution of thermochemical
-nonequilibrium phenomena that are inaccessible to lower-fidelity models.\\
+(\gls{FHO}) approach \cite{Adamovich1998a}. These methods are computationally
+expensive. They capture excitation, de-excitation, dissociation, and
+recombination processes at the level of individual energy states, enabling
+detailed resolution of thermochemical nonequilibrium phenomena that are
+inaccessible to lower-fidelity models.\\
+
+Forward reaction rates are calculated by \gls{QCT} or \gls{FHO}, both of which
+provide state-specific transition probability. Backward reaction rates are
+determined via detailed balance.\\ 
 
 The Master equation given in \Cref{eq:masterEquation} for the \gls{StS} model account for conservation of
 momentum and trans-rotational energy as well as for number density of the
@@ -116,11 +126,17 @@ individual vibrational states \cite{Kim2013}.
     K_{v,v^{\prime}}N_vN_s  }, \;\;\;\; v = 0, ..., v_{max}
 \end{equation}
 where: $R_{v,s}$ and $D_{v,s}$ are the state specific recombination and
-dissociation rates.
+dissociation rates. \\
 
-\subsection{\Gls{SU2}--\Gls{NEMO}}
+Diatomic molecules such as \ce{N2} and \ce{O2} have multiple vibrational energy
+levels. Instead of treating each molecule as a single species with uniform
+behavior, each vibrational level can be considered almost like its own
+\textit{pseudo-species} because molecules in different vibrational states
+behave differently in chemical reactions and energy exchange processes.
+
+\subsection{High-enthalpy \gls{CFD}}
 To numerically solve the nonequilibrium governing equations incorporating these
-thermochemical effects, the open-source \gls{CFD} solver \Gls{SU2}--\Gls{NEMO}
+thermochemical effects, the open-source \gls{CFD} solver \Gls{SU2} \Gls{NEMO}
 \cite{Maier2021,Maier2023a} is used. \Gls{SU2}--\Gls{NEMO} extends the \Gls{SU2}
 framework to model continuum flows in thermochemical nonequilibrium by solving
 the multicomponent Navier–Stokes equations with appropriate source terms for
@@ -142,7 +158,7 @@ where $\mathcal{U}$ are the conservative variables, $\mathcal{F}^c$ are the
 convective fluxes, $\mathcal{F}^{v}$ are the viscous fluxes, and $\mathcal{Q}$
 source terms. \\
 
-\gls{SU2}--\gls{NEMO} uses a rigid-rotor harmonic oscillator two-temperature
+\Gls{SU2}--\Gls{NEMO} uses a rigid-rotor harmonic oscillator two-temperature
 model to calculate the thermodynamic state. The total energy and
 vibrational-electronic energy per unit volume are given in \Cref{eq:nemoEnergy}.
 \begin{subequations}\label{eq:nemoEnergy}
