@@ -235,19 +235,19 @@ def plot_wavefront_distortion_x(
 
 
 # Process optical properties
-def call_optics(mesh):
+def call_optics(mesh, wavelength_nm):
     cell_data = mesh.point_data_to_cell_data()
 
     mesh.cell_data["Unorm"] = np.linalg.norm(cell_data["U"], axis=1)
 
     index_of_refraction = haot.index_of_refraction_density_temperature(
-        cell_data["T"], cell_data["rho"], "Air", 633
+        cell_data["T"], cell_data["rho"], "Air",wavelength_nm
     )
 
     mesh.cell_data["index_dilute"] = index_of_refraction["dilute"]
 
     mesh.cell_data["kerl_polarizability"] = haot.kerl_polarizability_temperature(
-        cell_data["T"], "Air", 633
+        cell_data["T"], "Air", wavelength_nm
     )
 
     mesh.cell_data["permittivity_dilute"] = haot.permittivity_material(
@@ -344,6 +344,7 @@ def main(
 ):
     # Loading foam data
     foam_case = os.path.join(f_in, "time_files")
+    wavelength_nm = 1000 
     reader = pv.POpenFOAMReader(os.path.join(foam_case, "results.foam"))
     mesh = reader.read()
     time_data = reader.time_values
@@ -362,7 +363,7 @@ def main(
         cell_data = internal_mesh.cell_data
         fields_in = internal_mesh.array_names
         # Post process optics
-        call_optics(internal_mesh)
+        call_optics(internal_mesh, wavelength_nm)
 
         for j, current_position in enumerate(x_range):
             point_1 = [current_position, y_in, 0.0]
@@ -387,7 +388,7 @@ def main(
     OPD_time = haot.optical_path_difference(OPL, avg_ax=0)  # avg time
 
     OPD_rms = haot.optical_path_difference_rms(OPD, avg_ax=0)
-    phase_variance = haot.phase_variance(OPD_rms, 633)
+    phase_variance = haot.phase_variance(OPD_rms, wavelength_nm)
     strehl_ratio = haot.strehl_ratio(phase_variance)
     y_out_vec = y_out * np.ones(np.shape(x_range))
     wave_front_distortion = y_out_vec + OPD
@@ -422,7 +423,7 @@ def main(
             x_range, OPL[i], spatial_var, fig_config, fig_config["opl_path"], time
         )
 
-        plot_optical_path_length_shift(x_range, y_out, OPL[i], 633, fig_config,
+        plot_optical_path_length_shift(x_range, y_out, OPL[i], wavelength_nm, fig_config,
                                        fig_config["opl_shift"], time)
 
         plot_optical_path_difference_x(

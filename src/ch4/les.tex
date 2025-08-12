@@ -14,7 +14,7 @@ temperature.
             Case & Solver & $M\Units{\;}$ & $T_{\infty}$ &
             $P_{\infty}\Units{kPa}$ & $Re\Units{\;}$  \\ 
             \hline \hline
-            1L & OpenFOAM & $0.4$ & $288.0$ & $101.3$ $1.6\mathrm{E}{6}$ \\ \hline
+            1L & OpenFOAM & $0.4$ & $288.0$ & $101.3$ & $1.6\mathrm{E}{6}$ \\ \hline
             %2L & SU2 & $0.1$ & $288.0$ & $101.2$ \\ \hline
         \end{tabular}
     \caption{LES Study \label{tab:lesStudy}}
@@ -72,6 +72,12 @@ capturing the unsteady nature of the flow.
     }
     \caption{Contour density at $3.4\Units{s}$ \label{ch5:lesContourDensity}}
 \end{figure}
+
+All the upcoming results presented in \cref{sec:lesStudy} use a laser with a
+wavelength of $633\Units{nm}$. Results for lasers at different wavelengths are
+shown in \cref{app:lesWavelength}. The fluid data is taken from a window of
+width $0.6\Units{cm}$. This window is located along the freestream direction
+and spans from $0.3\Units{cm}$ to $0.9\Units{cm}$. \\
 
 \Cref{ch5:lesContourKerlPolarizability} presents the polarizability calculated
 using the Kerl approximation \cite{Kerl1992}, as defined in
