@@ -19,23 +19,37 @@ states.
     \caption{Vibrational population distribution evolution post-normal shock
     waves at $60\Units{km}$\label{fig:stsDistribution}}
 \end{figure}
+\Cref{fig:stsDistribution} illustrates the differences between the
+non-Boltzmann vibrational energy distribution computed using the \gls{StS}
+model and the classical Boltzmann distribution. The Boltzmann distribution
+assumes thermal equilibrium among vibrational states, whereas the \gls{StS}
+model accounts for nonequilibrium effects and does not assume thermal
+equilibrium.\\
 
-Using the results from the \gls{StS} simuations and the \textit{Buldakov
+The discrepancy between the \gls{StS} and Boltzmann distributions is most
+pronounced at very short times after the initial condition. As time progresses,
+the distributions tend to converge for lower vibrational quantum numbers,
+indicating relaxation toward equilibrium. Notably, the highest Mach number case
+shown in \cref{fig:stsDistributionM8} achieves a steady-state distribution more
+rapidly (around $1,\mu s$) compared to the lower Mach number cases in
+\cref{fig:stsDistributionM5} and \cref{fig:stsDistributionM6}. This faster
+relaxation is consistent with the increased energy and collision rates at
+higher flow velocities. \\
+
+Using the results from the \gls{StS} simulations and the \textit{Buldakov
 approach} \cite{Buldakov2000}, the vibrational-state specific polarizability
-can be calculated, these results are shown in \Cref{fig:stsTemperatures}. Three
-important trends can be obseverd. First, the polarizabilty is strongly
-correlated with vibrational temperature and increases with time behid the
-normal shock. This is important as sensors are often located dowstream of the
-stagnation point. Second, as time increases, the difference between two
-distributions increases for each Mach number before reacing a constant
-difference. Third, the Mach $8$ case shows the larges difference between the
-two types of distributions. While there is a strong dependence on the
-temperature for polarizabilty, there is a weaker dependence on the
-distribution (\textit{Boltzmann} vs. \textit{non-Boltzmann}). This is because
-the population for each distribution is still dominant at the lower vibrational
-energy leveles. While there is a larger difference seen in the higher
-vibrational energy level, the population on these states are oder of magnitudes
-smaller, so they have a small contribution to the overall polarizabiltiy.
+was calculated. These results are presented in \Cref{fig:stsTemperatures}.
+Three important trends can be observed. First, the polarizability exhibits a
+strong correlation with the vibrational temperature and increases with time
+downstream of the normal shock. This behavior is significant since many optical
+sensors used for flow diagnostics are positioned downstream of the stagnation
+point, where vibrational excitation is prominent. Second, as time progresses,
+the difference in polarizability between the two distributions (Boltzmann and
+non-Boltzmann) increases for each Mach number case before reaching a plateau,
+indicating a steady-state behavior in the nonequilibrium population dynamics.
+Third, the Mach 8 case demonstrates the largest discrepancy between the two
+distribution types, highlighting the enhanced nonequilibrium effects at higher
+Mach numbers.
 \begin{figure}[H]
     \centering
     \subfigure[Mach $5$]{\label{fig:stsTemperatureM5}\includegraphics[width=0.45\textwidth]{chapter4/stsStudy/temperatureMach5.pdf}}
@@ -46,3 +60,15 @@ smaller, so they have a small contribution to the overall polarizabiltiy.
     \caption{Temperature profiles and polarizability profiles post normal shock
     waves at $60\Units{km}$\label{fig:stsTemperatures}}
 \end{figure}
+Although the polarizability shows a strong dependence on vibrational
+temperature, its dependence on the specific vibrational distribution (Boltzmann
+versus non-Boltzmann) is comparatively weaker. This is because the molecular
+population remains predominantly concentrated in the lower vibrational energy
+levels for both distributions. While a more pronounced difference between the
+two distributions appears at higher vibrational energy levels, the population
+in these higher states is orders of magnitude smaller. Consequently, their
+contribution to the overall polarizability is limited. This suggests that for
+practical purposes, vibrational temperature is the primary factor influencing
+polarizability, with deviations from Boltzmann equilibrium having a secondary
+effect, particularly in flows where lower vibrational states dominate the
+molecular population.
