@@ -127,6 +127,21 @@ to midcourse flight. These conditions define the operational window in which
 \gls{AO} effects must be accurately characterized to ensure seeker
 performance.\\
 
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            $ \;$ & $3C$ & $4C$ & $5C$ & $1S1$ & $2S1$ & $1R$ & $2R$ & $3R$ \\
+            \hline
+            $GD \times 10^{-4}$ & $2.325$ & $2.254$ & $2.255$ & $2.29$ & $2.56$
+            & $2.26$ & $2.27$ & $2.31$ \\
+            \hline
+        \end{tabular}
+        \caption{Summary of \acrlong{GD} for studied
+        cases}\label{tab:summaryGD}
+    \end{center}
+\end{table}
+
 From the results presented in \cref{ch:ch4}, another conclusion that can be drawn
 is whether the dilute formulation of the index of refraction
 \cref{eq:diluteRefractiveIndex} remains valid for hypersonic flows, or if there
@@ -189,16 +204,17 @@ hypersonic flows, the dilute formulation of the index of refraction can be
 considered an accurate and robust approximation. \\
 
 Accurately accounting for these variations is essential for the design and
-performance assessment of optical systems in hypersonic vehicles. In
-particular, sensor systems that rely on precise optical targeting—such as
-infrared seekers or laser-based tracking technologies—must consider the
-influence of high-enthalpy flow conditions to ensure reliable target
-acquisition and maintain operational accuracy at high speeds. Although the
-present results indicate that high-enthalpy effects are minimal for the
-low-hypersonic regimes studied, the modeling framework developed here enables
-these effects to be incorporated into high-fidelity \gls{AO} simulations when
-needed. This provides a pathway for evaluating and mitigating \gls{AO}
-impacts under realistic hypersonic flight conditions, thereby supporting robust
-sensor and seeker design.
+performance assessment of optical systems in hypersonic vehicles. However, the
+present results show that, for the low-hypersonic regimes
+investigated—particularly those relevant to terminal flight
+conditions—high-enthalpy effects contribute minimally to the overall \gls{AO}
+impact. This suggests that, under similar conditions, simpler modeling
+approaches may be sufficient without sacrificing accuracy. Nevertheless, the
+modeling framework developed here retains the capability to incorporate
+high-enthalpy effects into high-fidelity \gls{AO} simulations when required.
+This flexibility provides a means to evaluate and mitigate potential \gls{AO}
+impacts under more extreme hypersonic flight conditions, thereby supporting
+informed sensor and seeker design decisions.
+
 
 \input{futureWork}

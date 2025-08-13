@@ -64,6 +64,7 @@ def get_dicts(data_path: str, f_in: str) -> tuple[dict, object, dict]:
 
 
 def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=None):
+    IPython.embed(colors = "Linux")
 
     for i in dict_data.keys():
         tmp = dict_data[i]
