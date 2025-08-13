@@ -64,10 +64,12 @@ def get_dicts(data_path: str, f_in: str) -> tuple[dict, object, dict]:
 
 
 def plot_chemistry_composition(dict_data, output_png_path, fig_config, cut_dict=None):
-    IPython.embed(colors = "Linux")
 
     for i in dict_data.keys():
         tmp = dict_data[i]
+        total_gd = tmp['gladstone_species']
+
+        print(f'{i}, GD: {np.min(total_gd["gladstone_dale"]):0.4E}, {np.max(total_gd["gladstone_dale"]):0.4E}')
 
         #### Temperatures ####
         fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
@@ -470,7 +472,6 @@ def optical_properties(
 
 
         # Gladstone-Dale constant frozen
-        print(f"{f_in}")
         tot_density = sum(density_dict.values())[0]
 
         # Calculate mass fraction at the initialization
