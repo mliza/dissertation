@@ -254,12 +254,13 @@ def plot_stagnation_data(line_data, fig_config):
         ## Plot species GD ##
 
         ## Plot GD ##
-        plt.plot(noneq_mm, line_data[noneq]['gladstone_dale'][cut_indx:],
+        plt.plot(noneq_mm, line_data[noneq]['gladstone_dale'][cut_indx:] * 1E4,
                  color=colors[0],
                  linewidth=fig_config["line_width"],
                  label="Nonequilibrium")
 
-        plt.plot(frozen_mm, line_data[frozen]['gladstone_dale'][cut_indx:], 
+        plt.plot(frozen_mm, line_data[frozen]['gladstone_dale'][cut_indx:] *
+                 1E4, 
                  color=colors[1],
                  linewidth=fig_config["line_width"],
                  label="Frozen")
@@ -284,13 +285,13 @@ def plot_stagnation_data(line_data, fig_config):
 
         ## Plot Index ##
         plt.plot(noneq_mm[:-1],
-                 line_data[noneq]['dilute_index'][cut_indx:-1],
+                 (line_data[noneq]['dilute_index'][cut_indx:-1] - 1) * 1E4,
                  color=colors[0],
                  linewidth=fig_config["line_width"],
                  label="Nonequilibrium")
 
         plt.plot(frozen_mm[:-1],
-                 line_data[frozen]['dilute_index'][cut_indx:-1],
+                 (line_data[frozen]['dilute_index'][cut_indx:-1] - 1) * 1E4,
                  color=colors[1],
                  linewidth=fig_config["line_width"],
                  label="Frozen")
@@ -317,24 +318,24 @@ def plot_stagnation_data(line_data, fig_config):
 
         ## Plot Electric Susceptibility ##
         plt.plot(noneq_mm[:-1],
-                line_data[noneq]['susceptibility_dilute'][cut_indx:-1], 
+                line_data[noneq]['susceptibility_dilute'][cut_indx:-1] * 1E5, 
                  color=colors[0],
                  linewidth=fig_config["line_width"],
                  label="Nonequilibrium")
 
         plt.plot(frozen_mm[:-1],
-                line_data[frozen]['susceptibility_dilute'][cut_indx:-1], 
+                line_data[frozen]['susceptibility_dilute'][cut_indx:-1] * 1E5, 
                  color=colors[1],
                  linewidth=fig_config["line_width"],
                  label="Frozen")
         
         plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
         plt.ylabel(
-            "$ \\chi_e$ $[ ]$", fontsize=fig_config["axis_label_size"]
+            "$ \\chi_e$ $\\times 10^{-5}$ $[ ]$", fontsize=fig_config["axis_label_size"]
         )
 
         plt.xlim(noneq_mm[0], noneq_mm[-1]) 
-        plt.ylim(plt.ylim()[0], 8E-5)
+        plt.ylim(plt.ylim()[0], 8)
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config["legend_size"])
@@ -374,9 +375,9 @@ def main(mesh_data, fig_config):
         #NOTE: Modified for plotting purposes
         mass_density_dict = create_mass_density(mesh_data[i], species)
         index, gladstone, dielectric, susceptibility = calculate_aero_props(mass_density_dict)
-        mesh_data[i]['dilute_index'] = (index['dilute'] - 1) * 1E4
-        mesh_data[i]['dense_index'] = (index['dense'] - 1) * 1E4
-        mesh_data[i]['gladstone_dale'] = gladstone['gladstone_dale'] * 1E4
+        mesh_data[i]['dilute_index'] = index['dilute']
+        mesh_data[i]['dense_index'] = index['dense']
+        mesh_data[i]['gladstone_dale'] = gladstone['gladstone_dale']
         mesh_data[i]['dielectric_dilute'] = dielectric
         mesh_data[i]['susceptibility_dilute'] = susceptibility
         for k in species:
