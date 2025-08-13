@@ -297,11 +297,11 @@ def plot_stagnation_data(line_data, fig_config):
         
         plt.xlabel("X $[mm]$", fontsize=fig_config["axis_label_size"])
         plt.ylabel(
-            "$(n - 1) \\times 10^{3}$ $[ ]$", fontsize=fig_config["axis_label_size"]
+            "$(n - 1) \\times 10^{-4}$ $[ ]$", fontsize=fig_config["axis_label_size"]
         )
 
         plt.xlim(noneq_mm[0], noneq_mm[-1]) 
-        plt.ylim(plt.ylim()[0], 0.040)
+        plt.ylim(plt.ylim()[0], 0.40)
         plt.xticks(fontsize=fig_config["ticks_size"])
         plt.yticks(fontsize=fig_config["ticks_size"])
         plt.legend(fontsize=fig_config["legend_size"])
@@ -374,8 +374,8 @@ def main(mesh_data, fig_config):
         #NOTE: Modified for plotting purposes
         mass_density_dict = create_mass_density(mesh_data[i], species)
         index, gladstone, dielectric, susceptibility = calculate_aero_props(mass_density_dict)
-        mesh_data[i]['dilute_index'] = (index['dilute'] - 1) * 1E3
-        mesh_data[i]['dense_index'] = (index['dense'] - 1) * 1E3
+        mesh_data[i]['dilute_index'] = (index['dilute'] - 1) * 1E4
+        mesh_data[i]['dense_index'] = (index['dense'] - 1) * 1E4
         mesh_data[i]['gladstone_dale'] = gladstone['gladstone_dale'] * 1E4
         mesh_data[i]['dielectric_dilute'] = dielectric
         mesh_data[i]['susceptibility_dilute'] = susceptibility

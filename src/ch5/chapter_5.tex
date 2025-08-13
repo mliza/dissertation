@@ -38,39 +38,61 @@ influence the \gls{AO} properties of the medium?}—was addressed by performing
 multiple \gls{CFD} simulations. \\
 
 The first part of this work (\Cref{sec:lowFidelity}) focused on low-fidelity
-(temperature-dependent \gls{GD}) modeling. This section investigated \gls{AO}
-properties in a low-speed, high-fidelity flow using a \gls{LES} simulation.
-The \gls{AO} properties were obtained by calculating the polarizability using
-the Kerl extrapolation \cite{Kerl1992}. The results showed that \gls{AO}
-properties, such as the medium's permittivity and index of refraction, are
-temperature-dependent even at low speeds. Additional properties such as
-\gls{WD}, \gls{OPL}, and \gls{OPD} were also computed. These additional
-\gls{AO} effects are attributed to fluctuations in the flow field, motivating
-the use of \gls{LES}. \\
+enthalpy resolution by assuming a temperature-dependent \gls{GD} and
+high-fidelity flow resolution using a \gls{LES} simulation. The \gls{AO}
+properties were evaluated by computing the polarizability for air using the
+Kerl extrapolation method \cite{Kerl1992}. \\
+
+The results showed that \gls{AO} properties—such as the medium’s permittivity,
+index of refraction, and electric susceptibility—are not only
+temperature-dependent but also wavelength-dependent, even at low flow speeds.
+Additional parameters, including \gls{WD}, \gls{OPL}, and \gls{OPD}, were also
+computed. These additional \gls{AO} effects arise from spatiotemporal
+fluctuations in the flow field, which can distort optical wavefronts. Such
+effects cannot be captured by steady-state or \gls{RANS}-type approaches,
+thereby motivating the use of \gls{LES} to resolve the unsteady, turbulent
+structures responsible for these optical distortions. \\
 
 The second study in this work (\Cref{sec:medFidelity}) focused on
-medium-fidelity (species-specific \gls{GD}) modeling. This fidelity involved
-both a zero-Dimensional (heat bath) and a two-Dimensional (IRV-vehicle) flow study. Additionally,
-a comparison across multiple gases was conducted (\Cref{sec:gasComposition}),
-demonstrating that \gls{AO} properties depend on the species composition. \\
+medium-fidelity enthalpy resolution by using species-specific \gls{GD}
+modeling. This fidelity level included both a zero-dimensional (heat bath)
+study and a two-dimensional (IRV2-vehicle) flow study. The heat bath
+configuration was employed due to its lower computational cost, while the
+IRV2-vehicle geometry was selected as a more realistic aerodynamic shape.\\
 
-This section also included a comparison between a five-species and an
-eleven-species gas mixture. It was shown that, under the investigated
-conditions, the low mass fractions of the additional species in the
-eleven-species case did not significantly impact the overall \gls{AO}
-properties. \\
+For the zero-dimensional cases, two investigations were performed. The first
+examined the effect of varying gas composition, and the second compared a
+five-species model with an eleven-species model. The gas composition study
+showed that, for the terminal phase of flight, the amount of \ce{N2} has the
+largest influence on the \gls{GD}, which in turn strongly affects the \gls{AO}
+properties. Additional cases using standard air composition at different
+pressures (Cases $4C$ and $5C$) were also analyzed. These results demonstrated
+that increased pressure impacts \gls{AO} properties due to enhanced molecular
+dissociation. \\
 
-A two-Dimensional flow simulation was also performed for the medium-fidelity case. As
-expected, the highest \gls{AO} effects were observed along the stagnation
-line—an important region for optical sensors or seekers on hypersonic
-vehicles. Additionally, this section compared nonequilibrium and frozen flow
-cases, revealing that frozen-flow models under-predict \gls{AO} properties. \\
+The second part of the zero-dimensional study compared a five-species gas mixture with an
+eleven-species mixture. Under the investigated conditions representative of the
+terminal phase of flight, the low mass fractions of the additional species in
+the eleven-species case did not significantly influence the overall \gls{AO}
+properties. This indicates that, in this regime, the dominant contributions to
+the optical characteristics are governed primarily by the major species, with
+minor species playing a negligible role.\\
 
-The third fidelity examined in this work involved high-fidelity cases
+A two-dimensional flow simulation was also performed for the medium-fidelity
+enthalpy case. As expected, the highest \gls{AO} effects were observed along
+the stagnation line—an important region for optical sensors or seekers on
+hypersonic vehicles. This finding further highlights the utility of
+zero-dimensional cases, such as the heat bath configuration, due to their low
+computational cost while still capturing key trends. Additionally, the results
+showed that chemical nonequilibrium has a significant impact on the \gls{AO}
+properties, with frozen-flow models underpredicting these effects.\\
+
+The third fidelity examined in this work involved high-fidelity enthalpy cases
 (\Cref{sec:highFidelity}) using internal-state-specific, species-specific
-\gls{GD}. This section employed a \gls{StS} methodology to compute
-polarizability. It was shown that the Boltzmann method over-predicts the
-polarizability.\\
+\gls{GD}. In this section, a \gls{StS} methodology was employed to compute
+polarizability. The results showed that the Boltzmann method overpredicts
+polarizability, which in turn leads to an overestimation of additional \gls{AO}
+properties.\\
 
 For flow regimes with strong thermochemical nonequilibrium—such as regions
 behind shock waves or in rarefied zones—the assumption of Boltzmann
@@ -91,9 +113,11 @@ vibrational excitation, chemical nonequilibrium, and variations in species
 composition, do alter the \gls{AO} properties of the medium. These processes
 modify the polarizability of the gas, which in turn changes the index of
 refraction experienced by optical waves propagating through the flow. However,
-for the conditions studied here, these effects are minimal. The analysis
+for the conditions studied here (terminal phase of flight), these effects are minimal. The analysis
 focused on low-hypersonic flight regimes in which additional molecular degrees
 of freedom become active, but where the overall density remains relatively low.
+\\
+
 This regime is particularly relevant for hypersonic vehicles such as
 \glspl{HGV} and \glspl{ICBM}, which would benefit from \gls{Lidar} systems or
 other active optical seekers. Such systems typically operate only during the
@@ -103,7 +127,7 @@ to midcourse flight. These conditions define the operational window in which
 \gls{AO} effects must be accurately characterized to ensure seeker
 performance.\\
 
-From the results presented in \cref{ch:ch4}, one conclusion that can be drawn
+From the results presented in \cref{ch:ch4}, another conclusion that can be drawn
 is whether the dilute formulation of the index of refraction
 \cref{eq:diluteRefractiveIndex} remains valid for hypersonic flows, or if there
 are cases in which it breaks down and the dense formulation
@@ -175,6 +199,6 @@ low-hypersonic regimes studied, the modeling framework developed here enables
 these effects to be incorporated into high-fidelity \gls{AO} simulations when
 needed. This provides a pathway for evaluating and mitigating \gls{AO}
 impacts under realistic hypersonic flight conditions, thereby supporting robust
-sensor and seeker design. \\
+sensor and seeker design.
 
 \input{futureWork}
