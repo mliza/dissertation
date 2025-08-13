@@ -2,7 +2,7 @@
 This section investigates \gls{AO} properties at various Mach numbers for a
 hypersonic vehicle and compares the results between frozen flow and
 nonequilibrium flow conditions. \Cref{tab:frozenVsNonequilibriumStudy} summarizes
-the key characteristics of each case analyzed. The gas composition if the same
+the key characteristics of each case analyzed. The gas composition is the same
 composition from \Cref{tab:speciesStudyMassFraction}.
 \begin{table}[H]
     \begin{center}
@@ -70,7 +70,7 @@ plots for cases described in \Cref{tab:frozenVsNonequilibriumStudy}.
 \end{figure}
 
 
-\subsubsection{Flow results}
+\subsubsection{Flow Results}
 \Cref{fig:contourTranslationTemperatureFrozen} presents contour plots of
 translational temperature, while \Cref{fig:contourVibrationalTemperatureFrozen}
 displays vibrational temperature contours at different Mach numbers for a
@@ -91,7 +91,7 @@ detail explanation of frozen flows.
     \subfigure[Case
     $3R$]{\label{fig:frozenTr3R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_frozenContourTtr.png}}
     \caption{Contour translational temperature for
-    frozen cases from \Cref{tab:frozenVsNonequilibriumStudy}}
+    frozen cases in \Cref{tab:frozenVsNonequilibriumStudy}}
     \label{fig:contourTranslationTemperatureFrozen}
 \end{figure}
 % Translational Temperatures Contours Frozen %
@@ -106,10 +106,27 @@ detail explanation of frozen flows.
     \subfigure[Case
     $3R$]{\label{fig:frozenTvr3R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_frozenContourTvr.png}}
 \caption{Contour vibrational temperature for
-    frozen cases from
+    frozen cases in
     \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourVibrationalTemperatureFrozen}}
 \end{figure}
 % Vibrational Temperatures Contours Frozen %
+
+% Degree of nonequilibrium %
+The degree of thermal nonequilibrium for the frozen cases is given in
+\cref{fig:contourDegreeFrozen}. This was calculated by subtracting the
+$T_{vib}$ from $T_{tr}$.
+\begin{figure}[H]
+    \centering
+    \subfigure[Case
+    $1R$]{\label{fig:frozenDegree1R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/1R_frozen_degree.png}}
+    \subfigure[Case
+    $2R$]{\label{fig:frozenDegree2R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/2R_frozen_degree.png}}
+    \subfigure[Case
+    $3R$]{\label{fig:frozenDegree3R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_frozen_degree.png}}
+\caption{Contour thermal nonequilibrium for frozen cases in
+    \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDegreeFrozen}}
+\end{figure}
+% Degree of nonequilibrium %
 
 \Cref{fig:contourTranslationTemperatureNonequilibrium} presents contour plots
 of translational temperature, while
@@ -132,7 +149,7 @@ reactions do not remove energy from the flow.
     \subfigure[Case
     $3R$]{\label{fig:nonequilibriumTr3R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibriumContourTtr.png}}
 \caption{Contour translational temperature for
-            nonequilibrium cases from
+            nonequilibrium cases in
             \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourTranslationTemperatureNonequilibrium}}
 \end{figure}
 % Translational Temperatures Contours Nonequilibrium %
@@ -148,10 +165,27 @@ reactions do not remove energy from the flow.
     \subfigure[Case
     $3R$]{\label{fig:nonequilibriumTvr3R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibriumContourTvr.png}}
 \caption{Contour vibrational temperature for
-            nonequilibrium cases from
+            nonequilibrium cases in
             \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourVibrationalTemperatureNonequilibrium}}
 \end{figure}
 % Vibrational Temperatures Contours Nonequilibrium %
+
+% Degree of nonequilibrium %
+The degree of thermal nonequilibrium for the nonequilibrium cases is given in
+\cref{fig:contourDegreeNoneq}. This was calculated by subtracting the
+$T_{vib}$ from $T_{tr}$.
+\begin{figure}[H]
+    \centering
+    \subfigure[Case
+    $1R$]{\label{fig:noneqDegree1R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/1R_noneq_degree.png}}
+    \subfigure[Case
+    $2R$]{\label{fig:noneqDegree2R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/2R_noneq_degree.png}}
+    \subfigure[Case
+    $3R$]{\label{fig:noneqDegree3R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_noneq_degree.png}}
+\caption{Contour thermal nonequilibrium for chemical nonequilibrium cases in
+    \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDegreeNoneq}}
+\end{figure}
+% Degree of nonequilibrium %
 
 \subsubsection{Optics results}
 \Cref{fig:contourGDNonequilibriumR} shows the contour of \gls{GD} for a
@@ -169,7 +203,7 @@ the most intense dissociation effects.
     $1R$]{\label{fig:nonequilibriumGD1R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/1R_nonequilibrium_gladstone_dale.png}}
     \subfigure[Case $2R$]{\label{fig:nonequilibriumGD2R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/2R_nonequilibrium_gladstone_dale.png}}
     \subfigure[Case $3R$]{\label{fig:nonequilibriumGD3R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibrium_gladstone_dale.png}}
-    \caption{Contour \gls{GD} for nonequilibrium cases from
+    \caption{Contour \gls{GD} for nonequilibrium cases in
         \Cref{tab:frozenVsNonequilibriumStudy}}
     \label{fig:contourGDNonequilibriumR}
 \end{figure}
@@ -198,7 +232,7 @@ motivating the study of heat bath cases (zero-dimensional flows) \cref{sec:gasCo
     \subfigure[Case $3R$]{\label{fig:nonequilibriumDiluteIndex3R}
     \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibrium_dilute_index.png}}
 \caption{Contour dilute index of refraction for
-            nonequilibrium cases from
+            nonequilibrium cases in
             \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDiluteIndexOfRefractionNonequilibriumR}}
 \end{figure}
 % Dilute Index of refraction Contours Nonequilibrium %
@@ -213,7 +247,7 @@ motivating the study of heat bath cases (zero-dimensional flows) \cref{sec:gasCo
         \subfigure[Case
         $3R$]{\label{fig:nonequilibriumDenseIndex3R}\includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibrium_dense_index.png}}
 \caption{Contour dense index of refraction for
-            nonequilibrium cases from
+            nonequilibrium cases in
             \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDenseIndexOfRefractionNonequilibriumR}}
 \end{figure}
 % Dense Index of refraction Contours Nonequilibrium %
@@ -248,7 +282,7 @@ of refraction.
             \label{fig:frozenDiluteIndex3R}
             \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_frozen_dilute_index.png}}
 \caption{Contour dilute index of refraction for
-            frozen cases from
+            frozen cases in
             \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDiluteIndexOfRefractionFrozenR}}
 \end{figure}
 
@@ -264,7 +298,7 @@ of refraction.
             \label{fig:frozenDenseIndex3R}
             \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_frozen_dense_index.png}}
 \caption{Contour dense index of refraction for
-            frozen cases from
+            frozen cases in
             \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDenseIndexOfRefractionFrozenR}}
 \end{figure}
 % Dense Index of refraction Contours Frozen %
@@ -293,7 +327,7 @@ properties.
             \label{fig:frozenDiluteIndex3R}
             \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_nonequilibrium_susceptibility_dilute.png}}
 \caption{Contour electric susceptibility for
-            nonequilibrium cases from
+            nonequilibrium cases in
             \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDiluteElectricSusceptibilityNonequilibriumR}}
 \end{figure}
 % Dilute Nonequilibrium Electric Susceptibility % 
@@ -323,7 +357,7 @@ underestimation of the medium's electromagnetic properties.
             \label{fig:frozenElectricSusceptibility3R}
             \includegraphics[width=0.45\textwidth]{chapter4/frozenVsNonequilibrium/3R_frozen_susceptibility_dilute.png}}
 \caption{Contour electric susceptibility for
-            frozen cases from
+            frozen cases in
             \Cref{tab:frozenVsNonequilibriumStudy}\label{fig:contourDiluteElectricSusceptibilityFrozenR}}
 \end{figure}
 % Dilute Frozen Electric Susceptibility % 
