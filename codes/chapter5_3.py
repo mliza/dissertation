@@ -101,6 +101,10 @@ def plot_stagnation_data(line_data, fig_config):
         # First nonzero index
         noneq = f"{i}_nonequilibrium"
         frozen = f"{i}_frozen"
+        total_gd = line_data[noneq]['gladstone_dale']
+
+        print(f'{i}, GD: {np.min(total_gd):0.4E}, {np.max(total_gd):0.4E}')
+
 
         cut_indx = np.argmax(np.diff(line_data[frozen]['Temperature_ve']) != 0) 
         cut_indy = np.argmax(np.diff(line_data[frozen]['dilute_index']) == 0) 

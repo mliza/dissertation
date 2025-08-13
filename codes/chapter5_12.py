@@ -502,14 +502,13 @@ def optical_properties(
 
 def main(cfd_results_abs_path):
     fig_config = figure_configurations.figure_settings()
-    species_flag = True
+    species_flag = True 
 
     if not species_flag:
         # Chemistry Composition #
         data_in_path = os.path.join(
             cfd_results_abs_path, "chemistryComposition", "outputs"
         )
-        files_in = ["4C.csv"]
         files_in = ["1C.csv", "2C.csv", "3C.csv", "4C.csv", "5C.csv"]
         output_png_path = "../figures/chapter4/gasComposition"
         # Chemistry Composition #

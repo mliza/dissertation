@@ -127,22 +127,6 @@ to midcourse flight. These conditions define the operational window in which
 \gls{AO} effects must be accurately characterized to ensure seeker
 performance.\\
 
-\begin{table}[H]
-    \begin{center}
-        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \hline
-            $ \;$ & $3C$ & $4C$ & $5C$ & $1S1$ & $2S1$ & $1R$ & $2R$ & $3R$ \\
-            \hline
-            $GD \times 10^{-4}$ & $2.325$ & $2.254$ & $2.255$ & $2.290$ &
-            $2.557$
-            & $2.26$ & $2.27$ & $2.31$ \\
-            \hline
-        \end{tabular}
-        \caption{Summary of \acrlong{GD} for studied
-        cases}\label{tab:summaryGD}
-    \end{center}
-\end{table}
-
 From the results presented in \cref{ch:ch4}, another conclusion that can be drawn
 is whether the dilute formulation of the index of refraction
 \cref{eq:diluteRefractiveIndex} remains valid for hypersonic flows, or if there
@@ -203,6 +187,48 @@ high-enthalpy hypersonic flows or shock-compressed regions, where densities
 typically remain below $\mathcal{O}(10^2)\UnitsFrac{kg}{m^3}$. Therefore, for
 hypersonic flows, the dilute formulation of the index of refraction can be
 considered an accurate and robust approximation. \\
+
+\Cref{tab:summaryGD} provides the summary of the \gls{GD} constants calculated
+in \cref{sec:gasComposition,ch4:speciesStudy,ch4:frozenVsNonequilibrium} at the
+point at which the flow reached chemical equilibrium.
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+$ \;$ & $4C$ & $5C$ & $1S1$ & $2S1$ & $1R$ & $2R$ & $3R$ \\
+\hline
+$GD \times 10^{-4}\UnitsFrac{kg}{m^3}$ & $2.254$ & $2.255$ & $2.290$ &
+$2.255$ & $2.256$ & $2.269$ & $2.307$ \\
+\hline
+$Error \;\%$ & $0.356$ & $0.401$ & $1.960$ & $0.445$ & $0.445$ &
+$1.020$ & $2.720$ \\
+\hline
+\end{tabular}
+\caption{Summary of \acrlong{GD} for studied
+cases}\label{tab:summaryGD}
+\end{center}
+\end{table}
+As previously shown, the dilute formulation of the index of refraction remains
+valid for high-enthalpy flows. Thus, \cref{eq:gladstoneDaleRelationship} can be
+used as an alternative approximation for the index of refraction, instead of
+the polarizability formulation \cref{eq:diluteRefractiveIndex}. The \gls{GD}
+for air composed of $79\%$ $\ce{N2}$ and $21\%$ $\ce{O2}$ at
+standard sea-level atmospheric conditions is
+$2.246\times10^{-4}\UnitsFrac{kg}{m^3}$. This value serves as the reference
+\gls{GD} against which the calculated values are compared. \\
+
+For the terminal phase of flight, the difference between the sea-level
+\gls{GD} and the one obtained from nonequilibrium chemistry simulations is
+small, indicating that compositional changes due to high-enthalpy effects do
+not drastically alter the optical properties of the medium in this regime.\\
+
+The largest deviation from the reference value is less than $3\%$, observed at
+the highest Mach number considered in this study,
+$M = 15.2\Units{\;}$—a value significantly higher than what would typically be
+expected during terminal flight conditions. This suggests that, for realistic
+terminal-phase Mach numbers, the calculated \gls{GD} and the standard air
+\gls{GD} remain in very close agreement, supporting the use of the standard
+value for practical \gls{AO} predictions in these scenarios. \\
 
 Accurately accounting for these variations is essential for the design and
 performance assessment of optical systems in hypersonic vehicles. However, the
