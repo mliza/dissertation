@@ -79,19 +79,19 @@ specified where applicable.\\
         hypersonic weapons.
 
         A crude approximation for the index of refraction in the atmosphere was proposed by Smith and Weintraub \cite{Smith1953}
-        and it is given in \Cref{eq:crudeIndexApproximation}. 
+        and it is given by 
         \begin{equation}\label{eq:crudeIndexApproximation}
             n(h) \approx 1 + \frac{K_1}{T(h)} \Parenthesis{ p(h) +
-            K_2\frac{e(h)}{T(h)}} 
+            K_2\frac{e(h)}{T(h)}}\,,
         \end{equation}
-        Where $K_1 =
-        79\UnitsFrac{K}{mB}$, $K_2=4800\Units{K}$, $e$ is the partial pressure
+        where $K_1 =
+        79\UnitsFrac{K}{mB}$, $K_2=4800\Units{K}$, and $e$ is the partial pressure
         of water vapor in millibars. \\
 
         \Cref{fig:ch1AtmosphericOptics} illustrates the index of refraction
         as a function of altitude for a \textit{blue-sky} scenario. The most
         significant change in the index of refraction occurs at approximately
-        $15\Units{km}$ above sea level, within the tropopause, near the
+        $11\Units{km}$ above sea level, within the tropopause, near the
         boundary between the troposphere and the stratosphere. This is also the
         typical cruising altitude for commercial aircraft and many high-speed
         jets. 
@@ -120,10 +120,10 @@ terminal phase depend strongly on the flight trajectory and target objectives,
 but are generally characterized by high speeds, intense aerodynamic heating
 from atmospheric friction, and potential maneuvering to evade defenses. \\
 
-        The index of refraction consists of both a real and a complex
-        component, as expressed in \Cref{eq:totalIndexOfRefraction}. 
+        The index of refraction $\mathcal{N}$ consists of a real and complex
+        component
         \begin{equation}\label{eq:totalIndexOfRefraction}
-            \mathcal{N} = n + ik 
+            \mathcal{N} = n + ik.
         \end{equation}
         The real
         part, $n$, governs the phenomenon of bending or refraction of
@@ -136,7 +136,8 @@ from atmospheric friction, and potential maneuvering to evade defenses. \\
         This work focus on analyzing the real part of
         \Cref{eq:totalIndexOfRefraction}, as it plays a crucial role in
         determining optical path differences and wavefront distortions in
-        \gls{AO} applications. However, for completeness,
+        \gls{AO} applications. However, for a more complete picture of the role
+        of the index of refraction,
         \Cref{fig:attenuationDB} presents the atmospheric attenuation at two
         different altitudes across a range of frequencies. The calculation of
         this attenuation requires a thorough understanding of the complex part
@@ -145,65 +146,56 @@ from atmospheric friction, and potential maneuvering to evade defenses. \\
         \pic{1.0}{chapter1/attenuationDB}{Attenuation at different frequencies
         \cite{ITU2022, Richards2010}}{fig:attenuationDB}
 
-        Understanding the effects of the environment in which an optical beam
-        traverse is imperative in target detection. Radar engineers will be
-        mainly concerned with the atmospheric environment (rain, clouds, fog,
-        snow) but will not take much consideration on the impact aerodynamic
-        effects such as shock wave and boundary layer interactions has on the
-        optical beam.\\
+        Understanding the effects of the environment through which an optical
+        beam must travel are imperative to accurate target detection.
+        Unfortunately, most of the engineers working in \gls{Lidar} and Radars
+        are mainly concerned with atmospheric environment effects such as rain, clouds,
+        fog, and snow. However, they typically do not consider the impact of
+        aerodynamic effects, such as shock-waves and boundary-layer
+        interactions, on optical and radar beams. \\
 
         For subsonic
         flows, it might be a valid assumption to ignore the aerodynamic effects
-        on the optical beam; however for supersonic and specially for
-        hypersonic flows this assumption has to be revisited. During a hypersonic
-        flight the temperatures behind the shock are very high, that will no
-        only induce thermal noise on the sensor but will also affect the
-        electromagnetic properties that will influence the sensor's
-        performance. Hence a higher distortion as well as power loss will be
-        expected in a hypersonic flow. Being able to accurately understand this
-        is of importance to build accurate sensors that can not only target
-        objects moving at these speeds, but can also accurate predict targets
-        from an object moving at hypersonic speeds.\\
+        on the optical beam; however, for supersonic, and especially for
+        hypersonic flows, this assumption should be revisited. During a hypersonic
+        flight the temperatures behind the shock-waves are very high, which
+        will not only induce thermal noise on the sensor but will also affect the
+        electromagnetic properties that will degrade the sensor's
+        performance leading to optical distortions and power loss. Being able to accurately compensate for
+        these unpreventable effects is of extreme importance when designing
+        sensors to detect the position and range of objects moving at
+        high speeds. \\
 
         \Cref{fig:ch1AeroOpticsSchematic}, shows the path that a beam in a
         hypersonic flight will follow. The beam has to travel across the
-        isolated gas, the radome, the boundary layer, shock layer and lastly
-        environment. Traditionally, radar engineers ignore aerodynamic effects
-        (shock waves, expansion waves) for their analysis; however for the case
-        of hypersonic flights the aerodynamic effects cannot be ignored
-        anymore, because the electromagnetic properties across the boundary
-        layer and shock layer change. 
+        isolated gas surrounding the laser, the radome, the boundary layer, shock layer, and lastly
+        atmospheric environment. Traditionally, engineers ignore aerodynamic
+        effects such as shock-waves, and expansion-waves for their analysis.
+        However, for the case
+        of hypersonic flights, the aerodynamic effects cannot be ignored
+        anymore because the electromagnetic properties across the boundary
+        layer and shock layer drastically change. 
         \pic{0.8}{chapter1/aeroOpticsSchematic}{Optics Schematic}{fig:ch1AeroOpticsSchematic}
 
-        \gls{AO} investigation can be split into four quadrants as shown
-        in \Cref{tab:ch1AeroOpticalFidelities}. The optical parameters are
-        contingent on the degree to which turbulence eddy resolution and
-        turbulence fluctuations are captured in the \gls{CFD} simulation. In
-        cases where a lower level of computational flow
-        resolution is utilized, either a laminar flow or a \gls{RANS} simulation are employed as shown in Quadrants I
-        and III of \Cref{tab:ch1AeroOpticalFidelities}. While a RANS approach
-        averages out turbulent fluctuations, it is a popular approach for
-        hypersonic vehicle analysis due to it’s efficiency \cite{Candler2019}
-        and can still provide aero-optical quantities such as \gls{GD}
-        constant, polarizability, \gls{BSE}, \gls{OPL}, \gls{OPD}, and
-        \gls{WD}, these are defined in \cref{ch2:opticsOverview}. The amount of enthalpy is also an important criteria in the
-        flow field. \\
+        Quadrants I and III correspond to low-flow resolution cases, such as
+        laminar solvers, and \gls{RANS} simulations in which the turbulent fluctuations
+        are not accounted for. \gls{AO} degradations, such as
+        \gls{BSE}, \gls{OPL}, \gls{OPD}, and \gls{WD} require turbulent
+        fluctuations to be accounted for. These quantities are defined
+        in \cref{ch2:opticsOverview}.\\
 
-        With high enthalpy flows, many physical phenomena in the
-        flow field that are not present in low-speed flows present themselves.
-        This includes nonequilibrium, reactive flows, and excitation of
-        molecular internal modes, all of which can affect optical signals
-        either directly or indirectly; these are shown in the top Quadrants.
-        This work investigates Quadrants II and III in
-        \Cref{tab:ch1AeroOpticalFidelities}, by using results from
-        high-fidelity \gls{CFD} simulations. These results are then
-        post-process using a Open-Source tool developed in this dissertation.
-        This tool has the capability of post processing results from all four
-        Quadrants.
+        Quadrants II and IV corresponds to high-enthalpy resolution in which
+        thermal and chemical nonequilibrium are accounted for. These
+        simulations will
+        provide a higher fidelity of flow properties, such as \gls{GD},
+        polarizability, electric susceptibility, medium's permittivity, and
+        index of refraction. These properties are discussed in more details in
+        \cref{ch2:opticsOverview}.
         \input{aeroOpticsQuadrant}
 
 \Cref{fig:gdFidelities} provides a summary of the different approaches
-used to determine the \gls{GD} constants. To the best of the author's knowledge,
+used to determine the \gls{GD} constants, which is used to calculate the index of
+refraction. To the best of the author's knowledge,
 most published work assumes a constant \gls{GD} across the flow. This may be a
 reasonable assumption for low-enthalpy flows, but it becomes invalid in
 high-enthalpy regimes. At low enthalpy, there are no chemical reactions that
@@ -211,18 +203,18 @@ alter the flow composition or excite internal energy modes. However, as the
 temperature increases, chemical reactions occur that modify the composition of
 the gas, motivating the need for species-specific \gls{GD} constants. One could
 further extend this model to account for both internal state-specific and
-species-specific \gls{GD} values. \\
+species-specific \gls{GD} values.
+        \begin{figure}[H]
+            \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter1/gdFidelities}}
+            \caption{\acrlong{GD} fidelities \label{fig:gdFidelities}}
+        \end{figure}
 
 This work investigates \gls{AO} properties through the use of the \gls{GD}
 constant, which is calculated at three different fidelity levels. These
 fidelity levels are highlighted in orange in \Cref{fig:gdFidelities}. A
 Low-Enthalpy, High-Flow case (Quadrant II) is used to investigate
 \textit{temperature-dependent \gls{GD}}, while a High-Enthalpy, Low-Flow case
-(Quadrant III) is used to investigate \textit{species-specific \gls{GD}}.
-        \begin{figure}[H]
-            \makebox[\textwidth][c]{\includegraphics[width=0.9\textwidth]{chapter1/gdFidelities}}
-            \caption{\acrlong{GD} fidelities \label{fig:gdFidelities}}
-        \end{figure}
+(Quadrant III) is used to investigate \textit{species-specific \gls{GD}}. \\
 
         \Cref{fig:turbulenceFlows} illustrates how the flow field appears at increasing levels of simulation fidelity, from \gls{RANS} to \gls{LES} and finally to \gls{DNS} resolution for a jet flow. Each increase in \gls{CFD} resolution captures progressively finer turbulent structures, which in turn influence the predicted optical properties of the flow.
         \begin{figure}[H]
