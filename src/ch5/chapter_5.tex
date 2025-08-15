@@ -1,28 +1,31 @@
 \chapter{Conclusion\label{ch:ch5}} 
+\glsreset{CFD}
 \glsreset{AO}
 \glsreset{HGV}
 \glsreset{ICBM}
 \glsreset{HAOT}
 \glsreset{EM}
 \glsreset{QM}
+\glsreset{GD}
+\glsreset{StS}
 The study of \gls{AO} properties in hypersonic flows is inherently a complex, multi-physics problem.
 \Cref{fig:aoVennDiagram} illustrates the wide range of disciplines—such as
-compressible flows, turbulence, \gls{EM}, and \gls{QM} modeling-that must be 
+compressible flows, turbulence, \gls{EM}, and \gls{QM} that must be 
 integrated to fully understand and characterize \gls{AO} effects in
 hypersonic regimes. While comprehensive textbooks and resources exist for each
 of these individual sub-disciplines, the true challenge lies in synthesizing
-their principles into a unified framework capable of capturing the coupled,
+their principles into a unified package capable of capturing the coupled,
 nonlinear nature of \gls{AO} phenomena. 
 \input{vennDiagram}
 
 This interdisciplinary complexity provided the motivation for the development
 of the \gls{HAOT} package, introduced in this dissertation, which enables
-high-fidelity \gls{AO} analysis directly from \gls{CFD} results. The framework
+high-fidelity \gls{AO} analysis directly from \gls{CFD} results. The package
 bridges the gap between computational fluid simulations and optical wavefront
-characterization, offering a practical and extensible tool for the study of
-\gls{AO} effects under hypersonic and non-hypersonic flow conditions.\\
+characterization, offering a practical and extensible package for the study of
+\gls{AO} effects under turbulent and hypersonic flow conditions. \\
 
-The results presented in this dissertation primarily focus on
+The results presented in this dissertation primarily focused on
 Quadrants II and III in \Cref{tab:ch1AeroOpticalFidelities}, the \gls{HAOT}
 package is designed to be extensible and capable of analyzing data from
 Quadrants I and IV as well. In addition, the \gls{HAOT} package follows good
@@ -45,8 +48,8 @@ Kerl extrapolation method \cite{Kerl1992}. \\
 
 The results showed that \gls{AO} properties—such as the medium’s permittivity,
 index of refraction, and electric susceptibility—are not only
-temperature-dependent but also wavelength-dependent, even at low flow speeds.
-Additional parameters, including \gls{WD}, \gls{OPL}, and \gls{OPD}, were also
+temperature-dependent but also wavelength-dependent, even at low enthalpy
+conditions. Additional parameters, including \gls{WD}, \gls{OPL}, and \gls{OPD}, were also
 computed. These additional \gls{AO} effects arise from spatiotemporal
 fluctuations in the flow field, which can distort optical wavefronts. Such
 effects cannot be captured by steady-state or \gls{RANS}-type approaches,
@@ -79,12 +82,12 @@ the optical characteristics are governed primarily by the major species, with
 minor species playing a negligible role.\\
 
 A two-dimensional flow simulation was also performed for the medium-fidelity
-enthalpy case. As expected, the highest \gls{AO} effects were observed along
+enthalpy case. As expected, the highest thermal effects were observed along
 the stagnation line—an important region for optical sensors or seekers on
 hypersonic vehicles. This finding further highlights the utility of
 zero-dimensional cases, such as the heat bath configuration, due to their low
 computational cost while still capturing key trends. Additionally, the results
-showed that chemical nonequilibrium has a significant impact on the \gls{AO}
+showed that chemical nonequilibrium has an impact on the \gls{AO}
 properties, with frozen-flow models underpredicting these effects.\\
 
 The third fidelity examined in this work involved high-fidelity enthalpy cases
@@ -128,42 +131,44 @@ to midcourse flight. These conditions define the operational window in which
 performance.\\
 
 From the results presented in \cref{ch:ch4}, another conclusion that can be drawn
-is whether the dilute formulation of the index of refraction
+is whether the dilute-medium formulation of the index of refraction
 \cref{eq:diluteRefractiveIndex} remains valid for hypersonic flows, or if there
-are cases in which it breaks down and the dense formulation
+are cases in which it breaks down and the dense-medium formulation 
 \cref{eq:denseRefractiveIndex} must be applied. \Cref{fig:diluteDenseDelta}
-shows the limits of the dilute formulation.
+shows the limits of the dilute-medium formulation.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         \includegraphics[width=0.9\textwidth]{chapter5/dilute_dense_delta}
     }
-    \caption{Dilute vs. Dense formulation}\label{fig:diluteDenseDelta}
+    \caption{Dilute-medium vs. dense-medium formulation}\label{fig:diluteDenseDelta}
 \end{figure}
 
-From \Cref{fig:diluteDenseDelta}, it appears that the dilute formulation is
+From \Cref{fig:diluteDenseDelta}, it appears that the dilute-medium formulation is
 valid as long as $n - 1 < 10^{-2}$. For all results presented in
 \cref{ch:ch4}, the maximum value of $n - 1$ is less than $10^{-4}$,
-confirming the validity of the dilute formulation. However, one could consider
-a hypersonic case in which the dilute formulation may break down.
-\Cref{fig:1kPa,fig:1MPa,fig:1GPa} shows a comparison between the dilute and dense
-formulation for standard air at different pressures.
+confirming the validity of the dilute-medium formulation. However, one could consider
+a hypersonic case in which the dilute-medium formulation may break down.
+\Cref{fig:1kPa,fig:1MPa,fig:1GPa} shows a comparison between the dilute-medium
+and dense-medium formulation for standard air at different pressures.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
     \includegraphics[width=0.9\textwidth]{chapter5/dilute_dense_pressure_1E+03}
     }
-    \caption{Dilute vs. Dense at $1\Units{kPa}$}\label{fig:1kPa}
+    \caption{Dilute-medium vs. dense-medium formulation at $1\Units{kPa}$}\label{fig:1kPa}
 \end{figure}
 \begin{figure}[H]
     \makebox[\textwidth][c]{
     \includegraphics[width=0.9\textwidth]{chapter5/dilute_dense_pressure_1E+06}
     }
-    \caption{Dilute vs. Dense at $1\Units{MPa}$}\label{fig:1MPa}
+    \caption{Dilute-medium vs. dense-medium formulation at
+    $1\Units{MPa}$}\label{fig:1MPa}
 \end{figure}
 \begin{figure}[H]
     \makebox[\textwidth][c]{
     \includegraphics[width=0.9\textwidth]{chapter5/dilute_dense_pressure_1E+09}
     }
-    \caption{Dilute vs. Dense at $1\Units{GPa}$}\label{fig:1GPa}
+    \caption{Dilute-medium vs. dense-medium formulation at
+    $1\Units{GPa}$}\label{fig:1GPa}
 \end{figure}
 
 Results in \Cref{fig:1kPa,fig:1MPa,fig:1GPa} were obtained using the \gls{HAOT}
@@ -171,7 +176,8 @@ package. For each case, a temperature vector and a fixed pressure were
 specified to compute the index of refraction. The \textit{perfect gas} equation
 \cref{eq:equationOfState} was used to determine the densities, and the Kerl
 formulation \cref{eq:kerlFitting} was applied to estimate the polarizability.
-The index of refraction was then calculated using both the dilute and dense
+The index of refraction was then calculated using both the dilute-medium and
+dense-medium
 formulations \cref{eq:diluteRefractiveIndex,eq:denseRefractiveIndex}. All
 calculations correspond to a wavelength of $633\Units{nm}$. Additional
 calculations for a wavelength of $1000\Units{nm}$ are given in the
@@ -180,12 +186,12 @@ calculations for a wavelength of $1000\Units{nm}$ are given in the
 Several assumptions underlie these results, including the use of the
 \textit{perfect gas} equation of state, constant composition, and the Kerl
 formulation for polarizability. The analysis indicates that a pressure of
-$1\Units{GPa}$ would be required for the dilute formulation to break down and
-for the dense formulation to become necessary. Such a pressure is far beyond
+$1\Units{GPa}$ would be required for the dilute-medium formulation to break down and
+for the dense-medium formulation to become necessary. Such a pressure is far beyond
 physically realistic values for air, even under extreme conditions such as
 high-enthalpy hypersonic flows or shock-compressed regions, where densities
 typically remain below $\mathcal{O}(10^2)\UnitsFrac{kg}{m^3}$. Therefore, for
-hypersonic flows, the dilute formulation of the index of refraction can be
+hypersonic flows, the dilute-medium formulation of the index of refraction can be
 considered an accurate and robust approximation. \\
 
 \Cref{tab:summaryGD} provides the summary of the \gls{GD} constants calculated
@@ -208,7 +214,7 @@ $1.020$ & $2.720$ \\
 cases}\label{tab:summaryGD}
 \end{center}
 \end{table}
-As previously shown, the dilute formulation of the index of refraction remains
+As previously shown, the dilute-medium formulation of the index of refraction remains
 valid for high-enthalpy flows. Thus, \cref{eq:gladstoneDaleRelationship} can be
 used as an alternative approximation for the index of refraction, instead of
 the polarizability formulation \cref{eq:diluteRefractiveIndex}. The \gls{GD}

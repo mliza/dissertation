@@ -14,16 +14,15 @@ presents the multicomponent \gls{NS} equations, which involve $4N+19$ unknowns
 \end{subequations}
 The addition of the evolution of the mass of the chemical species $s$
 \Cref{eq:noneqSpecies} gives the addition needed to account for chemical
-reactions. As an example lets look at diatomic nitrogen:  
+reactions. As an example lets look at diatomic nitrogen,  
 \begin{equation}\label{eq:diatomicNitrogen}
-    \ce{N2 + M \rightleftharpoons N + N + M}
+    \ce{N2 + M \rightleftharpoons N + N + M}.
 \end{equation}
-The source term for the diatomic nitrogen is given on
-\Cref{eq:diatomicNitrogenSourceTerm}
+The source term for the diatomic nitrogen is given by
 \begin{equation}\label{eq:diatomicNitrogenSourceTerm}
     w_{N_2} = -M_{N_2} \SqBracket{\frac{\rho_{N_2}}{M_{N_2}}
     \sum_{s}k_{f,s}\frac{\rho_s}{M_s} - \Parenthesis{\frac{\rho_N}{M_N}}^2 \sum_{s}
-    k_{b,s}\frac{\rho}{M_s}  }
+    k_{b,s}\frac{\rho}{M_s}  }.
 \end{equation}
 Usually the dissociation rate is computed from a temperature-dependent
 \textit{Arrhenius} reaction rate, and the combination rate is set so that the
@@ -32,7 +31,7 @@ source term is zero in thermodynamic equilibrium \cite{Candler2019}.  \\
 The total energy term in \Cref{eq:noneqEnegy} can be decomposed as: 
 \begin{equation}\label{eq:totalDecomposedNoneqEnergy}
     E = \sum_s \rho_s\Parenthesis{e_{tr,s} + e_{int,s} + h_s^{o} } +
-    \frac{1}{2}\rho u_k u_k
+    \frac{1}{2}\rho u_k u_k.
 \end{equation}
 
 The multicomponent \gls{NS} equations can be solved using some of the models:
@@ -72,10 +71,10 @@ that occur during high-speed, high-temperature flows, especially in
 shock-dominated regions or boundary layers of hypersonic vehicles. \\
 
 The evolution of the internal vibrational energy is described by the
-\textit{Landau-Teller} \cite{Hanquist2020} relaxation equation:
+\textit{Landau-Teller} \cite{Hanquist2020} relaxation equation given by
 \begin{equation}\label{eq:landauTeller}
 \frac{d\mathcal{E}_{vib}}{dt} = \frac{\mathcal{E}_{vib, 0} -
-    \mathcal{E}_{vib}}{\tau_{vib}}
+    \mathcal{E}_{vib}}{\tau_{vib}},
 \end{equation}
 where $\mathcal{E}_{vib, 0}$ is the vibrational energy at equilibrium, and
 $\tau_{vib}$ is the characteristic vibrational relaxation time. The value of
@@ -84,15 +83,17 @@ based on the Millikan-White correlation for relaxation time
 \cite{Millikan1963}, which accounts for both temperature and molecular species
 effects.\\
 
-\Cref{eq:millikanWhite} provides the vibrational relaxation time formula:
+\Cref{eq:millikanWhite} provides the vibrational relaxation time formula
 \begin{equation}\label{eq:millikanWhite}
-    \tau_{vib} = \frac{1}{p} \exp\Parenthesis{ AT^{1/3} - B} 
+    \tau_{vib} = \frac{1}{p} \exp\Parenthesis{ AT^{1/3} - B},
 \end{equation}
-Where: $A$ and $B$ are empirical constants dependent on gas species. \\
+where $A$ and $B$ are empirical constants dependent on gas species. \\
 
-The chemical kinetics are captured through temperature-dependent reaction rates, commonly expressed using \textit{Arrhenius}-type rate coefficients:
+The chemical kinetics are captured through temperature-dependent reaction
+rates, commonly expressed using \textit{Arrhenius}-type rate coefficients given
+by
 \begin{equation}\label{eq:arrheniusRates}
-k_d = A e^{- \beta E_a }
+k_d = A e^{- \beta E_a },
 \end{equation}
 where $A$ is a pre-exponential factor, $\beta$ is the thermodynamic beta, and $E_a$ is the activation energy for the dissociation or reaction process. These reaction rates govern the time scales of chemical nonequilibrium and are essential for modeling high-temperature reacting flows in hypersonic regimes.
 
@@ -125,7 +126,7 @@ individual vibrational states \cite{Kim2013}.
     \sum_s\Parenthesis{K_{v^{\prime}, v} N^{\prime}_{v}N_s -
     K_{v,v^{\prime}}N_vN_s  }, \;\;\;\; v = 0, ..., v_{max}
 \end{equation}
-where: $R_{v,s}$ and $D_{v,s}$ are the state specific recombination and
+where $R_{v,s}$ and $D_{v,s}$ are the state specific recombination and
 dissociation rates. \\
 
 Diatomic molecules such as \ce{N2} and \ce{O2} have multiple vibrational energy
@@ -206,8 +207,8 @@ species and $g_i$ is the degeneracy of the $i$th state. \\
 
 The vibrational relaxation is computing using the \textit{Landau-Teller}
 relaxation time with \textit{Park}\cite{Park1989} high energy correction and it
-is given in \Cref{eq:vibrationalRelaxation}
+is given by 
 \begin{equation}\label{eq:vibrationalRelaxation}
     \dot{\Theta}^{tr:vib} = \sum_s \rho_s \frac{de_s^{vib}}{dt} =
-    \sum_s\rho_s\frac{e_s^{vib*} - e_s^{vib}}{\tau_s}
+    \sum_s\rho_s\frac{e_s^{vib*} - e_s^{vib}}{\tau_s}.
 \end{equation}
