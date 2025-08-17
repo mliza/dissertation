@@ -45,18 +45,6 @@ def plot_countour_scalar(mesh_data, case_name, scalar_field, fig_config):
         height=0.1,
         vertical=False,
     )
-    plotter.add_scalar_bar(
-    title=f"{scalar_field}",
-    title_font_size=22,
-    label_font_size=18,
-    bold=True,
-    position_x=0.15,   # shift a bit more centered
-    position_y=0.05,   # closer to bottom
-    width=0.6,         # make bar 60% of window width
-    height=0.15,       # increase thickness
-    n_labels=5,
-    vertical=False,
-)
     # Save the plot as an image
     output_file = os.path.join(fig_config["out_path"],
                                f"{case_name}_{scalar_field}.png")
