@@ -19,8 +19,19 @@ def load_files(files_in_path):
     return dict_out
 
 def plot_countour_scalar(mesh_data, case_name, scalar_field, fig_config):
-    if scalar_field == 'dilute_index' or 'dense_index':
+    #TODO: FIX ME
+    if scalar_field in ['dilute_index', 'dense_index']:
         mesh_data[scalar_field] = (mesh_data[scalar_field] - 1) * 1E4
+        label = "(n - 1) * 1E-4"
+
+    if scalar_field == 'susceptibility_dilute':
+        mesh_data[scalar_field] = (mesh_data[scalar_field]) * 1E5
+        label = f"{scalar_field} * 1E-5"
+
+    if scalar_field == 'gladstone_dale':
+        mesh_data[scalar_field] = (mesh_data[scalar_field]) * 1E4
+        label = f"{scalar_field} * 1E-4"
+
 
     plotter = call_plotter(mesh_data)
     # Lower bound at 5th percentile
@@ -29,20 +40,20 @@ def plot_countour_scalar(mesh_data, case_name, scalar_field, fig_config):
     max_val = np.percentile(mesh_data[scalar_field], 95)  
     # Gradual opacity variation
     plotter.add_mesh(mesh_data, scalars=scalar_field,
-                 cmap='inferno',
+                 cmap='rainbow',
                  clim=[min_val, max_val],
                  show_scalar_bar=False)
 
     plotter.add_scalar_bar(
-        title=f"{scalar_field}",
-        title_font_size=22,
-        label_font_size=18,
+        title=f"{label}",
+        title_font_size=36, #bigger title
+        label_font_size=30, #Bigger tick labels
         bold=True,
-        position_x=0.035,
-        position_y=0.75,
-        width=0.3,
+        position_x=0.20,
+        position_y=0.05,
+        width=0.6,
+        height=0.15,
         n_labels=5,
-        height=0.1,
         vertical=False,
     )
     # Save the plot as an image
@@ -387,6 +398,7 @@ def main(mesh_data, fig_config):
         mesh_data[i]['gladstone_dale'] = gladstone['gladstone_dale']
         mesh_data[i]['dielectric_dilute'] = dielectric
         mesh_data[i]['susceptibility_dilute'] = susceptibility
+
         for k in species:
             mesh_data[i][f'gd_{k}'] = gladstone[k]
 
