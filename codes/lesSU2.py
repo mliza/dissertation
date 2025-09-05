@@ -4,44 +4,19 @@ import matplotlib.pyplot as plt
 import IPython
 import pyvista as pv
 import figure_configurations as fig_conf
-import scipy.constants as s_const
+import scipy.constants as s_consts
 import molmass
-
-def air_gladstone_dale_density(polarizability: float):
-    """
-    Calculates the Air Gladstone Dale constant as a function of density. 
-
-    Parameters:
-        polarizability: polarizability [m3]
-
-    Returns:
-        Gladstone Dale constant in [m3/kg]
-    """
-    molar_mass_air_gmol = (
-        0.78 * molmass.Formula("N2").mass
-        + 0.21 * molmass.Formula("O2").mass
-        + 0.01 * molmass.Formula("Ar").mass
-    )
-    molar_mass_air = molar_mass_air_gmol * 1e-3
-
-    return (s_const.N_A * polarizability) / (2 * s_const.epsilon_0 *
-                                             molar_mass_air)
-
-
-
 
 def calculate_optics(cell_data, wavelength_nm):
         # HAOT
-    #TODO: RUN THIS AGAIN
     index_of_refraction = haot.index_of_refraction_density_temperature(cell_data["Temperature"],
                                                      cell_data["Density"],
                                                      "Air", wavelength_nm)
-    kerl_polarizability = haot.kerl_polarizability_temperature(cell_data["Temperature"], "Air",
+    kerl_polarizability_m3 = haot.kerl_polarizability_temperature(cell_data["Temperature"], "Air",
                                          wavelength_nm)
-    gd_constant = air_gladstone_dale_density(kerl_polarizability)
-    IPython.embed(colors='Linux')
+    gd_constant = haot.air_gladstone_dale_polarizability(kerl_polarizability_m3)
 
-    # TODO: Calculate GD
+    IPython.embed(colors = 'Linux')
 
 
 

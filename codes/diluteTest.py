@@ -7,8 +7,8 @@ import IPython
 
 index_refraction = np.linspace(1, 2, 10000)
 temperature_K = np.linspace(100, 50000, 1000)
-pressure_Pa = 1E3
-wavelength_nm = 1000
+pressure_Pa = 1E6
+wavelength_nm = 1000 
 gas_constant = 287.058
 mass_density = pressure_Pa / (gas_constant * temperature_K)
 
@@ -64,9 +64,6 @@ plt.semilogy(index_refraction, dense,  linewidth=fig_config["line_width"], label
 plt.xlabel('n  $[ ]$', fontsize=fig_config["axis_label_size"])
 plt.ylabel('n - 1 $[ ]$', fontsize=fig_config["axis_label_size"])
 plt.legend(fontsize=fig_config["legend_size"])
-plt.show()
-"""
 plt.savefig('dilute_dense_delta.pdf', format="pdf", bbox_inches="tight",
             dpi=fig_config["dpi_size"])
-"""
 
