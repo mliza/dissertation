@@ -7,17 +7,25 @@ import figure_configurations as fig_conf
 import scipy.constants as s_consts
 import molmass
 
-def calculate_optics(cell_data, wavelength_nm):
+
+def calculate_optics(mesh, wavelength_nm):
+    cell_data = mesh.point_data_to_cell_data()
+
         # HAOT
     index_of_refraction = haot.index_of_refraction_density_temperature(cell_data["Temperature"],
                                                      cell_data["Density"],
                                                      "Air", wavelength_nm)
+    mesh.cell_data["index_dilute"] = index_of_refraction["dilute"]
+    mesh.cell_data["index_dense"] = index_of_refraction["dense"]
+
     kerl_polarizability_m3 = haot.kerl_polarizability_temperature(cell_data["Temperature"], "Air",
                                          wavelength_nm)
     gd_constant = haot.air_gladstone_dale_polarizability(kerl_polarizability_m3)
 
-    IPython.embed(colors = 'Linux')
+    mesh.cell_data["kerl_polarizability"] = kerl_polarizability_m3
+    mesh.cell_data["gd_const"] = gd_constant
 
+    del index_of_refraction
 
 
 
@@ -28,10 +36,10 @@ def main(vtu_path_in, time_in, fig_config):
         # pyvista stuff
         reader = pv.get_reader(val)
         mesh = reader.read()
-        cell_data = mesh.point_data_to_cell_data()
 
         # Optics
-        calculate_optics(cell_data, wavelength_nm)
+        calculate_optics(mesh, wavelength_nm)
+        IPython.embed(colors = 'Linux')
 
 
 

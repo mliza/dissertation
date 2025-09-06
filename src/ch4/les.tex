@@ -1,26 +1,28 @@
-\subsection{\acrfull{LES} Study\label{sec:lesStudy}}
+%\subsection{\acrfull{LES} Study\label{sec:lesStudy}}
 This section investigates \gls{AO} properties in a turbulent flow under thermal
 and chemical equilibrium conditions. \Cref{tab:lesStudy} summarizes the flow
-conditions used in this investigation. The case described in
-\Cref{tab:lesStudy} has been validated by Tumuklu \cite{Tumuklu2024} through
+conditions used in this investigation. The $1L$ case described in
+\Cref{tab:lesStudy} was validated by Tumuklu \cite{Tumuklu2024} through
 comparison of \gls{CFD} results with experimental data. The purpose of this
-section is to develop the \gls{HAOT} capabilities for turbulent flows. This section uses
-a low enthalpy case but investigates \gls{AO} as a function of
-temperature.
+section is to develop \gls{HAOT} capabilities for turbulent flows. A
+low-enthalpy case is used, and \gls{AO} is investigated as a function of
+temperature. The $2L$ case described in \cref{tab:lesStud} has not been validated, and such validation lies outside the scope of this work.
+\todo{Clean this}
 \begin{table}[H]
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|c|}
             \hline
             Case & Solver & $M\Units{\;}$ & $T_{\infty}$ &
-            $P_{\infty}\Units{kPa}$ & $Re\Units{\;}$  \\ 
+            $P_{\infty}\Units{Pa}$ & $Re\Units{\;}$  \\ 
             \hline \hline
-            1L & OpenFOAM & $0.4$ & $288.0$ & $101.3$ & $1.6\mathrm{E}{6}$ \\ \hline
-            %2L & SU2 & $0.1$ & $288.0$ & $101.2$ \\ \hline
+            1L & OpenFOAM & $0.4$ & $288.0$ & $101.3\mathrm{E}{3}$ & $1.6\mathrm{E}{6}$ \\ \hline
+            2L & SU2 & $5.0$ & $298.0$ & $851.1$ & $9.4\mathrm{E}{5}$ \\ \hline
         \end{tabular}
     \caption{LES Study \label{tab:lesStudy}}
     \end{center}
 \end{table}
 
+\subsection{Subsonic \acrfull{LES}}
 The results presented below were obtained using the \textit{rhoPimpleFoam}
 application from \gls{OpenFOAM}, which is specifically designed for simulating
 turbulent flows of compressible fluids. For this study, the one-equation
@@ -73,9 +75,9 @@ capturing the unsteady nature of the flow.
     \caption{Contour density at $3.4\Units{s}$ \label{ch5:lesContourDensity}}
 \end{figure}
 
-All the upcoming results presented in \cref{sec:lesStudy} use a laser with a
+All the upcoming results use a laser with a
 wavelength of $633\Units{nm}$. Results for lasers at different wavelengths are
-shown in \cref{app:lesWavelength}. The fluid data is taken from a window of
+shown in \cref{app:lesSubsonicWavelength}. The fluid data is taken from a window of
 width $0.6\Units{cm}$. This window is located along the freestream direction
 and spans from $0.3\Units{cm}$ to $0.9\Units{cm}$. \\
 
@@ -211,6 +213,7 @@ not sufficient to cause large optical distortions.
 average}{fig:wdAssemblyTimeAvg}
 
 
+\subsection{Supersonic \acrfull{LES}}
 
 \iffalse
 \subsection{SU2}

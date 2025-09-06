@@ -36,32 +36,19 @@ def call_optics(mesh):
         cell_data["Temperature"], cell_data["Density"], "Air", 633
     )
 
-    mesh.cell_data["index_dilute"] = index_of_refraction["dilute"]
+    mesh.cell_data["index_dilute"] = ((index_of_refraction["dilute"] - 1) * 10
+                                      + 1)
+    mesh.cell_data["index_dense"] = ((index_of_refraction["dense"] - 1) * 10 + 1)
 
     mesh.cell_data["kerl_polarizability"] = haot.kerl_polarizability_temperature(
         cell_data["Temperature"], "Air", 633
     )
 
-    mesh.cell_data["dielectric_dilute"] = haot.permittivity_material(
-        index_of_refraction["dilute"]
-    )
-
-    mesh.cell_data["critical_angle"] = haot.total_internal_reflection_angle(
-        index_of_refraction["dilute"]
-    )
-
-    mesh.cell_data["reflectance"] = haot.normal_incidence_reflectance(
-        index_of_refraction["dilute"]
-    )
-
-    mesh.cell_data["brewster_angle"] = haot.brewster_angle(
-        index_of_refraction["dilute"]
-    )
     del index_of_refraction
 
 
 def plot_index(mesh, index_path, time):
-    mesh.cell_data["plotting_index"] = (mesh.cell_data["index_dilute"] - 1) * 1e3
+    mesh.cell_data["plotting_index"] = (mesh.cell_data["index_dilute"] - 1) * 1e4
     # Created helper function
     plotter = call_plotter(mesh)
 
@@ -71,7 +58,7 @@ def plot_index(mesh, index_path, time):
     )
 
     plotter.add_scalar_bar(
-        title="(n - 1) * 1E3",
+        title="(n - 1) * 1E4",
         title_font_size=22,
         label_font_size=18,
         bold=True,
@@ -88,6 +75,33 @@ def plot_index(mesh, index_path, time):
     plotter.screenshot(output_file)
     plotter.close()
     del plotter
+
+def plot_fields(mesh, field, time, fig_config): 
+    plotter = call_plotter(mesh)
+    plotter.add_mesh(
+        mesh, scalars=f"{field}", cmap="plasma", show_scalar_bar=False
+    )
+
+    plotter.add_scalar_bar(
+        title=f"{field}",
+        title_font_size=22,
+        label_font_size=18,
+        bold=True,
+        position_x=0.025,
+        position_y=0.6,
+        width=0.3,
+        n_labels=6,
+        height=0.1,
+        vertical=False,
+    )
+
+    # Save the plot as an image
+    output_file = os.path.join(os.path.join(fig_config["fig_path"],
+                                            f"{field}", f"{field}_{time}.png"))
+    plotter.screenshot(output_file)
+    plotter.close()
+    del plotter
+
 
 
 def plot_kerl(mesh, kerl_path, time):
@@ -213,10 +227,11 @@ def main(
     vtu_f = [x for x in os.listdir(f_in) if x.split(".")[1] == "vtu"]
     #surface_files = [x for x in sorted(vtu_f) if x.split("_")[0] == "surface"]
     flow_files = [x for x in sorted(vtu_f) if x.split("_")[0] == "flow"]
+    #fields = ["Pressure", "Temperature"]
+    fields = ["Density", "Velocity", "Pressure", "Temperature"]
 
     # OPL[time, y_range], sum on x_range
     OPL = np.zeros([np.shape(flow_files)[0], len(y_range)])
-    IPython.embed(colors = 'Linux')
 
     # Make this a for loop base in time steps
     for i, val in enumerate(flow_files):
@@ -249,6 +264,9 @@ def main(
 
             if kerl_figure:
                 plot_kerl(mesh, kerl_path, time)
+
+            for i in fields:
+                plot_fields(mesh, i, time, fig_config) 
 
         # Clean resources
         del reader
@@ -284,6 +302,10 @@ if __name__ == "__main__":
     f_in = (
         "/Users/martin/Documents/Schools/UoA/Dissertation/resultsCFD/LES/LES_SU2/flow"
     )
+
+    f_in = (
+        "/Users/martin/Desktop/flow"
+    )
     figures_path = os.path.join("figures", "SU2")
     index_path = os.path.join(figures_path, "index")
     kerl_path = os.path.join(figures_path, "kerl")
@@ -309,6 +331,7 @@ if __name__ == "__main__":
     fig_config["legend_size"] = 12
     fig_config["ticks_size"] = 13
     fig_config["title_size"] = 18
+    fig_config['fig_path'] = figures_path
 
     main(
         f_in,
