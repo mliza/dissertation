@@ -97,3 +97,26 @@ field.
     \caption{Dense-medium formulation of the index of refraction contour for
     $L2$}\label{fig:supersonicDenseIndexContourLES}
 \end{figure}
+
+The \gls{OPL} (computed using the dilute-medium formulation) for a given time step is shown in \Cref{fig:supersonicOPL633}, and it was obtained from \cref{eq:OPL}, as implemented in the \gls{HAOT} package. A sharp increase in the \gls{OPL} occurs at approximately $-0.4\Units{m}$, which corresponds to the region just outside the shock. In this region, the density is significantly higher. Because the index of refraction is related to density through the \gls{GD} relation, an increase in density directly increases the local index of refraction. This, in turn, results in a larger optical path length and consequently produces a stronger contribution to the \gls{AO}.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=0.6\textwidth]{chapter4/supersonicLES/opl_07100}}
+    \caption{\gls{OPL}, dilute-medium formulation for a wavelength of
+    $633\Units{nm}$}\label{fig:supersonicOPL633}
+\end{figure}
+
+The \gls{OPD} (computed using the dilute-medium formulation) for a given time
+step is shown in \Cref{fig:supersonicOPD633}, and it was obtained from
+\cref{eq:OPD}, as implemented in the \gls{HAOT} package. From
+\cref{fig:supersonicOPL633} can be observed that the spatial standard deviation
+is much smaller than the spatial average \gls{OPL}. When this is the case, the
+wavefront is bassically flat and the \gls{OPD} does not revel additional information.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=0.6\textwidth]{chapter4/supersonicLES/opd_07100}}
+    \caption{\gls{OPD}, dilute-medium formulation for a wavelength of
+    $633\Units{nm}$}\label{fig:supersonicOPD633}
+\end{figure}
