@@ -427,7 +427,7 @@ def main(
                                        fig_config["opl_shift"], time)
 
         plot_optical_path_difference_x(
-            x_range, OPD[i], mean_time_OPL, fig_config, fig_config["opd_path"], time)
+            x_range, OPD[i], mean_space_OPL, fig_config, fig_config["opd_path"], time)
 
 
 if __name__ == "__main__":

@@ -1,10 +1,13 @@
 import haot
 import matplotlib.pyplot as plt
 from matplotlib.ticker import ScalarFormatter
+import matplotlib.ticker as ticker
 import numpy as np
 import os
 import pyvista as pv
 import IPython
+import figure_configurations
+
 
 
 def call_plotter(mesh):
@@ -29,19 +32,23 @@ def call_plotter(mesh):
     return plotter
 
 
-def call_optics(mesh):
+def call_optics(mesh, wavelength_nm):
     cell_data = mesh.point_data_to_cell_data()
 
     index_of_refraction = haot.index_of_refraction_density_temperature(
-        cell_data["Temperature"], cell_data["Density"], "Air", 633
+        cell_data["Temperature"], cell_data["Density"], "Air", wavelength_nm 
     )
 
     mesh.cell_data["index_dilute"] = ((index_of_refraction["dilute"] - 1) * 10
                                       + 1)
     mesh.cell_data["index_dense"] = ((index_of_refraction["dense"] - 1) * 10 + 1)
+    """
+    mesh.cell_data["index_dilute"] = index_of_refraction["dilute"]
+    mesh.cell_data["index_dense"] = index_of_refraction["dense"]
+    """
 
     mesh.cell_data["kerl_polarizability"] = haot.kerl_polarizability_temperature(
-        cell_data["Temperature"], "Air", 633
+        cell_data["Temperature"], "Air", wavelength_nm 
     )
 
     del index_of_refraction
@@ -175,9 +182,17 @@ def plot_wavefront_distortion_y(
 
 # Plot OPL (wave travels on the x)
 def plot_optical_path_length_y(y_range, OPL, fig_config, opl_path, time):
-    plt.plot(OPL, y_range, "-", linewidth=fig_config["line_width"])
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
+    spatial_var = fig_config["var_OPL"]
+    plt.plot((OPL - np.round(OPL[0],2)) * 1E3, y_range, "-", linewidth=fig_config["line_width"],
+             label=f'$\sigma_x$={spatial_var:0.3}')
+    plt.ticklabel_format(style='plain', axis='x')
+    plt.gca().xaxis.get_major_formatter().set_useOffset(False)
+    plt.gca().xaxis.set_major_locator(ticker.MaxNLocator(nbins=5))
+
     plt.ylabel("Y $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.xlabel("OPL $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.xlabel("OPL $[mm]$", fontsize=fig_config["axis_label_size"])
+    plt.legend(fontsize=fig_config["legend_size"])
     plt.savefig(
         os.path.join(opl_path, f"opl_{time}.pdf"),
         format="pdf",
@@ -189,11 +204,16 @@ def plot_optical_path_length_y(y_range, OPL, fig_config, opl_path, time):
 
 # Plot OPD (wave travels on the x)
 def plot_optical_path_difference_y(y_range, OPD, fig_config, opd_path, time):
-    plot_optical_path_difference_y
-    plt.plot(OPD, y_range, "-", linewidth=fig_config["line_width"], label="Truth")
+    fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
+    opl_mean = fig_config["mean_OPL"]
+
+    plt.plot(OPD * 1E6, y_range, "-", linewidth=fig_config["line_width"],
+             label=fr'$\overline{{OPL_x}} = {opl_mean:0.3}$') 
+
     plt.ylabel("Y $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.xlabel("OPD $[m]$", fontsize=fig_config["axis_label_size"])
-    plt.locator_params(axis="x", nbins=3)
+    plt.xlabel("OPD $[\mu m]$", fontsize=fig_config["axis_label_size"])
+    plt.legend(fontsize=fig_config["legend_size"])
+
     plt.savefig(
         os.path.join(opd_path, f"opd_{time}.pdf"),
         format="pdf",
@@ -217,12 +237,13 @@ def main(
 ):
 
     if fig_config:
-        plot_flag = True 
+        plot_flag = False 
         index_figure = True
         kerl_figure = True
     else:
         plot_flag = False
 
+    wavelength_nm = 633
     # Looking for surface and flow files
     vtu_f = [x for x in os.listdir(f_in) if x.split(".")[1] == "vtu"]
     #surface_files = [x for x in sorted(vtu_f) if x.split("_")[0] == "surface"]
@@ -240,13 +261,13 @@ def main(
         mesh = reader.read()
 
         # Calculate optical properties and populate the mesh object
-        call_optics(mesh)
+        call_optics(mesh, wavelength_nm)
 
-        for j, value in enumerate(y_range):
+        for j, current_position in enumerate(y_range):
             # Get line data [x, y, z]
-            point_1 = [x_in, value, 0.0]
-            point_2 = [x_out, value, 0.0]
-            n_points = 900
+            point_1 = [x_in, current_position, 0.0]
+            point_2 = [x_out, current_position, 0.0]
+            n_points = 30 
 
             # Create a line and OPL[time, y_range]
             line_data = mesh.sample_over_line(point_1, point_2, n_points)
@@ -257,8 +278,6 @@ def main(
 
             # Free resources
             del line_data
-        # TODO: Fix opd plots
-        #IPython.embed(colors = 'Linux')
 
         if plot_flag:
             if index_figure:
@@ -275,28 +294,39 @@ def main(
         del mesh
 
     # Calculate OPD and WaveFront distortion (Optics)
-    OPD = haot.optical_path_difference(OPL, avg_ax=0) #Avg along aperture
+    #[time, y_position] 
+    OPD = haot.optical_path_difference(OPL, avg_ax=1) #Avg along aperture
     OPD_rms = haot.optical_path_difference_rms(OPD, avg_ax=1) #Avg along time
-    phase_variance = haot.phase_variance(OPD_rms, 633)
+    phase_variance = haot.phase_variance(OPD_rms, wavelength_nm)
     strehl_ratio = haot.strehl_ratio(phase_variance)
     #x_in_vec = x_in * np.ones(np.shape(y_range))
     x_out_vec = x_out * np.ones(np.shape(y_range))
     wave_front_distortion = x_out_vec + OPD
     print(f'The Strehl ratio is: {strehl_ratio}')
+    time_var = np.mean(np.std(OPL, axis=0))
+    spatial_var = np.mean(np.std(OPL, axis=1))
+    mean_space_OPL = np.mean(np.mean(OPL, axis=1))
+    mean_time_OPL = np.mean(np.mean(OPL, axis=0))
+    fig_config['mean_OPL'] = mean_space_OPL
+    fig_config['var_OPL'] = spatial_var
 
     for i, val in enumerate(flow_files):
-        time = val.split(".")[0].split("_")[-1]
+        time_in = val.split(".")[0].split("_")[-1]
+        #IPython.embed(colors = "Linux")
 
         # Plot wavefront distortion (wave travels on x)
         plot_wavefront_distortion_y(
-            y_range, x_out, wave_front_distortion[i, :], fig_config, wd_path, time
+            y_range, x_out, wave_front_distortion[i, :], fig_config, wd_path,
+            time_in
         )
 
         # Plot OPL (wave travels on x)
-        plot_optical_path_length_y(y_range, OPL[i, :], fig_config, opl_path, time)
+        plot_optical_path_length_y(y_range, OPL[i, :], fig_config, opl_path,
+                                   time_in)
 
         # Plot OPD (wave travels on x)
-        plot_optical_path_difference_y(y_range, OPD[i, :], fig_config, opd_path, time)
+        plot_optical_path_difference_y(y_range, OPD[i, :], fig_config,
+                                       opd_path, time_in)
 
 
 if __name__ == "__main__":
@@ -322,17 +352,7 @@ if __name__ == "__main__":
     # Bean in(wave travels on x)
     x_in = 4
     x_out = 1
-
-    # Users inputs #
-    fig_config = {}
-    fig_config["line_width"] = 3
-    fig_config["fig_width"] = 6
-    fig_config["fig_height"] = 5
-    fig_config["dpi_size"] = 600
-    fig_config["axis_label_size"] = 14
-    fig_config["legend_size"] = 12
-    fig_config["ticks_size"] = 13
-    fig_config["title_size"] = 18
+    fig_config = figure_configurations.figure_settings()
     fig_config['fig_path'] = figures_path
 
     main(
