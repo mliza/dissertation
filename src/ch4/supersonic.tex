@@ -1,0 +1,99 @@
+\subsection{Supersonic \acrfull{LES}\label{sec:supersonicLES}}
+The results presented below were obtained using the turbulent solver in
+\gls{SU2} implemented by Molina \cite{Molina2017}. \\ 
+
+The mesh and dimensions for case $L2$ are shown in \cref{fig:supersonicMeshLES}.
+The \gls{AO} properties were collected along a beam propagating in the normal
+direction ($\hat{y}$), spanning from $-0.85\Units{m}$ to $0.0\Units{m}$. The
+beam had a width in the streamwise direction ($\hat{x}$) ranging from
+$1\Units{m}$ to $4\Units{m}$.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=1\textwidth]{chapter4/supersonicLES/supersonicMesh}}
+    \caption{Mesh for $L2$}\label{fig:supersonicMeshLES}
+\end{figure}
+
+The Mach contour plot is shown in \cref{fig:supersonicMachContourLES}.
+The region where the \gls{AO} properties would be analyzed lie in the supersonic regime, which is consistent with expectations, since across a shock wave the post-shock Mach number is always lower than the pre-shock Mach number.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=1\textwidth,trim=0.8cm 15cm 0.8cm
+        10cm,clip]{chapter4/supersonicLES/Mach_07100}}
+    \caption{Mach contour for $L2$}\label{fig:supersonicMachContourLES}
+\end{figure}
+
+The velocity contour plot is shown in \cref{fig:supersonicVelocityContourLES}.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=1\textwidth,trim=0.8cm 15cm 0.8cm 10cm,clip]{chapter4/supersonicLES/Velocity_07100}}
+    \caption{Velocity contour for $L2$}\label{fig:supersonicVelocityContourLES}
+\end{figure}
+
+The temperature contour plot is shown in \cref{fig:supersonicTemperatureContourLES}.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=1\textwidth,trim=0.8cm 15cm 0.8cm
+        10cm,clip]{chapter4/supersonicLES/Temperature_07100}}
+    \caption{Temperature contour for
+    $L2$}\label{fig:supersonicTemperatureContourLES}
+\end{figure}
+
+\iffalse
+The pressure contour plot is shown in \cref{fig:supersonicPressureContourLES}.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=1\textwidth,trim=0.8cm 15cm 0.8cm
+        10cm,clip]{chapter4/supersonicLES/Pressure_07100}}
+    \caption{Pressure contour for $L2$}\label{fig:supersonicPressureContourLES}
+\end{figure}
+\fi
+
+The density contour plot is shown in \cref{fig:supersonicDensityContourLES}.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=1\textwidth,trim=0.8cm 15cm 0.8cm
+        10cm,clip]{chapter4/supersonicLES/Density_07100}}
+    \caption{Density contour for $L2$}\label{fig:supersonicDensityContourLES}
+\end{figure}
+
+The polarizability contour plot is shown in \cref{fig:supersonicPolarizabilityContourLES}. It was calculated using the Kerl method \cite{Kerl1992}, implemented in the \gls{HAOT} package. The method is described in \cref{eq:kerlFitting}. As expected, Kerl's extrapolation depends on temperature; consequently, the polarizability closely follows the temperature field.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=1\textwidth,trim=0.8cm 15cm 0.8cm
+        10cm,clip]{chapter4/supersonicLES/kerl_polarizability_07100}}
+    \caption{Kerl-Polarizability contour for $L2$}\label{fig:supersonicPolarizabilityContourLES}
+\end{figure}
+
+The dilute-medium formulation of the index of refraction is shown in
+\cref{fig:supersonicDiluteIndexContourLES}. It was calculated using
+\cref{eq:diluteRefractiveIndex}, which calculates the index of refraction as a function of density and temperature.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=1\textwidth,trim=0.6cm 15cm 0.8cm
+        10cm,clip]{chapter4/supersonicLES/dilute_index_of_refraction_07100}}
+    \caption{Dilute-medium formulation of the index of refraction contour for $L2$}\label{fig:supersonicDiluteIndexContourLES}
+\end{figure}
+
+The dense-medium formulation of the index of refraction is shown in
+\cref{fig:supersonicDenseIndexContourLES}. It was calculated using
+\cref{eq:denseRefractiveIndex}, which calculates the index of refraction as a
+function of density and temperature. It does not seems to be a noticeable
+difference between the dilute-medium formulation and the dense-medium
+formulation. It seems that the index of refraction closely follows the density
+field.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=1\textwidth,trim=0.6cm 15cm 0.8cm
+        10cm,clip]{chapter4/supersonicLES/dense_index_of_refraction_07100}}
+    \caption{Dense-medium formulation of the index of refraction contour for
+    $L2$}\label{fig:supersonicDenseIndexContourLES}
+\end{figure}

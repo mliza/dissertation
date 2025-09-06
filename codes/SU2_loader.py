@@ -217,7 +217,7 @@ def main(
 ):
 
     if fig_config:
-        plot_flag = True
+        plot_flag = True 
         index_figure = True
         kerl_figure = True
     else:
@@ -228,7 +228,7 @@ def main(
     #surface_files = [x for x in sorted(vtu_f) if x.split("_")[0] == "surface"]
     flow_files = [x for x in sorted(vtu_f) if x.split("_")[0] == "flow"]
     #fields = ["Pressure", "Temperature"]
-    fields = ["Density", "Velocity", "Pressure", "Temperature"]
+    fields = ["Density", "Velocity", "Pressure", "Temperature", "Mach"]
 
     # OPL[time, y_range], sum on x_range
     OPL = np.zeros([np.shape(flow_files)[0], len(y_range)])
@@ -257,6 +257,8 @@ def main(
 
             # Free resources
             del line_data
+        # TODO: Fix opd plots
+        #IPython.embed(colors = 'Linux')
 
         if plot_flag:
             if index_figure:
@@ -314,8 +316,8 @@ if __name__ == "__main__":
     wd_path = os.path.join(figures_path, "wd")
 
     # Locations of individual beams
-    y_range = np.arange(-0.7, -0.2, 0.01)
     y_range = np.arange(-0.25, -0.1, 0.01)
+    y_range = np.arange(-0.85, 0.0, 0.01)
 
     # Bean in(wave travels on x)
     x_in = 4
