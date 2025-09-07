@@ -1,6 +1,16 @@
 \subsection{Supersonic \acrfull{LES}\label{sec:supersonicLES}}
 The results presented below were obtained using the turbulent solver in
-\gls{SU2} implemented by Molina \cite{Molina2017}. \\ 
+\gls{SU2}, as implemented and validated by Molina et al. \cite{Molina2017}.
+In this work, Molina detailed the \gls{LES} formulation within \gls{SU2} and
+performed validation studies against the canonical 2D backward-facing step
+case from the \gls{NASA} Turbulence Modeling Resource database
+\href{https://turbmodels.larc.nasa.gov/backstep_val.html}{https://turbmodels.larc.nasa.gov/backstep\_val.html}
+at subsonic flow conditions. This benchmark case is widely used in the
+turbulence modeling community because it provides experimental and numerical
+data for separated flow, reattachment, and recirculation regions, which are
+challenging to capture accurately with turbulence models. Additional
+comparisons of \gls{SU2}'s \gls{LES} capabilities at subsonic speeds can be
+found in Molina's subsequent presentation \cite{Molina2020}. \\
 
 The mesh and dimensions for case $L2$ are shown in \cref{fig:supersonicMeshLES}.
 The \gls{AO} properties were collected along a beam propagating in the normal
@@ -119,4 +129,15 @@ wavefront is bassically flat and the \gls{OPD} does not revel additional informa
         \includegraphics[width=0.6\textwidth]{chapter4/supersonicLES/opd_07100}}
     \caption{\gls{OPD}, dilute-medium formulation for a wavelength of
     $633\Units{nm}$}\label{fig:supersonicOPD633}
+\end{figure}
+
+The average \gls{WD} is shown in \cref{fig:supersonicWDmean633}. As expected,
+the density changes as the flow moves across the \gls{BL}, and this variation
+impacts the \gls{AO} properties, which in turn affects the \gls{WD}.
+\begin{figure}[H]
+    \makebox[\textwidth][c]{
+        %trim = left, bottom, right top
+        \includegraphics[width=0.6\textwidth]{chapter4/supersonicLES/meanWaveFrontDistortion}}
+    \caption{Average \gls{WD}, dilute-medium formulation for a wavelength of
+    $633\Units{nm}$}\label{fig:supersonicWDmean633}
 \end{figure}

@@ -140,6 +140,30 @@ def plot_kerl(mesh, kerl_path, time):
     plotter.close()
     del plotter
 
+def plot_mean_wave(mean_wave, y_range, x_out, fig_config):
+
+    x_out_vect = x_out * np.ones(np.shape(y_range)) 
+    plt.plot(x_out_vect, y_range, linewidth=fig_config["line_width"],
+                label="theoretical") 
+    plt.plot(mean_wave, y_range, linewidth=fig_config["line_width"],
+    label="truth")
+
+    plt.legend(fontsize=fig_config["legend_size"])
+    plt.gca().xaxis.set_major_formatter(ScalarFormatter())
+    plt.gca().ticklabel_format(useOffset=False, style='plain', axis='x')
+    plt.xlabel("$\\overline{WD}$ $[m]$", fontsize=fig_config["axis_label_size"])
+    plt.ylabel("Y $[m]$", fontsize=fig_config["axis_label_size"])
+
+    plt.savefig(
+        "meanWavefrontDistortion.pdf",
+        format="pdf",
+        bbox_inches="tight",
+        dpi=fig_config["dpi_size"],
+    )
+    plt.close()
+
+
+
 
 # Wave travels on the x
 def plot_wavefront_distortion_y(
@@ -148,7 +172,7 @@ def plot_wavefront_distortion_y(
     x_loc_vec = x_loc * np.ones(np.shape(y_range))
     # plt.plot(x_in_vec, y_range, '-', label='In')
 
-    # Plot Undisturbed WF
+    # Plot mean_waveUndisturbed WF
     plt.plot(
         x_loc_vec, y_range, "-", linewidth=fig_config["line_width"], label="Theoretical"
     )
@@ -327,6 +351,9 @@ def main(
         # Plot OPD (wave travels on x)
         plot_optical_path_difference_y(y_range, OPD[i, :], fig_config,
                                        opd_path, time_in)
+
+    mean_wave = np.mean(wave_front_distortion, axis=0)
+    plot_mean_wave(mean_wave, y_range, x_out, fig_config)
 
 
 if __name__ == "__main__":
