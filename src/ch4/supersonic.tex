@@ -1,4 +1,4 @@
-\subsection{Supersonic \acrfull{LES}\label{sec:supersonicLES}}
+\subsection{Supersonic, High Enthalpy\label{sec:supersonicLES}}
 The results presented below were obtained using the turbulent solver in
 \gls{SU2}, as implemented and validated by Molina et al. \cite{Molina2017}.
 In this work, Molina detailed the \gls{LES} formulation within \gls{SU2} and
@@ -12,8 +12,15 @@ challenging to capture accurately with turbulence models. Additional
 comparisons of \gls{SU2}'s \gls{LES} capabilities at subsonic speeds can be
 found in Molina's subsequent presentation \cite{Molina2020}. \\
 
-The mesh and dimensions for case $L2$ are shown in \cref{fig:supersonicMeshLES}.
-The \gls{AO} properties were collected along a beam propagating in the normal
+The conditions for this case are given in \cref{tab:lesStudy}. Due to the low
+pressure, these conditions correspond to a high altitude of approximately
+$26\Units{km}$. The flow is classified as high-enthalpy because of the high
+velocity and temperatures within the flow; however, a real-gas model is not
+used. Instead, a standard ideal-gas model is employed. \\
+
+The mesh
+and dimensions for case $L2$ are shown in \cref{fig:supersonicMeshLES}. The
+\gls{AO} properties were collected along a beam propagating in the normal
 direction ($\hat{y}$), spanning from $-0.85\Units{m}$ to $0.0\Units{m}$. The
 beam had a width in the streamwise direction ($\hat{x}$) ranging from
 $1\Units{m}$ to $4\Units{m}$.
@@ -63,16 +70,24 @@ The pressure contour plot is shown in \cref{fig:supersonicPressureContourLES}.
 \end{figure}
 \fi
 
-The density contour plot is shown in \cref{fig:supersonicDensityContourLES}.
+The density contour plot is shown in \cref{fig:supersonicDensityContourLES}. It
+should be noted that the flow density varies by $\approx 96\%$, however the
+$\mathcal{O}(10^{-2}$. 
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
-        \includegraphics[width=1\textwidth,trim=0.8cm 15cm 0.8cm
+        \includegraphics[width=1\textwidth,trim=0.8cm 15cm 0cm
         10cm,clip]{chapter4/supersonicLES/Density_07100}}
     \caption{Density contour for $L2$}\label{fig:supersonicDensityContourLES}
 \end{figure}
 
-The polarizability contour plot is shown in \cref{fig:supersonicPolarizabilityContourLES}. It was calculated using the Kerl method \cite{Kerl1992}, implemented in the \gls{HAOT} package. The method is described in \cref{eq:kerlFitting}. As expected, Kerl's extrapolation depends on temperature; consequently, the polarizability closely follows the temperature field.
+The polarizability contour plot is shown in
+\cref{fig:supersonicPolarizabilityContourLES}. It was calculated using the Kerl
+method \cite{Kerl1992}, as implemented in the \gls{HAOT} package. The method is
+described in \cref{eq:kerlFitting}. As expected, Kerl's extrapolation depends
+on temperature; consequently, the polarizability closely follows the
+temperature field. It should be noted that the polarizability varies by $\approx
+4\%$, however the $\mathcal{O}(10^{-30})$.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -94,11 +109,13 @@ The dilute-medium formulation of the index of refraction is shown in
 
 The dense-medium formulation of the index of refraction is shown in
 \cref{fig:supersonicDenseIndexContourLES}. It was calculated using
-\cref{eq:denseRefractiveIndex}, which calculates the index of refraction as a
-function of density and temperature. It does not seems to be a noticeable
-difference between the dilute-medium formulation and the dense-medium
-formulation. It seems that the index of refraction closely follows the density
-field.
+\cref{eq:denseRefractiveIndex}, which computes the index of refraction as a
+function of density and temperature. There does not appear to be a noticeable
+difference between the dilute-medium and dense-medium formulations. The index of
+refraction closely follows the density field; although the polarizability
+follows the temperature field, its magnitude is $\mathcal{O}(10^{-28})$ smaller
+than the density. Consequently, the index of refraction is more strongly
+influenced by the density profile than by the temperature profile.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -133,11 +150,13 @@ wavefront is bassically flat and the \gls{OPD} does not revel additional informa
 
 The average \gls{WD} is shown in \cref{fig:supersonicWDmean633}. As expected,
 the density changes as the flow moves across the \gls{BL}, and this variation
-impacts the \gls{AO} properties, which in turn affects the \gls{WD}.
+impacts the \gls{AO} properties, which in turn affects the \gls{WD}. In
+addition it does not seems to be a discrepancy between the dilute-medium and
+the dense medium formulation.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
         \includegraphics[width=0.6\textwidth]{chapter4/supersonicLES/meanWaveFrontDistortion}}
-    \caption{Average \gls{WD}, dilute-medium formulation for a wavelength of
+    \caption{Average \gls{WD}, for a wavelength of
     $633\Units{nm}$}\label{fig:supersonicWDmean633}
 \end{figure}

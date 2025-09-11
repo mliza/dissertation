@@ -140,13 +140,15 @@ def plot_kerl(mesh, kerl_path, time):
     plotter.close()
     del plotter
 
-def plot_mean_wave(mean_wave, y_range, x_out, fig_config):
+def plot_mean_wave(mean_wave,mean_wave_dense, y_range, x_out, fig_config):
 
     x_out_vect = x_out * np.ones(np.shape(y_range)) 
     plt.plot(x_out_vect, y_range, linewidth=fig_config["line_width"],
                 label="theoretical") 
     plt.plot(mean_wave, y_range, linewidth=fig_config["line_width"],
-    label="truth")
+    label="truth, dilute")
+    plt.plot(mean_wave_dense, y_range, '-.', linewidth=fig_config["line_width"],
+    label="truth, dense")
 
     plt.legend(fontsize=fig_config["legend_size"])
     plt.gca().xaxis.set_major_formatter(ScalarFormatter())
@@ -209,7 +211,7 @@ def plot_optical_path_length_y(y_range, OPL, fig_config, opl_path, time):
     fig = plt.figure(figsize=(fig_config["fig_width"], fig_config["fig_height"]))
     spatial_var = fig_config["var_OPL"]
     plt.plot((OPL - np.round(OPL[0],2)) * 1E3, y_range, "-", linewidth=fig_config["line_width"],
-             label=f'$\sigma_x$={spatial_var:0.3}')
+             label=f'$\sigma_y$={spatial_var:0.3}')
     plt.ticklabel_format(style='plain', axis='x')
     plt.gca().xaxis.get_major_formatter().set_useOffset(False)
     plt.gca().xaxis.set_major_locator(ticker.MaxNLocator(nbins=5))
@@ -232,7 +234,7 @@ def plot_optical_path_difference_y(y_range, OPD, fig_config, opd_path, time):
     opl_mean = fig_config["mean_OPL"]
 
     plt.plot(OPD * 1E6, y_range, "-", linewidth=fig_config["line_width"],
-             label=fr'$\overline{{OPL_x}} = {opl_mean:0.3}$') 
+             label=fr'$\overline{{OPL_y}} = {opl_mean:0.3}$') 
 
     plt.ylabel("Y $[m]$", fontsize=fig_config["axis_label_size"])
     plt.xlabel("OPD $[\mu m]$", fontsize=fig_config["axis_label_size"])
@@ -267,7 +269,7 @@ def main(
     else:
         plot_flag = False
 
-    wavelength_nm = 633
+    wavelength_nm = 1000
     # Looking for surface and flow files
     vtu_f = [x for x in os.listdir(f_in) if x.split(".")[1] == "vtu"]
     #surface_files = [x for x in sorted(vtu_f) if x.split("_")[0] == "surface"]
@@ -277,6 +279,7 @@ def main(
 
     # OPL[time, y_range], sum on x_range
     OPL = np.zeros([np.shape(flow_files)[0], len(y_range)])
+    OPL_dense = np.zeros([np.shape(flow_files)[0], len(y_range)])
 
     # Make this a for loop base in time steps
     for i, val in enumerate(flow_files):
@@ -300,6 +303,10 @@ def main(
                 line_data["index_dilute"], line_data["Distance"]
             )
 
+            OPL_dense[i][j] = haot.optical_path_length(
+                line_data["index_dense"], line_data["Distance"]
+            )
+
             # Free resources
             del line_data
 
@@ -320,12 +327,14 @@ def main(
     # Calculate OPD and WaveFront distortion (Optics)
     #[time, y_position] 
     OPD = haot.optical_path_difference(OPL, avg_ax=1) #Avg along aperture
+    OPD_dense = haot.optical_path_difference(OPL_dense, avg_ax=1) #Avg along aperture
     OPD_rms = haot.optical_path_difference_rms(OPD, avg_ax=1) #Avg along time
     phase_variance = haot.phase_variance(OPD_rms, wavelength_nm)
     strehl_ratio = haot.strehl_ratio(phase_variance)
     #x_in_vec = x_in * np.ones(np.shape(y_range))
     x_out_vec = x_out * np.ones(np.shape(y_range))
     wave_front_distortion = x_out_vec + OPD
+    wave_front_distortion_dense = x_out_vec + OPD_dense
     print(f'The Strehl ratio is: {strehl_ratio}')
     time_var = np.mean(np.std(OPL, axis=0))
     spatial_var = np.mean(np.std(OPL, axis=1))
@@ -353,7 +362,8 @@ def main(
                                        opd_path, time_in)
 
     mean_wave = np.mean(wave_front_distortion, axis=0)
-    plot_mean_wave(mean_wave, y_range, x_out, fig_config)
+    mean_wave_dense = np.mean(wave_front_distortion_dense, axis=0)
+    plot_mean_wave(mean_wave, mean_wave_dense, y_range, x_out, fig_config)
 
 
 if __name__ == "__main__":
