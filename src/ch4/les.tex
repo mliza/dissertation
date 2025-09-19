@@ -12,15 +12,18 @@ turbulent flows. Both the subsonic and supersonic cases are employed to
 investigate \gls{AO} properties as functions of temperature and density.
 \begin{table}[H]
     \begin{center}
-        \begin{tabular}{|c|c|c|c|c|c|}
+        \begin{tabular}{|c|c|c|c|c|c|c|}
             \hline
-            Case & Solver & $M\Units{\;}$ & $T_{\infty}$ &
-            $P_{\infty}\Units{Pa}$ & $Re\Units{\;}$  \\ 
+            Case & Solver & $M\Units{\;}$ & $T_{\infty}\Units{K}$ &
+            $P_{\infty}\Units{Pa}$ & $Re\Units{\;}$ & $h_{\infty}
+            \UnitsFrac{kJ}{kg}$  \\ 
             \hline \hline
-            $1L$ & OpenFOAM & $0.4$ & $288.0$ & $101.3\mathrm{E}{3}$ & $1.6\mathrm{E}{6}$ \\ \hline
-            $2L$ & SU2 & $5.0$ & $298.0$ & $851.1$ & $9.4\mathrm{E}{5}$ \\ \hline
+            $1L$ & OpenFOAM & $0.4$ & $288.0$ & $101.3\mathrm{E}{3}$ &
+            $1.6\mathrm{E}{6}$ &$298.7$ \\ \hline
+            $2L$ & SU2 & $5.0$ & $298.0$ & $851.1$ & $9.4\mathrm{E}{5}$ &
+            $1.79\mathrm{E}{3}$ \\ \hline
         \end{tabular}
-    \caption{Flow properties \label{tab:lesStudy}}
+    \caption{Flow conditions \label{tab:lesStudy}}
     \end{center}
 \end{table}
 
