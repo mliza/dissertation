@@ -10,20 +10,27 @@ turbulence modeling community because it provides experimental and numerical
 data for separated flow, reattachment, and recirculation regions, which are
 challenging to capture accurately with turbulence models. Additional
 comparisons of \gls{SU2}'s \gls{LES} capabilities at subsonic speeds can be
-found in Molina's subsequent presentation \cite{Molina2020}. \\
+found in Molina's subsequent presentation \cite{Molina2020}. The time step for this case is set to $\Delta t = 1\mathrm{E}{-5}$, the Vreman
+\acrfull{SGS} model \cite{Vreman2004} is employed for \gls{SGS} turbulence
+modeling, and a logarithmic wall model is used to account for near-wall
+effects.\\
 
-The conditions for this case are given in \cref{tab:lesStudy}. Due to the low
+The conditions for this case are given in \Cref{tab:lesStudy}. Due to the low
 pressure, these conditions correspond to a high altitude of approximately
 $26\Units{km}$. The flow is classified as high-enthalpy because of the high
-velocity and temperatures within the flow; however, a real-gas model is not
+velocity and temperatures within the flow; however, a real-gas model (e.g, one
+that calculates chemical and thermal nonequilibrium as described in
+\Cref{ch3:hypersonicModeling} and performed in \Cref{ch4:frozenVsNonequilibrium}) is not
 used. Instead, a standard ideal-gas model is employed. \\
 
 The mesh
-and dimensions for case $L2$ are shown in \cref{fig:supersonicMeshLES}. The
+and dimensions for case $L2$ are shown in \Cref{fig:supersonicMeshLES}. The
 \gls{AO} properties were collected along a beam propagating in the normal
 direction ($\hat{y}$), spanning from $-0.85\Units{m}$ to $0.0\Units{m}$. The
 beam had a width in the streamwise direction ($\hat{x}$) ranging from
-$1\Units{m}$ to $4\Units{m}$.
+$1\Units{m}$ to $4\Units{m}$. The mesh was provided by the \gls{NASA}
+Turbulence Modeling Resource database, and the Reynolds number was kept
+constant to ensure suitability for the present flow conditions. A supersonic outlet boundary condition was applied, wall functions were used at the walls, and the same inflow conditions were prescribed at both the inlet and the far field.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -31,8 +38,10 @@ $1\Units{m}$ to $4\Units{m}$.
     \caption{Mesh for $L2$}\label{fig:supersonicMeshLES}
 \end{figure}
 
-The Mach contour plot is shown in \cref{fig:supersonicMachContourLES}.
-The region where the \gls{AO} properties would be analyzed lie in the supersonic regime, which is consistent with expectations, since across a shock wave the post-shock Mach number is always lower than the pre-shock Mach number.
+The Mach contour plot is shown in \Cref{fig:supersonicMachContourLES}.
+The region where the \gls{AO} properties would be analyzed lie in the
+supersonic regime, which is consistent with expectations, since across a shock
+wave the post-shock Mach number is always lower than the pre-shock Mach number.The contour plots shown below correspond to a single time step, which highlights the unsteady fluctuations in the flow field.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -41,7 +50,11 @@ The region where the \gls{AO} properties would be analyzed lie in the supersonic
     \caption{Mach contour for $L2$}\label{fig:supersonicMachContourLES}
 \end{figure}
 
-The velocity contour plot is shown in \cref{fig:supersonicVelocityContourLES}.
+The velocity contour plot is shown in \Cref{fig:supersonicVelocityContourLES}.
+As expected, the freestream velocity decreases across the shock wave due to the
+abrupt compression, where a portion of the directed kinetic energy is converted
+into internal energy, leading to a simultaneous rise in pressure and
+temperature.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -49,7 +62,10 @@ The velocity contour plot is shown in \cref{fig:supersonicVelocityContourLES}.
     \caption{Velocity contour for $L2$}\label{fig:supersonicVelocityContourLES}
 \end{figure}
 
-The temperature contour plot is shown in \cref{fig:supersonicTemperatureContourLES}.
+The temperature contour plot is shown in
+\Cref{fig:supersonicTemperatureContourLES}. As expected, the temperature
+increases across the shock wave due to the irreversible compression and
+conversion of kinetic energy into internal energy.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -60,7 +76,7 @@ The temperature contour plot is shown in \cref{fig:supersonicTemperatureContourL
 \end{figure}
 
 \iffalse
-The pressure contour plot is shown in \cref{fig:supersonicPressureContourLES}.
+The pressure contour plot is shown in \Cref{fig:supersonicPressureContourLES}.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -70,9 +86,12 @@ The pressure contour plot is shown in \cref{fig:supersonicPressureContourLES}.
 \end{figure}
 \fi
 
-The density contour plot is shown in \cref{fig:supersonicDensityContourLES}. It
-should be noted that the flow density varies by $\approx 96\%$, however the
-$\mathcal{O}(10^{-2})$. 
+The density contour plot shown in \Cref{fig:supersonicDensityContourLES}. It
+should be noted that the flow density varies by approximately $96\%$, with a
+magnitude on the order of $\mathcal{O}(10^{-2})$. This large variation is a
+direct consequence of the strong shock-induced compression in the supersonic
+regime, where density rises sharply across the shock and decreases again in the
+expansion regions.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -82,12 +101,12 @@ $\mathcal{O}(10^{-2})$.
 \end{figure}
 
 The polarizability contour plot is shown in
-\cref{fig:supersonicPolarizabilityContourLES}. It was calculated using the Kerl
+\Cref{fig:supersonicPolarizabilityContourLES}. It was calculated using the Kerl
 method \cite{Kerl1992}, as implemented in the \gls{HAOT} package. The method is
-described in \cref{eq:kerlFitting}. As expected, Kerl's extrapolation depends
+described in \Cref{eq:kerlFitting}. As expected, Kerl's extrapolation depends
 on temperature; consequently, the polarizability closely follows the
-temperature field. It should be noted that the polarizability varies by $\approx
-4\%$, however the $\mathcal{O}(10^{-30})$.
+temperature field. It should be noted that the polarizability varies by
+approximately $4\%$, with a magnitude on the order of $\mathcal{O}(10^{-30})$.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -97,8 +116,8 @@ temperature field. It should be noted that the polarizability varies by $\approx
 \end{figure}
 
 The dilute-medium formulation of the index of refraction is shown in
-\cref{fig:supersonicDiluteIndexContourLES}. It was calculated using
-\cref{eq:diluteRefractiveIndex}, which calculates the index of refraction as a function of density and temperature.
+\Cref{fig:supersonicDiluteIndexContourLES}. It was calculated using
+\Cref{eq:diluteRefractiveIndex}, which calculates the index of refraction as a function of density and temperature.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -108,8 +127,8 @@ The dilute-medium formulation of the index of refraction is shown in
 \end{figure}
 
 The dense-medium formulation of the index of refraction is shown in
-\cref{fig:supersonicDenseIndexContourLES}. It was calculated using
-\cref{eq:denseRefractiveIndex}, which computes the index of refraction as a
+\Cref{fig:supersonicDenseIndexContourLES}. It was calculated using
+\Cref{eq:denseRefractiveIndex}, which computes the index of refraction as a
 function of density and temperature. There does not appear to be a noticeable
 difference between the dilute-medium and dense-medium formulations. The index of
 refraction closely follows the density field; although the polarizability
@@ -125,7 +144,7 @@ influenced by the density profile than by the temperature profile.
     $L2$}\label{fig:supersonicDenseIndexContourLES}
 \end{figure}
 
-The \gls{OPL} (computed using the dilute-medium formulation) for a given time step is shown in \Cref{fig:supersonicOPL633}, and it was obtained from \cref{eq:OPL}, as implemented in the \gls{HAOT} package. A sharp increase in the \gls{OPL} occurs at approximately $-0.4\Units{m}$, which corresponds to the region just outside the shock. In this region, the density is significantly higher. Because the index of refraction is related to density through the \gls{GD} relation, an increase in density directly increases the local index of refraction. This, in turn, results in a larger optical path length and consequently produces a stronger contribution to the \gls{AO}.
+The \gls{OPL} (computed using the dilute-medium formulation) for a given time step is shown in \Cref{fig:supersonicOPL633}, and it was obtained from \Cref{eq:OPL}, as implemented in the \gls{HAOT} package. A sharp increase in the \gls{OPL} occurs at approximately $-0.4\Units{m}$, which corresponds to the region just outside the shock. In this region, the density is significantly higher. Because the index of refraction is related to density through the \gls{GD} relation, an increase in density directly increases the local index of refraction. This, in turn, results in a larger optical path length and consequently produces a stronger contribution to the \gls{AO}.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
         %trim = left, bottom, right top
@@ -136,8 +155,8 @@ The \gls{OPL} (computed using the dilute-medium formulation) for a given time st
 
 The \gls{OPD} (computed using the dilute-medium formulation) for a given time
 step is shown in \Cref{fig:supersonicOPD633}, and it was obtained from
-\cref{eq:OPD}, as implemented in the \gls{HAOT} package. From
-\cref{fig:supersonicOPL633} can be observed that the spatial standard deviation
+\Cref{eq:OPD}, as implemented in the \gls{HAOT} package. From
+\Cref{fig:supersonicOPL633} can be observed that the spatial standard deviation
 is much smaller than the spatial average \gls{OPL}. When this is the case, the
 wavefront is bassically flat and the \gls{OPD} does not revel additional information.
 \begin{figure}[H]
@@ -148,7 +167,7 @@ wavefront is bassically flat and the \gls{OPD} does not revel additional informa
     $633\Units{nm}$}\label{fig:supersonicOPD633}
 \end{figure}
 
-The average \gls{WD} is shown in \cref{fig:supersonicWDmean633}. As expected,
+The average \gls{WD} is shown in \Cref{fig:supersonicWDmean633}. As expected,
 the density changes as the flow moves across the \gls{BL}, and this variation
 impacts the \gls{AO} properties, which in turn affects the \gls{WD}. In
 addition it does not seems to be a discrepancy between the dilute-medium and
@@ -160,3 +179,11 @@ the dense medium formulation.
     \caption{Average \gls{WD}, for a wavelength of
     $633\Units{nm}$}\label{fig:supersonicWDmean633}
 \end{figure}
+
+As expected, the \gls{AO} properties are more pronounced in the higher-enthalpy
+case. This is because higher enthalpy flows exhibit larger temperature and
+density variations, which directly influence the aero-optical behavior.
+Specifically, temperature fluctuations have a stronger effect on the
+polarizability, while density variations predominantly affect the index of
+refraction. Consequently, regions with strong thermodynamic gradients
+contribute more significantly to the overall \gls{AO} distortions.

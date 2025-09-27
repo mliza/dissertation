@@ -1,10 +1,10 @@
 \section{Dilute-Medium vs. Dense-Medium Formulation\label{sec:diluteVsDense}}
 From the results presented in
-\cref{sec:gasComposition,ch4:speciesStudy,ch4:frozenVsNonequilibrium}, one
+\Cref{sec:gasComposition,ch4:speciesStudy,ch4:frozenVsNonequilibrium}, one
 question that remains open is whether the dilute-medium formulation of the index of refraction
-\cref{eq:diluteRefractiveIndex} remains valid for hypersonic flows, or if there
+\Cref{eq:diluteRefractiveIndex} remains valid for hypersonic flows, or if there
 are cases in which it breaks down and the dense-medium formulation 
-\cref{eq:denseRefractiveIndex} must be applied. \Cref{fig:diluteDenseDelta}
+\Cref{eq:denseRefractiveIndex} must be applied. \Cref{fig:diluteDenseDelta}
 shows the limits of the dilute-medium formulation.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
@@ -15,7 +15,7 @@ shows the limits of the dilute-medium formulation.
 
 From \Cref{fig:diluteDenseDelta}, it appears that the dilute-medium formulation is
 valid as long as $n - 1 < 10^{-2}$. For all results presented in
-\cref{ch:ch4}, the maximum value of $n - 1$ is less than $10^{-4}$,
+\Cref{ch:ch4}, the maximum value of $n - 1$ is less than $10^{-4}$,
 confirming the validity of the dilute-medium formulation. However, one could consider
 a hypersonic case in which the dilute-medium formulation may break down.
 \Cref{fig:1kPa,fig:1MPa,fig:1GPa} shows a comparison between the dilute-medium
@@ -41,34 +41,54 @@ and dense-medium formulation for standard air at different pressures.
     $1\Units{GPa}$}\label{fig:1GPa}
 \end{figure}
 
+
 Results in \Cref{fig:1kPa,fig:1MPa,fig:1GPa} were obtained using the \gls{HAOT}
 package. For each case, a temperature vector and a fixed pressure were
 specified to compute the index of refraction. The \textit{perfect gas} equation
-\cref{eq:equationOfState} was used to determine the densities, and the Kerl
-formulation \cref{eq:kerlFitting} was applied to estimate the polarizability.
+\Cref{eq:equationOfState} was used to determine the densities, and the Kerl
+formulation \Cref{eq:kerlFitting} was applied to estimate the polarizability.
 The index of refraction was then calculated using both the dilute-medium and
 dense-medium
-formulations \cref{eq:diluteRefractiveIndex,eq:denseRefractiveIndex}. All
+formulations \Cref{eq:diluteRefractiveIndex,eq:denseRefractiveIndex}. All
 calculations correspond to a wavelength of $633\Units{nm}$. Additional
-calculations for a wavelength of $1000\Units{nm}$ are given in the
-\crefApendex{app:diluteDenseFormulation}. \\
+calculations for a wavelength of $1000\Units{nm}$ are given in \crefApendex{app:diluteDenseFormulation}. \\
 
-These results can be shown as a function of mach number and altitudes and are
-given on \cref{fig:633Mach} and \cref{fig:633Altitude} for a laser with a
-wavelength of $633\Units{nm}$.
+The results presented in \Cref{fig:1kPa,fig:1MPa,fig:1GPa} can be shown as a
+function of Mach number, given in \Cref{fig:633Mach}, and altitude, given in
+\Cref{fig:633AltitudeH}, for a laser with a wavelength of $633\Units{nm}$. These
+plots illustrate how the flow conditions influence the optical properties,
+allowing a direct comparison of the effects of compressibility and density
+variations on the laser propagation at different altitudes and Mach numbers.
+Additional calculations for a wavelength of $1000\Units{nm}$ are given in
+\crefApendex{app:diluteDenseFormulation}.\\
+
+\Cref{fig:633Mach} shows the pre-shock Mach number at an altitude of
+$10\Units{km}$ for a laser with a wavelength of $633\Units{nm}$. As expected,
+the index of refraction increases with increasing Mach number; however, the
+overall change remains small, and the dilute-medium formulation continues to be
+valid. This behavior indicates that, despite the compressibility effects
+associated with higher Mach numbers, the flow remains sufficiently low-density
+for the assumptions of the dilute approximation to hold, ensuring that
+\gls{AO} distortions are minimal in this regime.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
     \includegraphics[width=0.9\textwidth]{chapter4/diluteVsDense/dilute_dense_mach_633.pdf}
     }
     \caption{Dilute-medium vs. dense-medium formulation as a function of
-    mach at a wavelength of $633\Units{nm}$}\label{fig:633Mach}
+    Mach at a wavelength of $633\Units{nm}$}\label{fig:633Mach}
 \end{figure}
+
+\Cref{fig:633AltitudeH} shows the index of refraction as a function of
+altitude. As expected, the index of refraction decreases at higher altitudes
+because the flow density decreases with altitude. This trend reflects the
+reduced number of particles available to interact with the laser, which
+diminishes the optical path differences and, consequently, the \gls{AO} effects in the upper atmosphere.
 \begin{figure}[H]
     \makebox[\textwidth][c]{
     \includegraphics[width=0.9\textwidth]{chapter4/diluteVsDense/dilute_dense_altitude_633.pdf}
     }
     \caption{Dilute-medium vs. dense-medium formulation as a function of
-    altitude at wavelength of $633\Units{nm}$}\label{fig:633Altitude}
+    altitude at wavelength of $633\Units{nm}$}\label{fig:633AltitudeH}
 \end{figure}
 
 Several assumptions underlie these results, including the use of the
@@ -80,4 +100,4 @@ physically realistic values for air, even under extreme conditions such as
 high-enthalpy hypersonic flows or shock-compressed regions, where densities
 typically remain below $\mathcal{O}(10^2)\UnitsFrac{kg}{m^3}$. Therefore, for
 hypersonic flows, the dilute-medium formulation of the index of refraction can be
-considered an accurate and robust approximation. 
+considered an accurate and robust approximation.

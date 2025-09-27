@@ -14,7 +14,7 @@ presents the multicomponent \gls{NS} equations, which involve $4N+19$ unknowns
 \end{subequations}
 The addition of the evolution of the mass of the chemical species $s$
 \Cref{eq:noneqSpecies} gives the addition needed to account for chemical
-reactions. As an example lets look at diatomic nitrogen,  
+reactions. As an example lets look at diatomic nitrogen, 
 \begin{equation}\label{eq:diatomicNitrogen}
     \ce{N2 + M \rightleftharpoons N + N + M}.
 \end{equation}
@@ -28,7 +28,7 @@ Usually the dissociation rate is computed from a temperature-dependent
 \textit{Arrhenius} reaction rate, and the combination rate is set so that the
 source term is zero in thermodynamic equilibrium \cite{Candler2019}.  \\
 
-The total energy term in \Cref{eq:noneqEnegy} can be decomposed as: 
+The total energy term in \Cref{eq:noneqEnegy} can be decomposed as:
 \begin{equation}\label{eq:totalDecomposedNoneqEnergy}
     E = \sum_s \rho_s\Parenthesis{e_{tr,s} + e_{int,s} + h_s^{o} } +
     \frac{1}{2}\rho u_k u_k.
@@ -39,7 +39,7 @@ The multicomponent \gls{NS} equations can be solved using some of the models:
     \item \textbf{Single-temperature $(1T)$ models:} All energy modes
         (translational, rotational, vibrational and electronic) are in
     equilibrium and are described by a single temperature. Low fidelity, low
-        computational cost.  
+        computational cost.
     \item \textbf{Two-temperature $(2T)$ models:} These models treat the
         vibrational energy separately, assuming rotational and translational
         energy equilibrates faster than vibrational energy. Medium fidelity,
@@ -207,7 +207,7 @@ species and $g_i$ is the degeneracy of the $i$th state. \\
 
 The vibrational relaxation is computing using the \textit{Landau-Teller}
 relaxation time with \textit{Park}\cite{Park1989} high energy correction and it
-is given by 
+is given by
 \begin{equation}\label{eq:vibrationalRelaxation}
     \dot{\Theta}^{tr:vib} = \sum_s \rho_s \frac{de_s^{vib}}{dt} =
     \sum_s\rho_s\frac{e_s^{vib*} - e_s^{vib}}{\tau_s}.
