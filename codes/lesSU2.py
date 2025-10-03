@@ -7,7 +7,6 @@ import figure_configurations as fig_conf
 import scipy.constants as s_consts
 import molmass
 
-
 def calculate_optics(mesh, wavelength_nm):
     cell_data = mesh.point_data_to_cell_data()
 
@@ -45,7 +44,7 @@ def main(vtu_path_in, time_in, fig_config):
 
 
 if __name__ == "__main__":
-    flow_path = "/Users/martin/Desktop/flow"
+    flow_path = "../resultsCFD/LES/LES_SU2/flow/"
     vtu_files = sorted(os.listdir(flow_path))
     time_in = sorted([int(k.split('.')[0].split('_')[1]) for k in vtu_files])
     vtu_path_in = sorted([os.path.join(flow_path, k) for k in vtu_files])
