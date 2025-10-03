@@ -15,6 +15,21 @@ found in Molina's subsequent presentation \cite{Molina2020}. The time step for t
 modeling, and a logarithmic wall model is used to account for near-wall
 effects.\\
 
+It must be emphasized, however, that the present case should be regarded
+strictly as an experimental demonstration. The author does not recommend the
+use of \gls{LES} within the \gls{SU2} framework for research or engineering
+applications. At the time of this work, the \gls{LES} capability in \gls{SU2}
+had not undergone sufficient verification or validation to ensure its accuracy
+or reliability. Specifically, there has been limited systematic testing to
+confirm the correctness of the numerical implementation, and unit testing for
+the \gls{LES} functionality is either poorly documented or altogether absent.
+Consequently, there is no basis to claim that the \gls{LES} methodology in
+\gls{SU2} has been rigorously benchmarked against canonical turbulence cases,
+nor that it can reproduce results consistent with established \gls{LES}
+solvers. For these reasons, the use of \gls{LES} in \gls{SU2} at the time of
+writing should be considered experimental only, and it is not recommended for
+use in predictive simulations or for drawing quantitative conclusions. \\
+
 The conditions for this case are given in \Cref{tab:lesStudy}. Due to the low
 pressure, these conditions correspond to a high altitude of approximately
 $26\Units{km}$. The flow is classified as high-enthalpy because of the high
