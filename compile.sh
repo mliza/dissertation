@@ -19,5 +19,5 @@ compileLatex() {
      rm $1.aux $1.bbl $1.bcf $1.blg $1.glo* $1.gls* $1.ist $1.log $1.out $1.run.xml \
        $1.slg $1.slo $1.sls $1.tdo $1.toc $1.glg* $1.lot $1.lof $1.dvi
 }
-gitSubmodule
+#gitSubmodule
 compileLatex main

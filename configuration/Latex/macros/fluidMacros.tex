@@ -1,0 +1,286 @@
+% Incompressible Bernoulli's equation 
+\newcommand{\incompressibleBernoulliEq} %\bernoulliEq 
+{ P + \frac{1}{2}\rho u^2 + \rho g y }  
+
+% Unsteady Bernoulli's equation 
+\newcommand{\unsteadyBernoulliEq} 
+{ \PartialFrac{\phi}{t} + \incompressibleBernoulliEq } 
+ 
+% Material Derivative Eq. - Vector notation 
+\newcommand{\materialDerivativeVec}[1] %\materialDerivativeVec{\rho V}
+{   \frac{D}{Dt}\B(#1\E) = \frac{\partial}{\partial t}\B(#1\E) + \B(\vec{V}\cdot\nabla\E) #1   }
+
+% Reynolds Transport Theorem  
+% Note: B is extenisve propertiy and \beta is intensive property 
+\newcommand{\reynoldsTransportTheorem} %\reynoldsTransportTheorem{e} 
+{\frac{D\Sub{B}{sys}}{Dt} = \TotalDer{}{t}\iiint\limits_{\forall}\rho\beta d\forall + \oiint\limits_{S} \rho\beta\Parenthesis{ \Sub{\vec{V}}{rel} \cdot \hat{n} }dS }
+
+%{ \frac{d}{dt}\int\limits_{\Omega_{(t)}} \vec{f}d\forall = \int\limits_{\Omega_{(t)}}\PartialFrac{\vec{f}}{t}d\forall + \int\limits_{\partial\Omega_{(t)}}\Parenthesis{\vec{V}\cdot\hat{n}}\vec{f}\,da} 
+
+% Mass Conservation Integral Form 
+\newcommand{\massConservationIntegral} 
+{ \TotalDer{}{t}\iiint\limits_{\forall}\rho\,d\forall + \oiint\limits_{S} \rho\Parenthesis{\Sub{\vec{V}}{rel}\cdot\hat{n}}dS  } 
+
+% Momentum Equation Integral Form  
+% Note \Sub{V}{abs} =  \Sub{V}{rel} +  \Sub{V}{cv}  
+% \Sub{V}{fluid/\mathcal{O}} = \Sub{V}{fluid/C\forall} + \Sub{V}{c\forall/\mathcal{O}}
+\newcommand{\momentumConservationIntegral} %\momentumIntegral{u}{x} 
+{ \TotalDer{}{t}\iiint\limits_{\forall}\rho\Sub{\vec{V}}{abs}d\forall + \oiint\limits_{S}\rho\Sub{\vec{V}}{abs}\Parenthesis{\Sub{\vec{V}}{rel}\cdot\hat{n}}dS = -\oiint\limits_S P\hat{n} \,dS + \iiint\limits_{\forall} \rho\vec{f} d\forall  } 
+
+% Conservation of Angular momentum 
+\newcommand{\angularMomentumConservationIntegral} 
+{  \sum\vec{L} = \TotalDer{}{t}\iiint\limits_{\forall}\rho\Parenthesis{\vec{r}\times\Sub{\vec{V}}{abs}}d\forall + \oiint\limits_{S}\rho\Parenthesis{\vec{r}\times\Sub{\vec{V}}{abs}}\Parenthesis{\Sub{\vec{V}}{rel}\cdot\hat{n}} dS }
+
+% Energy Momentum Equation Integral Form 
+\newcommand{\energyMomentumConservationIntegral} %h =e + \frac{P}{\rho}
+{ \TotalDer{}{t}\iiint\limits_{\forall}\rho\Parenthesis{e + \frac{1}{2}\Sub{\vec{V}}{abs}\cdot\Sub{\vec{V}}{abs} + \Sub{U}{e} }d\forall + \oiint\limits_{S}\rho\Parenthesis{e+\frac{1}{2}\Sub{\vec{V}}{abs}\cdot\Sub{\vec{V}}{abs} +\Sub{U}{e}}\Parenthesis{\Sub{\vec{V}}{rel}\cdot\hat{n} } dS  = \dot{Q} -\oiint\limits_S P\Parenthesis{\Sub{\vec{V}}{rel}\cdot\hat{n} } dS + \oiint\limits_S\Sub{\vec{f}}{\mu}\cdot \Sub{\vec{V}}{rel}dS  } 
+
+% Mass Conservation 
+\newcommand{\massConservationSum} 
+{ \sum\dot{m} = \sum\Parenthesis{ \Sub{\dot{m}}{in} - \Sub{\dot{m}}{out} } } 
+
+% Continuity Eq. 
+\newcommand{\continuityVec}
+{   \PartialFrac{\rho}{t} + \nabla\cdot\Parenthesis{ \rho\vec{V} }   }
+
+% Vorticity Eq.
+\newcommand{\vorticityVec}
+{        \PartialFrac{\vec{\omega}}{t} + \Parenthesis{\vec{V}\cdot\nabla}\vec{\omega} = \Parenthesis{\vec{\omega}\cdot\nabla}\vec{V} - \vec{\omega}\Parenthesis{\nabla\cdot\vec{V}} + \frac{1}{\rho^2}\nabla\rho\times\nabla p + \nu\nabla^2\vec{\omega} } 
+
+% Continuity Eq. - Cartesian coordinates  
+\newcommand{\continuityCartesian} %continuityEqExpanded (former name)
+{ \dot{\rho} + \PartialFrac{\Parenthesis{\rho u}}{x} + \PartialFrac{\Parenthesis{ \rho v}}{y} + \PartialFrac{\Parenthesis{\rho w}}{z} }
+
+% Continuity Eq. - Cylindrical coordinates 
+\newcommand{\continuityCylindrical} 
+{ \dot{\rho} + \frac{1}{r}\PartialFrac{ }{r}\Parenthesis{ \rho r\Sub{v}{r} } + \frac{1}{r}\PartialFrac{ }{\theta}\Parenthesis{\rho\Sub{v}{\theta}} + \PartialFrac{ }{z}\Parenthesis{\rho\Sub{v}{z}} }
+
+% Continuity Eq. - Spherical coordinates 
+\newcommand{\continuitySpherical} 
+{ \dot{\rho} + \frac{1}{r^2}\PartialFrac{}{r}\Parenthesis{ \rho r^2\Sub{v}{r} } + \frac{1}{ r\sin(\theta) }\PartialFrac{}{\theta}\Parenthesis{ \rho\sin(\theta)\Sub{v}{\theta} } + \frac{1}{ r\sin(\theta) }\PartialFrac{}{\phi}\Parenthesis{ \rho\Sub{v}{\phi} } }
+
+% Incompressible Navier Stokes Eq - Material derivative 
+\newcommand{\incompressibleNavierStokesMaterial} 
+{ \rho\frac{D\vec{V}}{Dt} = -\nabla P + \mu \Up{\nabla}{2}V + \Sub{B}{f} }
+
+% Incompressible Navier Stokes Eq. - Vector notation  
+\newcommand{\incompressibleNavierStokesVec} 
+{   \rho\Parenthesis{ \dot{V} + \Parenthesis{\vec{V}\cdot\nabla}V } = -\nabla P + \mu \Up{\nabla}{2}V + \Sub{B}{f}  }
+
+% Incompressible Navier Stokes Eq. - Vector expanded
+\newcommand{\incompressibleNavierStokesCartesian}[2] %\incompressibleNavierStokesExpanded %\incompressibleNavierStokesCartesian{u}{x}
+{ \rho\Parenthesis{ \dot{#1} + u\PartialFrac{#1}{x} + v\PartialFrac{#1}{y} + w\PartialFrac{#1}{z} } = -\PartialFrac{P}{#2} + \mu\Parenthesis{ \PartialFracN{#1}{x}{2} + \PartialFracN{#1}{y}{2} + \PartialFracN{#1}{z}{2} } + \Sub{f}{#2} }
+
+% Incompressible Navier Stokes Eq. - Cylindrical on r direction 
+\newcommand{\incompressibleNavierStokesCylindricalR} 
+{ \rho\Parenthesis{ \Sub{\dot{v}}{r} + \Sub{v}{r}\PartialFrac{\Sub{v}{r}}{r} + \frac{\Sub{v}{\theta}}{r}\PartialFrac{\Sub{v}{r}}{\theta} -\frac{\Sub{v}{\theta}^2 }{r} + \Sub{v}{z}\PartialFrac{\Sub{v}{r}}{z}}  =   - \PartialFrac{P}{r}  + \mu\Parenthesis{ \frac{1}{r}\PartialFrac{}{r}\Parenthesis{r\PartialFrac{\Sub{v}{r}}{r} } -\frac{\Sub{v}{r}}{r^2}  + \frac{1}{r^2}\PartialFracN{\Sub{v}{r}}{\theta}{2} - \frac{2}{r^2}\PartialFrac{\Sub{v}{r}}{\theta} +  \PartialFracN{\Sub{v}{r}}{z}{2}  } + \Sub{f}{r} }
+
+% Incompressible Navier Stokes Eq. - Cylindrical on theta direction 
+\newcommand{\incompressibleNavierStokesCylindricalTheta} 
+{ \rho\Parenthesis{ \Sub{\dot{v}}{\theta} + \Sub{v}{r}\PartialFrac{\Sub{v}{\theta}}{r} + \frac{\Sub{v}{\theta}}{r}\PartialFrac{\Sub{v}{\theta}}{\theta} + \frac{\Sub{v}{r}\Sub{v}{\theta}}{r} + \Sub{v}{z}\PartialFrac{\Sub{v}{\theta}}{z}}  = - \frac{1}{r}\PartialFrac{P}{\theta} + \mu\Parenthesis{  \frac{1}{r}\PartialFrac{}{r}\Parenthesis{r\PartialFrac{\Sub{v}{\theta}}{r} } - \frac{\Sub{v}{\theta}}{r^2}  +  \frac{1}{r^2}\PartialFracN{\Sub{v}{\theta}}{\theta}{2} + \frac{2}{r^2}\PartialFrac{\Sub{v}{r}}{\theta} + \PartialFracN{\Sub{v}{\theta}}{z}{2}  } + \Sub{f}{\theta} } 
+
+% Incompressible Navier Stokes Eq. - Cylindrical on z direction 
+\newcommand{\incompressibleNavierStokesCylindricalZ} 
+{  \rho\Parenthesis{ \Sub{\dot{v}}{z} + \Sub{v}{r}\PartialFrac{\Sub{v}{z}}{r} + \frac{\Sub{v}{\theta}}{r}\PartialFrac{\Sub{v}{z}}{\theta} + \Sub{v}{z}\PartialFrac{\Sub{v}{z}}{z} } = -\PartialFrac{P}{z} + \mu\Parenthesis{ \frac{1}{r}\PartialFrac{ }{r}\Parenthesis{r\PartialFrac{\Sub{v}{z}}{r}} + \frac{1}{r^2}\PartialFracN{\Sub{v}{z}}{\theta}{2} + \PartialFracN{\Sub{v}{z}}{z}{2} }+\Sub{f}{z}  } 
+
+% Non-dimensional Navier Stokes Eq. (might need to delete this)
+\newcommand{\nonDimensionalNavierStokes} 
+{\SqBracket{St}\PartialFrac{V^*}{t} + \Parenthesis{V^*\cdot
+\nabla^* }V^* = -\SqBracket{Eu}\nabla^*P^*  +\SqBracket{\frac{1}{Re}}\nabla^{*^{2}}V^* + \SqBracket{\frac{1}{Fr^2}}g^* }
+
+
+% Tensors %
+% Material Derivative -Einstein's notation 
+\newcommand{\materialDerivative}
+{ \frac{D\Parenthesis{\;}   }{Dt} = \PartialFrac{}{t}\Parenthesis{\; } + \Sub{u}{j} \PartialFrac{\;}{\Sub{x}{j}} \Parenthesis{\;} } 
+
+% Strain Rate Tensor 
+%\newcommand{\shearStrainTensor}
+\newcommand{\strainRateTensor}
+{ \Sub{S}{ij} = \frac{1}{2}\Parenthesis{ \PartialFrac{\Sub{u}{i}}{\Sub{x}{j}} + \PartialFrac{\Sub{u}{j}}{\Sub{x}{i}} } }
+
+% Rotation Rate Tensor 
+\newcommand{\rotationRateTensor}
+{ \Sub{\Omega}{ij} = \frac{1}{2}\Parenthesis{ \PartialFrac{\Sub{u}{i}}{\Sub{x}{j}} - \PartialFrac{\Sub{u}{j}}{\Sub{x}{i}} } }
+
+% Viscous Stress Tensor 
+%\newcommand{\deviatoricStressTensor}{gauchiStressTensor} 
+\newcommand{\viscousStressTensor} 
+{ \Sub{\sigma}{ij} = 2\mu\Parenthesis{ \Sub{S}{ij} -\frac{1}{3} \Sub{S}{kk} \Sub{\delta}{ij} }} 
+
+% Continuity Eq. - Einstein's notation (Large Eddy Simulation for Compressible Flows_Garnier 2.1)
+\newcommand{\continuityEins}
+{ \PartialFrac{\rho}{t} + \PartialFrac{\Parenthesis{\rho \Sub{u}{i}}}{\Sub{x}{i}} = 0 } 
+
+% Navier Stokes Eq. - Einstein's notation (Large Eddy Simulation for Compressible Flows_Garnier 2.2) 
+%\newcommand{\navierStokesEins} %\incompressibleNavierStokesEins
+\newcommand{\momentumEins} %\incompressibleNavierStokesEins
+{ \PartialFrac{\Parenthesis{\rho\Sub{u}{i}}}{t} + \PartialFrac{\Parenthesis{\rho\Sub{u}{i}\Sub{u}{j}}}{\Sub{x}{j}}  + \PartialFrac{p}{\Sub{x}{i}}  = \PartialFrac{\Sub{\sigma}{ij}}{\Sub{x}{j}}} 
+
+% Energy Eq. - Einstein's notation (Large Eddy Simulation for Compressible Flows_Garnier 2.3)
+\newcommand{\energyEins} 
+{ \PartialFrac{E}{t} + \PartialFrac{\Parenthesis{\Parenthesis{E + p}\Sub{u}{j}} }{\Sub{x}{j}}  = \PartialFrac{\Parenthesis{\Sub{u}{i}\Sub{\sigma}{ij}} }{\Sub{x}{j}} - \PartialFrac{\Sub{q}{j}}{\Sub{x}{j} } } 
+
+%rhoE - Einstein's notation (Large Eddy Simulation for Compressible flow_Garnier 2.4) 
+\newcommand{\rhoeEins}
+{
+    \rho E = \frac{p}{\gamma -1 } + \frac{1}{2}\rho\Sub{u}{i}\Sub{u}{j}
+}
+
+% Vorticity Eq. - Einstein's notation (https://en.wikipedia.org/wiki/Vorticity_equation)
+\newcommand{\vorticityEins}
+{ \PartialFrac{\Sub{\omega}{i}}{t} + \Sub{u}{j}\PartialFrac{\Sub{\omega}{i}}{\Sub{x}{j}} =  \Sub{\omega}{j}\PartialFrac{\Sub{u}{i}}{\Sub{x}{j}}  - \Sub{\omega}{i}\PartialFrac{\Sub{u}{j}}{\Sub{x}{j}} + \Sub{\varepsilon}{ijk}\frac{1}{\rho^2}\PartialFrac{\rho}{\Sub{x}{j}}\PartialFrac{p}{\Sub{x}{k}}+\Sub{\varepsilon}{ijk}\PartialFrac{}{\Sub{x}{j}}\Parenthesis{\frac{1}{\rho}\PartialFrac{\Sub{\sigma}{km}}{\Sub{x}{m}} } }  
+
+% Kinematic Dissipation Rate
+\newcommand{\kinematicDissipationRate}
+{ \Phi = 2\nu \Sub{S}{ij}\Sub{S}{ij} } 
+
+% Total Energy Density 
+\newcommand{\totalEnergyDensity}
+{ e = \frac{p}{\gamma-1} + \frac{1}{2}\rho\Sub{u}{i}\Sub{u}{i} }
+
+% Heat Flux
+\newcommand{\heatFlux} 
+{ \Sub{q}{j} = -\kappa\PartialFrac{T}{\Sub{x}{j}} } 
+
+
+% Nonequilibrium
+% Conservative form of the governing equation A
+\newcommand{\nonequilibriumGoverningEqConservativeA}
+{ \mathcal{R}\Parenthesis{\mathcal{U}, \nabla\mathcal{U}} =
+\PartialFrac{\mathcal{U}}{t} +
+\nabla\cdot\mathcal{F}^{c}\Parenthesis{\mathcal{U}} -
+\nabla\cdot\mathcal{F}^v\Parenthesis{\mathcal{U},\nabla\mathcal{U}} -
+\mathcal{Q}\Parenthesis{\mathcal{U}} = 0 }
+
+\newcommand{\nonequilibriumGoverningEqConservativeB}
+{    \mathcal{U} = 
+    \begin{Bmatrix}
+        \Sub{\rho}{1} \\
+        .             \\
+        .             \\
+        .             \\
+        \Sub{\rho}{s}\\
+        \rho\bm{u} \\
+        \rho e \\
+        \rho e^{vib}
+    \end{Bmatrix}, \quad
+    \mathcal{F}^c =
+    \begin{Bmatrix}
+        \rho_1\bm{u}^T \\
+        .             \\
+        .             \\
+        .             \\
+        \Sub{\rho}{s}\bm{u}^T \\
+        \rho\bm{u}\bm{u}^T + P\hat{I} \\
+        \rho h\bm{u}^T \\
+        \rho e^{vib}\bm u^T
+    \end{Bmatrix}, \quad
+    \mathcal{F}^v =
+    \begin{Bmatrix}
+        -\bm{J}_1\\
+        .             \\
+        .             \\
+        .             \\
+        -\Sub{\bm{J}}{s}\\
+        \bm{\sigma} \\
+        \bm{u}^T\bm{\sigma}- \sum_k\bm{q}^k - \sum_s\Sub{\bm{J}}{s}\Sub{h}{s} \\
+        -\bm{q}^{vib} - \sum_s\Sub{\bm{J}}{s}\Sub{e^{vib}}{s}
+    \end{Bmatrix}, \quad
+    \mathcal{Q} = 
+    \begin{Bmatrix}
+        \Sub{\dot{\omega}}{1} \\
+        .             \\
+        .             \\
+        .             \\
+        \Sub{\dot{\omega}}{s} \\
+        0 \\
+        0 \\
+        \dot{\Theta}^{tr:vib} +
+        \sum_s\Sub{\dot{\omega}}{s}\Sub{e^{vib}}{s}
+    \end{Bmatrix} }
+
+% Compressible 
+% Isentropic relations for ideal gas 
+\newcommand{\isentropicRelationsIdealGas} 
+{ \frac{T_2}{T_1} = \Parenthesis{\frac{p_2}{p_1}}^{\frac{\gamma - 1}{\gamma}} = \Parenthesis{\frac{u_1}{u_2}}^{(\gamma-1)} = \Parenthesis{\frac{\rho_2}{\rho_1}}^{(\gamma-1)} }
+
+% Stagnation Relations 
+\newcommand{\stagnationRelations}
+{\frac{T_0}{T} = \Parenthesis{\frac{p_0}{p}}^{\frac{\gamma-1}{\gamma}} = \Parenthesis{\frac{\rho_0}{\rho}}^{\gamma-1} =\Parenthesis{\frac{a_0}{a}}^2 = 1 + \Parenthesis{\frac{\gamma-1}{2}}M^2} 
+
+
+% Rans Continuity in Einstein
+\newcommand{\ransContinuityEins}
+{ \PartialFrac{\overline{\rho}}{t} + \PartialFrac{}{\Sub{x}{i}} \Parenthesis{
+    \overline{\rho} \,\Sub{\overline{u}}{i} + \overline{\rho^{\prime}
+    \Sub{u^{\prime}}{i}}} = 0} 
+
+
+% Rans Momentum in Einstein
+\newcommand{\ransMomentumEins}
+{\PartialFrac{}{t} \Parenthesis{ \overline{\rho}\,\Sub{\overline{u}}{i} +
+\overline{\rho^{\prime} \Sub{u^{\prime}}{i}}     }   +
+\PartialFrac{}{\Sub{x}{j}}\Parenthesis{
+    \overline{\rho}\,\Sub{\overline{u}}{i}\Sub{\overline{u}}{j} +
+    \overline{\rho}\overline{\Sub{u^{\prime}}{i}\Sub{u^{\prime}}{j} } +
+    \Sub{\overline{u}}{i} \overline{\rho^{\prime}\Sub{u^{\prime}}{j}} +
+    \Sub{\overline{u}}{j}\overline{\rho^{\prime}\Sub{u^{\prime}}{i}} }  =
+-\PartialFrac{ }{\Sub{x}{i}}\overline{p}  + \PartialFrac{
+    }{\Sub{x}{j}}\Parenthesis{\Sub{\overline{\sigma}}{ij} -
+    \overline{\rho^{\prime}\Sub{u^{\prime}}{i}\Sub{u^{\prime}}{j} }}}
+
+% Rans Energy in Einstein
+\newcommand{\ransEnergyEins}
+{\PartialFrac{}{t}\overline{e} +
+\PartialFrac{}{\Sub{x}{j}}\Parenthesis{\overline{e}\,\Sub{\overline{u}}{j} +
+\overline{e^{\prime}\Sub{u^{\prime}}{j}} + \overline{p}\,\Sub{\overline{u}}{j}
++ \overline{p^{\prime}\Sub{u^{\prime}}{j}}} =
+\PartialFrac{}{\Sub{x}{j}}\Parenthesis{\Sub{\overline{u}}{i}\,\Sub{\overline{\sigma}}{ij}
++ \overline{\Sub{u^{\prime}}{i}\Sub{\sigma^{\prime}}{ij}  }} -
+\PartialFrac{}{\Sub{x}{j}}\Sub{\overline{q}}{j}}
+
+% Kolmogorov length 
+\newcommand{\kolmogorovLengthScale}
+{ \eta = \Parenthesis{\frac{\nu^3}{\varepsilon}}^{1/4} }
+
+% Kolmogorov time 
+\newcommand{\kolmogorovTimeScale}
+{ \tau_{\eta} = \Parenthesis{\frac{\nu}{\varepsilon}}^{1/2} }
+
+% Kolmogorov time 
+\newcommand{\kolmogorovVelocityScale}
+{ u_{\eta} = \Parenthesis{\varepsilon\nu}^{1/4} }
+
+% RANS Stress tensor
+\newcommand{\ransStressTensorEins}
+{\Sub{\overline{\sigma}}{ij} = \mu \Parenthesis{
+    \PartialFrac{}{\Sub{x}{j}}\Sub{\overline{u}}{i} +
+    \PartialFrac{}{\Sub{x}{i}}\Sub{\overline{u}}{j} -
+    \frac{2}{3}\PartialFrac{}{\Sub{x}{k}}\Sub{\overline{u}}{k}\Sub{\delta}{ij}} }
+
+% Species continuity
+% From Statistical Thermodynamics John W. Daily (eq: 12.2)
+\newcommand{\noneqSpeciesContinuityEins}
+{
+    \PartialFrac{\Sub{\rho}{k}}{t} + \PartialFrac{}{\Sub{x}{i}}\Parenthesis{
+        \Sub{\rho}{s}\Sub{u}{i} + \Sub{\rho}{s}\Sub{u}{si}} = \Sub{w}{s}
+}
+
+% Nonequilibrium Momentum
+\newcommand{\noneqMomentumEins}
+% From Statistical Thermodynamics John W. Daily (eq: 12.3)
+{ \PartialFrac{\Parenthesis{\rho\Sub{u}{i}}}{t} +
+\PartialFrac{\Parenthesis{\rho\Sub{u}{i}\Sub{u}{j}}}{\Sub{x}{j}}  +
+\PartialFrac{p}{\Sub{x}{i}}  = \PartialFrac{\Sub{\sigma}{ij}}{\Sub{x}{j}} +
+\sum^N_{s=1}\Sub{\rho}{s}\Sub{\overline{F}}{si}
+} 
+
+% nonequilibrium Energy
+\newcommand{\noneqEnergyEins} 
+{ 
+\PartialFrac{E}{t} + \PartialFrac{\Parenthesis{\Parenthesis{E + p}\Sub{u}{j}}
+}{\Sub{x}{j}}  = \PartialFrac{\Parenthesis{\Sub{u}{i}\Sub{\sigma}{ij}}
+}{\Sub{x}{j}} - \PartialFrac{\Sub{q}{j}}{\Sub{x}{j} }  + \dot{Q} +
+\Sub{v}{i}\sum^{N}_{s=1}\Sub{\rho}{s}\Sub{\overline{F}}{si}
+} 

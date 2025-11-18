@@ -1,0 +1,64 @@
+% Common math math
+\usepackage{bigints}  % makes big integrals 
+\everymath{\displaystyle} 
+\newcommand{\B}{\left}	  
+\newcommand{\E}{\right}
+\newcommand{\Acronym}[2]{\B( #1_{_{#2}}\E)}
+\newcommand{\Avg}[1]{\langle#1\rangle}
+\newcommand{\AvgBig}[1]{\B\langle#1\E\rangle}
+\newcommand{\Parenthesis}[1]{\B(#1\E)} \newcommand{\SqBracket}[1]{\B[#1\E]}
+\newcommand{\CurlyBracket}[1]{\B\{#1\E\}}
+\newcommand{\Sub}[2]{#1_{_{#2}}} 
+\newcommand{\Up}[2]{#1^{^{#2}}} 
+\newcommand{\UpSub}[3]{#1_{_{#2}}^{^{#3}}}
+\newcommand{\Result}[1]{\bm{\boxed{#1}}}
+\newcommand{\Limit}[2]{\underset{#1\rightarrow#2}{\lim}\;} 
+\newcommand{\Function}[2]{#1_{\Parenthesis{#2}}} 
+\newcommand{\SubFunction}[3]{#1_{_{#2}{(#3)}}}
+\newcommand{\Units}[1]{\,\SqBracket{#1}} 
+\newcommand{\UnitsFrac}[2]{\,\SqBracket{\frac{#1}{#2}}} 
+\newcommand{\Abs}[1]{\B\lvert#1\E\rvert} 
+\newcommand{\Norm}[1]{\B\lVert#1\E\rVert} 
+
+% General 
+\newcommand{\EqRef}[1]{Eq.\eqref{#1}}
+\newcommand{\FigRef}[1]{Fig.\ref{#1}}
+\newcommand{\TabRef}[1]{Tab.\ref{#1}}
+
+% Derivatives 
+\newcommand{\Partial}[1]{\Sub{\partial}{#1}} 
+\newcommand{\PartialFrac}[2]{\frac{\partial #1}{\partial #2}} 
+\newcommand{\PartialFracN}[3]{\frac {\partial^{#3} {#1}}{\partial {#2}^{#3}}} 
+\newcommand{\PartialDer}[2]{\frac{\partial #1}{\partial #2}} 
+\newcommand{\PartialDerN}[3]{\frac {\partial^{#3} {#1}}{\partial {#2}^{#3}}} 
+\newcommand{\TotalDer}[2]{\frac{d #1}{d #2}} 
+
+% Trig  
+\newcommand{\Sin}[1]{\sin\Parenthesis{#1}}
+\newcommand{\SinFrac}[2]{\sin\Parenthesis{ \frac{#1}{#2} }}
+\newcommand{\Cos}[1]{\cos\Parenthesis{#1}}
+\newcommand{\CosFrac}[2]{\cos\Parenthesis{ \frac{#1}{#2} }}
+\newcommand{\Tan}[1]{\tan\Parenthesis{#1}}
+\newcommand{\TanFrac}[2]{\tan\Parenthesis{ \frac{#1}{#2} }}
+\newcommand{\Ln}[1]{\ln\B|#1\E|}
+\newcommand{\LnFrac}[2]{\ln\B|\frac{#1}{#2}\E|}
+
+% Scale math
+\newcommand{\ScaleMath}[2]{\scalebox{#1}{\mbox{\ensuremath{ \displaystyle
+{#2}}}}}
+
+% Symblos 
+% Countercloskwise            
+\def\Counterclockwise#1{\tikz[baseline=(A.base)]
+                        \draw[-stealth,line width=.035em]  
+                        (0,0) node[circle, inner sep=0cm](A){$#1$}
+                        let \p1=(A.center),\p2=(A.west), \n1={\x1-\x2} in
+                        (-90:\n1) arc(-90:150:\n1);}
+% Clockwise 
+\def\Clockwise#1{\tikz[baseline=(A.base)]
+                 \draw[-stealth,line width=.035em]  
+                 (0,0) node[circle, inner sep=0cm](A){$#1$}
+                 let \p1=(A.center),\p2=(A.east), \n1={\x1-\x2} in
+                 (90:\n1) arc(90:-150:\n1);}
+
+

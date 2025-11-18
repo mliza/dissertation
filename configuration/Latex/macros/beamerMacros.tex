@@ -1,0 +1,136 @@
+\usepackage[style=ieee,backend=biber]{biblatex}
+\usepackage[export]{adjustbox}
+\usepackage[bottom]{footmisc}
+\usepackage[outdir=figures/]{epstopdf}
+\usepackage{animate}
+
+\newcommand\blfootnote[1]{
+\begingroup
+\renewcommand\thefootnote{}\footnote{#1}
+\addtocounter{footnote}{-1}
+\endgroup
+}
+
+\newcommand{\highlight}[1]{%
+  \colorbox{red!20}{$\displaystyle#1$}}
+
+%% Updated print bibliography at the end %%
+\AtEveryBibitem{%
+  \clearlist{publisher}%
+  \clearfield{location}%
+  \clearfield{year}%
+  \clearfield{month}%
+  \clearfield{date}%
+  \clearfield{note}%
+  \clearfield{issue}
+  \clearfield{pages}%
+  \clearfield{volume}%
+  \clearfield{number}%
+  \clearfield{eid}%
+  \clearfield{series}%
+  \clearfield{edition}%
+  \clearfield{issn}%
+  \clearfield{isbn}%
+  \clearfield{doi}%
+  \clearfield{url}%
+  \clearfield{eprint}%
+  \clearfield{eventtitle}%
+  \clearfield{booktitle}%
+  \clearfield{journal}%
+  \clearfield{journaltitle}%
+  \clearfield{institution}%
+}
+
+\DeclareBibliographyDriver{*}{%
+  \printnames{author}%
+  \setunit{\labelnamepunct}\newblock
+  \printfield[titlecase]{title}%
+  \finentry%
+}
+%% Updated print bibliography at the end %%
+
+
+
+%% Updated footfullcite %%
+\DeclareCiteCommand{\footfullcite}
+  {\usebibmacro{prenote}}%
+  {%
+    \footnote{%
+      \printnames{author}%
+      \setunit{\labelnamepunct}\newblock
+      \printfield[titlecase]{title}%
+      \addperiod
+    }%
+  }
+  {\addcomma\space}%
+  {\usebibmacro{postnote}}%
+%% Updated footfullcite %%
+
+
+
+%Beamer Macro 
+%\TextPicture{\item text}{pictureHeigh}{pictureName} 
+\newcommand{\TextPicture}[3]
+{ 
+    \vspace{-0.7cm}
+    \begin{columns}[T] 
+        %Insert Text 
+        \begin{column}[T]{6cm}
+            \begin{itemize}
+                {#1}     
+            \end{itemize}
+        \end{column}
+    
+        %Insert Picture 
+        \begin{column}[T]{6cm} 
+            \includegraphics[scale=#2]{#3} 
+        \end{column} 
+    \end{columns} 
+}
+
+%\QuadChart{title1}{\item }{title2}{\item }{title3}{\item }{title4}{\item }
+\newcommand{\QuadChart}[8]
+{
+	\vspace{-0.5cm}
+    \begin{minipage}{\textwidth}
+    % Begin first box
+    \fbox{
+        \begin{minipage}[c][3cm]{0.45\textwidth}
+            \textbf{#1:} 
+            \begin{itemize}
+                {#2}
+            \end{itemize}
+        \end{minipage}
+         }
+    \hspace{5pt}
+    % Begin second box
+    \fbox{
+        \begin{minipage}[c][3cm]{0.45\textwidth}
+            \textbf{#3:} 
+            \begin{itemize}
+                {#4}
+            \end{itemize}
+        \end{minipage}
+         }
+         \\[6pt]
+    % Begin third box
+    \fbox{
+        \begin{minipage}[c][3cm]{0.45\textwidth}
+            \textbf{#5:} 
+            \begin{itemize}
+                {#6}
+            \end{itemize}
+        \end{minipage}
+         }
+    \hspace{5pt}
+    % End third box
+    \fbox{
+        \begin{minipage}[c][3cm]{0.45\textwidth}
+            \textbf{#7:} 
+            \begin{itemize}
+                {#8}
+            \end{itemize}
+        \end{minipage}
+         }
+    \end{minipage}
+}

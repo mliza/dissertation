@@ -1,0 +1,72 @@
+% Gradient operator - Cartesian coordinates 
+\newcommand{\gradientCartesian}[1] %\gradientCartesian{v}
+{ \PartialFrac{#1}{x}\hat{x} + \PartialFrac{#1}{y}\hat{y} + \PartialFrac{#1}{z}\hat{z} }
+
+% Divergence operator - Cartesian coordinates 
+\newcommand{\divergenceCartesian}[3] %\diverganceCartesian{u}{v}{w} 
+{ \PartialFrac{#1}{x} + \PartialFrac{#2}{y} + \PartialFrac{#3}{z} }
+
+% Laplace operator - Cartesian coordinates 
+\newcommand{\laplaceCartesian}[1] %\laplaceCartesian{u}
+{ \PartialFracN{#1}{x}{2} + \PartialFracN{#1}{y}{2} + \PartialFracN{#1}{z}{2} }
+
+% Gradient operator - Cylindrical coordinates  
+\newcommand{\gradientCylindrical}[1] %\gradientCylindrical{f} 
+{ \PartialFrac{#1}{r}\hat{r} + \frac{1}{r}\PartialFrac{#1}{\theta}\hat{\theta} + \PartialFrac{#1}{z}\hat{z} }
+
+% Divergence operator - Cylindrical 
+\newcommand{\divergenceCylindrical}[3] %\divergenceCylindrical{r}{\theta}{a} 
+{ \frac{1}{r}\PartialFrac{\Parenthesis{r#1}}{r} + \frac{1}{r}\PartialFrac{#2}{\theta} + \PartialFrac{#3}{z} }
+
+% Laplace operator - Cylindrical coordinates 
+\newcommand{\laplaceCylindrical}[1] %\laplaceCylindrical{V} 
+{ \frac{1}{r}\PartialFrac{ }{r}\Parenthesis{r\PartialFrac{#1}{r}} + \frac{1}{r^2}\PartialFracN{#1}{\theta}{2} + \PartialFracN{#1}{z}{2} }
+
+% Gradient operator - Spherical coordinates 
+\newcommand{\gradientSpherical}[1] %\gradientSpherical{V}  
+{ \PartialFrac{#1}{r}\hat{r} + \frac{1}{r}\PartialFrac{#1}{\theta}\hat{\theta} + \frac{1}{r\sin\Parenthesis{\theta}}\PartialFrac{#1}{\phi}\hat{\phi} }
+
+% Divergence operator - Spherical coordinates 
+\newcommand{\divergenceSpherical}[3] %\divergenceSpherical{r}{\theta}{\phi} 
+{ \frac{1}{r^2}\PartialFrac{\Parenthesis{r^2#1}}{r} + \frac{1}{r\sin\Parenthesis{\theta}}\PartialFrac{}{\theta}\SqBracket{#2\sin\Parenthesis{\theta}} + \frac{1}{r\sin\Parenthesis{\theta}}\PartialFrac{#3}{\phi} }
+
+% Laplace operator - Spherical coordinates 
+\newcommand{\laplaceSpherical}[1] %laplaceSpherical{f} 
+{ \frac{1}{r^2}\PartialFrac{}{r}\Parenthesis{r^2\PartialFrac{#1}{r}} + \frac{1}{r^2\sin\Parenthesis{\theta}}\PartialFrac{}{\theta}\Parenthesis{\sin\Parenthesis{\theta}\PartialFrac{#1}{\theta}} + \frac{1}{r^2\sin\Parenthesis{\theta}}\PartialFracN{#1}{\phi}{2} }
+
+% Levi-Civita Symbol 
+\newcommand{\leviCivita}[1]
+{ \Sub{\varepsilon}{#1} }
+
+% Kronecker delta Symbol 
+\newcommand{\kroneckerDelta}[1]
+{ \Sub{\delta}{#1} }
+
+% Dot Product - Einstein's notation 
+\newcommand{\dotEins}[4] %\dotEins{A}{i}{B}{j} 
+{ \Sub{#1}{#2}\Sub{#3}{#4}\Sub{\delta}{#2#4} }
+
+% Cross Product - Einstein's notation 
+\newcommand{\crossEins}[5] %\crossEins{ijk}{A}{i}{B}{k}  
+{ \Sub{\varepsilon}{#1}\Sub{#2}{#3}\Sub{#4}{#5} }
+
+% Levi-Civita Identity - Einsteins notation 
+\newcommand{\leviCivitaIdent}[6] %\leviCivitaIdent{i}{j}{k}{m}{n}{r} 
+{   \Sub{\varepsilon}{#1#2#3}\Sub{\varepsilon}{#4#5#6} = \Sub{\delta}{#1#4}\Parenthesis{ \Sub{\delta}{#2#5}\Sub{\delta}{#3#6} - \Sub{\delta}{#2#6}\Sub{\delta}{#3#5} } - \Sub{\delta}{#1#5}\Parenthesis{ \Sub{\delta}{#2#4}\Sub{\delta}{#3#6} - \Sub{\delta}{#2#6}\Sub{\delta}{#3#4} } + \Sub{\delta}{#1#6}\Parenthesis{ \Sub{\delta}{#2#4}\Sub{\delta}{#3#5} - \Sub{\delta}{#2#5}\Sub{\delta}{#3#4} }     }
+
+% Stokes Theorem 
+\newcommand{\stokesTheorem}[1] %\stokesTheorem{F} 
+{\iint\limits_{A}\Parenthesis{\nabla\times {#1} }\cdot\,\hat{n}\,da  = \oint\limits_{C}{#1}\cdot \hat{n}\,dl}
+
+% Divergence Theorem 
+\newcommand{\divergenceTheorem}[1] %\divergenceTheorem{F}
+{ \iiint\limits_{\forall}\Parenthesis{\nabla\cdot {#1}}d\forall = \oiint\limits_{A}{#1}\cdot\hat{n}\,da } 
+
+% Greens Theorem 
+\newcommand{\greensTheorem}[2] %\greensTheorem{M}{N}
+{ \oint\limits_C\Parenthesis{ {#1}dx + {#2}dy } = \iint\limits_D\Parenthesis{ \PartialFrac{#2}{x} - \PartialFrac{#1}{y} }dxdy } 
+
+% Leibniz Integral Rule
+\newcommand{\leibnizIntegral} 
+{\frac{d}{dt}\iint\limits_{\Sigma_{(t)} } \vec{F} \cdot d\vec{a} = \iint\limits_{\Sigma_{(t)}} \Parenthesis{ \PartialFrac{\vec{F}}{t} +  \Parenthesis{\vec{F}\cdot\nabla}\vec{V} + \Parenthesis{ \nabla\cdot\vec{F} }\vec{V} - \Parenthesis{\nabla\cdot\vec{V}}\vec{F}}\cdot d\vec{a}  - \oint\limits_{\partial\Sigma_{(t)}} \Parenthesis{\vec{V}\times\vec{F}}\cdot d\vec{s} } 
+
