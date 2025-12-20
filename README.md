@@ -27,6 +27,7 @@ flowchart TD
 
 If you use this dissertation, associated data, figures, or methods, please cite the following work:
 
+```bibtex
 @phdthesis{liza2025aerooptical,
   author = {Liza, Martin E.},
   title  = {Aero-Optical Effects in High-Enthalpy Flows},
@@ -35,3 +36,4 @@ If you use this dissertation, associated data, figures, or methods, please cite 
   type   = {PhD dissertation},
   url    = {https://www.proquest.com/docview/3283728727}
 }
+```
