@@ -11,10 +11,16 @@ The dissertation is structured as follows:
 
 ```mermaid
 flowchart TD
-  id1([ main ]) --> id2([ src ]);
-  id1([ main ]) --> id3([ figures ]);
-  id1([ main ]) --> id4([ configuration ]);
-  id1([ main ]) --> id5([ codes ])
+  main[main]
+  src[src]
+  figs[figures]
+  cfg[configura<br/>tion]
+  codes[codes]
+
+  main --> src
+  main --> figs
+  main --> cfg
+  main --> codes
 ```
 
 - **src:** contains appendices, glossaries, and all the chapters
