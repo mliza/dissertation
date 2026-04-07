@@ -39,7 +39,8 @@ If you use this dissertation, associated data, figures, or methods, please cite 
   title  = {Aero-Optical Effects in High-Enthalpy Flows},
   year   = {2025},
   school = {University of Arizona},
-  type   = {PhD dissertation},
+  type   = {Dissertation},
+  isbn   = {9798270225919},
   url    = {https://www.proquest.com/docview/3283728727}
 }
 ```
