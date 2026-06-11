@@ -44,3 +44,9 @@ If you use this dissertation, associated data, figures, or methods, please cite 
   url    = {https://www.proquest.com/docview/3283728727}
 }
 ```
+
+
+# Additional Links
+
+[PhD defense]{https://github.com/mliza/defense}
+[HAOT package]{https://haot.readthedocs.io/en/latest/}
