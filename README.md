@@ -48,6 +48,6 @@ If you use this dissertation, associated data, figures, or methods, please cite 
 
 # Additional Links
 
-- [PhD defense](https://github.com/mliza/defense): Ph.D. dissertation defense presentation.  
+- [PhD defense](https://github.com/mliza/defense): Ph.D. dissertation defense presentation.
 - [HAOT documentation](https://haot.readthedocs.io/en/latest/): Documentation for the HAOT package.
 - [HAOT repo](https://github.com/mliza/HAOT): Repo for the HAOT package.

@@ -1,3 +1,6 @@
+# v1.1 (September 16, 2026)
+* Removed git submodules.
+
 # v1.0 (October 31, 2025)
 * Version submitted for publication to the university with all signatures and
 corrections from the committee.
